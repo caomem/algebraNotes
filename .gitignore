@@ -280,3 +280,6 @@ TSWLatexianTemp*
 
 # Fuse files
 **.fuse_hidden*
+
+# Unnecessary Review Files
+/reviewsHistory
