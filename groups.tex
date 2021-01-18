@@ -1,0 +1,137 @@
+ \documentclass[a4paper,12pt]{report}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{MnSymbol}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{color}
+\definecolor{Blue}{rgb}{0,0,0.9}
+\definecolor{Red}{rgb}{0.9,0,0}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{blkarray}
+\newcommand\Mark[1]{\textsuperscript#1}
+\usepackage{pgfplots}
+\usepackage{amsfonts}
+\usepackage[english, ruled, linesnumbered]{algorithm2e}
+\usepackage{algorithmic}
+\newtheorem{definicao}{Definição}[section]
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{proposicao}{Proposição}[section]
+\newtheorem{observacao}{Observação}[section]
+\newtheorem{corolario}{Corolário}[section]
+
+\title{Teoria de Grupos: notas de estudo}
+\author{Guilherme Philippi}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Grupos}
+% Enunciar as principais referências desse capítulo
+
+\section{Lei de composição}
+
+\begin{definicao}[Lei de Composição]
+	Uma Lei de Composição sobre \(S\) é uma função \(F: S\times S \longrightarrow S\).
+\end{definicao}
+
+
+\begin{definicao}
+	Para $a,b,c \; \in S$, uma Lei de Composição $F$ é dita
+	
+	\begin{itemize}
+		\item \emph{Associativa} se \(F(F(a,b),c) = F(a,F(b,c))\);
+		\item \emph{Comutativa} se \(F(a,b) = F(b,a)\).
+	\end{itemize}
+\end{definicao}
+
+\begin{observacao}
+	Usaremos a notação \(F(a,b) = ab\), para simplificar a escrita de
+	propriedades.
+\end{observacao}
+
+\begin{proposicao}
+	Seja uma lei associativa dada sobre o conjunto
+	\(S\). Há uma única forma de definir, para todo inteiro \(n\), um
+	produto de \(n\) elementos \(a_1,\dots,a_n \in S\) (diremos
+	\([a_1\dotsb a_n]\)) com as seguintes propriedades:
+	
+	\begin{enumerate}
+		\def\labelenumi{\arabic{enumi}.}
+		\item
+		o produto \([a_1]\) de um elemento é o próprio elemento;
+		\item
+		o produto \([a_1a_2]\) de dois elementos é dado pela lei de
+		composição;
+		\item
+		para todo inteiro \(1\leq i\leq n\),
+		\([a_1\dotsb a_n] = [a_1\dotsb a_i][a_{i+1}\dotsb a_n]\).
+	\end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+	A demonstração dessa proposição é feita por indução em \(n\).
+\end{proof}
+
+\begin{definicao}
+	Dizemos que \(e\in S\) é \emph{identidade} para uma lei de composição se \(ea = ae = a\) para todo \(a\in S\).
+\end{definicao}
+
+\begin{proposicao}
+	O elemento identidade é único.
+\end{proposicao}
+\begin{proof}
+	Se \(e,e'\) são identidades, já que \(e\) é identidade, então \(ee' = e'\) e, como $e'$ é uma identidade, \(ee' = e\). Logo \(e = e'\), isto é, a identidade é única.
+\end{proof}
+
+\begin{observacao}
+	Usaremos $\vec{1}$ para representar a identidade multiplicativa e $\vec{0}$ para denotar a aditiva.
+\end{observacao}
+
+\begin{definicao}[Elemento inverso]
+	Seja uma lei de composição que possua uma identidade. Um elemento \(a\in S\) é chamado \emph{invertível} se há um outro elemento \(b\in S\) tal que \(ab = ba = 1\). Desde que \(b\) exista, ela é única e a denotaremos por \(a^{-1}\) e a chamaremos
+	\emph{inversa de $a$}.
+\end{definicao}
+
+
+\begin{proposicao}
+	Se \(a,b\in S\) possuem inversa, então a composição \((ab)^{-1} = b^{-1}a^{-1}\).
+\end{proposicao}
+
+\begin{observacao}[Potências]
+	Usaremos as seguintes notações:
+	\begin{itemize}
+		\item \(a^n = a^{n-1}a\) é a composição de \(a\dotsb a\) \(n\) vezes;
+		\item \(a^{-n}\) é a inversa de \(a^n\);
+		\item \(a^0 = \vec{1}\).
+	\end{itemize}
+
+	Com isso, tem-se que \(a^{r+s} = a^ra^s\) e \((a^r)^s = a^{rs}\). (Isso
+	não induz uma notação de fração \(\frac{b}{a}\) a menos que seja uma lei
+	comutativa, visto que \(ba^{-1}\) pode ser diferente de \(a^{-1}b\)).
+	Para falar de uma lei de composição aditiva, usaremos \(-a\) no lugar de
+	\(a^{-1}\) e \(na\) no lugar de \(a^n\).
+\end{observacao}
+
+
+
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+
+\phantomsection
+\addcontentsline{toc}{section}{Referências}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
