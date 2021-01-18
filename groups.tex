@@ -22,12 +22,17 @@
 \usepackage{amsfonts}
 \usepackage[english, ruled, linesnumbered]{algorithm2e}
 \usepackage{algorithmic}
-\newtheorem{definicao}{Definição}[section]
+
+\theoremstyle{plain}
 \newtheorem{teorema}{Teorema}[section]
 \newtheorem{lema}{Lema}[section]
 \newtheorem{proposicao}{Proposição}[section]
-\newtheorem{observacao}{Observação}[section]
 \newtheorem{corolario}{Corolário}[section]
+
+\theoremstyle{definition}
+\newtheorem{definicao}{Definição}[section]
+\newtheorem{observacao}{Observação}[section]
+\newtheorem{exemplo}{Exemplo}[section]
 
 \title{Teoria de Grupos: notas de estudo}
 \author{Guilherme Philippi}
@@ -41,7 +46,7 @@
 \section{Lei de composição}
 
 \begin{definicao}[Lei de Composição]
-	Uma Lei de Composição sobre \(S\) é uma função \(F: S\times S \longrightarrow S\).
+	Uma \emph{Lei de Composição} sobre \(S\) é uma função \(F: S\times S \longrightarrow S\).
 \end{definicao}
 
 
@@ -122,10 +127,105 @@
 	\(a^{-1}\) e \(na\) no lugar de \(a^n\).
 \end{observacao}
 
+\section{Grupos}
 
+\begin{definicao}[Grupo]
+	Um \emph{Grupo} é um conjunto \(G\) onde uma lei de
+	composição associativa é dada sobre \(G\) tal que exista uma identidade
+	e todo elemento possua uma inversa.
+\end{definicao}
 
+\begin{observacao}
+	É comum abusar da notação e chamar um grupo e o conjunto de	seus elementos pelo mesmo simbolo, por exemplo, $G$.	
+\end{observacao}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\begin{definicao}[Grupo abeliano]
+	Um \emph{grupo abeliano} é um grupo com uma lei de
+	composição comutativa. Costuma-se usar a notação aditiva para grupos
+	abelianos.
+\end{definicao}
+
+\begin{proposicao}[Lei do cancelamento]
+	Seja \(a,b,c\) elementos de um grupo \(G\). Se \(ab = ac\), então \(b = c\).
+\end{proposicao} 
+
+\section{Subgrupos}
+
+\begin{definicao}[Subgrupo]
+	Um subconjunto \(H\) de um grupo \(G\) é chamado de \emph{subgrupo} de \(G\) se possuir as seguintes propriedades:
+	
+	\begin{enumerate}
+		\item \emph{(Fechado).} Se \(a,b\in H\), então \(ab\in H\);
+		\item \emph{(Identidade).} \(1\in H\);
+		\item \emph{(Inversível).} Se \(a\in H\), então \(a^{-1}\in H\).
+	\end{enumerate}
+	
+\end{definicao}
+
+\begin{observacao}[Lei de composição induzida]
+	Veja que a propriedade 1. necessita de uma lei de composição. Usamos a
+	lei de composição de \(G\) para definir uma lei de composição de \(H\),
+	chamada \emph{lei de composição induzida}. Essas propriedades garantem
+	que \(H\) é um grupo com respeito a sua lei induzida.
+\end{observacao}
+
+\begin{definicao}[Subgrupo apropriado]
+	Todo grupo \(G\) possui dois subgrupos triviais: O subgrupo formado por
+	todos os elementos de \(G\) e o subgrupo \(\{\vec{1}\}\), formado pela
+	identidade de \(G\). Diz-se que um subgrupo é um \emph{subgrupo apropriado} se for diferente desses dois.
+\end{definicao}
+
+\begin{exemplo}
+	Utilizando da notação multiplicativa, define-se o
+	\emph{subgrupo cíclico \(H\)} gerados por um elemento arbitrário \(x\)
+	de um grupo \(G\) como o conjunto de todas as potências de \(x\):
+	\(H = \{\dots , x^{-2}, x^{-1},\vec{1},x,x^2,\dots\}\).
+\end{exemplo}
+
+\begin{definicao}
+	Chama-se \emph{ordem} de um grupo \(G\) o número \(|G|\) de elementos de \(G\).
+\end{definicao}
+
+Também pode-se definir um subgrupo de um grupo \emph{\(G\) gerado por um
+subconjunto \(U \subset G\)}. Esse é o menor subgrupo de \(G\) que
+contém \(U\) e consiste de todos os elementos de \(G\) que podem ser
+espressos como um produto de uma cadeia de elementos de \(U\) e seus
+inversos.
+
+\begin{exemplo}
+	O \emph{grupo de quaternions \(H\)} é o menor subgrupo
+	do conjunto de matrizes \(2\times 2\) complexas invertíveis que não é
+	cíclico. Isso consiste nas oito matrizes
+	\[H = \{\pm 1, \pm \mathbf{i}, \pm \mathbf{j}, \pm \mathbf{k}\},\] onde
+	
+	\[
+	1=
+	\begin{bmatrix}
+		1 & 0 \\
+		0 & 1 \\
+	\end{bmatrix},
+	\ \mathbf{i}=
+	\begin{bmatrix}
+		i & 0 \\
+		0 & -i \\
+	\end{bmatrix},
+	\ \mathbf{j}=
+	\begin{bmatrix}
+		0 & 1 \\
+		-1 & 0 \\
+	\end{bmatrix},
+	\ \mathbf{k}=
+	\begin{bmatrix}
+		0 & i \\
+		i & 0 \\
+	\end{bmatrix}.
+	\]
+	
+	Os dois elementos \(\mathbf{i}, \mathbf{j}\) geram \(H\), e o calculo
+	leva as formulas
+	
+	\[\mathbf{i}^4 = 1, \quad \mathbf{i}^2 = \mathbf{j}^2, \quad \mathbf{j}\mathbf{i} = \mathbf{i}^3\mathbf{j}.\]
+\end{exemplo}
 
 
 \phantomsection
