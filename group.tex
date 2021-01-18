@@ -1,0 +1,1086 @@
+\documentclass[11pt]{article}
+
+    \usepackage[breakable]{tcolorbox}
+    \usepackage{parskip} % Stop auto-indenting (to mimic markdown behaviour)
+    
+    \usepackage{iftex}
+    \ifPDFTeX
+    	\usepackage[T1]{fontenc}
+    	\usepackage{mathpazo}
+    \else
+    	\usepackage{fontspec}
+    \fi
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % Maintain compatibility with old templates. Remove in nbconvert 6.0
+    \let\Oldincludegraphics\includegraphics
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionFormat{nocaption}{}
+    \captionsetup{format=nocaption,aboveskip=0pt,belowskip=0pt}
+
+    \usepackage{float}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range
+    \makeatletter % fix for old versions of grffile with XeLaTeX
+    \@ifpackagelater{grffile}{2019/11/01}
+    {
+      % Do nothing on new versions
+    }
+    {
+      \def\Gread@@xetex#1{%
+        \IfFileExists{"\Gin@base".bb}%
+        {\Gread@eps{\Gin@base.bb}}%
+        {\Gread@@xetex@aux#1}%
+      }
+    }
+    \makeatother
+    \usepackage[Export]{adjustbox} % Used to constrain images to a maximum size
+    \adjustboxset{max size={0.9\linewidth}{0.9\paperheight}}
+
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    % The default LaTeX title has an obnoxious amount of whitespace. By default,
+    % titling removes some of it. It also provides customization options.
+    \usepackage{titling}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    \usepackage{mathrsfs}
+    
+
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+    \definecolor{ansi-default-inverse-fg}{HTML}{FFFFFF}
+    \definecolor{ansi-default-inverse-bg}{HTML}{000000}
+
+    % common color for the border for error outputs.
+    \definecolor{outerrorbackground}{HTML}{FFDFDF}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatibility definitions
+    \def\gt{>}
+    \def\lt{<}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    % Document parameters
+    % Document title
+    \title{Untitled}
+    
+    
+    
+    
+    
+% Pygments definitions
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % For linebreaks inside Verbatim environment from package fancyvrb. 
+    \makeatletter
+        \newbox\Wrappedcontinuationbox 
+        \newbox\Wrappedvisiblespacebox 
+        \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}} 
+        \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}} 
+        \newcommand*\Wrappedcontinuationindent {3ex } 
+        \newcommand*\Wrappedafterbreak {\kern\Wrappedcontinuationindent\copy\Wrappedcontinuationbox} 
+        % Take advantage of the already applied Pygments mark-up to insert 
+        % potential linebreaks for TeX processing. 
+        %        {, <, #, %, $, ' and ": go to next line. 
+        %        _, }, ^, &, >, - and ~: stay at end of broken line. 
+        % Use of \textquotesingle for straight quote. 
+        \newcommand*\Wrappedbreaksatspecials {% 
+            \def\PYGZus{\discretionary{\char`\_}{\Wrappedafterbreak}{\char`\_}}% 
+            \def\PYGZob{\discretionary{}{\Wrappedafterbreak\char`\{}{\char`\{}}% 
+            \def\PYGZcb{\discretionary{\char`\}}{\Wrappedafterbreak}{\char`\}}}% 
+            \def\PYGZca{\discretionary{\char`\^}{\Wrappedafterbreak}{\char`\^}}% 
+            \def\PYGZam{\discretionary{\char`\&}{\Wrappedafterbreak}{\char`\&}}% 
+            \def\PYGZlt{\discretionary{}{\Wrappedafterbreak\char`\<}{\char`\<}}% 
+            \def\PYGZgt{\discretionary{\char`\>}{\Wrappedafterbreak}{\char`\>}}% 
+            \def\PYGZsh{\discretionary{}{\Wrappedafterbreak\char`\#}{\char`\#}}% 
+            \def\PYGZpc{\discretionary{}{\Wrappedafterbreak\char`\%}{\char`\%}}% 
+            \def\PYGZdl{\discretionary{}{\Wrappedafterbreak\char`\$}{\char`\$}}% 
+            \def\PYGZhy{\discretionary{\char`\-}{\Wrappedafterbreak}{\char`\-}}% 
+            \def\PYGZsq{\discretionary{}{\Wrappedafterbreak\textquotesingle}{\textquotesingle}}% 
+            \def\PYGZdq{\discretionary{}{\Wrappedafterbreak\char`\"}{\char`\"}}% 
+            \def\PYGZti{\discretionary{\char`\~}{\Wrappedafterbreak}{\char`\~}}% 
+        } 
+        % Some characters . , ; ? ! / are not pygmentized. 
+        % This macro makes them "active" and they will insert potential linebreaks 
+        \newcommand*\Wrappedbreaksatpunct {% 
+            \lccode`\~`\.\lowercase{\def~}{\discretionary{\hbox{\char`\.}}{\Wrappedafterbreak}{\hbox{\char`\.}}}% 
+            \lccode`\~`\,\lowercase{\def~}{\discretionary{\hbox{\char`\,}}{\Wrappedafterbreak}{\hbox{\char`\,}}}% 
+            \lccode`\~`\;\lowercase{\def~}{\discretionary{\hbox{\char`\;}}{\Wrappedafterbreak}{\hbox{\char`\;}}}% 
+            \lccode`\~`\:\lowercase{\def~}{\discretionary{\hbox{\char`\:}}{\Wrappedafterbreak}{\hbox{\char`\:}}}% 
+            \lccode`\~`\?\lowercase{\def~}{\discretionary{\hbox{\char`\?}}{\Wrappedafterbreak}{\hbox{\char`\?}}}% 
+            \lccode`\~`\!\lowercase{\def~}{\discretionary{\hbox{\char`\!}}{\Wrappedafterbreak}{\hbox{\char`\!}}}% 
+            \lccode`\~`\/\lowercase{\def~}{\discretionary{\hbox{\char`\/}}{\Wrappedafterbreak}{\hbox{\char`\/}}}% 
+            \catcode`\.\active
+            \catcode`\,\active 
+            \catcode`\;\active
+            \catcode`\:\active
+            \catcode`\?\active
+            \catcode`\!\active
+            \catcode`\/\active 
+            \lccode`\~`\~ 	
+        }
+    \makeatother
+
+    \let\OriginalVerbatim=\Verbatim
+    \makeatletter
+    \renewcommand{\Verbatim}[1][1]{%
+        %\parskip\z@skip
+        \sbox\Wrappedcontinuationbox {\Wrappedcontinuationsymbol}%
+        \sbox\Wrappedvisiblespacebox {\FV@SetupFont\Wrappedvisiblespace}%
+        \def\FancyVerbFormatLine ##1{\hsize\linewidth
+            \vtop{\raggedright\hyphenpenalty\z@\exhyphenpenalty\z@
+                \doublehyphendemerits\z@\finalhyphendemerits\z@
+                \strut ##1\strut}%
+        }%
+        % If the linebreak is at a space, the latter will be displayed as visible
+        % space at end of first line, and a continuation symbol starts next line.
+        % Stretch/shrink are however usually zero for typewriter font.
+        \def\FV@Space {%
+            \nobreak\hskip\z@ plus\fontdimen3\font minus\fontdimen4\font
+            \discretionary{\copy\Wrappedvisiblespacebox}{\Wrappedafterbreak}
+            {\kern\fontdimen2\font}%
+        }%
+        
+        % Allow breaks at special characters using \PYG... macros.
+        \Wrappedbreaksatspecials
+        % Breaks at punctuation characters . , ; ? ! and / need catcode=\active 	
+        \OriginalVerbatim[#1,codes*=\Wrappedbreaksatpunct]%
+    }
+    \makeatother
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+    
+    % prompt
+    \makeatletter
+    \newcommand{\boxspacing}{\kern\kvtcb@left@rule\kern\kvtcb@boxsep}
+    \makeatother
+    \newcommand{\prompt}[4]{
+        {\ttfamily\llap{{\color{#2}[#3]:\hspace{3pt}#4}}\vspace{-\baselineskip}}
+    }
+    
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+\begin{document}
+    
+    \maketitle
+    
+    
+
+    
+    \hypertarget{grupos}{%
+\section{Grupos}\label{grupos}}
+
+\hypertarget{lei-de-composiuxe7uxe3o}{%
+\subsection{Lei de composição}\label{lei-de-composiuxe7uxe3o}}
+
+\textbf{Definição:} Uma \emph{Lei de Composição} sobre \(S\) é uma
+função \(F: S\times S \longrightarrow S\).
+
+\textbf{Definição:} Para \(a,b,c\in S\), uma Lei de Composição é dita
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{lei associativa} se \(F(F(a,b),c) = F(a,F(b,c))\);
+\item
+  \emph{lei comutativa} se \(F(a,b) = F(b,a)\).
+\end{itemize}
+
+Usaremos a notação \(F(a,b) = ab\), para simplificar a escrita de
+propriedades.
+
+\textbf{Proposição:} Seja uma lei associativa dada sobre o conjunto
+\(S\). Há uma única forma de definir, para todo inteiro \(n\), um
+produto de \(n\) elementos \(a_1,\dots,a_n \in S\) (diremos
+\([a_1\dotsb a_n]\)) com as seguintes propriedades:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  o produto \([a_1]\) de um elemento é o próprio elemento;
+\item
+  o produto \([a_1a_2]\) de dois elementos é dado pela lei de
+  composição;
+\item
+  para todo inteiro \(1\leq i\leq n\),
+  \([a_1\dotsb a_n] = [a_1\dotsb a_i][a_{i+1}\dotsb a_n]\).
+\end{enumerate}
+
+A demonstração dessa proposição é feita por indução em \(n\).
+
+\textbf{Definição:} Dizemos que \(e\in S\) é \emph{identidade} para uma
+lei de composição se \(ea = ae = a\) para todo \(a\in S\).
+
+Se \(e,e'\) são identidades então, desde que \(e\) é identidade,
+\(ee' = e'\), e desde que \(e'\) é uma identidade, \(ee' = e\). Logo
+\(e = e'\), isto é, a identidade é única. Usaremos 1 para representar a
+identidade multiplicativa e 0 para denotar a aditiva (não são os
+números, apenas uma notação).
+
+\textbf{Definição:} Seja uma lei de composição que possua uma
+identidade. Um elemento \(a\in S\) é chamado \emph{invertível} se há um
+outro elemento \(b\in S\) tal que \(ab = ba = 1\). Desde que \(b\)
+exista, ela é única e a denotaremos por \(a^{-1}\) e a chamaremos
+\emph{inversa de a}.
+
+Se \(a,b\in S\) possuem inversa, então a composição
+\((ab)^{-1} = b^{-1}a^{-1}\).
+
+Usaremos as seguintes notações: - \(a^n = a^{n-1}a\) é a composição de
+\(a\dotsb a\) \(n\) vezes; - \(a^0 = 1\) - \(a^{-n}\) é a inversa de
+\(a^n\)
+
+Com isso, tem-se que \(a^{r+s} = a^ra^s\) e \((a^r)^s = a^{rs}\). (Isso
+não induz uma notação de fração \(\frac{b}{a}\) a menos que seja uma lei
+comutativa, visto que \(ba^{-1}\) pode ser diferente de \(a^{-1}b\)).
+Para falar de uma lei de composição aditiva, usaremos \(-a\) no lugar de
+\(a^{-1}\) e \(na\) no lugar de \(a^n\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{grupo}{%
+\subsection{Grupo}\label{grupo}}
+
+\textbf{Definição:} Um \emph{Grupo} é um conjunto \(G\) onde uma lei de
+composição associativa é dada sobre \(G\), tal que exista uma identidade
+e todo elemento possua uma inversa.
+
+É comum abusar da notação e chamar um grupo \(G\) e o conjunto \(G\) de
+seus elementos pelo mesmo simbolo.
+
+\textbf{Definição:} Um \emph{grupo abeliano} é um grupo com uma lei de
+composição comutativa. Costuma-se usar a notação aditiva para grupos
+abelianos.
+
+\textbf{Proposição (lei do cancelamento):} Seja \(a,b,c\) elementos de
+um grupo \(G\). Se \(ab = ac\), então \(b = c\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{subgrupos}{%
+\subsection{Subgrupos}\label{subgrupos}}
+
+\textbf{Definição:} Um subconjunto \(H\) de um grupo \(G\) é chamado de
+\emph{subgrupo} de \(G\) se possuir as seguintes propriedades:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Fechado: Se \(a,b\in H\), então \(ab\in H\);
+\item
+  Identidade: \(1\in H\).
+\item
+  Inversível: Se \(a\in H\), então \(a^{-1}\in H\).
+\end{enumerate}
+
+Veja que a propriedade 1. necessita de uma lei de composição. Usamos a
+lei de composição de \(G\) para definir uma lei de composição de \(H\),
+chamada \emph{lei de composição induzida}. Essas propriedades garantem
+que \(H\) é um grupo com respeito a sua lei induzida.
+
+Todo grupo \(G\) possui dois subgrupos triviais: O subgrupo formado por
+todos os elementos de \(G\) e o subgrupo \(\{1\}\), formado pela
+identidade de \(G\). Diz-se que um subgrupo é um \emph{subgrupo
+apropriado} se for diferente desses dois.
+
+\textbf{Exemplo:} Utilizando da notação multiplicativa, define-se o
+\emph{subgrupo cíclico \(H\)} gerados por um elemento arbitrário \(x\)
+de um grupo \(G\) como o conjunto de todas as potências de \(x\):
+\(H = \{\dots , x^{-2}, x^{-1},1,x,x^2,\dots\}\).
+
+\textbf{Definição:} Chama-se \emph{ordem} de um grupo \(G\) o número
+\(|G|\) de elementos de \(G\).
+
+Também pode-se definir um subgrupo de um grupo \emph{\(G\) gerado por um
+subconjunto \(U \subset G\)}. Esse é o menor subgrupo de \(G\) que
+contém \(U\) e consiste de todos os elementos de \(G\) que podem ser
+espressos como um produto de uma cadeia de elementos de \(U\) e seus
+inversos.
+
+\textbf{Exemplo:} O \emph{grupo de quaternions \(H\)} é o menor subgrupo
+do conjunto de matrizes \(2\times 2\) complexas invertíveis que não é
+cíclico. Isso consiste nas oito matrizes
+\[H = \{\pm 1, \pm \mathbf{i}, \pm \mathbf{j}, \pm \mathbf{k}\},\] onde
+
+\[
+1=
+\begin{bmatrix}
+1 & 0 \\
+0 & 1 \\
+\end{bmatrix},
+\ \mathbf{i}=
+\begin{bmatrix}
+i & 0 \\
+0 & -i \\
+\end{bmatrix},
+\ \mathbf{j}=
+\begin{bmatrix}
+0 & 1 \\
+-1 & 0 \\
+\end{bmatrix},
+\ \mathbf{k}=
+\begin{bmatrix}
+0 & i \\
+i & 0 \\
+\end{bmatrix}.
+\]
+
+Os dois elementos \(\mathbf{i}, \mathbf{j}\) geram \(H\), e o calculo
+leva as formulas
+
+\[\mathbf{i}^4 = 1, \quad \mathbf{i}^2 = \mathbf{j}^2, \quad \mathbf{j}\mathbf{i} = \mathbf{i}^3\mathbf{j}.\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{isomorfismos}{%
+\subsection{Isomorfismos}\label{isomorfismos}}
+
+Se dois grupos \(G\) e \(G'\) estão relacionados por uma
+\emph{correspondência biunívoca} entre seus elementos, compatível com
+suas leis de composição, isto é, uma correspondência
+
+\[ 
+G \longleftrightarrow G' 
+\]
+
+tendo a seguinte propriedade: Se \(a,b\in G\) corresponde
+respectivamente a \(a',b' \in G'\), então o produto \(ab\in G\)
+corresponde ao produto \(a'b'\in G'\). Quando isso acontece, então
+dizemos que \emph{todas as propriedades da estrutura de um grupo se
+mantém no outro}.
+
+Comumente escreve-se a correspondência acima de forma assimétrica como
+uma função, ou um mapeamento \(\varphi: G\longrightarrow G'\). Assim, um
+isomorfismo \(G\) para \(G'\) é um mapeamento bijetivo que é compatível
+com as leis de composição:
+
+\[\varphi(ab) = \varphi(a)\varphi(b) \Rightarrow (ab)' = a'b'\text{, para todo } a,b \in G.\]
+
+\textbf{Definição:} Dois grupos \(G\) e \(G'\) são ditos
+\emph{isomórfos} se há uma relação de isomorfismo
+\(\varphi: G\longleftrightarrow G'\). Também usa-se a notação
+\(\approx\):
+
+\[G \approx G'.\]
+
+\textbf{Definição:} Diz-se que o conjunto de grupos isomórfos a um dado
+grupo \(G\) é a \emph{classe de isomorfismo de \(G\)}. Qualquer dois
+grupos em uma mesma classe de isomorfismo também são isomorfos entre si.
+
+Também, dada uma relação de isomorfismo
+\(\varphi: G\longleftrightarrow G\) de um grupo \(G\) para ele mesmo,
+chamamos esse tipo de isomorfismo de \emph{automorfismo} de \(G\).
+
+\textbf{Exemplo:} Seja \(b\in G\) um elemento fixo. Então, a
+\emph{conjugação de \(G\) por \(b\)} é o mapeamento \(\varphi\) de \(G\)
+para ele mesmo definido por
+
+\[\varphi(x) = bxb^{-1}.\]
+
+Esse é um automorfismo porque: - é compatível com a multiplicação no
+grupo:
+
+\[\varphi(xy) = bxyb^{-1} = bxb^{-1}byb^{-1} = \varphi(x)\varphi(y);\] -
+é um mapa bijetivo desde que possui uma função inversa (chamada
+conjugação por \(b^{-1}\)).
+
+Se o grupo é abeliano, a conjugação é o mapa identidade:
+\(bab^{ -1} = abb^{-1} = a\). Porém, qualquer grupo não comutativo tem
+alguma conjugação não trivial, logo possui também um automorfismo não
+trivial. O elemento \(bab^{-1}\) é chamado \emph{conjugado de \(a\) por
+\(b\)}. Dois elementos \(a, a'\in G\) são ditos \emph{conjugados} se
+existe \(b\in G\) tal que \(a' = bab^{-1}\).
+
+O conjugado tem uma interpretação muito útil: Se escrevermos
+\(bab^{-1}\) como \(a'\), então \[ba = a'b.\] Ou seja, pode-se pensar na
+conjugação como a mudança em \(a\) que resulta de mover \(b\) de um lado
+para o outro na equação.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{homomorfismos}{%
+\subsection{Homomorfismos}\label{homomorfismos}}
+
+\textbf{Definição:} Sejam \(G\) e \(G'\) dois grupos. Um
+\emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal
+que
+
+\[\varphi(ab) = \varphi(a)\varphi(b), \ \forall \ a,b\in G.\]
+
+Ou seja, é a mesma condição do isomorfismo, porém, agora não há mais a
+necessidade de sobrejetividade.
+
+\textbf{Exemplo:} Seja \(H\) o subgrupo de um grupo \(G\). O
+homomorfismo \(i: H \longrightarrow G\) é dito \emph{inclusão} de \(H\)
+em \(G\), definido por \(i(x) = x\).
+
+\textbf{Proposição:} Um homomorfismo \(\varphi: G\longrightarrow G'\)
+leva a identidade à identidade e inversas às inversas. Isto é,
+\(\varphi(1) = 1\) e \(\varphi(a^{-1}) = \varphi(a)^{-1}\).
+
+\textbf{Definição:} A \emph{imagem} de um homomorfismo
+\(\varphi: G\longrightarrow G'\) é o subgrupo de \(G'\)
+
+\[\text{im}\ \varphi = \{x\in G \ |\ x = \varphi(a), \text{ para algum } a\in G\} = \varphi(G).\]
+
+\textbf{Definição:} O \emph{núcleo} de \(\varphi\) é o subconjunto de
+\(G\) formado pelos elementos que são mapeados pela identidade em
+\(G'\):
+
+\[\text{nu} \ \varphi = \{a \in G \ | \ \varphi(a) = 1\} = \varphi^{-1}(1).\]
+
+\textbf{Proposição:} Se \(a\in \text{nu }\varphi\) e \(b\) é qualquer
+elemento do grupo \(G\), então o conjugado
+\(bab^{-1} \in \text{nu }\varphi\).
+
+\textbf{Definição:} Um subgrupo \(N\) de um grupo \(G\) é chamado
+\emph{subgrupo normal} se para cada \(a\in N\) e \(b\in G\), o conjugado
+\(bab^{-1} \in N\).
+
+Fica claro que o núcleo de um homomorfismo é um subgrupo normal. Além
+disso, todo subgrupo de um grupo abeliano também é um subgrupo normal
+(se \(G\) é abeliano, então \(bab^{-1} = a\)). Mas isso não é
+necessáriamente verdade em subgrupos de grupos não abelianos.
+
+\textbf{Definição:} O \emph{centro} \(Z(G)\) de um grupo \(G\) é o
+conjunto de elementos que comutam com todo elemento de \(G\):
+
+\[Z(G) = \{z \in G \ | \ zx = xz \text{ para todo } x \in G\}.\]
+
+\textbf{Proposição:} O centro de todo grupo é um subgrupo normal do
+grupo.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{relauxe7uxf5es-de-equivaluxeancia-e-partiuxe7uxf5es}{%
+\subsection{Relações de Equivalência e
+Partições}\label{relauxe7uxf5es-de-equivaluxeancia-e-partiuxe7uxf5es}}
+
+\textbf{Definição:} Seja \(S\) um conjunto. Uma \emph{particão} \(P\) de
+\(S\) é uma subdivisão de \(S\) em subconjuntos não vazios e não
+sobrepostos, isto é, uma união de conjuntos disjuntos.
+
+\textbf{Exemplo:} Pode-se particionar o conjunto dos números inteiros
+\(\mathbb{Z}\) na união de disjuntos \(P\cup I\), onde
+\(P = \{z \in \mathbb{Z} \ |\ z \text{ é par}\}\) e
+\(I = \{z \in \mathbb{Z} \ |\ z \text{ é impar}\}\).
+
+\textbf{Definição:} Uma \emph{relação de equivalência} sobre um conjunto
+\(S\) é uma relação que se mantém sobre um subconjunto de elementos de
+\(S\). Escreve-se \(a\sim b\) para representar a equivalência de
+\(a, b \in S\), que precisa respeitar as seguintes propriedades:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Transitividade: Se \(a\sim b\) e \(b\sim c\), então \(a\sim c\);
+\item
+  Simétrica: Se \(a\sim b\), então \(b\sim a\);
+\item
+  Reflexiva: \(a\sim a\).
+\end{enumerate}
+
+A noção de partição em \(S\) e a relação de equivalência em \(S\) são
+lógicamente equivalentes: Dada uma partição \(P\) sobre \(S\), pode-se
+definir uma relação de equivalência \(R\) tal que, se \(a\) e \(b\)
+estão no mesmo subconjunto partição, então \(a\sim b\) e, dada uma
+relação de equivalência \(R\), podemos definir uma partição \(P\) tal
+que o subconjunto que contêm \(a\) é o conjunto de todos os elementos
+\(b\) onde \(a\sim b\). Esse subconjunto é chamado de \emph{classe de
+equivalência de \(a\)}
+
+\[C_a = \{b\in S \ | \ a\sim b\}\]
+
+e \(S\) é particionado em classes de equivalência.
+
+\textbf{Proposição:} Sejam \(C_a\) e \(C_b\) duas classes de
+equivalência do conjunto \(S\). Se existe \(d\) tal que \(d\in C_a\) e
+\(d\in C_b\), então \(C_a = C_b\).
+
+Seja um conjunto \(S\). Suponha que exista uma relação de equivalência
+ou uma partição sobre \(S\). Então, pode-se construir um novo conjunto
+\(\bar{S}\) formado pelas classes de equivalência ou os subconjuntos
+partições de \(S\). Essa construção induz uma notação muito útil: para
+\(a\in S\), a classe de equivalência de \(a\) ou o subconjunto partição
+que contém \(a\) serão denotados como o elemento
+\(\bar{a} \in \bar{S}\). Desta forma, a notação \(\bar{a} = \bar{b}\)
+significa que \(a \sim b\) e chamamos \(a,b \in S\) de
+\emph{representantes} das respectivas classes de equivalência
+\(\bar{a}, \bar{b} \in \bar{S}\).
+
+\textbf{Definição:} Seja um mapeamento \(\varphi: S \longrightarrow T\).
+Chama-se de \emph{relação de equivalência determinada por \(\varphi\)} a
+relação dada por \(\varphi(a) = \varphi(b) \Rightarrow a \sim b\). Além
+disso, para um elemento \(t\in T\), o subconjunto de
+\(\varphi^{-1}(t) = \{s \in S\ | \ \varphi(s) = t\}\) é dito
+\emph{imagem inversa de \(t\) por \(\varphi\)}.
+
+\textbf{Proposição:} Seja um mapeamento \(\varphi: S \longrightarrow T\)
+e \(t \in T\) um elemento qualquer de \(T\). Se a imagem inversa
+\(\varphi^{-1}(t)\) é não vazia, então \(t \in \text{im}\ \varphi\) e
+\(\varphi^{-1}(t)\) forma uma classe de equivalência
+\(\bar{\varphi}\in \bar{S}\) através da relação determinada por
+\(\varphi\).
+
+\textbf{Definição:} Seja \(\varphi: G\longrightarrow G'\) um
+homomorfismo. A relação de equivalência definida por \(\varphi\) é
+usualmente denotada por \(\equiv\) ao invés de \(\sim\) e a chamamos de
+\emph{congruência}:
+
+\[\varphi(a) = \varphi(b) \ \Rightarrow \ a \equiv b, \ \text{para }a,b \in G.\]
+
+\textbf{Proposição:} Seja \(\varphi: G\longrightarrow G'\) um
+homomorfismo e \(a,b \in G\). Então as seguintes afirmações são
+equivalentes:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\varphi(a) = \varphi(b)\)
+\item
+  \(b = an\), para algum \(n\in \text{nu} \ \varphi\)
+\item
+  \(a^{-1}b \in \text{nu} \ \varphi\).
+\end{itemize}
+
+\textbf{Definição:} Seja \(\varphi: G\longrightarrow G'\) um
+homomorfismo, \(a \in G\) e \(n\in\text{nu}\ \varphi\). O conjunto
+
+\[a\text{ nu }\varphi = \{g\in G \ | \ g = an \text{, para algum } n\in\text{nu }\varphi\}\]
+
+é dito \emph{coclasse de \(\text{nu }\varphi\) em \(G\)}.
+
+Pode-se particionar o grupo \(G\) em \emph{classes de congruência},
+formadas pelas coclasses \(a\text{ nu }\varphi\). Estas são imagens
+inversas do mapeamento \(\varphi\).
+
+\textbf{Proposição:} O homomorfismo de grupo
+\(\varphi: G\longrightarrow G'\) é injetivo se, e somente se, seu núcleo
+é o subgrupo trivial \(\{1\}\).
+
+Esse resultado da uma forma de verificar se um homomorfismo \(\varphi\)
+é também um isomorfismo: Se \(\text{nu }\varphi = \{1\}\) e
+\(\text{im } \varphi = G'\), então \(\varphi\) é, pelos respectivos
+motivos, injetiva e sobrejetiva. Então é um isomorfismo.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{coclasses}{%
+\subsection{Coclasses}\label{coclasses}}
+
+Definimos coclasse somente em relação ao núcleo de um homomorfismo mas,
+na verdade, pode-se definir uma coclasse para qualquer subgrupo \(H\) de
+um grupo \(G\).
+
+\textbf{Definição:} Seja um subgrupo \(H\) de um grupo \(G\). O
+subconjunto da forma
+
+\[aH = \{ah \ | \ h\in H\}\]
+
+é dito \emph{coclasse a esquerda de \(H\) em \(G\)}.
+
+\textbf{Proposição:} A coclasse é uma classe de equivalência para a
+relação de congruência
+
+\[b = ah \Rightarrow a \equiv b, \text{ para algum } h\in H.\]
+
+Daí segue que, como classes de equivalência particionam um grupo,
+coclasses a esquerda de um subgrupo particionam o grupo.
+
+\textbf{Definição:} O número de coclasses a esquerda de um subgrupo
+\(H\) em um grupo \(G\) chama-se \emph{índice de \(H\) em \(G\)} e é
+denotado como \([G:H]\).
+
+Como há uma bijeção do subgrupo \(H\) para a coclasse \(aH\), a
+cardinalidade de \(aH\) tem de ser a mesma de \(H\). Isto é, as
+coclasses de \(H\) particionam \(G\) em partes de mesma ordem, o que nos
+permite enunciar o seguinte resultado:
+
+\textbf{Proposição:} Seja \(aH\) a coclasse do subgrupo \(H\) no grupo
+\(G\). Então, a ordem \(|G|\) do grupo \(G\) é dada por
+
+\[|G| = |H|[G:H].\]
+
+\textbf{Proposição (Teorema de Lagrange):} Seja \(G\) um grupo finito e
+\(H\) um subgrupo de \(G\). A ordem de \(H\) divide a ordem de \(G\).
+
+\textbf{Definição:} Seja \(G\) um grupo. A \emph{ordem de um elemento
+\(a\in G\)} é a ordem do grupo cíclico gerado por \(a\).
+
+\textbf{Proposição:} Seja um grupo \(G\) com \(p\) elementos tal que
+\(p\) é primo e \(a\in G\) diferente da identidade. Então \(G\) é o
+grupo cíclico \(\{1,a,\dots,a^{p-1}\}\) gerado por \(a\).
+
+Também podemos obter uma expressão para calcular a ordem de um grupo de
+homomorfismo. Seja \(\varphi: G\longrightarrow G'\) um homomorfismo.
+Como as coclasses a esquerda do núcleo de \(\varphi\) são as imagens
+inversas \(\varphi^{-1}\), elas estão em uma correspondência biunívoca
+com a imagem. Daí segue que
+
+\[[G:\text{ nu }\varphi] = |\text{ im }\varphi|.\]
+
+\textbf{Proposição:} Seja \(\varphi: G\longrightarrow G'\) um
+homomorfismo onde \(G\) e \(G'\) são finitos. Então
+\[|G| = |\text{ nu }\varphi|\cdot|\text{ im }\varphi|.\]
+
+\textbf{Definição:} Os conjuntos da forma
+
+\[Ha = \{ha \ | \ h \in H\}\] chamam-se \emph{coclasses a direita de um
+subgrupo \(H\)}. Esses são classes de equivalência para a relação de
+congruência a direita
+
+\[b = ha \Rightarrow a \equiv b, \text{ para algum }h \in H.\]
+
+\textbf{Proposição:} Seja um subgrupo \(H\) de um grupo \(G\). As
+seguintes afirmações são equivalentes:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H\) é subgrupo normal,
+\item
+  \(aH = Ha\) para todo \(a\in G\).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{restriuxe7uxe3o-de-um-homomorfismo-para-um-subgrupo}{%
+\subsection{Restrição de um Homomorfismo para um
+Subgrupo}\label{restriuxe7uxe3o-de-um-homomorfismo-para-um-subgrupo}}
+
+O objetivo aqui é apresentar ferramentas para analisar um subgrupo \(H\)
+do grupo \(G\) a fim de garantir propriedades do grupo \(G\). No geral,
+os subgrupos são mais específicos e menos complexos de se trabalhar.
+
+\textbf{Proposição:} Sejam \(K\) e \(H\) dois subgrupos do grupo \(G\)
+tal que a interseção \(K\cap H\) é um subgrupo de \(H\). Se \(K\) é um
+subgrupo normal de \(G\), então \(K\cap H\) é um subgrupo normal de
+\(H\).
+
+Com esse resultado, por exemplo, se \(G\) é finito pode-se utilizar o
+Teorema de Lagrange para obter informações sobre a interseção dos dois
+subgrupos: a interseção divide \(|H|\) e \(|K|\). Se \(|H|\) e \(|K|\)
+não tem o mesmo fator de divisão, então \(K\cap H = \{1\}\).
+
+\textbf{Definição:} Sejam o homomorfismo \(\varphi:G\longrightarrow G'\)
+e \(H\) um subgrupo de \(G\). Uma \emph{restrição de \(\varphi\) para o
+subgrupo \(H\)} é o homomorfismo \(\varphi|_H:H\longrightarrow G'\)
+definido como
+
+\[\varphi|_H(h) = \varphi(h), \text{ para todo }h\in H.\]
+
+\textbf{Proposição:} Sejam o homomorfismo
+\(\varphi:G\longrightarrow G'\) e \(H\) um subgrupo de \(G\). O núcleo
+de uma restrição \(\varphi|_H\) é a interseção do núcleo de \(\varphi\)
+e \(H\).
+
+\textbf{Proposição:} Sejam \(\varphi:G\longrightarrow G'\) um
+homomorfismo, \(H'\) um subgrupo de \(G'\) e
+\(\varphi^{-1}(H') = \{x \in G \ | \ \varphi(x) \in H'\}\) a imagem
+inversa de \(H'\). Então
+
+\begin{itemize}
+\tightlist
+\item
+  \(\varphi^{-1}(H')\) é um subgrupo de \(G\).
+\item
+  Se \(H'\) é um subgrupo normal de \(G'\), então \(\varphi^{-1}(H')\) é
+  um subgrupo normal de \(G\).
+\item
+  \(\varphi^{-1}(H')\) contém o núcleo de \(\varphi\)
+\item
+  A restrição de \(\varphi\) para \(\varphi^{-1}(H')\) define um
+  homomorfismo \(\varphi^{-1}(H')\longrightarrow H'\), de forma que o
+  núcleo desse homomorfismo é o núcleo de \(\varphi\).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{produto-de-grupos}{%
+\subsection{Produto de Grupos}\label{produto-de-grupos}}
+
+\textbf{Definição:} Seja \(G,G'\) dois grupos. O \emph{produto}
+\(G\times G'\) é um grupo formado pelo produto das componentes dos
+grupos \(G\) e \(G'\), isso é, pela regra
+
+\[ (a,a'), (b,b') \rightsquigarrow (ab,a'b'), \] onde \(a,b \in G\) e
+\(a',b'\in G'\). O par \((1,1)\) é uma identidade e
+\((a,a')^{-1} = (a^{-1},a'^{-1})\). A propriedade associativa é
+preservada em \(G\times G'\) pois também é em \(G\) e \(G'\).
+
+\textbf{Proposição:} A ordem de \(G\times G'\) é o produto das ordens de
+\(G\) e \(G'\).
+
+O produto de grupos é composto pelos homomorfismos:
+
+\[i: G\longrightarrow G\times G', \quad i': G'\longrightarrow G\times G', \newline \quad p: G\times G'\longrightarrow G, \quad p': G\times G'\longrightarrow G',\]
+
+definidos como
+
+\[i(x) = (x,1), \quad i'(x') = (1,x'), \quad p(x,x') = x, \quad, p'(x,x') = x'.\]
+
+Os mapeamentos \(i,i'\) são injetivos, já os mapeamentos \(p,p'\) são
+sobrejetivos, onde \(\text{nu }p = 1\times G'\) e
+\(\text{nu }p' = G\times 1\). Esses mapeamentos são chamados de
+\emph{projeções}. Desde que são núcleos, \(G\times 1\) e \(1\times G'\)
+são subgrupos normais de \(G\times G'\).
+
+\textbf{Proposição (Propriedades de Mapeamento dos Produtos):} Seja
+\(H\) um grupo qualquer. O homomorfismo
+\(\Phi: H\longrightarrow G\times G'\) tem correspondência biunívoca com
+o par \((\varphi, \varphi')\) de homomorfismos
+
+\[\varphi:H\longrightarrow G, \quad \varphi': H\longrightarrow G'.\]
+
+O núcleo de \(\Phi\) é a interseção
+\((\text{nu }\phi)\cap(\text{ nu }\phi').\)
+
+É extremamente desejável encontrar uma relação isomorfa entre um grupo
+\(G\) e um produto de outros dois grupos \(H\times H'\). Quando isso
+acontece, e infelizmente não são muitas as vezes, trabalhar com os
+grupos \(H\) e \(H'\) costumam ser mais simples que \(G\).
+
+\textbf{Proposição:} Sejam \(r,s\in\mathbb{Z}\) não divisíveis entre si.
+Um grupo cíclico de ordem \(rs\) é isomorfo ao produto dos grupos
+cíclicos de ordem \(r\) e \(s\).
+
+Em contra partida, um grupo cíclico de ordem par \(4\), por exemplo, não
+é isomorfo ao produto de dois grupos cíclicos de ordem \(2\). Também não
+podemos afirmar nada com base no resultado anterior sobre grupos não
+cíclicos.
+
+\textbf{Definição:} Sejam dois subgrupos \(A,B\) de um grupo \(G\).
+Chamamos o conjunto de produtos de de elementos de \(A\) e \(B\) por
+
+\[AB = \{x\in G \ | \ x = ab \text{ para algum }a\in A\text{ e }b\in B\}.\]
+
+\textbf{Proposição:} Sejam \(H\) e \(K\) os subgrupos de um grupo \(G\).
+- Se \(H\cap K = \{1\}\), o mapeamento de produto
+\(p: H\times K\longrightarrow G\) definido por \(p(h,k) = hk\) é
+injetivo e sua imagem é o subconjunto \(HK\). - Se um dos subgrupos
+\(H\) ou \(K\) é um subgrupo normal de \(G\), então os conjuntos de
+produtos \(HK\) e \(KH\) são iguais e \(HK\) é subgrupo de \(G\). - Se
+ambos \(H\) e \(K\) são subgrupos normais, \(H\cap K = \{1\}\) e
+\(HK = G\), então \(G\) é isomorfo ao grupo de produto \(H\times K\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{aritmuxe9tica-modular}{%
+\subsection{Aritmética Modular}\label{aritmuxe9tica-modular}}
+
+\textbf{Definição:} Seja \(n\in\mathbb{N}\). Dizemos que dois inteiros
+\(a,b\) são \emph{congruentes modulo n}, e escrevemos
+
+\[ a \equiv b \ (\text{mod }n),\]
+
+se \(n\) divide \(b-a\), ou se \(b = a + nk\) para algum inteiro \(k\).
+Chamamos as classes de equivalência definidas por essa relação de
+\emph{classes de equivalência módulo \(n\)}, ou \emph{classes de resíduo
+módulo \(n\)}.
+
+\textbf{Exemplo:} A classe de congruência de 0 é o subgrupo \(\bar{0}\)
+de todos os múltiplos de \(n\)
+\[\bar{0} = n\mathbb{Z} = \{\dots,-n,0,n,2n, \dots\}.\]
+
+\textbf{Proposição:} Há \(n\) classes de congruência módulo \(n\)
+(denotamos esse conjunto por \(\mathbb{Z}/n\mathbb{Z}\)), isto é, o
+índice \([\mathbb{Z}:n\mathbb{Z}]\) é \(n\). São elas
+
+\[\mathbb{Z}/n\mathbb{Z} =  \{\bar{0}, \bar{1},\dots,\overline{n - 1}\}.\]
+
+\textbf{Definição:} Seja \(\bar a\) e \(\bar b\) as classes de
+congruência representadas pelos inteiros \(a\) e \(b\). Define-se a
+\emph{soma} como a classe de congruência de \(a+b\) e o \emph{produto}
+pela classe de congruência \(ab\), isto é,
+
+\[\bar a + \bar b = \overline{a+b} \quad \text{e}\quad \bar a\bar b = \overline{ab}.\]
+
+\textbf{Proposição:} Se \(a' \equiv b'\ (\text{mod }n)\) e
+\(b'\equiv b\ (\text{mod }n)\), então
+\(a' + b' \equiv a+b\ (\text{mod }n)\) e
+\(a'b' \equiv ab \ (\text{mod }n)\).
+
+Além disso, a soma e produto também continuam respeitando as
+propriedades associativas, comutativas e distributivas, desde que o
+mesmo se mantém para soma e multiplicação de inteiros.
+
+\textbf{Exemplo:} Seja \(n = 13\), então
+
+\[\mathbb{Z}/n\mathbb{Z} =  \{\bar{0}, \bar{1},\dots,\overline{12}\}.\]
+
+Com isso,
+
+\[(\bar 7 + \bar 9)(\bar{11} + \bar 6) \ = \ \bar 3 \cdot \bar 4 \ = \ \bar{12}.\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{grupos-de-quociente}{%
+\subsection{Grupos de Quociente}\label{grupos-de-quociente}}
+
+\textbf{Definição:} Seja \(N\) um subgrupo normal de um grupo \(G\).
+Então, o produto de duas coclasses \(aN\), \(bN\) também é uma coclasse
+
+\[(aN) (bN) = abN.\]
+
+\textbf{Definição:} Sejam as coclasses \(C_1, C_2\) e os elementos
+\(a\in C_1\) e \(b\in C_2\), então \(C_1 = aN\) e \(C_2 = bN\). Chamamos
+de \emph{produto das coclasses \(C_1\) e \(C_2\)} a coclasse
+\(C_1C_2 = abN\), isto é, a coclasse que contém \(ab\).
+
+\textbf{Definição:} Assim como usado na seção anterior, é conveniente
+denotar o \emph{conjunto de coclasses de um subconjunto normal \(N\) de
+um grupo \(G\)} pela simbologia
+
+\[G/N = \text{conjunto de coclasses de }N\text{ em }G.\] Também pode-se
+usar a notação em barra \(G/N = \bar G\) e \(aN = \bar a\), tomando o
+cuidado para diferenciar que \(\bar a\) denota a coclasse que contém
+\(a\).
+
+\textbf{Proposição:} Seja o mapeamento
+\(\pi: G \longrightarrow \bar G = G/N\), da forma
+\(a \rightsquigarrow \bar a = aN\), isto é, \(\bar G\) é um grupo e o
+mapeamento \(\pi\) é um homomorfismo com núcleo \(N\). Então a ordem de
+\(G/N\) é o índice \([G:N]\).
+
+\textbf{Proposição:} Todo subgrupo normal de um grupo \(G\) é o núcleo
+de um homomorfismo.
+
+\textbf{Proposição:} Sejam \(G\) um grupo e \(S\) um conjunto qualquer
+com uma lei de composição. Seja também \(\varphi:G\longrightarrow S\) um
+mapeamento sobrejetivo tal que \(\varphi(a)\varphi(b) = \varphi(ab)\)
+para todo \(a\), \(b\in G\). Então \(S\) é um grupo.
+
+O construção do conceito de \emph{grupo de quociente} é relacionado ao
+homomorfismo geral de grupo \(\varphi:G\longrightarrow G'\), como segue:
+
+\textbf{Proposição (Primeiro Teorema do Isomorfismo):} Sejam
+\(\varphi:G \longrightarrow G'\) um homomorfismo de grupo sobrejetivo e
+\(N\) o núcleo de \(\varphi\). Então \(G/N\) é isomórfico a \(G'\) pelo
+mapeamento \(\bar\varphi\) que transporta a coclasse \(\bar a = aN\)
+para \(\varphi(a)\):
+
+\[\bar\varphi(\bar a) = \varphi(a).\]
+
+Esse é o método fundamental para identificar grupos de quocientes.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+\end{document}
