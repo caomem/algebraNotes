@@ -157,7 +157,7 @@
 \section{Subgrupos}
 
 \begin{definicao}[Subgrupo]
-	Um subconjunto \(H\) de um grupo \(G\) é chamado de \emph{subgrupo} de \(G\) se possuir as seguintes propriedades:
+	Um subconjunto \(H\) de um grupo \(G\) é chamado de \emph{subgrupo} de \(G\) (e escreve-se $H \subseteq G$) se possuir as seguintes propriedades:
 	
 	\begin{enumerate}
 		\item \emph{(Fechado).} Se \(a,b\in H\), então \(ab\in H\);
@@ -168,7 +168,7 @@
 \end{definicao}
 
 \begin{observacao}[Lei de composição induzida]
-	Veja que a propriedade 1. necessita de uma lei de composição. Usamos a
+	Veja que a propriedade 1 necessita de uma lei de composição. Usamos a
 	lei de composição de \(G\) para definir uma lei de composição de \(H\),
 	chamada \emph{lei de composição induzida}. Essas propriedades garantem
 	que \(H\) é um grupo com respeito a sua lei induzida.
@@ -234,10 +234,10 @@ inversos.
 
 \section{Homomorfismos}
 
-\begin{definicao}[Homomorfismo]
+\begin{definicao}[Homomorfismo de grupo]
 	Sejam \(G\) e \(G'\) dois grupos. Um \emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal que
-	
-	\[\varphi(ab) = \varphi(a)\varphi(b), \ \forall \ a,b\; \in G.\]
+	\[\varphi(ab) = \varphi(a)\varphi(b), \; \forall \; a,b\; \in G.\] Quando isso acontece, dizemos que o mapeamento $\varphi$ \emph{preserva as propriedades da estrutura algébrica de grupo}.
+
 \end{definicao}
 
 \begin{exemplo}[Inclusão]
@@ -292,11 +292,76 @@ necessáriamente verdade em subgrupos de grupos não abelianos.
 	O centro de todo grupo é um subgrupo normal do grupo.
 \end{proposicao}
 
+\section{Isomorfismos}
 
 %Ou seja, é a mesma condição do isomorfismo, porém, agora não há mais a necessidade de bijetividade.
 
+Se dois grupos \(G\) e \(G'\) estão relacionados por uma
+\emph{correspondência biunívoca entre seus elementos compatível com
+suas respectivas leis de composição}, isto é, uma bijeção
+\[ 
+G \longleftrightarrow G' 
+\]
+onde, se \(a,b\in G\) corresponde
+respectivamente ao \(a',b' \in G'\) então o produto \(ab\in G\)
+corresponde ao produto \(a'b'\in G'\), então dizemos que a correspondência \emph{preserva as propriedades da estrutura algébrica de grupo}. Isso é, temos um homomorfismo bijetivo. Para essa bijeção dá-se o nome de \emph{relação de isomorfismo}.
+
+\begin{definicao}[Isomorfismo de grupos]
+	Dois grupos \(G\) e \(G'\) são ditos \emph{isomórfos} se há um mapeamento \emph{bijetivo} $\varphi: G \longrightarrow G'$ que preserva as propriedades da estrutura algébrica de grupo:
+	\[\varphi(ab) = \varphi(a)\varphi(b) \Rightarrow (ab)' = a'b'\text{, para todo } a,b \in G.\] 
+\end{definicao}
+
+\begin{observacao}
+	Usa-se a notação $G \approx G'$ para dizer que $G$ é isomorfo a $G'$.  
+\end{observacao}
+
+\begin{definicao}[Classe de isomorfismo]
+	Diz-se que o conjunto de grupos isomórfos a um dado grupo \(G\) é a \emph{classe de isomorfismo de \(G\)}.	
+\end{definicao}
+
+\begin{proposicao}
+	Qualquer dois grupos em uma mesma classe de isomorfismo também são isomorfos entre si.
+\end{proposicao}
+
+\begin{definicao}[Automorfismo]
+	Quando uma relação de isomorfismo \(\varphi: G\longrightarrow G\) é definida de um grupo \(G\) para ele mesmo,	chamamos esse tipo de isomorfismo de \emph{automorfismo} de \(G\).
+\end{definicao}
+
+\begin{exemplo}[Conjugação]
+	 Seja \(b\in G\) um elemento fixo. Então, a
+	\emph{conjugação de \(G\) por \(b\)} é o mapeamento \(\varphi\) de \(G\)
+	para ele mesmo definido por
+	\[\varphi_b(x) = bxb^{-1}.\]
+	Esse é um automorfismo porque:
+	\begin{itemize}
+		\item é compatível com a multiplicação no
+		grupo: \[\varphi_b(xy) = bxyb^{-1} = bx\vec{1}yb^{-1} = bxb^{-1}byb^{-1} = \varphi_b(x)\varphi_b(y);\]
+		\item é um mapa bijetivo visto que existe a função inversa $\varphi_b^{-1}(x) = b^{-1}xb = \varphi_{b^{-1}}(x)$ (isto é, a conjugação por \(b^{-1}\)) que, de forma análoga, também é compatível com a multiplicação no grupo.
+	\end{itemize}
+\end{exemplo}
+
+\begin{observacao}
+	Se o grupo é abeliano, a conjugação é o mapa identidade:
+	\(bab^{ -1} = abb^{-1} = a\). Porém, qualquer grupo não comutativo tem
+	alguma conjugação não trivial, logo possui também um automorfismo não
+	trivial. 
+\end{observacao}
+
+\begin{definicao}[Conjugado]
+	O elemento \(bab^{-1}\) é chamado \emph{conjugado de \(a\) por \(b\)}. Dois elementos \(a, a'\in G\) são ditos \emph{conjugados} se existe \(b\in G\) tal que \(a' = bab^{-1}\).	
+\end{definicao}
+
+\begin{observacao}
+	O conjugado tem uma interpretação muito útil: Se escrevermos
+	\(bab^{-1}\) como \(a'\), então \[ba = a'b.\] Ou seja, pode-se pensar na
+	conjugação como a mudança em \(a\) que resulta de mover \(b\) de um lado
+	para o outro na equação.
+\end{observacao}		
+
+
+
 \phantomsection
-\addcontentsline{toc}{section}{Referências}
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
 
 \bibliographystyle{unsrt}
 \bibliography{references}
