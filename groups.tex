@@ -23,6 +23,11 @@
 \usepackage[english, ruled, linesnumbered]{algorithm2e}
 \usepackage{algorithmic}
 
+\newcommand{\nucleoe}{\emph{\text{nu }}}
+\newcommand{\nucleo}{\text{nu }}
+\newcommand{\imageme}{\emph{\text{nu }}}
+\newcommand{\imagem}{\text{nu }}
+
 \theoremstyle{plain}
 \newtheorem{teorema}{Teorema}[section]
 \newtheorem{lema}{Lema}[section]
@@ -227,6 +232,68 @@ inversos.
 	\[\mathbf{i}^4 = 1, \quad \mathbf{i}^2 = \mathbf{j}^2, \quad \mathbf{j}\mathbf{i} = \mathbf{i}^3\mathbf{j}.\]
 \end{exemplo}
 
+\section{Homomorfismos}
+
+\begin{definicao}[Homomorfismo]
+	Sejam \(G\) e \(G'\) dois grupos. Um \emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal que
+	
+	\[\varphi(ab) = \varphi(a)\varphi(b), \ \forall \ a,b\; \in G.\]
+\end{definicao}
+
+\begin{exemplo}[Inclusão]
+	Seja \(H\) o subgrupo de um grupo \(G\). O homomorfismo \(i: H \longrightarrow G\) é dito \emph{inclusão} de \(H\) em \(G\), definido por \(i(x) = x\).
+\end{exemplo}
+
+\begin{proposicao}
+	 Um homomorfismo \(\varphi: G\longrightarrow G'\) mapeia a identidade de $G$ à identidade de $G'$ e transforma as inversas de $G$ nas respectivas inversas em $G'$. Isto é, \(\varphi(\vec{1}) = \vec{1}\) e \(\varphi(a^{-1}) = \varphi(a)^{-1}\).
+\end{proposicao}
+
+\begin{definicao}[Imagem]
+	A \emph{imagem} de um homomorfismo
+	\(\varphi: G\longrightarrow G'\) é o subconjunto de \(G'\)	\[\text{im}\ \varphi = \{x\in G' \ |\ x = \varphi(a), \text{ para algum } a\in G\} = \varphi(G).\]
+\end{definicao}
+
+\begin{proposicao}
+	A imagem de um homomorfismo $\varphi: G \longrightarrow G'$ é um subgrupo de $G'$.
+\end{proposicao}
+
+\begin{definicao}[Núcleo]
+	O \emph{núcleo} do homomorfismo $\varphi: G \longrightarrow G'$ é o subconjunto de
+	\(G\) formado pelos elementos que são mapeados pela identidade em
+	\(G'\):	\[\text{nu} \ \varphi = \{a \in G \ | \ \varphi(a) = 1\} = \varphi^{-1}(1).\]
+\end{definicao}
+
+\begin{proposicao}
+	O núcleo de um homomorfismo $\varphi: G \longrightarrow G'$ é um subgrupo de $G$.
+\end{proposicao}
+
+\begin{proposicao}
+	Se \(a\in \nucleoe\varphi\) e \(b\) é qualquer elemento do grupo \(G\), então o conjugado \(bab^{-1} \in \nucleoe\varphi\).
+\end{proposicao}
+
+\begin{definicao}[Subgrupo normal]
+	Um subgrupo \(N\) de um grupo \(G\) é chamado \emph{subgrupo normal} se para cada \(a\in N\) e \(b\in G\), o conjugado
+	\(bab^{-1} \in N\).
+\end{definicao}
+
+
+Fica claro que o núcleo de um homomorfismo é um subgrupo normal. Além
+disso, todo subgrupo de um grupo abeliano também é um subgrupo normal
+(se \(G\) é abeliano, então \(bab^{-1} = a\)). Mas isso não é
+necessáriamente verdade em subgrupos de grupos não abelianos.
+
+\begin{definicao}[Centro de um grupo]
+	O \emph{centro} \(Z(G)\) de um grupo \(G\) é o
+	conjunto de elementos que comutam com todo elemento de \(G\):
+	\[Z(G) = \{z \in G \ | \ zx = xz \text{ para todo } x \in G\}.\]
+\end{definicao}
+
+\begin{proposicao}
+	O centro de todo grupo é um subgrupo normal do grupo.
+\end{proposicao}
+
+
+%Ou seja, é a mesma condição do isomorfismo, porém, agora não há mais a necessidade de bijetividade.
 
 \phantomsection
 \addcontentsline{toc}{section}{Referências}
