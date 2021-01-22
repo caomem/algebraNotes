@@ -449,7 +449,7 @@ inversos.
 	\end{itemize}	
 \end{proposicao}
 
-\begin{definicao}[Coclasse]
+\begin{definicao}[Coclasse em relação ao núcleo]
 	Seja \(\varphi: G\longrightarrow G'\) um
 	homomorfismo, \(a \in G\) e \(n\in\text{nu}\ \varphi\). O conjunto
 	\[a\text{ nu }\varphi = \{g\in G \ | \ g = an \text{, para algum } n\in\text{nu }\varphi\}\] é dito \emph{coclasse de \(\text{nu }\varphi\) em \(G\)}.	
@@ -474,7 +474,95 @@ inversos.
 	motivos, injetiva e sobrejetiva. Então é um isomorfismo.
 \end{observacao}
 
+\subsection{Coclasses}
 
+Definimos coclasse somente em relação ao núcleo de um homomorfismo mas,
+na verdade, pode-se definir uma coclasse para qualquer subgrupo \(H\) de
+um grupo \(G\).
+
+\begin{definicao}[Coclasse a esquerda]
+	Seja um subgrupo \(H\) de um grupo \(G\). O
+	subconjunto da forma \[aH = \{ah \ | \ h\in H\}\] é dito \emph{coclasse a esquerda de \(H\) em \(G\)}.
+\end{definicao}
+
+\begin{proposicao}
+	A coclasse é uma classe de equivalência para a
+	relação de congruência
+	\[b = ah \Rightarrow a \equiv b, \text{ para algum } h\in H.\]	
+\end{proposicao}
+
+\begin{observacao}
+	Daí segue que, como classes de equivalência particionam um grupo,
+	coclasses a esquerda de um subgrupo particionam o grupo.
+\end{observacao}
+
+\begin{definicao}[Índice de um subgrupo]
+	O número de coclasses a esquerda de um subgrupo
+	\(H\) em um grupo \(G\) chama-se \emph{índice de \(H\) em \(G\)} e é
+	denotado como \([G:H]\).	
+\end{definicao}
+
+\begin{observacao}
+	Como há uma bijeção do subgrupo \(H\) para a coclasse \(aH\), a
+	cardinalidade de \(aH\) tem de ser a mesma de \(H\). Isto é, as
+	coclasses de \(H\) particionam \(G\) em partes de mesma ordem.
+\end{observacao}
+
+\begin{proposicao}
+	Seja \(aH\) a coclasse do subgrupo \(H\) no grupo
+	\(G\). Então, a ordem \(|G|\) do grupo \(G\) é dada por
+	\[|G| = |H|[G:H].\]	
+\end{proposicao}
+
+\begin{proposicao}[Teorema de Lagrange]
+	Seja \(G\) um grupo finito e
+	\(H\) um subgrupo de \(G\). A ordem de \(H\) divide a ordem de \(G\).
+\end{proposicao}
+
+\begin{definicao}[Ordem de um elemento]
+	Seja \(G\) um grupo. A \emph{ordem de um elemento \(a\in G\)} é a ordem do grupo cíclico gerado por \(a\).	
+\end{definicao}
+
+\begin{proposicao}
+	Seja um grupo \(G\) com \(p\) elementos tal que
+	\(p\) é primo e \(a\in G\) diferente da identidade. Então \(G\) é o
+	grupo cíclico \(\{1,a,\dots,a^{p-1}\}\) gerado por \(a\).
+\end{proposicao}
+
+\begin{observacao}
+	Também podemos obter uma expressão para calcular a ordem de um grupo de
+	homomorfismo. Seja \(\varphi: G\longrightarrow G'\) um homomorfismo.
+	Como as coclasses a esquerda do núcleo de \(\varphi\) são as imagens
+	inversas \(\varphi^{-1}\), elas estão em uma correspondência biunívoca
+	com a imagem. Daí segue que
+	\[[G:\text{ nu }\varphi\ ] = |\text{ im }\varphi\ |.\]
+\end{observacao}
+
+\begin{proposicao}
+	Seja \(\varphi: G\longrightarrow G'\) um
+	homomorfismo onde \(G\) e \(G'\) são finitos. Então
+	\[|G| = |\text{ nu }\varphi\ |\cdot|\text{ im }\varphi\ |.\]	
+\end{proposicao}
+
+\begin{definicao}[Coclasses a direita]
+	Os conjuntos da forma
+	\[Ha = \{ha \ | \ h \in H\}\] chamam-se \emph{coclasses a direita de um
+		subgrupo \(H\)}. Esses são classes de equivalência para a relação de
+	congruência a direita
+	\[b = ha \Rightarrow a \equiv b, \text{ para algum }h \in H.\]	
+\end{definicao}
+
+\begin{proposicao}
+	Seja um subgrupo \(H\) de um grupo \(G\). As
+	seguintes afirmações são equivalentes:
+	
+	\begin{itemize}
+		\item
+		\(H\) é subgrupo normal,
+		\item
+		\(aH = Ha\) para todo \(a\in G\).
+	\end{itemize}	
+\end{proposicao}
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
