@@ -616,7 +616,7 @@ um grupo \(G\).
 	\end{itemize}
 \end{proposicao}
 
-\subsection{Produto de Grupos}
+\section{Produto de Grupos}
 
 \begin{definicao}[Produto de grupos]
 	Seja \(G,G'\) dois grupos. O \emph{produto}
@@ -696,7 +696,55 @@ um grupo \(G\).
 	\end{itemize}
 \end{proposicao}
 
+\section{Grupos de Quociente}
 
+\begin{proposicao}
+	Seja \(N\) um subgrupo normal de um grupo \(G\).
+	Então, o produto de duas coclasses \(aN\), \(bN\) também é uma coclasse
+	\[(aN) (bN) = abN.\]
+\end{proposicao}
+
+\begin{definicao}[Produto de coclases]
+	Sejam as coclasses \(C_1, C_2\) e os elementos
+	\(a\in C_1\) e \(b\in C_2\), então \(C_1 = aN\) e \(C_2 = bN\). Chamamos
+	de \emph{produto das coclasses \(C_1\) e \(C_2\)} a coclasse
+	\(C_1C_2 = abN\), isto é, a coclasse que contém \(ab\).	
+\end{definicao}
+
+\begin{observacao}[Notação para conjunto de coclasses]
+	É conveniente denotar o \emph{conjunto de coclasses de um subconjunto normal \(N\) de um grupo \(G\)} pela simbologia \[G/N = \text{conjunto de coclasses de }N\text{ em }G.\] Também pode-se	usar a notação em barra \(G/N = \bar G\) e \(aN = \bar a\), tomando o
+	cuidado para diferenciar que \(\bar a\) denota a coclasse que contém
+	\(a\).	
+\end{observacao}
+
+\begin{proposicao}
+	Seja o mapeamento \(\pi: G \longrightarrow \bar G = G/N\), da forma
+	\(a \rightsquigarrow \bar a = aN\), isto é, \(\bar G\) é um grupo e o
+	mapeamento \(\pi\) é um homomorfismo com núcleo \(N\). Então a ordem de
+	\(G/N\) é o índice \([G:N]\).	
+\end{proposicao}
+
+\begin{proposicao}
+	Todo subgrupo normal de um grupo \(G\) é o núcleo
+	de um homomorfismo.	
+\end{proposicao}
+
+\begin{proposicao}
+	Sejam \(G\) um grupo e \(S\) um conjunto qualquer
+	com uma lei de composição. Seja também \(\varphi:G\longrightarrow S\) um
+	mapeamento sobrejetivo tal que \(\varphi(a)\varphi(b) = \varphi(ab)\)
+	para todo \(a\), \(b\in G\). Então \(S\) é um grupo.	
+\end{proposicao}
+
+\textbf{Proposição (Primeiro Teorema do Isomorfismo):} Sejam
+\(\varphi:G \longrightarrow G'\) um homomorfismo de grupo sobrejetivo e
+\(N\) o núcleo de \(\varphi\). Então \(G/N\) é isomórfico a \(G'\) pelo
+mapeamento \(\bar\varphi\) que transporta a coclasse \(\bar a = aN\)
+para \(\varphi(a)\):
+
+\[\bar\varphi(\bar a) = \varphi(a).\]
+
+Esse é o método fundamental para identificar grupos de quocientes.
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
