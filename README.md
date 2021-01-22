@@ -14,3 +14,7 @@
 10. [ ] Sobre a definição de centro de um grupo (1.4.5), há uma definição sobre um tal comutador (vide firstReview, pag 4). Pesquise a respeito.
 11. [ ] (G,x) e (G',*) dois grupos -- usar notação
 12. [ ] Definir melhor grupos ciclicos
+
+## doubts
+
+1. [ ] a lei de composição precisa ser fechada? se a,b in G então ab in G?  
