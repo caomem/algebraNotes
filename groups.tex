@@ -352,7 +352,7 @@ inversos.
 	O centro de todo grupo é um subgrupo normal do grupo.
 \end{proposicao}
 
-\subsection{Relações de Equivalência e Partições}
+\section{Relações de Equivalência e Partições}
 
 \begin{definicao}[Partições]
 	Seja \(S\) um conjunto. Uma \emph{particão} \(P\) de
@@ -474,7 +474,7 @@ inversos.
 	motivos, injetiva e sobrejetiva. Então é um isomorfismo.
 \end{observacao}
 
-\subsection{Coclasses}
+\section{Coclasses}
 
 Definimos coclasse somente em relação ao núcleo de um homomorfismo mas,
 na verdade, pode-se definir uma coclasse para qualquer subgrupo \(H\) de
@@ -563,6 +563,59 @@ um grupo \(G\).
 		\(aH = Ha\) para todo \(a\in G\).
 	\end{itemize}	
 \end{proposicao}
+
+\section{Restrição de um homomorfismo para um subgrupo}
+
+\begin{observacao}
+	O objetivo dessa seção é apresentar ferramentas para analisar um subgrupo \(H\)
+	do grupo \(G\) a fim de garantir propriedades do grupo \(G\). No geral,
+	os subgrupos são mais específicos e menos complexos de se trabalhar.
+\end{observacao}
+
+\begin{proposicao}
+	Sejam \(K\) e \(H\) dois subgrupos do grupo \(G\)
+	tal que a interseção \(K\cap H\) é um subgrupo de \(H\). Se \(K\) é um
+	subgrupo normal de \(G\), então \(K\cap H\) é um subgrupo normal de
+	\(H\).	
+\end{proposicao}
+
+\begin{exemplo}
+	Com esse resultado, se \(G\) é finito pode-se utilizar o
+	Teorema de Lagrange para obter informações sobre a interseção dos dois
+	subgrupos: a interseção divide \(|H|\) e \(|K|\). Se \(|H|\) e \(|K|\)
+	não tem o mesmo fator de divisão, então \(K\cap H = \{1\}\).	
+\end{exemplo}
+
+\begin{definicao}[Restrição de um homomorfismo para um subgrupo]
+	Sejam o homomorfismo \(\varphi:G\longrightarrow G'\)
+	e \(H\) um subgrupo de \(G\). Uma \emph{restrição de \(\varphi\) para o subgrupo \(H\)} é o homomorfismo \(\varphi|_H:H\longrightarrow G'\)
+	definido como
+	\[\varphi|_H(h) = \varphi(h), \text{ para todo }h\in H.\]	
+\end{definicao}
+
+\begin{proposicao}
+	Sejam o homomorfismo
+	\(\varphi:G\longrightarrow G'\) e \(H\) um subgrupo de \(G\). O núcleo
+	de uma restrição \(\varphi|_H\) é a interseção do núcleo de \(\varphi\)
+	e \(H\).	
+\end{proposicao}
+
+\begin{proposicao}
+	 Sejam \(\varphi:G\longrightarrow G'\) um
+	homomorfismo, \(H'\) um subgrupo de \(G'\) e
+	\(\varphi^{-1}(H') = \{x \in G \ | \ \varphi(x) \in H'\}\) a imagem
+	inversa de \(H'\). Então
+	\begin{itemize}
+		\item \(\varphi^{-1}(H')\) é um subgrupo de \(G\).
+		\item Se \(H'\) é um subgrupo normal de \(G'\), então \(\varphi^{-1}(H')\) é
+		um subgrupo normal de \(G\).
+		\item \(\varphi^{-1}(H')\) contém o núcleo de \(\varphi\)
+		\item A restrição de \(\varphi\) para \(\varphi^{-1}(H')\) define um
+		homomorfismo \(\varphi^{-1}(H')\longrightarrow H'\), de forma que o
+		núcleo desse homomorfismo é o núcleo de \(\varphi\).
+	\end{itemize}
+\end{proposicao}
+
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
