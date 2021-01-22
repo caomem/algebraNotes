@@ -7,7 +7,7 @@
 3. [X] Trocar os elementos identidade $1$ por $\vec{1}$ ou coisa do gênero. Precisa melhorar essa notação.
 4. [X] Inverter a ordem de seções iso e homo
 5. [X] Enfatizar "bijetivo" na definição isomorfismo 
-6. [ ] Leis de composição -> operação
+6. [X] Leis de composição -> operação
 7. [X] cuidar com a notação de função ida e volta
 8. [X] dar um cuidado no since =/= desde. ficar "já que"
 9. [X] H \leq G como subgrupo

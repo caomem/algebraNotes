@@ -50,24 +50,24 @@
 
 \section{Lei de composição}
 
-\begin{definicao}[Lei de Composição]
-	Uma \emph{Lei de Composição} sobre \(S\) é uma função \(F: S\times S \longrightarrow S\).
+\begin{definicao}[Lei de composição]
+	Uma \emph{lei de composição} sobre um conjunto \(S\) é uma função (ou, uma operação binária) \(*: S\times S \longrightarrow S\).
 \end{definicao}
+
+\begin{observacao}[Notação de operação]
+	Usaremos a notação \(*(a,b) = a*b\), para simplificar a escrita de
+	propriedades. Também, quando não houver ambiguidade, suprimiremos o simbolo da lei, fazendo $a*b = ab$.
+\end{observacao}
 
 
 \begin{definicao}
-	Para $a,b,c \; \in S$, uma Lei de Composição $F$ é dita
+	Para $a,b,c \; \in S$, uma lei de composição $*$ é dita
 	
 	\begin{itemize}
-		\item \emph{Associativa} se \(F(F(a,b),c) = F(a,F(b,c))\);
-		\item \emph{Comutativa} se \(F(a,b) = F(b,a)\).
+		\item \emph{Associativa}, se $(a*b)*c = a*(b*c)$;
+		\item \emph{Comutativa}, se \(a*b = b*a\).
 	\end{itemize}
 \end{definicao}
-
-\begin{observacao}
-	Usaremos a notação \(F(a,b) = ab\), para simplificar a escrita de
-	propriedades.
-\end{observacao}
 
 \begin{proposicao}
 	Seja uma lei associativa dada sobre o conjunto
