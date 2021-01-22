@@ -306,17 +306,14 @@ inversos.
 	\[\varphi_b(x) = bxb^{-1}.\]
 	Esse é um automorfismo porque:
 	\begin{itemize}
-		\item é compatível com a multiplicação no
-		grupo: \[\varphi_b(xy) = bxyb^{-1} = bx\vec{1}yb^{-1} = bxb^{-1}byb^{-1} = \varphi_b(x)\varphi_b(y);\]
-		\item é um mapa bijetivo visto que existe a função inversa $\varphi_b^{-1}(x) = b^{-1}xb = \varphi_{b^{-1}}(x)$ (isto é, a conjugação por \(b^{-1}\)) que, de forma análoga, também é compatível com a multiplicação no grupo.
+		\item é compatível com a propriedade de homomorfismo: \[\varphi_b(xy) = bxyb^{-1} = bx\vec{1}yb^{-1} = bxb^{-1}byb^{-1} = \varphi_b(x)\varphi_b(y);\]
+		\item é um mapa bijetivo visto que existe a função inversa $\varphi_b^{-1}(x) = b^{-1}xb = \varphi_{b^{-1}}(x)$ (isto é, a conjugação por \(b^{-1}\)) que, de forma análoga, também é compatível com a propriedade de homomorfismo.
 	\end{itemize}
 \end{exemplo}
 
-\begin{observacao}
-	Se o grupo é abeliano, a conjugação é o mapa identidade:
-	\(bab^{ -1} = abb^{-1} = a\). Porém, qualquer grupo não comutativo tem
-	alguma conjugação não trivial, logo possui também um automorfismo não
-	trivial. 
+\begin{observacao}\label{ob:conjugadosDeAbelianos}
+	Se o grupo é abeliano possui a conjugação trivial:
+	\(bab^{ -1} = abb^{-1} = a\) (mapa identidade). Porém, qualquer grupo não comutativo tem alguma conjugação não trivial, isto é, existe ao menos um $b$ no grupo tal que $ba \neq ab$ para algum $a$, portanto, possui pelo menos um automorfismo não trivial: a conjugação do grupo por $b$. 
 \end{observacao}
 
 \begin{definicao}[Conjugado]
@@ -332,19 +329,18 @@ inversos.
 
 
 \begin{proposicao}
-	Se \(a\in \nucleoe\varphi\) e \(b\) é qualquer elemento do grupo \(G\), então o conjugado \(bab^{-1} \in \nucleoe\varphi\).
+	Seja $\varphi: G \longrightarrow G'$ um homomorfismo. Se \(a\in \nucleoe\varphi\) e \(b\) é qualquer elemento do grupo \(G\), então o conjugado \(bab^{-1} \in \nucleoe\varphi\).
 \end{proposicao}
 
 \begin{definicao}[Subgrupo normal]
-	Um subgrupo \(N\) de um grupo \(G\) é chamado \emph{subgrupo normal} se para cada \(a\in N\) e \(b\in G\), o conjugado
+	Um subgrupo \(N\) de um grupo \(G\) é chamado \emph{subgrupo normal} (escreve-se $N\trianglelefteq G$) se para cada \(a\in N\) e \(b\in G\), o conjugado
 	\(bab^{-1} \in N\).
 \end{definicao}
 
-
-Fica claro que o núcleo de um homomorfismo é um subgrupo normal. Além
-disso, todo subgrupo de um grupo abeliano também é um subgrupo normal
-(se \(G\) é abeliano, então \(bab^{-1} = a\)). Mas isso não é
-necessáriamente verdade em subgrupos de grupos não abelianos.
+\begin{observacao}
+	Fica claro que o núcleo de um homomorfismo é um subgrupo normal. Além disso, todo subgrupo de um grupo abeliano também é um subgrupo normal, porém, isso não é
+	necessariamente verdade em subgrupos de grupos não abelianos (veja Observação~\ref{ob:conjugadosDeAbelianos}). 
+\end{observacao}
 
 \begin{definicao}[Centro de um grupo]
 	O \emph{centro} \(Z(G)\) de um grupo \(G\) é o
