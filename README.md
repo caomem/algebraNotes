@@ -12,7 +12,7 @@
 8. [X] dar um cuidado no since =/= desde. ficar "já que"
 9. [X] H \leq G como subgrupo
 10. [ ] Sobre a definição de centro de um grupo (1.4.5), há uma definição sobre um tal comutador (vide firstReview, pag 4). Pesquise a respeito.
-11. [ ] (G,x) e (G',*) dois grupos -- usar notação
+11. [X] (G,x) e (G',*) dois grupos -- usar notação
 12. [ ] Definir melhor grupos ciclicos (nova section baseada na 1.6 do john)
 
 ## doubts

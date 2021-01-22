@@ -352,6 +352,129 @@ inversos.
 	O centro de todo grupo é um subgrupo normal do grupo.
 \end{proposicao}
 
+\subsection{Relações de Equivalência e Partições}
+
+\begin{definicao}[Partições]
+	Seja \(S\) um conjunto. Uma \emph{particão} \(P\) de
+	\(S\) é uma subdivisão de \(S\) em subconjuntos não vazios e não
+	sobrepostos, isto é, uma união de conjuntos disjuntos.	
+\end{definicao}
+
+\begin{exemplo}
+	Pode-se particionar o conjunto dos números inteiros
+	\(\mathbb{Z}\) na união de disjuntos \(P\cup I\), onde
+	\(P = \{z \in \mathbb{Z} \ |\ z \text{ é par}\}\) e
+	\(I = \{z \in \mathbb{Z} \ |\ z \text{ é impar}\}\).
+\end{exemplo}
+
+\begin{definicao}[Relações de equivalência]
+	Uma \emph{relação de equivalência} sobre um conjunto
+	\(S\) é uma relação que se mantém sobre um subconjunto de elementos de
+	\(S\). Escreve-se \(a\sim b\) para representar a equivalência de
+	\(a, b \in S\), que precisa respeitar as seguintes propriedades:
+	\begin{enumerate}
+		\item \emph{(Transitiva).} Se \(a\sim b\) e \(b\sim c\), então \(a\sim c\);
+		\item \emph{(Simétrica).} Se \(a\sim b\), então \(b\sim a\);
+		\item \emph{(Reflexiva).} \(a\sim a\).
+	\end{enumerate}
+\end{definicao}
+
+\begin{observacao}
+	A noção de partição em \(S\) e a relação de equivalência em \(S\) são
+	lógicamente equivalentes: Dada uma partição \(P\) sobre \(S\), pode-se
+	definir uma relação de equivalência \(R\) tal que, se \(a\) e \(b\)
+	estão no mesmo subconjunto partição, então \(a\sim b\) e, dada uma
+	relação de equivalência \(R\), podemos definir uma partição \(P\) tal
+	que o subconjunto que contêm \(a\) é o conjunto de todos os elementos
+	\(b\) onde \(a\sim b\). Esse subconjunto é chamado de \emph{classe de
+		equivalência de \(a\)}
+	\[C_a = \{b\in S \ | \ a\sim b\}\]
+	e \(S\) é particionado em classes de equivalência.
+\end{observacao}
+
+\begin{proposicao}
+	Sejam \(C_a\) e \(C_b\) duas classes de equivalência do conjunto \(S\). Se existe \(d\) tal que \(d\in C_a\) e \(d\in C_b\), então \(C_a = C_b\).
+\end{proposicao}
+
+\begin{observacao}
+	Seja um conjunto \(S\). Suponha que exista uma relação de equivalência
+	ou uma partição sobre \(S\). Então, pode-se construir um novo conjunto
+	\(\bar{S}\) formado pelas classes de equivalência ou os subconjuntos
+	partições de \(S\). Essa construção induz uma notação muito útil: para
+	\(a\in S\), a classe de equivalência de \(a\) ou o subconjunto partição
+	que contém \(a\) serão denotados como o elemento
+	\(\bar{a} \in \bar{S}\). Desta forma, a notação \(\bar{a} = \bar{b}\)
+	significa que \(a \sim b\) e chamamos \(a,b \in S\) de
+	\emph{representantes} das respectivas classes de equivalência
+	\(\bar{a}, \bar{b} \in \bar{S}\).
+\end{observacao}
+
+\begin{definicao}
+	Seja um mapeamento \(\varphi: S \longrightarrow T\).
+	Chama-se de \emph{relação de equivalência determinada por \(\varphi\)} a
+	relação dada por \(\varphi(a) = \varphi(b) \Rightarrow a \sim b\). Além
+	disso, para um elemento \(t\in T\), o subconjunto de
+	\(\varphi^{-1}(t) = \{s \in S\ | \ \varphi(s) = t\}\) é dito
+	\emph{imagem inversa de \(t\) por \(\varphi\)}.
+\end{definicao}
+
+\begin{proposicao}
+	Seja um mapeamento \(\varphi: S \longrightarrow T\)
+	e \(t \in T\) um elemento qualquer de \(T\). Se a imagem inversa
+	\(\varphi^{-1}(t)\) é não vazia, então \(t \in \text{im}\ \varphi\) e
+	\(\varphi^{-1}(t)\) forma uma classe de equivalência
+	\(\bar{\varphi}\in \bar{S}\) através da relação determinada por
+	\(\varphi\).	
+\end{proposicao}
+
+\begin{definicao}[Congruência]
+	Seja \(\varphi: G\longrightarrow G'\) um
+	homomorfismo. A relação de equivalência definida por \(\varphi\) é
+	usualmente denotada por \(\equiv\) ao invés de \(\sim\) e a chamamos de
+	\emph{congruência}:
+	\[\varphi(a) = \varphi(b) \ \Rightarrow \ a \equiv b, \ \text{para }a,b \in G.\]	
+\end{definicao}
+
+\begin{proposicao}
+	Seja \(\varphi: G\longrightarrow G'\) um
+	homomorfismo e \(a,b \in G\). Então as seguintes afirmações são
+	equivalentes:
+	\begin{itemize}
+		\item
+		\(\varphi(a) = \varphi(b)\)
+		\item
+		\(b = an\), para algum \(n\in \text{nu} \ \varphi\)
+		\item
+		\(a^{-1}b \in \text{nu} \ \varphi\).
+	\end{itemize}	
+\end{proposicao}
+
+\begin{definicao}[Coclasse]
+	Seja \(\varphi: G\longrightarrow G'\) um
+	homomorfismo, \(a \in G\) e \(n\in\text{nu}\ \varphi\). O conjunto
+	\[a\text{ nu }\varphi = \{g\in G \ | \ g = an \text{, para algum } n\in\text{nu }\varphi\}\] é dito \emph{coclasse de \(\text{nu }\varphi\) em \(G\)}.	
+\end{definicao}
+
+\begin{observacao}
+	Pode-se particionar o grupo \(G\) em \emph{classes de congruência},
+	formadas pelas coclasses \(a\text{ nu }\varphi\). Estas são imagens
+	inversas do mapeamento \(\varphi\).
+\end{observacao}
+
+\begin{proposicao}
+	O homomorfismo de grupo
+	\(\varphi: G\longrightarrow G'\) é injetivo se, e somente se, seu núcleo
+	é o subgrupo trivial \(\{1\}\).	
+\end{proposicao}
+
+\begin{observacao}
+	Esse resultado da uma forma de verificar se um homomorfismo \(\varphi\)
+	é também um isomorfismo: Se \(\text{nu }\varphi = \{1\}\) e
+	\(\text{im } \varphi = G'\), então \(\varphi\) é, pelos respectivos
+	motivos, injetiva e sobrejetiva. Então é um isomorfismo.
+\end{observacao}
+
+
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
