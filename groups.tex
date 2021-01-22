@@ -311,7 +311,7 @@ inversos.
 	\end{itemize}
 \end{exemplo}
 
-\begin{observacao}\label{ob:conjugadosDeAbelianos}
+\begin{observacao}[Abelianos]\label{ob:conjugadosDeAbelianos}
 	Se o grupo é abeliano possui a conjugação trivial:
 	\(bab^{ -1} = abb^{-1} = a\) (mapa identidade). Porém, qualquer grupo não comutativo tem alguma conjugação não trivial, isto é, existe ao menos um $b$ no grupo tal que $ba \neq ab$ para algum $a$, portanto, possui pelo menos um automorfismo não trivial: a conjugação do grupo por $b$. 
 \end{observacao}
@@ -615,6 +615,87 @@ um grupo \(G\).
 		núcleo desse homomorfismo é o núcleo de \(\varphi\).
 	\end{itemize}
 \end{proposicao}
+
+\subsection{Produto de Grupos}
+
+\begin{definicao}[Produto de grupos]
+	Seja \(G,G'\) dois grupos. O \emph{produto}
+	\(G\times G'\) é um grupo formado pelo produto das componentes dos
+	grupos \(G\) e \(G'\), isso é, pela regra
+	
+	\[ (a,a'), (b,b') \rightsquigarrow (ab,a'b'), \] onde \(a,b \in G\) e
+	\(a',b'\in G'\). O par \((1,1)\) é uma identidade e
+	\((a,a')^{-1} = (a^{-1},a'^{-1})\). A propriedade associativa é
+	preservada em \(G\times G'\) pois também é em \(G\) e \(G'\).
+\end{definicao}
+
+\begin{proposicao}
+	A ordem de \(G\times G'\) é o produto das ordens de
+	\(G\) e \(G'\).	
+\end{proposicao}
+
+\begin{observacao}[Projeções]
+	O produto de grupos é composto pelos homomorfismos:
+	\[i: G\longrightarrow G\times G', \quad i': G'\longrightarrow G\times G', \newline \quad p: G\times G'\longrightarrow G, \quad p': G\times G'\longrightarrow G',\]
+	definidos como
+	\[i(x) = (x,1), \quad i'(x') = (1,x'), \quad p(x,x') = x, \quad, p'(x,x') = x'.\]
+	Os mapeamentos \(i,i'\) são injetivos, já os mapeamentos \(p,p'\) são
+	sobrejetivos, onde \(\text{nu }p = 1\times G'\) e
+	\(\text{nu }p' = G\times 1\). Esses mapeamentos são chamados de
+	\emph{projeções}. Desde que são núcleos, \(G\times 1\) e \(1\times G'\)
+	são subgrupos normais de \(G\times G'\).
+\end{observacao}
+
+\begin{proposicao}[Propriedades de Mapeamento dos Produtos]
+	Seja
+	\(H\) um grupo qualquer. O homomorfismo
+	\(\Phi: H\longrightarrow G\times G'\) tem correspondência biunívoca com
+	o par \((\varphi, \varphi')\) de homomorfismos
+	\[\varphi:H\longrightarrow G, \quad \varphi': H\longrightarrow G'.\]
+	O núcleo de \(\Phi\) é a interseção
+	\((\text{nu }\phi)\cap(\text{ nu }\phi').\)	
+\end{proposicao}
+
+\begin{observacao}
+	É extremamente desejável encontrar uma relação isomorfa entre um grupo
+	\(G\) e um produto de outros dois grupos \(H\times H'\). Quando isso
+	acontece, e infelizmente não são muitas as vezes, trabalhar com os
+	grupos \(H\) e \(H'\) costumam ser mais simples que \(G\).
+\end{observacao}
+
+\begin{proposicao}
+	Sejam \(r,s\in\mathbb{Z}\) não divisíveis entre si.
+	Um grupo cíclico de ordem \(rs\) é isomorfo ao produto dos grupos
+	cíclicos de ordem \(r\) e \(s\).	
+\end{proposicao}
+
+\begin{observacao}
+	Em contrapartida, um grupo cíclico de ordem par \(4\), por exemplo, não
+	é isomorfo ao produto de dois grupos cíclicos de ordem \(2\). Também não
+	podemos afirmar nada com base no resultado anterior sobre grupos não
+	cíclicos.
+\end{observacao}
+
+\begin{definicao}[Conjunto de produtos]
+	Sejam dois subgrupos \(A,B\) de um grupo \(G\).
+	Chamamos o \emph{conjunto de produtos de de elementos de \(A\) e \(B\)} por
+	\[AB = \{x\in G \ | \ x = ab \text{ para algum }a\in A\text{ e }b\in B\}.\]
+\end{definicao}
+
+\begin{proposicao}
+	Sejam \(H\) e \(K\) os subgrupos de um grupo \(G\).
+	\begin{itemize}
+		\item Se \(H\cap K = \{1\}\), o mapeamento de produto
+		\(p: H\times K\longrightarrow G\) definido por \(p(h,k) = hk\) é
+		injetivo e sua imagem é o subconjunto \(HK\);
+		\item Se um dos subgrupos
+		\(H\) ou \(K\) é um subgrupo normal de \(G\), então os conjuntos de
+		produtos \(HK\) e \(KH\) são iguais e \(HK\) é subgrupo de \(G\);
+		\item Se ambos \(H\) e \(K\) são subgrupos normais, \(H\cap K = \{1\}\) e
+		\(HK = G\), então \(G\) é isomorfo ao grupo de produto \(H\times K\).
+	\end{itemize}
+\end{proposicao}
+
 
 
 \phantomsection
