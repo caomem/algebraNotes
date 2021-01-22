@@ -696,6 +696,49 @@ um grupo \(G\).
 	\end{itemize}
 \end{proposicao}
 
+\section{Aritmética Modular}
+
+\begin{definicao}[Congruente modulo $n$]
+	Seja \(n\in\mathbb{N}\). Dizemos que dois inteiros
+	\(a,b\) são \emph{congruentes modulo n}, e escrevemos
+	\[ a \equiv b \ (\text{mod }n),\]
+	se \(n\) divide \(b-a\), ou se \(b = a + nk\) para algum inteiro \(k\).
+	Chamamos as classes de equivalência definidas por essa relação de
+	\emph{classes de equivalência módulo \(n\)}, ou \emph{classes de resíduo módulo \(n\)}.	
+\end{definicao}
+
+\begin{exemplo}
+	A classe de congruência de 0 é o subgrupo \(\bar{0}\)
+	de todos os múltiplos de \(n\) \[\bar{0} = n\mathbb{Z} = \{\dots,-n,0,n,2n, \dots\}.\]
+\end{exemplo}
+
+\begin{proposicao}
+	Há \(n\) classes de congruência módulo \(n\) (denotamos esse conjunto por \(\mathbb{Z}/n\mathbb{Z}\)), isto é, o índice \([\mathbb{Z}:n\mathbb{Z}]\) é \(n\). São elas \[\mathbb{Z}/n\mathbb{Z} =  \{\bar{0}, \bar{1},\dots,\overline{n - 1}\}.\]		
+\end{proposicao}
+
+\begin{definicao}[Soma e produto]
+	Seja \(\bar a\) e \(\bar b\) as classes de congruência representadas pelos inteiros \(a\) e \(b\). Define-se a \emph{soma} como a classe de congruência de \(a+b\) e o \emph{produto} pela classe de congruência \(ab\), isto é, \[\bar a + \bar b = \overline{a+b} \quad \text{e}\quad \bar a\bar b = \overline{ab}.\]	
+\end{definicao}
+
+\begin{proposicao}
+	Se \(a' \equiv b'\ (\text{mod }n)\) e \(b'\equiv b\ (\text{mod }n)\), então
+	\(a' + b' \equiv a+b\ (\text{mod }n)\) e
+	\(a'b' \equiv ab \ (\text{mod }n)\).
+\end{proposicao}
+
+\begin{observacao}
+	Além disso, a soma e produto também continuam respeitando as
+	propriedades associativas, comutativas e distributivas, desde que o
+	mesmo se mantém para soma e multiplicação de inteiros.
+\end{observacao}
+
+\begin{exemplo}
+	Seja \(n = 13\), então
+	\[\mathbb{Z}/n\mathbb{Z} =  \{\bar{0}, \bar{1},\dots,\overline{12}\}.\]
+	Com isso,
+	\[(\bar 7 + \bar 9)(\bar{11} + \bar 6) \ = \ \bar 3 \cdot \bar 4 \ = \ \bar{12}.\]
+\end{exemplo}
+
 \section{Grupos de Quociente}
 
 \begin{proposicao}
