@@ -241,8 +241,11 @@ inversos.
 \section{Homomorfismos}
 
 \begin{definicao}[Homomorfismo de grupo]
-	Sejam \(G\) e \(G'\) dois grupos. Um \emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal que
-	\[\varphi(ab) = \varphi(a)\varphi(b), \; \forall \; a,b\; \in G.\] Quando isso acontece, dizemos que o mapeamento $\varphi$ \emph{preserva a estrutura algébrica de grupo}.
+	Sejam \((G,*)\) e \((G',\cdot)\) dois grupos. Um \emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal que
+	\begin{equation}\tag{propriedade de homomorfismo}
+		\varphi(a*b) = \varphi(a)\cdot\varphi(b), \; \forall \; a,b\; \in G.
+	\end{equation}
+	Quando isso acontece, dizemos que o mapeamento $\varphi$ \emph{preserva a estrutura algébrica de grupo}.
 
 \end{definicao}
 
@@ -275,21 +278,9 @@ inversos.
 
 \section{Isomorfismos}
 
-%Ou seja, é a mesma condição do isomorfismo, porém, agora não há mais a necessidade de bijetividade.
-
-Se dois grupos \(G\) e \(G'\) estão relacionados por uma
-\emph{correspondência biunívoca entre seus elementos compatível com
-suas respectivas leis de composição}, isto é, uma bijeção
-\[ 
-G \longleftrightarrow G' 
-\]
-onde, se \(a,b\in G\) corresponde
-respectivamente ao \(a',b' \in G'\) então o produto \(ab\in G\)
-corresponde ao produto \(a'b'\in G'\), então dizemos que a correspondência \emph{preserva as propriedades da estrutura algébrica de grupo}. Isso é, temos um homomorfismo bijetivo. Para essa bijeção dá-se o nome de \emph{relação de isomorfismo}.
-
 \begin{definicao}[Isomorfismo de grupos]
-	Dois grupos \(G\) e \(G'\) são ditos \emph{isomórfos} se possuírem um homomorfismo bijetivo entre si, isto é, há um mapeamento \emph{bijetivo} $\varphi: G \longrightarrow G'$ que preserva a estrutura algébrica de grupo:
-	\[\varphi(ab) = \varphi(a)\varphi(b) \Rightarrow (ab)' = a'b'\text{, para todo } a,b \in G \text{ e } a',b'\in G'.\] 
+	Dois grupos \((G,*)\) e \((G',\cdot)\) são ditos \emph{isomórficos} se possuírem um homomorfismo bijetivo entre si, isto é, há um mapeamento \emph{bijetivo} $\varphi: G \longrightarrow G'$ (chamado \emph{relação de isomorfismo}) que respeita a propriedade de homomorfismo:
+	\[\varphi(a*b) = \varphi(a)\cdot\varphi(b) \text{, para todo } a,b \in G.\] 
 \end{definicao}
 
 \begin{observacao}
