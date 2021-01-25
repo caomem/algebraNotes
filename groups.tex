@@ -39,6 +39,9 @@
 \newtheorem{observacao}{Observação}[section]
 \newtheorem{exemplo}{Exemplo}[section]
 
+\newenvironment{solucao}
+{\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
+
 \title{Teoria de Grupos: notas de estudo}
 \author{Guilherme Philippi}
 \begin{document}
@@ -864,6 +867,48 @@ um grupo \(G\).
 	Com isso,
 	\[(\bar 7 + \bar 9)(\bar{11} + \bar 6) \ = \ \bar 3 \cdot \bar 4 \ = \ \bar{12}.\]
 \end{exemplo}
+
+
+\section{Estrutura de grupos abelianos finitamente gerados}
+
+\begin{teorema}[Teorema fundamental dos grupos abelianos finitamente gerados] \label{teo:abelianfinitelygenerately}
+	Todo grupo abeliano finitamente gerado $G$ é isomorfo a um produto de grupos cíclicos na forma $$\mathbb{Z}_{(p_1)^{r_1}}\times\mathbb{Z}_{(p_2)^{r_2}}\times\dots\times\mathbb{Z}_{(p_n)^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\times\dots\times\mathbb{Z} $$ onde os $p_i$ são primos, não necessariamente distintos, e os $r_i$ são inteiros positivos. O produto é único, exceto por possíveis rearranjos dos fatores; isso é, o número (chamado \emph{número Betti de $G$}) de fatores $\mathbb{Z}$ é único e as potências de primos $(p_i)^{r_i}$ são únicas.
+\end{teorema}
+
+\begin{exemplo}
+	Queremos encontrar todos os grupos abelianos de ordem 360, \emph{a menos de isomorfismos}. Dizer \emph{a menos de isomorfismo} significa que qualquer grupo abeliano de ordem 360 deve ser estruturalmente idêntico --- isto é, isomorfo --- a um 
+	\begin{solucao}
+		Já qe nossos grupos são da ordem finita 360, não aparecerão $\mathbb{Z}$ no produto. Primeiro, vamos expressar 360 como um produto de potências de primos: $360 = 2^33^25$. Então, pelo Teorema~\ref{teo:abelianfinitelygenerately}, temos as seguintes possibilidades
+		\begin{enumerate}
+			\item $\mathbb{Z}_2\times\mathbb{Z}_2\times\mathbb{Z}_2\times\mathbb{Z}_3\times\mathbb{Z}_3\times\mathbb{Z}_5$
+			\item 	$\mathbb{Z}_2\times\mathbb{Z}_4\times\mathbb{Z}_3\times\mathbb{Z}_3\times\mathbb{Z}_5$ 
+			\item 	$\mathbb{Z}_2\times\mathbb{Z}_2\times\mathbb{Z}_3\times\mathbb{Z}_9\times\mathbb{Z}_5$ 
+			\item $\mathbb{Z}_2\times\mathbb{Z}_4\times\mathbb{Z}_9\times\mathbb{Z}_5$
+			\item $\mathbb{Z}_8\times\mathbb{Z}_3\times\mathbb{Z}_3\times\mathbb{Z}_5$ 
+			\item $\mathbb{Z}_8\times\mathbb{Z}_9\times\mathbb{Z}_5$ 
+		\end{enumerate}
+		
+	Então, esses são os seis diferentes grupos abelianos (a menos de isomorfismos) de ordem 360.
+	\end{solucao}
+\end{exemplo}
+
+\begin{definicao}[Grupo redutível e irredutível]
+	Um grupo é dito \emph{redutível} se ele é isomorfo a um produto direto de dois subgrupos não triviais. Do contrário, é dito \emph{irredutível}.
+\end{definicao}
+
+\begin{proposicao}
+	Os grupos abelianos finitos irredutíveis são exatamente os grupos cíclicos que possuem a ordem de uma potência prima.
+\end{proposicao}
+
+\begin{proposicao}
+	Se $m$ divide a ordem de um grupo abeliano finito $G$, então $G$ tem um subgrupo de ordem $m$.	
+\end{proposicao}
+
+\begin{proposicao}
+	Se $m$ é um \emph{quadrado inteiro livre}, isto é, $m$ não é divisível por nenhum quadrado de primo, então todo grupo abeliano de ordem $m$ é cíclico.
+\end{proposicao}
+
+
 
 \section{Grupos de Quociente}
 
