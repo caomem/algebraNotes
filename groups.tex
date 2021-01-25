@@ -358,7 +358,7 @@ inversos.
 		Uma permutação de um conjunto $A$ é uma função bijetiva $\varphi: A \longrightarrow A$ do conjunto para ele mesmo.
 \end{definicao}
 
-\begin{proposicao}[Multiplicação de permutações]
+\begin{proposicao}[Multiplicação de permutações]\label{def:multpermut}
 	Seja $A$ um conjunto onde duas permutações $\tau,\sigma$ são dadas. A composição de funções $\tau\circ\sigma$ (chamada \emph{multiplicação de permutações}) é uma lei de composição sobre A.
 \end{proposicao}
 
@@ -512,6 +512,93 @@ inversos.
 	\(\text{im } \varphi = G'\), então \(\varphi\) é, pelos respectivos
 	motivos, injetiva e sobrejetiva. Então é um isomorfismo.
 \end{observacao}
+
+\section{Orbitas, ciclos e grupos alternados}
+
+\begin{definicao}[Órbita]\label{def:orbit}
+	Seja $\sigma$ uma permutação de um conjunto $A$. Chamamos de \emph{órbitas de $\sigma$} a classe de equivalência em $A$ determinada pela relação de equivalência $\sim$:
+	$$\text{para }a,b \in A,\ a\sim b \iff b=\sigma^n(a), \text{ para algum }n\in\mathbb{Z}.$$
+\end{definicao}
+
+\begin{observacao}
+	A relação apresentada na Definição~\ref{def:orbit} é, de fato, uma relação de equivalência. Como segue:
+	\begin{itemize}
+		\item é reflexiva, já que $a = \sigma^0(a) \implies a\sim a$;
+		\item é simétrica pois, se $a\sim b \implies \exists\  n\in \mathbb{Z}$ tal que $b = \sigma^n(a)$, então $a = \sigma^{-n}(b)$. Como $-n\in\mathbb{Z}$, então $b\sim a$;
+		\item é transitiva, visto que $a\sim b \implies b=\sigma^n(a)$ e $b \sim c \implies c = \sigma^m(b)$, para algum $n,m\in\mathbb{Z}$, então $c=\sigma^m(\sigma^n(a)) = \sigma^{m+n}(a) \implies a\sim c$.
+	\end{itemize}
+\end{observacao}
+
+\begin{exemplo}[Órbita trivial]
+	Já que a permutação identidade $i$ de $A$ leva cada elemento de $A$ para a mesma posição, as órbitas de $i$ são os subconjuntos de apenas um elemento de $A$.
+\end{exemplo}
+
+\begin{definicao}[Ciclo]
+	Uma permutação $\sigma\in S_n$ é um \emph{ciclo} se possuir no máximo uma órbita contendo mais que um elemento. O \emph{comprimento} de um ciclo é o número de elementos de sua maior órbita.
+\end{definicao}
+
+\begin{exemplo}
+	Seja a permutação 
+	$$
+	\begin{pmatrix}
+		1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+		\downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow\\
+		3 & 2 & 6 & 4 & 5 & 1 & 7 & 8
+	\end{pmatrix}
+	$$
+	Como a órbita $(1,3,6)$ é a única que contém mais de um elemento, essa permutação sobre o conjunto $\{1,2,3,4,5,6,7,8\}$ é um ciclo de comprimento 3.
+\end{exemplo}
+
+\begin{observacao}[Notação de ciclos]
+	Podemos representar um ciclo com a notação de uma única linha, da forma $$\mu = (1,3,6),$$ indicando apenas os elementos da maior órbita do ciclo. Perceba que as demais órbitas não precisam ser representadas pois serão os índices fixos da permutação.
+\end{observacao}
+
+\begin{exemplo}[Produto de ciclos]
+	Pode-se construir uma permutação como um multiplicação de ciclos (veja a definição~\ref{def:multpermut}). Por exemplo,
+	
+	$$
+	\sigma = 
+	\begin{pmatrix}
+		1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
+		\downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow & \downarrow\\
+		3 & 8 & 6 & 7 & 4 & 1 & 5 & 2
+	\end{pmatrix}
+	= (1,3,6)(2,8)(4,7,5).
+	$$
+\end{exemplo}
+
+\begin{proposicao}
+	Toda permutação $\sigma$ de um conjunto finito é um produto de ciclos disjuntos.
+\end{proposicao}
+
+\begin{definicao}[Transposição]
+	Um ciclo de comprimento 2 é uma transposição.
+\end{definicao}
+
+\begin{corolario}
+	Qualquer permutação de um conjunto finito de pelo menos dois elementos é um produto de transposições.	
+\end{corolario}
+
+\begin{definicao}[Permutações pares e impares]
+	Uma permutação de um conjunto finito é \emph{par} ou \emph{impar} se pode ser expressa, respectivamente, por um número par ou impar de produtos de permutações.
+\end{definicao}
+
+\begin{proposicao}
+	Uma permutação em $S_n$ pode ser expressa como um produto de um número impar de transposições se e somente se não puder ser expressa como um número par de transposições e vice-versa.
+\end{proposicao}
+
+\begin{proposicao}
+	Seja o grupo simétrico $S_n$ com $n\geq 2$. Então, a coleção de todas as permutações impares de $\{1,2,\dots,n\}$ forma um subgrupo de $S_n$ de ordem $\frac{n!}{2}$.	
+\end{proposicao}
+
+\begin{definicao}[Grupo alternado]
+	O subgrupo de $S_n$ formado pelas permutações impares de $n$ símbolos é chamado \emph{grupo alternado $A_n$}.
+\end{definicao}
+
+\begin{observacao}
+	Os grupos $S_n$ e $A_n$ são muito importantes. O teorema de Cayley mostra que todo grupo finito $G$ é estruturalmente idêntico a algum subgrupo de $S_n$, para $n = |G|$. Pode-se mostrar que não há formulas envolvendo apenas radicais para solucionar uma equação polinomial de grau $n\geq 5$. Por mais que isso não seja óbvio, esse fato se deve, na verdade, a estrutura de $A_n$.
+\end{observacao}
+
 
 \section{Coclasses}
 
