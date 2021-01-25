@@ -352,6 +352,45 @@ inversos.
 	O centro de todo grupo é um subgrupo normal do grupo.
 \end{proposicao}
 
+\section{Grupos de Permutação}
+
+\begin{definicao}[Permutação de um conjunto]
+		Uma permutação de um conjunto $A$ é uma função bijetiva $\varphi: A \longrightarrow A$ do conjunto para ele mesmo.
+\end{definicao}
+
+\begin{proposicao}[Multiplicação de permutações]
+	Seja $A$ um conjunto onde duas permutações $\tau,\sigma$ são dadas. A composição de funções $\tau\circ\sigma$ (chamada \emph{multiplicação de permutações}) é uma lei de composição sobre A.
+\end{proposicao}
+
+\begin{proposicao}
+	Sejam $A$ um conjunto não vazio, $S_A$ o conjunto de todas as permutações de $A$ e $\circ$ uma multiplicação de permutações sobre $A$. Então, $(S_A, \circ)$ é um grupo.
+\end{proposicao}
+
+\begin{definicao}[Grupo simétrico sobre $n$ símbolos]
+	Seja $A$ o conjunto finito $\{1,2,\dots, n\}$. O grupo de todas as permutações de $A$ é um \emph{grupo simétrico sobre os $n$ símbolos $1,2,\dots,n$} e é representado por $S_n$.	
+\end{definicao}
+
+\begin{observacao}
+	É importante perceber que $S_n$ possui $n!$ elementos, isso é, a quantidade de toda combinação de $n$ elementos.
+\end{observacao}
+
+\begin{exemplo}[Grupos diedrais]
+	O grupo $S_3$ de $3! = 6$ elementos forma um grupo de simetrias de um triangulo equilátero com vértices 1, 2 e 3. As 6 permutações que formam esse grupo são as 3 rotações e os 3 espelhamentos possíveis sobre os vértices do triangulo. Também chamamos $S_3$ de $D_3$, pois $D_3$ forma o terceiro \emph{grupo diedral}. 
+	O $n$-ésimo grupo diedral $D_n$ é o grupo de simetrias de um polígono regular de $n$ vértices.
+\end{exemplo}
+
+\begin{definicao}[Restrição da imagem de uma função]
+	Sejam $f: A\longrightarrow B$ uma função e $H$ um subconjunto de $A$. A \emph{imagem de $H$ sob $f$} é $\{f(h)\ |\ h \in H\}$ e é representada por $f|_H$.
+\end{definicao}
+
+\begin{lema}
+	Sejam $G$ e $G'$ grupos e $\varphi:G\longrightarrow G'$ um homomorfismo injetivo. Então, $\varphi|_G$ é um subgrupo de $G'$ e $\varphi$ provê um isomorfismo de $G$ com $\varphi|_G$.
+\end{lema}
+
+\begin{teorema}[Teorema de Cayley]
+	Todo grupo é isomorfo a um grupo de permutações.
+\end{teorema}
+
 \section{Relações de Equivalência e Partições}
 
 \begin{definicao}[Partições]
@@ -779,7 +818,7 @@ um grupo \(G\).
 	para todo \(a\), \(b\in G\). Então \(S\) é um grupo.	
 \end{proposicao}
 
-\textbf{Proposição (Primeiro Teorema do Isomorfismo):} Sejam
+\textbf{Proposição (Primeiro teorema do isomorfismo):} Sejam
 \(\varphi:G \longrightarrow G'\) um homomorfismo de grupo sobrejetivo e
 \(N\) o núcleo de \(\varphi\). Então \(G/N\) é isomórfico a \(G'\) pelo
 mapeamento \(\bar\varphi\) que transporta a coclasse \(\bar a = aN\)
@@ -788,6 +827,7 @@ para \(\varphi(a)\):
 \[\bar\varphi(\bar a) = \varphi(a).\]
 
 Esse é o método fundamental para identificar grupos de quocientes.
+
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}

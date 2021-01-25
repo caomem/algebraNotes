@@ -19,3 +19,4 @@
 
 1. [ ] a lei de composição precisa ser fechada? se a,b in G então ab in G?  
 2. [ ] standby: sobre o isomorfismo preservar as *propriedades* da estrutura algébrica, devo esperar aparecer essa proposição em algum lugar? Ainda não sei demonstrar isso, mas parece que seria o mesmo que dizer que a "lei de composição é equivalente", algo como uma operação isomórfica. (john pag 31)
+3. [ ] Ajuda para unir a seção de restrição de homomorfismo para subgrupo e o lema do teorema de cayley.
