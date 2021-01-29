@@ -17,10 +17,12 @@
 13. [ ] verificar com mais cuidado se o teorema 10.14 do john está no texto.
 14. [ ] Adicionar notas históricas introdutórias as seções. Basear nas notas do john.
 15. [ ] homogenizar as seções. Melhorar a estrutura e fluidez. 
+16. [ ] Coclasse -> classe lateral
+17. [ ] exemplo diedrais desenho e abrir possibilidades de permutação (1,2,3) -> ...
 
 ## doubts
 
-1. [ ] a lei de composição precisa ser fechada? se a,b in G então ab in G?  
+1. [X] a lei de composição precisa ser fechada? se a,b in G então ab in G?  
 2. [ ] standby: sobre o isomorfismo preservar as *propriedades* da estrutura algébrica, devo esperar aparecer essa proposição em algum lugar? Ainda não sei demonstrar isso, mas parece que seria o mesmo que dizer que a "lei de composição é equivalente", algo como uma operação isomórfica. (john pag 31)
 3. [ ] Ajuda para unir a seção de restrição de homomorfismo para subgrupo e o lema do teorema de cayley.
 4. [ ] grupo decomposable é redutível?
