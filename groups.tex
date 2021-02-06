@@ -51,6 +51,37 @@
 \chapter{Grupos}
 % Enunciar as principais referências desse capítulo
 
+\section{Relações entre conjuntos}
+
+\begin{definicao}[Produto cartesiano]
+	Sejam $A$ e $B$ conjuntos. O conjunto $$A\times B = \{(a,b) \ | \ a\in A \text{ e } b\in B\}$$
+	é o \emph{produto cartesiano de A e B}.
+\end{definicao}
+
+\begin{exemplo}
+	Se $A = \{1,2,3\}$ e $B = {3,4}$, então $$A\times B = \{(1,3),(1,4),(2,3),(2,4),(3,3),(3,4)\}.$$
+\end{exemplo}
+
+\begin{definicao}[Relação]
+	Uma	\emph{relação} entre dois conjuntos $A$ e $B$ é um subconjunto $\mathcal{R}\subset A\times B$. Lê-se $(a,b) \in \mathcal{R}$ como ``$a$ está relacionado com $b$'' e escreve-se $a\mathcal{R}b$.
+\end{definicao}
+
+\begin{exemplo}[Relação de igualdade]\label{ex:igualdade}
+	A realação $=$, chamada \emph{relação de igualdade}, é definida sobre um conjunto $S$ por $$= \text{é o subconjunto } \{(x,x) \ |\ x\in S\}\subset S\times S.$$
+\end{exemplo}
+
+\begin{observacao}
+	Sempre que uma relação for definida entre um conjunto $S$ e ele mesmo, como no exemplo~\ref{ex:igualdade}, diremos que esta é uma relação \emph{sobre} $S$.
+\end{observacao}
+
+\begin{definicao}[Função]
+		Uma \emph{função} $\varphi$ que mapeia $X$ em $Y$ é uma relação entre $X$ e $Y$ com a propriedade de que cada $x\in X$ só irá aparecer uma única vez, e exatamente uma, em um par ordenado $(x,y)\in \varphi$. Também chamamos $\varphi$ de \emph{mapa} ou \emph{mapeamento} de $X$ em $Y$. Escrevemos $\varphi: X\longrightarrow Y$ e expressaremos $(x,y)\in\varphi$ por $\varphi(x) = y$. O \emph{domínio} de $\varphi$ é o conjunto $X$ e o conjunto $Y$ é dito \emph{contradomínio} de $\varphi$. Chama-se de \emph{alcance} de $\varphi$ o conjunto $\varphi[X] = \{\varphi(x)\ | \ x \in X\}.$
+\end{definicao}
+
+\begin{definicao}[Função injetiva e sobrejetiva]
+		Uma função $\varphi: X \longrightarrow Y$ é \emph{injetiva} se $\varphi(x_1) = \varphi(x_2) \iff x_1 = x_2$. Também, $\varphi$ é dita \emph{sobrejetiva} se o alcance de $\varphi$ é $Y$. Se uma função é injetiva e sobrejetiva, então dizemos que a função é \emph{bijetiva}.
+\end{definicao}
+
 \section{Lei de composição}
 
 \begin{definicao}[Lei de composição]
@@ -140,7 +171,7 @@
 \begin{definicao}[Grupo]
 	
 	Um \emph{grupo} $(G,*)$ é um conjunto \(G\) onde uma lei de
-	composição $*$ é dada sobre \(G\) tal que as seguintes propriedades são satisfeitas:
+	composição $*$ é dada sobre \(G\) tal que os seguintes axiomas são satisfeitos:
 	
 	\begin{enumerate}
 		\item \emph{(Associatividade).} Para todo $a,b,c \in G$, tem-se $$(a*b)*c = a*(b*c);$$
@@ -150,7 +181,7 @@
 \end{definicao}
 
 \begin{observacao}
-	É comum abusar da notação e chamar um grupo $(G,*)$ e o conjunto de	seus elementos $G$ pelo mesmo simbolo, omitindo a lei de composição quando não houver necessidade.	
+	É comum abusar da notação e chamar um grupo $(G,*)$ e o conjunto de	seus elementos $G$ pelo mesmo simbolo, omitindo a lei de composição na falta de ambiguidade.	
 \end{observacao}
 
 \begin{definicao}[Grupo abeliano]
@@ -187,6 +218,12 @@
 	Todo grupo \(G\) possui dois subgrupos triviais: O subgrupo formado por
 	todos os elementos de \(G\) e o subgrupo \(\{\vec{1}\}\), formado pela
 	identidade de \(G\). Diz-se que um subgrupo é um \emph{subgrupo apropriado} se for diferente desses dois.
+\end{definicao}
+
+\begin{definicao}[Centro de um grupo]
+	O \emph{centro} \(Z(G)\) de um grupo \(G\) é o
+	conjunto de elementos que comutam com todo elemento de \(G\):
+	\[Z(G) = \{z \in G \ | \ zx = xz \text{ para todo } x \in G\}.\]
 \end{definicao}
 
 \begin{exemplo}
@@ -248,17 +285,19 @@ inversos.
 	\begin{equation}\tag{propriedade de homomorfismo}
 		\varphi(a*b) = \varphi(a)\cdot\varphi(b), \; \forall \; a,b\; \in G.
 	\end{equation}
-	Quando isso acontece, dizemos que o mapeamento $\varphi$ \emph{preserva a estrutura algébrica de grupo}.
-
 \end{definicao}
 
 \begin{exemplo}[Inclusão]
 	Seja \(H\) o subgrupo de um grupo \(G\). O homomorfismo \(i: H \longrightarrow G\) é dito \emph{inclusão} de \(H\) em \(G\), definido por \(i(x) = x\).
 \end{exemplo}
 
-\begin{proposicao}
+\begin{proposicao}\label{prop:homo}
 	 Um homomorfismo \(\varphi: G\longrightarrow G'\) mapeia a identidade de $G$ à identidade de $G'$ e transforma as inversas de $G$ nas respectivas inversas em $G'$. Isto é, \(\varphi(\vec{1}) = \vec{1}\) e \(\varphi(a^{-1}) = \varphi(a)^{-1}\).
 \end{proposicao}
+
+\begin{observacao}
+	Por conta da Proposição~\ref{prop:homo}, dizemos que o mapeamento $\varphi$ \emph{preserva a estrutura algébrica de grupo}.
+\end{observacao}
 
 \begin{definicao}[Imagem]
 	A \emph{imagem} de um homomorfismo
@@ -272,7 +311,7 @@ inversos.
 \begin{definicao}[Núcleo]
 	O \emph{núcleo} do homomorfismo $\varphi: G \longrightarrow G'$ é o subconjunto de
 	\(G\) formado pelos elementos que são mapeados pela identidade em
-	\(G'\):	\[\text{nu} \ \varphi = \{a \in G \ | \ \varphi(a) = 1\} = \varphi^{-1}(1).\]
+	\(G'\):	\[\text{nu} \ \varphi = \{a \in G \ | \ \varphi(a) = \vec{1}\} = \varphi^{-1}(\vec{1}).\]
 \end{definicao}
 
 \begin{proposicao}
@@ -282,7 +321,7 @@ inversos.
 \section{Isomorfismos}
 
 \begin{definicao}[Isomorfismo de grupos]
-	Dois grupos \((G,*)\) e \((G',\cdot)\) são ditos \emph{isomórficos} se possuírem um homomorfismo bijetivo entre si, isto é, há um mapeamento \emph{bijetivo} $\varphi: G \longrightarrow G'$ (chamado \emph{relação de isomorfismo}) que respeita a propriedade de homomorfismo:
+	Dois grupos \((G,*)\) e \((G',\cdot)\) são ditos \emph{isomorfos} se possuírem um homomorfismo bijetivo entre si, isto é, há um mapeamento \emph{bijetivo} $\varphi: G \longrightarrow G'$ (chamado \emph{relação de isomorfismo}) que respeita a propriedade de homomorfismo:
 	\[\varphi(a*b) = \varphi(a)\cdot\varphi(b) \text{, para todo } a,b \in G.\] 
 \end{definicao}
 
@@ -316,7 +355,7 @@ inversos.
 
 \begin{observacao}[Abelianos]\label{ob:conjugadosDeAbelianos}
 	Se o grupo é abeliano possui a conjugação trivial:
-	\(bab^{ -1} = abb^{-1} = a\) (mapa identidade). Porém, qualquer grupo não comutativo tem alguma conjugação não trivial, isto é, existe ao menos um $b$ no grupo tal que $ba \neq ab$ para algum $a$, portanto, possui pelo menos um automorfismo não trivial: a conjugação do grupo por $b$. 
+	\(bab^{ -1} = abb^{-1} = a\) (mapa identidade). Porém, qualquer grupo não comutativo tem alguma conjugação não trivial, isto é, existe ao menos um $b$ que não está no centro do grupo, portanto, ao menos o automorfismo não trivial dado pela conjugação do grupo por $b$ existe. 
 \end{observacao}
 
 \begin{definicao}[Conjugado]
@@ -344,12 +383,6 @@ inversos.
 	Fica claro que o núcleo de um homomorfismo é um subgrupo normal. Além disso, todo subgrupo de um grupo abeliano também é um subgrupo normal, porém, isso não é
 	necessariamente verdade em subgrupos de grupos não abelianos (veja Observação~\ref{ob:conjugadosDeAbelianos}). 
 \end{observacao}
-
-\begin{definicao}[Centro de um grupo]
-	O \emph{centro} \(Z(G)\) de um grupo \(G\) é o
-	conjunto de elementos que comutam com todo elemento de \(G\):
-	\[Z(G) = \{z \in G \ | \ zx = xz \text{ para todo } x \in G\}.\]
-\end{definicao}
 
 \begin{proposicao}
 	O centro de todo grupo é um subgrupo normal do grupo.
@@ -383,7 +416,7 @@ inversos.
 \end{exemplo}
 
 \begin{definicao}[Restrição da imagem de uma função]
-	Sejam $f: A\longrightarrow B$ uma função e $H$ um subconjunto de $A$. A \emph{imagem de $H$ sob $f$} é $\{f(h)\ |\ h \in H\}$ e é representada por $f|_H$.
+	Sejam $f: A\longrightarrow B$ uma função e $H$ um subconjunto de $A$. A \emph{imagem de $H$ por $f$} é $\{f(h)\ |\ h \in H\}$ e é representada por $f|_H$.
 \end{definicao}
 
 \begin{lema}
@@ -413,7 +446,7 @@ inversos.
 	Uma \emph{relação de equivalência} sobre um conjunto
 	\(S\) é uma relação que se mantém sobre um subconjunto de elementos de
 	\(S\). Escreve-se \(a\sim b\) para representar a equivalência de
-	\(a, b \in S\), que precisa respeitar as seguintes propriedades:
+	\(a, b \in S\), que precisa respeitar os seguintes axiomas:
 	\begin{enumerate}
 		\item \emph{(Transitiva).} Se \(a\sim b\) e \(b\sim c\), então \(a\sim c\);
 		\item \emph{(Simétrica).} Se \(a\sim b\), então \(b\sim a\);
@@ -438,7 +471,7 @@ inversos.
 	Sejam \(C_a\) e \(C_b\) duas classes de equivalência do conjunto \(S\). Se existe \(d\) tal que \(d\in C_a\) e \(d\in C_b\), então \(C_a = C_b\).
 \end{proposicao}
 
-\begin{observacao}
+\begin{observacao}[Representante]
 	Seja um conjunto \(S\). Suponha que exista uma relação de equivalência
 	ou uma partição sobre \(S\). Então, pode-se construir um novo conjunto
 	\(\bar{S}\) formado pelas classes de equivalência ou os subconjuntos
@@ -491,22 +524,22 @@ inversos.
 	\end{itemize}	
 \end{proposicao}
 
-\begin{definicao}[Coclasse em relação ao núcleo]
+\begin{definicao}[classe lateral em relação ao núcleo]
 	Seja \(\varphi: G\longrightarrow G'\) um
 	homomorfismo, \(a \in G\) e \(n\in\text{nu}\ \varphi\). O conjunto
-	\[a\text{ nu }\varphi = \{g\in G \ | \ g = an \text{, para algum } n\in\text{nu }\varphi\}\] é dito \emph{coclasse de \(\text{nu }\varphi\) em \(G\)}.	
+	\[a\text{ nu }\varphi = \{g\in G \ | \ g = an \text{, para algum } n\in\text{nu }\varphi\}\] é dito \emph{classe lateral de \(\text{nu }\varphi\) em \(G\)}.	
 \end{definicao}
 
 \begin{observacao}
 	Pode-se particionar o grupo \(G\) em \emph{classes de congruência},
-	formadas pelas coclasses \(a\text{ nu }\varphi\). Estas são imagens
+	formadas pelas classes laterais \(a\text{ nu }\varphi\). Estas são imagens
 	inversas do mapeamento \(\varphi\).
 \end{observacao}
 
 \begin{proposicao}
 	O homomorfismo de grupo
 	\(\varphi: G\longrightarrow G'\) é injetivo se, e somente se, seu núcleo
-	é o subgrupo trivial \(\{1\}\).	
+	é o subgrupo trivial \(\{\vec 1\}\).	
 \end{proposicao}
 
 \begin{observacao}
@@ -583,7 +616,7 @@ inversos.
 \end{corolario}
 
 \begin{definicao}[Permutações pares e impares]
-	Uma permutação de um conjunto finito é \emph{par} ou \emph{impar} se pode ser expressa, respectivamente, por um número par ou impar de produtos de permutações.
+	Uma permutação de um conjunto finito é \emph{par} ou \emph{impar} se pode ser expressa, respectivamente, por um número par ou impar de produtos de transposições.
 \end{definicao}
 
 \begin{proposicao}
@@ -603,42 +636,42 @@ inversos.
 \end{observacao}
 
 
-\section{Coclasses}
+\section{Classe lateral}
 
-Definimos coclasse somente em relação ao núcleo de um homomorfismo mas,
-na verdade, pode-se definir uma coclasse para qualquer subgrupo \(H\) de
+Definimos classe lateral somente em relação ao núcleo de um homomorfismo mas,
+na verdade, pode-se definir uma classe lateral para qualquer subgrupo \(H\) de
 um grupo \(G\).
 
-\begin{definicao}[Coclasse a esquerda]
+\begin{definicao}[classe lateral a esquerda]
 	Seja um subgrupo \(H\) de um grupo \(G\). O
-	subconjunto da forma \[aH = \{ah \ | \ h\in H\}\] é dito \emph{coclasse a esquerda de \(H\) em \(G\)}.
+	subconjunto da forma \[aH = \{ah \ | \ h\in H\}\] é dito \emph{classe lateral a esquerda de \(H\) em \(G\)}.
 \end{definicao}
 
 \begin{proposicao}
-	A coclasse é uma classe de equivalência para a
+	A classe lateral é uma classe de equivalência para a
 	relação de congruência
 	\[b = ah \Rightarrow a \equiv b, \text{ para algum } h\in H.\]	
 \end{proposicao}
 
 \begin{observacao}
 	Daí segue que, como classes de equivalência particionam um grupo,
-	coclasses a esquerda de um subgrupo particionam o grupo.
+	classes laterais a esquerda de um subgrupo particionam o grupo.
 \end{observacao}
 
 \begin{definicao}[Índice de um subgrupo]
-	O número de coclasses a esquerda de um subgrupo
+	O número de classes laterais a esquerda de um subgrupo
 	\(H\) em um grupo \(G\) chama-se \emph{índice de \(H\) em \(G\)} e é
 	denotado como \([G:H]\).	
 \end{definicao}
 
 \begin{observacao}
-	Como há uma bijeção do subgrupo \(H\) para a coclasse \(aH\), a
+	Como há uma bijeção do subgrupo \(H\) para a classe lateral \(aH\), a
 	cardinalidade de \(aH\) tem de ser a mesma de \(H\). Isto é, as
-	coclasses de \(H\) particionam \(G\) em partes de mesma ordem.
+	classes laterais de \(H\) particionam \(G\) em partes de mesma ordem.
 \end{observacao}
 
 \begin{proposicao}
-	Seja \(aH\) a coclasse do subgrupo \(H\) no grupo
+	Seja \(aH\) a classe lateral do subgrupo \(H\) no grupo
 	\(G\). Então, a ordem \(|G|\) do grupo \(G\) é dada por
 	\[|G| = |H|[G:H].\]	
 \end{proposicao}
@@ -661,7 +694,7 @@ um grupo \(G\).
 \begin{observacao}
 	Também podemos obter uma expressão para calcular a ordem de um grupo de
 	homomorfismo. Seja \(\varphi: G\longrightarrow G'\) um homomorfismo.
-	Como as coclasses a esquerda do núcleo de \(\varphi\) são as imagens
+	Como as classes laterais a esquerda do núcleo de \(\varphi\) são as imagens
 	inversas \(\varphi^{-1}\), elas estão em uma correspondência biunívoca
 	com a imagem. Daí segue que
 	\[[G:\text{ nu }\varphi\ ] = |\text{ im }\varphi\ |.\]
@@ -673,9 +706,9 @@ um grupo \(G\).
 	\[|G| = |\text{ nu }\varphi\ |\cdot|\text{ im }\varphi\ |.\]	
 \end{proposicao}
 
-\begin{definicao}[Coclasses a direita]
+\begin{definicao}[classes laterais a direita]
 	Os conjuntos da forma
-	\[Ha = \{ha \ | \ h \in H\}\] chamam-se \emph{coclasses a direita de um
+	\[Ha = \{ha \ | \ h \in H\}\] chamam-se \emph{classes laterais a direita de um
 		subgrupo \(H\)}. Esses são classes de equivalência para a relação de
 	congruência a direita
 	\[b = ha \Rightarrow a \equiv b, \text{ para algum }h \in H.\]	
@@ -914,20 +947,20 @@ um grupo \(G\).
 
 \begin{proposicao}
 	Seja \(N\) um subgrupo normal de um grupo \(G\).
-	Então, o produto de duas coclasses \(aN\), \(bN\) também é uma coclasse
+	Então, o produto de duas classes laterais \(aN\), \(bN\) também é uma classe lateral
 	\[(aN) (bN) = abN.\]
 \end{proposicao}
 
 \begin{definicao}[Produto de coclases]
-	Sejam as coclasses \(C_1, C_2\) e os elementos
+	Sejam as classes laterais \(C_1, C_2\) e os elementos
 	\(a\in C_1\) e \(b\in C_2\), então \(C_1 = aN\) e \(C_2 = bN\). Chamamos
-	de \emph{produto das coclasses \(C_1\) e \(C_2\)} a coclasse
-	\(C_1C_2 = abN\), isto é, a coclasse que contém \(ab\).	
+	de \emph{produto das classes laterais \(C_1\) e \(C_2\)} a classe lateral
+	\(C_1C_2 = abN\), isto é, a classe lateral que contém \(ab\).	
 \end{definicao}
 
-\begin{observacao}[Notação para conjunto de coclasses]
-	É conveniente denotar o \emph{conjunto de coclasses de um subconjunto normal \(N\) de um grupo \(G\)} pela simbologia \[G/N = \text{conjunto de coclasses de }N\text{ em }G.\] Também pode-se	usar a notação em barra \(G/N = \bar G\) e \(aN = \bar a\), tomando o
-	cuidado para diferenciar que \(\bar a\) denota a coclasse que contém
+\begin{observacao}[Notação para conjunto de classes laterais]
+	É conveniente denotar o \emph{conjunto de classes laterais de um subconjunto normal \(N\) de um grupo \(G\)} pela simbologia \[G/N = \text{conjunto de classes laterais de }N\text{ em }G.\] Também pode-se	usar a notação em barra \(G/N = \bar G\) e \(aN = \bar a\), tomando o
+	cuidado para diferenciar que \(\bar a\) denota a classe lateral que contém
 	\(a\).	
 \end{observacao}
 
@@ -953,7 +986,7 @@ um grupo \(G\).
 \textbf{Proposição (Primeiro teorema do isomorfismo):} Sejam
 \(\varphi:G \longrightarrow G'\) um homomorfismo de grupo sobrejetivo e
 \(N\) o núcleo de \(\varphi\). Então \(G/N\) é isomórfico a \(G'\) pelo
-mapeamento \(\bar\varphi\) que transporta a coclasse \(\bar a = aN\)
+mapeamento \(\bar\varphi\) que transporta a classe lateral \(\bar a = aN\)
 para \(\varphi(a)\):
 
 \[\bar\varphi(\bar a) = \varphi(a).\]

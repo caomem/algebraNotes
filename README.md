@@ -17,8 +17,11 @@
 13. [ ] verificar com mais cuidado se o teorema 10.14 do john está no texto.
 14. [ ] Adicionar notas históricas introdutórias as seções. Basear nas notas do john.
 15. [ ] homogenizar as seções. Melhorar a estrutura e fluidez. 
-16. [ ] Coclasse -> classe lateral
+16. [X] Coclasse -> classe lateral
 17. [ ] exemplo diedrais desenho e abrir possibilidades de permutação (1,2,3) -> ...
+18. [ ] Classe lateral tomar cuidado com grupos infinitos (tem que especificar).
+19. [ ] dar uma olhada melhor na observação 1.7.2, mandar um print
+20. [ ] definir relação inversa
 
 ## doubts
 
@@ -27,3 +30,10 @@
 3. [ ] Ajuda para unir a seção de restrição de homomorfismo para subgrupo e o lema do teorema de cayley.
 4. [ ] grupo decomposable é redutível?
 5. [ ] definição 1.13.1, subgrupo apropriado?
+6. [ ] como eu faço para mostrar que todo elemento inverso de um elemento do centro também pertence ao centro? (quero mostrar que o centro é subgrupo)
+7. [ ] como uma permutação é bijetiva, preciso ficar especificando a quantidade de elementos de uma permutação sobre $S_n$? (como na def 1.8.5)
+
+(1,2)(2,3)(3,1)
+1 - 1; 2 - 2; 3 - 3;
+
+
