@@ -22,18 +22,17 @@
 18. [ ] Classe lateral tomar cuidado com grupos infinitos (tem que especificar).
 19. [ ] dar uma olhada melhor na observação 1.7.2, mandar um print
 20. [ ] definir relação inversa
+21. [ ] Realocar a seção "restrição de um homomorfismo", além de expandir com exemplos.  Talvez ficará legal junto com o Teorema de Cayley (seção atual de permutações)
 
 ## doubts
 
 1. [X] a lei de composição precisa ser fechada? se a,b in G então ab in G?  
-2. [ ] standby: sobre o isomorfismo preservar as *propriedades* da estrutura algébrica, devo esperar aparecer essa proposição em algum lugar? Ainda não sei demonstrar isso, mas parece que seria o mesmo que dizer que a "lei de composição é equivalente", algo como uma operação isomórfica. (john pag 31)
-3. [ ] Ajuda para unir a seção de restrição de homomorfismo para subgrupo e o lema do teorema de cayley.
+2. [X] standby: sobre o isomorfismo preservar as *propriedades* da estrutura algébrica, devo esperar aparecer essa proposição em algum lugar? Ainda não sei demonstrar isso, mas parece que seria o mesmo que dizer que a "lei de composição é equivalente", algo como uma operação isomórfica. (john pag 31)
+3. [X] Ajuda para unir a seção de restrição de homomorfismo para subgrupo e o lema do teorema de cayley.
 4. [ ] grupo decomposable é redutível?
 5. [ ] definição 1.13.1, subgrupo apropriado?
 6. [ ] como eu faço para mostrar que todo elemento inverso de um elemento do centro também pertence ao centro? (quero mostrar que o centro é subgrupo)
 7. [ ] como uma permutação é bijetiva, preciso ficar especificando a quantidade de elementos de uma permutação sobre $S_n$? (como na def 1.8.5)
 
-(1,2)(2,3)(3,1)
-1 - 1; 2 - 2; 3 - 3;
 
 
