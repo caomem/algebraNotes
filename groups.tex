@@ -292,12 +292,21 @@ inversos.
 \end{exemplo}
 
 \begin{proposicao}\label{prop:homo}
-	 Um homomorfismo \(\varphi: G\longrightarrow G'\) mapeia a identidade de $G$ à identidade de $G'$ e transforma as inversas de $G$ nas respectivas inversas em $G'$. Isto é, \(\varphi(\vec{1}) = \vec{1}\) e \(\varphi(a^{-1}) = \varphi(a)^{-1}\).
+	 Um homomorfismo \(\varphi: G\longrightarrow G'\) mapeia a identidade de $G$ à identidade de $G'$ e transforma as inversas de $G$ nas respectivas inversas em $G'$. Isto é, as seguintes propriedades valem
+	 \begin{itemize}
+	 	\item \(\varphi(\vec{1}) = \vec{1}\) e 
+	 	\item \(\varphi(a^{-1}) = \varphi(a)^{-1}\).	
+ 	 \end{itemize}
+	  
 \end{proposicao}
 
 \begin{observacao}
 	Por conta da Proposição~\ref{prop:homo}, dizemos que o mapeamento $\varphi$ \emph{preserva a estrutura algébrica de grupo}.
 \end{observacao}
+
+\begin{exemplo}
+	Seja $\varphi: G \longrightarrow G'$ um homomorfismo de grupo sobrejetivo de $G$ em $G'$. Queremos mostrar que, se $G$ é abeliano, então $G'$ deve ser abeliano. Isto é, seja $a',b'\in G'$, queremos mostrar que $a'b' = b'a'$. Como $\varphi$ é sobrejetiva, existe $a,b\in G$ tal que $\varphi(a) = a'$ e $\varphi(b) = b'$. Pela propriedade de homomorfismo, $a'b' = \varphi(a)\varphi(b) = \varphi(ab)$ e, se $G$ é abeliano, $\varphi(ab) = \varphi(ba) = \varphi(b)\varphi(a) = b'a'$. Segue que $G'$ deve ser abeliano.
+\end{exemplo}
 
 \begin{definicao}[Imagem]
 	A \emph{imagem} de um homomorfismo
@@ -539,7 +548,7 @@ inversos.
 \begin{proposicao}
 	O homomorfismo de grupo
 	\(\varphi: G\longrightarrow G'\) é injetivo se, e somente se, seu núcleo
-	é o subgrupo trivial \(\{\vec 1\}\).	
+	é o subgrupo trivial \(\{\vec 1\}\).
 \end{proposicao}
 
 \begin{observacao}
@@ -940,8 +949,6 @@ um grupo \(G\).
 \begin{proposicao}
 	Se $m$ é um \emph{quadrado inteiro livre}, isto é, $m$ não é divisível por nenhum quadrado de primo, então todo grupo abeliano de ordem $m$ é cíclico.
 \end{proposicao}
-
-
 
 \section{Grupos de Quociente}
 

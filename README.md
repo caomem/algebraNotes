@@ -33,6 +33,7 @@
 5. [ ] definição 1.13.1, subgrupo apropriado?
 6. [ ] como eu faço para mostrar que todo elemento inverso de um elemento do centro também pertence ao centro? (quero mostrar que o centro é subgrupo)
 7. [ ] como uma permutação é bijetiva, preciso ficar especificando a quantidade de elementos de uma permutação sobre $S_n$? (como na def 1.8.5)
+8. [ ] Exemplo 13.8 do john.
 
 
 
