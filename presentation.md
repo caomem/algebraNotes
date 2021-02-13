@@ -112,7 +112,7 @@ que particiona o grupo $G$ em classes de equivalência.
 **Proposição:** Seja $\varphi: G\longrightarrow G'$ um homomorfismo onde $G$ e $G'$ são finitos. Então
 $$|G| = |\text{ nu }\varphi\ |\cdot|\text{ im }\varphi\ |.$$
 
-*obs: como as classes laterais a esquerda do núcleo são as imagens inversas, existe uma bijeção delas com a imagem. Daí, $[G:\text{nu }\varphi\ ] = |\ \text{im }\varphi\ |$. Isso é, o número das classes laterais a esquerda do núcleo é o mesmo da cardinalidade da imagem.*
+*obs: como as classes laterais a esquerda do núcleo $a\text{ nu }\varphi$ particionam $G$ nas imagens inversas do mapeamento $\varphi$, elas estão em uma correspondência biunívoca com a imagem. Daí, $[G:\text{nu }\varphi\ ] = |\ \text{im }\varphi\ |$. Isso é, o número das classes laterais a esquerda do núcleo é o mesmo da cardinalidade da imagem.*
 
 **Classes laterais a direita:** são os conjuntos da forma
 $$Ha = \{ha \ | \ h \in H\}$$
@@ -122,3 +122,40 @@ Também induzem uma relação de congruência, agora a direita, que particionam 
 $$b = ha \implies a\equiv b.$$
 
 **Proposição**: $H\trianglelefteq G \iff aH = Ha, \forall a \in G.$
+
+## Restrição de um homomorfismo para um subgrupo
+
+**Proposição**: Sejam $K$ e $H$ dois subgrupos do grupo $G$
+	tal que a interseção $K\cap H$ é um subgrupo de $H$. Se $K$ é um
+	subgrupo normal de $G$, então $K\cap H$ é um subgrupo normal de
+	$H$.
+
+**Exemplo**: Com esse resultado, se $G$ é finito pode-se utilizar o
+Teorema de Lagrange para obter informações sobre a interseção dos dois
+subgrupos: a interseção divide $|H|$ e $|K|$. Se $|H|$ e $|K|$
+não tem o mesmo fator de divisão, então $K\cap H = \{1\}$.
+
+**Definição:** Sejam o homomorfismo $\varphi:G\longrightarrow G'$
+	e $H$ um subgrupo de $G$. Uma restrição de $\varphi$ para o subgrupo $H$} é o homomorfismo $\varphi|_H:H\longrightarrow G'$
+	definido como
+$$\varphi|_H(h) = \varphi(h), \text{ para todo }h\in H.$$
+
+**Proposição**
+	Sejam o homomorfismo
+	$\varphi:G\longrightarrow G'$ e $H$ um subgrupo de $G$. Então $\text{ nu }\varphi|_H = \text{ nu }\varphi \cap H$.
+
+**Proposição**: Sejam $\varphi:G\longrightarrow G'$ um
+	homomorfismo, $H'$ um subgrupo de $G'$ e
+	$\varphi^{-1}(H') = \{x \in G \ | \ \varphi(x) \in H'\}$ a imagem
+	inversa de $H'$. Então
+
+  - $\varphi^{-1}(H')$ é um subgrupo de $G$.
+  - Se $H'$ é um subgrupo normal de $G'$, então $\varphi^{-1}(H')$ é um subgrupo normal de $G$.
+  - $\varphi^{-1}(H')$ contém o núcleo de $\varphi$
+  - A restrição de $\varphi$ para $\varphi^{-1}(H')$ define um homomorfismo $\varphi^{-1}(H')\longrightarrow H'$, de forma que o núcleo desse homomorfismo é o núcleo de $\varphi$.
+
+## Produto de Grupos
+
+$$A \mapsto B$$
+
+$$ \Phi(h) = (\varphi(h), \varphi'(h))$$
