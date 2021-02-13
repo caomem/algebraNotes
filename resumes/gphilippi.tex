@@ -1,0 +1,258 @@
+ \documentclass[a4paper,12pt]{article}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{MnSymbol}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{color}
+\definecolor{Blue}{rgb}{0,0,0.9}
+\definecolor{Red}{rgb}{0.9,0,0}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{blkarray}
+\newcommand\Mark[1]{\textsuperscript#1}
+\usepackage{pgfplots}
+\usepackage{amsfonts}
+\usepackage[english, ruled, linesnumbered]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{enumitem}
+
+\newcommand{\nucleoe}{\emph{\text{nu }}}
+\newcommand{\nucleo}{\text{nu }}
+\newcommand{\imageme}{\emph{\text{nu }}}
+\newcommand{\imagem}{\text{nu }}
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{proposicao}{Proposição}[section]
+\newtheorem{corolario}{Corolário}[section]
+
+\theoremstyle{definition}
+\newtheorem{definicao}{Definição}[section]
+\newtheorem{observacao}{Observação}[section]
+\newtheorem{exemplo}{Exemplo}[section]
+
+\newenvironment{solucao}
+{\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
+
+\title{\textsc{Relações e Operações Binárias}\\ \textsl{um resumo}}
+\author{Guilherme Philippi}
+\begin{document}
+\maketitle
+	
+Apresenta-se nesse texto um compilado de definições e resultados envolvendo os conceitos de relações entre conjuntos e operações binárias. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, maierAlgebra}, principalmente de \cite{johnAlgebra}.
+	
+\section{Produto Cartesiano e Relações}
+
+\begin{definicao}[Produto cartesiano]
+	Sejam $A$ e $B$ conjuntos. O conjunto $$A\times B = \{(a,b) \ | \ a\in A \text{ e } b\in B\}$$
+	é o \emph{produto cartesiano de A e B}.
+\end{definicao}
+
+\begin{exemplo}
+	Se $A = \{1,2,3\}$ e $B = {3,4}$, então $$A\times B = \{(1,3),(1,4),(2,3),(2,4),(3,3),(3,4)\}.$$
+\end{exemplo}
+
+\begin{definicao}[Relação]
+	Uma	\emph{relação} entre dois conjuntos $A$ e $B$ é um subconjunto $\mathcal{R}\subset A\times B$. Lê-se $(a,b) \in \mathcal{R}$ como ``$a$ está relacionado com $b$'' e escreve-se $a\mathcal{R}b$.
+\end{definicao}
+
+\begin{exemplo}[Relação de igualdade]\label{ex:igualdade}
+	A realação $=$, chamada \emph{relação de igualdade}, é definida sobre um conjunto $S$ por $$= \text{é o subconjunto } \{(x,x) \ |\ x\in S\}\subset S\times S.$$
+\end{exemplo}
+
+\begin{observacao}
+	Sempre que uma relação for definida entre um conjunto $S$ e ele mesmo, como no exemplo~\ref{ex:igualdade}, diremos que esta é uma relação \emph{sobre} $S$.
+\end{observacao}
+
+\begin{definicao}[Função]
+		Uma \emph{função} $\varphi$ que mapeia $X$ em $Y$ é uma relação entre $X$ e $Y$ com a propriedade de que cada $x\in X$ só irá aparecer uma única vez, e exatamente uma, em um par ordenado $(x,y)\in \varphi$. Também chamamos $\varphi$ de \emph{mapa} ou \emph{mapeamento} de $X$ em $Y$. Escrevemos $\varphi: X\longrightarrow Y$ e expressaremos $(x,y)\in\varphi$ por $\varphi(x) = y$. O \emph{domínio} de $\varphi$ é o conjunto $X$ e o conjunto $Y$ é dito \emph{contradomínio} de $\varphi$. Chama-se de \emph{alcance} de $\varphi$ o conjunto $\varphi[X] = \{\varphi(x)\ | \ x \in X\}.$
+\end{definicao}
+
+\begin{definicao}[Função injetiva e sobrejetiva]
+		Uma função $\varphi: X \longrightarrow Y$ é \emph{injetiva} se $\varphi(x_1) = \varphi(x_2) \iff x_1 = x_2$. Também, $\varphi$ é dita \emph{sobrejetiva} se o alcance de $\varphi$ é $Y$. Se uma função é injetiva e sobrejetiva, então dizemos que a função é \emph{bijetiva}.
+\end{definicao}
+
+\begin{definicao}
+	Sejam $S$ um conjunto $\mathcal{R}$ uma relação sobre $S$.
+	Dizemos que $\mathcal{R}$ é uma relação
+	\begin{enumerate}
+		\item \emph{(reflexiva).} se $a\mathcal{R}a$, para todo $a\in S$;
+		\item \emph{(simétrica).} se para todo $a,b \in S$ $a\mathcal{R}b \iff b\mathcal{R}a$;
+		\item \emph{(antissimétrica).} se $a\mathcal{R}b$ e $b\mathcal{R}a \implies a = b$, para todo $a,b \in S$;
+		\item \emph{(transitiva).} se $a\mathcal{R}b$ e $b\mathcal{R}c \implies a\mathcal{R}c$, $\forall \ a,b,c\in S$.
+	\end{enumerate}
+\end{definicao}
+
+
+\section{Relações de Equivalência e Partições}
+
+\begin{definicao}[Partições]
+	Seja \(S\) um conjunto. Uma \emph{particão} \(P\) de
+	\(S\) é uma subdivisão de \(S\) em subconjuntos não vazios e não
+	sobrepostos, isto é, uma união de conjuntos disjuntos.	
+\end{definicao}
+
+\begin{exemplo}
+	Pode-se particionar o conjunto dos números inteiros
+	\(\mathbb{Z}\) na união de disjuntos \(P\cup I\), onde
+	\(P = \{z \in \mathbb{Z} \ |\ z \text{ é par}\}\) e
+	\(I = \{z \in \mathbb{Z} \ |\ z \text{ é impar}\}\).
+\end{exemplo}
+
+\begin{definicao}[Relação de equivalência]
+	Uma \emph{relação de equivalência} $\sim$ sobre um conjunto
+	\(S\) é uma relação que precisa ser, para todo $a,b,c\in S$,
+	\begin{enumerate}
+		\item \emph{(Transitiva).} Se \(a\sim b\) e \(b\sim c\), então \(a\sim c\);
+		\item \emph{(Simétrica).} Se \(a\sim b\), então \(b\sim a\);
+		\item \emph{(Reflexiva).} \(a\sim a\).
+	\end{enumerate}
+\end{definicao}
+
+\begin{observacao}
+	A noção de partição em \(S\) e a relação de equivalência em \(S\) são
+	lógicamente equivalentes: Dada uma partição \(P\) sobre \(S\), pode-se
+	definir uma relação de equivalência \(R\) tal que, se \(a\) e \(b\)
+	estão no mesmo subconjunto partição, então \(a\sim b\) e, dada uma
+	relação de equivalência \(R\), podemos definir uma partição \(P\) tal
+	que o subconjunto que contêm \(a\) é o conjunto de todos os elementos
+	\(b\) onde \(a\sim b\). Esse subconjunto é chamado de \emph{classe de
+		equivalência de \(a\)}
+	\[C_a = \{b\in S \ | \ a\sim b\}\]
+	e \(S\) é particionado em classes de equivalência.
+\end{observacao}
+
+\begin{proposicao}
+	Sejam \(C_a\) e \(C_b\) duas classes de equivalência do conjunto \(S\). Se existe \(d\) tal que \(d\in C_a\) e \(d\in C_b\), então \(C_a = C_b\).
+\end{proposicao}
+
+\begin{observacao}[Representante]
+	Seja um conjunto \(S\). Suponha que exista uma relação de equivalência
+	ou uma partição sobre \(S\). Então, pode-se construir um novo conjunto
+	\(\bar{S}\) formado pelas classes de equivalência ou os subconjuntos
+	partições de \(S\). Essa construção induz uma notação muito útil: para
+	\(a\in S\), a classe de equivalência de \(a\) ou o subconjunto partição
+	que contém \(a\) serão denotados como o elemento
+	\(\bar{a} \in \bar{S}\). Desta forma, a notação \(\bar{a} = \bar{b}\)
+	significa que \(a \sim b\) e chamamos \(a,b \in S\) de
+	\emph{representantes} das respectivas classes de equivalência
+	\(\bar{a}, \bar{b} \in \bar{S}\).
+\end{observacao}
+
+\begin{definicao}
+	Seja um mapeamento \(\varphi: S \longrightarrow T\).
+	Chama-se de \emph{relação de equivalência determinada por \(\varphi\)} a
+	relação dada por \(\varphi(a) = \varphi(b) \Rightarrow a \sim b\). Além
+	disso, para um elemento \(t\in T\), o subconjunto de
+	\(\varphi^{-1}(t) = \{s \in S\ | \ \varphi(s) = t\}\) é dito
+	\emph{imagem inversa de \(t\) por \(\varphi\)}.
+\end{definicao}
+
+\begin{proposicao}
+	Seja um mapeamento \(\varphi: S \longrightarrow T\)
+	e \(t \in T\) um elemento qualquer de \(T\). Se a imagem inversa
+	\(\varphi^{-1}(t)\) é não vazia, então \(t \in \text{im}\ \varphi\) e
+	\(\varphi^{-1}(t)\) forma uma classe de equivalência
+	\(\bar{\varphi}\in \bar{S}\) através da relação determinada por
+	\(\varphi\).	
+\end{proposicao}
+
+\section{Operações binárias}
+
+\begin{definicao}[Operação binária]
+	Uma \emph{operação binária} sobre um conjunto \(S\) é uma função \(*: S\times S \longrightarrow S\).
+\end{definicao}
+
+\begin{observacao}[Notação de operação]
+	Usaremos a notação \(*(a,b) = a*b\), para simplificar a escrita de
+	propriedades. Também, quando não houver ambiguidade, suprimiremos o simbolo da operação, fazendo $a*b = ab$.
+\end{observacao}
+
+
+\begin{definicao}
+	Para $a,b,c \; \in S$, uma operação binária $*$ é dita
+	
+	\begin{itemize}
+		\item \emph{Associativa}, se $(a*b)*c = a*(b*c)$;
+		\item \emph{Comutativa}, se \(a*b = b*a\).
+	\end{itemize}
+\end{definicao}
+
+\begin{proposicao}
+	Seja uma operação associativa dada sobre o conjunto
+	\(S\). Há uma única forma de definir, para todo inteiro \(n\), um
+	produto de \(n\) elementos \(a_1,\dots,a_n \in S\) (diremos
+	\([a_1\dotsb a_n]\)) com as seguintes propriedades:
+	
+	\begin{enumerate}
+		\def\labelenumi{\arabic{enumi}.}
+		\item
+		o produto \([a_1]\) de um elemento é o próprio elemento;
+		\item
+		o produto \([a_1a_2]\) de dois elementos é dado pela operação binária;
+		\item
+		para todo inteiro \(1\leq i\leq n\),
+		\([a_1\dotsb a_n] = [a_1\dotsb a_i][a_{i+1}\dotsb a_n]\).
+	\end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+	A demonstração dessa proposição é feita por indução em \(n\).
+\end{proof}
+
+\begin{definicao}
+	Dizemos que \(e\in S\) é \emph{identidade} para uma operação binária se \(ea = ae = a\) para todo \(a\in S\).
+\end{definicao}
+
+\begin{proposicao}
+	O elemento identidade é único.
+\end{proposicao}
+\begin{proof}
+	Se \(e,e'\) são identidades, já que \(e\) é identidade, então \(ee' = e'\) e, como $e'$ é uma identidade, \(ee' = e\). Logo \(e = e'\), isto é, a identidade é única.
+\end{proof}
+
+\begin{observacao}
+	Usaremos $\vec{1}$ para representar a identidade multiplicativa e $\vec{0}$ para denotar a aditiva.
+\end{observacao}
+
+\begin{definicao}[Elemento inverso]
+	Seja uma operação binária que possua uma identidade. Um elemento \(a\in S\) é chamado \emph{invertível} se há um outro elemento \(b\in S\) tal que \(ab = ba = 1\). Desde que \(b\) exista, ela é única e a denotaremos por \(a^{-1}\) e a chamaremos
+	\emph{inversa de $a$}.
+\end{definicao}
+
+
+\begin{proposicao}
+	Se \(a,b\in S\) possuem inversa, então a composição \((ab)^{-1} = b^{-1}a^{-1}\).
+\end{proposicao}
+
+\begin{observacao}[Potências]
+	Usaremos as seguintes notações:
+	\begin{itemize}
+		\item \(a^n = a^{n-1}a\) é a composição de \(a\dotsb a\) \(n\) vezes;
+		\item \(a^{-n}\) é a inversa de \(a^n\);
+		\item \(a^0 = \vec{1}\).
+	\end{itemize}
+	
+	Com isso, tem-se que \(a^{r+s} = a^ra^s\) e \((a^r)^s = a^{rs}\). (Isso
+	não induz uma notação de fração \(\frac{b}{a}\) a menos que seja uma operação
+	comutativa, visto que \(ba^{-1}\) pode ser diferente de \(a^{-1}b\)).
+	Para falar de uma operação aditiva, usaremos \(-a\) no lugar de
+	\(a^{-1}\) e \(na\) no lugar de \(a^n\).
+\end{observacao}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
