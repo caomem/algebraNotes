@@ -6,8 +6,8 @@ Uma leitura e resumo sobre exemplos de Operações Binárias em um conjunto
 4. [X] Operação Comutativa
 5. [X] Elemento Neutro de Operação
 6. [X] Elementos Opostos de Operação (Elementos Simétricos)
-7. [ ] Elementos que Cumprem Lei do Cancelamento (Elementos Regulares)
-8. [ ] Distributividade
+7. [X] Elementos que Cumprem Lei do Cancelamento (Elementos Regulares)
+8. [X] Distributividade
 
 O material de base foi retirado do livro:
 

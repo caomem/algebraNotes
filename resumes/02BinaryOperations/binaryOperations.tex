@@ -42,13 +42,12 @@
 
 \newenvironment{solucao}
 {\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
-
-\title{\textsc{Operações Binárias e Aplicaćões}\\ \textsl{um resumo}}
+\title{\textsc{Operações Binárias}\\ \textsl{um resumo}}
 \author{Guilherme Philippi}
 \begin{document}
 	\maketitle
 	
-	Apresenta-se nesse texto um compilado de definições e resultados envolvendo os conceitos de operações binárias e algumas de suas aplica. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, maierAlgebra}, principalmente de \cite{johnAlgebra}.
+	Apresenta-se nesse texto um compilado de definições e resultados envolvendo os principais conceitos de operações binárias. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, dominguesAlgebra}, principalmente de \cite{dominguesAlgebra}.
 
 \section{Operações binárias}
 
@@ -194,6 +193,32 @@ segue que $\times$ não pode ser comutativa.
 	Porém, $0$ não é invertível para essa operação, visto que não existe $n\in\mathbb{R}$ tal que $0\cdot n = \vec{1} = 1$.
 \end{exemplo}
 
+\begin{exemplo}[Adição matricial]
+	Seja $+: \mathbb{R}^{m\times n}\times\mathbb{R}^{m\times n}\longrightarrow\mathbb{R}^{m\times n}$ a operação de adição matricial para matrizes reais de $m$ linhas e $n$ colunas. A matriz $\begin{pmatrix}
+		1&2\\3&6
+	\end{pmatrix}$ é invertível para $+$ no $\mathbb{R}^{2\times 2}$ e seu inverso é $\begin{pmatrix}
+	-1&-2\\-3&-6
+\end{pmatrix}$, visto que
+$$
+\begin{pmatrix}
+	-1&-2\\-3&-6
+\end{pmatrix}
++\begin{pmatrix}
+	1&2\\3&6
+\end{pmatrix}
+=
+\begin{pmatrix}
+	0&0\\0&0
+\end{pmatrix}
+=\vec 0 = \begin{pmatrix}
+	1&2\\3&6
+\end{pmatrix}
++\begin{pmatrix}
+	-1&-2\\-3&-6
+\end{pmatrix}.
+$$
+\end{exemplo}
+
 \begin{proposicao}\label{prop:compinv}
 	Se \(a,b\in S\) possuem inversa, então a inversa da composição \((ab)^{-1} = b^{-1}a^{-1}\).
 \end{proposicao}
@@ -232,7 +257,96 @@ segue que $\times$ não pode ser comutativa.
 	A matriz $\begin{pmatrix}
 		1&2\\
 		3&4
-	\end{pmatrix}$ é 
+	\end{pmatrix}$ é regular para a adição matricial em $\mathbb{R}^{2\times 2}$, pois,
+	$
+	\text{se }
+	\begin{pmatrix}
+		1&2\\
+		3&4
+	\end{pmatrix}
+	+ \begin{pmatrix}
+		a&b\\c&d
+	\end{pmatrix}
+	=\begin{pmatrix}
+		1&2\\3&4
+	\end{pmatrix}
+	+ \begin{pmatrix}
+		a'&b'\\c'&d'
+	\end{pmatrix}, \text{ então }
+	\begin{pmatrix}
+		1+a&2+b\\3+c&4+d
+	\end{pmatrix}
+	= \begin{pmatrix}
+		1+a'&2+b'\\3+c'&4+d'
+	\end{pmatrix},
+	$
+	donde $\begin{pmatrix}
+		a&b\\c&d
+	\end{pmatrix}
+	= \begin{pmatrix}
+		a'&b'\\c'&d'
+	\end{pmatrix}$.
+\end{exemplo}
+
+\begin{exemplo}
+	A matriz $\begin{pmatrix}
+		0&0\\1&1
+	\end{pmatrix}$ não é regular para a multiplicação matricial em $\mathbb{R}^{2\times 2}$, pois
+	$$
+	\begin{pmatrix}
+		0&0\\1&1
+	\end{pmatrix}
+	\begin{pmatrix}
+		1&2\\3&4
+	\end{pmatrix}
+	= \begin{pmatrix}
+		0&0\\4&6
+	\end{pmatrix}
+	= \begin{pmatrix}
+		0&0\\1&1
+	\end{pmatrix}
+	\begin{pmatrix}
+		3&4\\1&2
+	\end{pmatrix} \text{ e }
+	\begin{pmatrix}
+		1&2\\3&4
+	\end{pmatrix}
+	\neq \begin{pmatrix}
+		3&4\\1&2
+	\end{pmatrix}.
+	$$
+\end{exemplo}
+
+\begin{proposicao}
+	Seja uma operação $*$ sobre $S$ associativa e que possua o elemento neutro $e$. Se $s\in S$ é invertível, então $s$ é regular.
+\end{proposicao}
+\begin{proof}
+	Sejam $x,y\in S$ tais que $s*x = s*y$ e $x*s = y*s$. 
+	Como $$s*x = s*y \implies s^{-1}*(s*x) = s^{-1}*(s*y),$$ pela associatividade, $$(s^{-1}*s)*x = (s^{-1}*s)*y \implies e*x = e*y \implies x = y.$$ 
+	Analogamente, partindo de $x*s = y*s$, chega-se que $x = y$. \\Portanto, $s$ é regular.
+\end{proof}
+
+\begin{definicao}[Conjunto dos regulares]
+	Seja $*$ uma operação sobre um conjunto $S$. O conjunto de todos os elementos regulares de $S$ para a operação $*$ é o conjunto $\mathfrak{R}_*[S]$.
+\end{definicao}
+
+\begin{definicao}[Distributividade à esquerda e à direita]
+	Sejam $*,\cdot$ duas operações sobre um conjunto $S$. Dizemos que $\cdot$ é \emph{distributiva à esquerda} relativamente a $*$ se, para todo $a,b,c\in S$
+	$$a\cdot(b*c) = (a\cdot b)*(a\cdot c).$$
+	Da mesma forma, quando $$(b*c)\cdot a = (b\cdot a)*(c\cdot a)$$ dizemos que $\cdot$ é \emph{distributiva à direita} relativamente a $*$.
+\end{definicao}
+
+\begin{exemplo}
+	Em $\mathbb{N}$, a potênciação é distributiva à direita em realação a multiplicação, isso é, para $x,y,z \in \mathbb{N}$, $$(x\cdot y)^z = x^z\cdot y^z.$$
+	No entanto, a potenciação em $\mathbb{N}$ não é distributiva à esquerda em relação a multiplicação, pois $$2^{3\cdot 4} \neq 2^3\cdot 2^4.$$
+\end{exemplo}
+
+\begin{definicao}[Distributividade]
+	Dizemos que $\cdot$ é distributiva relativamente a $*$ sobre um conjunto $S$ se for distributiva à esquerda e à direita de $*$ em $S$. 
+\end{definicao}
+
+\begin{exemplo}
+	A multiplicação em $\mathbb{Z}$ é distributiva em relação à adição em $\mathbb{Z}$, pois, para todo $x,y,z \in \mathbb{Z}$, $$x\cdot(y+z) = (x\cdot y) + (x\cdot z)$$
 \end{exemplo}
 
 
