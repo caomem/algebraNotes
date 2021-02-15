@@ -56,11 +56,22 @@
 	Uma \emph{operação binária} sobre um conjunto \(S\) é uma função \(*: S\times S \longrightarrow S\).
 \end{definicao}
 
+\begin{exemplo}[Produto sobre $\mathbb{R}$]
+	Seja a função $\cdot: \mathbb{R}\times\mathbb{R}\longrightarrow\mathbb{R}$ tal que $\cdot(x,y) = x \cdot y$, isto é, associa-se a cada par $(x,y)$ de números reais o respectivo produto $x\cdot y$. A função $\cdot$ é a operação binária conhecida como \emph{produto sobre $\mathbb{R}$}.
+\end{exemplo}
+
+\begin{exemplo}[Composição de funções]
+	O mapa $\circ:\mathcal{F}_\mathbb{R}\times\mathcal{F}_\mathbb{R}\longrightarrow\mathcal{F}_\mathbb{R}$, em que $\mathcal{F}_\mathbb{R}$ representa o \emph{conjunto das funções de $\mathbb{R}$ em $\mathbb{R}$}, é a operação definida pela \emph{composição de funções $\circ(f,g) = f\circ g$ sobre $\mathcal{F}_\mathbb{R}$}.
+\end{exemplo}
+
 \begin{observacao}[Notação de operação]
 	Usaremos a notação \(*(a,b) = a*b\), para simplificar a escrita de
 	propriedades. Também, quando não houver ambiguidade, suprimiremos o simbolo da operação, fazendo $a*b = ab$.
 \end{observacao}
 
+\begin{exemplo}[Adição sobre $\mathbb{R}$]
+	A função $+: \mathbb{R}\times\mathbb{R}\longrightarrow\mathbb{R}$ definida pela soma $x+y$ é a operação de \emph{adição sobre $\mathbb{R}$}.
+\end{exemplo}
 
 \begin{definicao}
 	Para $a,b,c \; \in S$, uma operação binária $*$ é dita
@@ -70,6 +81,50 @@
 		\item \emph{Comutativa}, se \(a*b = b*a\).
 	\end{itemize}
 \end{definicao}
+
+\begin{exemplo}[Multiplicação matricial]
+	Seja $\mathbb{R}^{n\times n}$ o \emph{conjunto das matrizes reais quadradas de ordem $n$}. A operação $\times: \mathbb{R}^{n\times n}\times\mathbb{R}^{n\times n}\longrightarrow\mathbb{R}^{n\times n}$ é o \emph{produto matricial $\times(M,N) = M\times N$ sobre $\mathbb{R}^{n\times n}$}. Sabe-se que essa operação é associativa, visto que $(XY)Z = X(YZ), \ \forall X,Y,Z \in \mathbb{R}^{n\times n}$. Porém, como
+	$$
+	\begin{pmatrix}
+		1&2\\
+		3&4
+	\end{pmatrix}
+	\times
+	\begin{pmatrix}
+		5&6\\
+		7&8
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		19&22\\
+		43&50
+	\end{pmatrix}
+	\neq
+	\begin{pmatrix}
+		5&6\\
+		7&8
+	\end{pmatrix}
+	\times
+	\begin{pmatrix}
+		1&2\\
+		3&4
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		23&34\\
+		31&46
+	\end{pmatrix},
+	$$
+segue que $\times$ não pode ser comutativa.
+\end{exemplo}
+
+\begin{exemplo}[Potência em $\mathbb{N}$]
+	Seja $f(x,y) = x^y$ a operação de \emph{potenciação sobre $\mathbb{N}$}. $f$ não é nem associativa, $$\text{pois }2^{(3^4)} = 2^{81} \neq (2^3)^4 = 2^{12},$$ nem comutativa, $$\text{pois }2^3 = 8 \neq 3^2 = 9.$$
+\end{exemplo}
+
+\begin{exemplo}[Adição]
+	As adições sobre $\mathbb{N},\mathbb{Z},\mathbb{Q},\mathbb{R}$ ou $\mathbb{C}$ são operações tanto associativas quanto comutativas. Deixa-se ao leitor mostrar que isso é verdade.
+\end{exemplo}
 
 \begin{proposicao}
 	Seja uma operação associativa dada sobre o conjunto
