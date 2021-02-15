@@ -1,0 +1,143 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{MnSymbol}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{color}
+\definecolor{Blue}{rgb}{0,0,0.9}
+\definecolor{Red}{rgb}{0.9,0,0}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{blkarray}
+\newcommand\Mark[1]{\textsuperscript#1}
+\usepackage{pgfplots}
+\usepackage{amsfonts}
+\usepackage[english, ruled, linesnumbered]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{enumitem}
+
+\newcommand{\nucleoe}{\emph{\text{nu }}}
+\newcommand{\nucleo}{\text{nu }}
+\newcommand{\imageme}{\emph{\text{nu }}}
+\newcommand{\imagem}{\text{nu }}
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{proposicao}{Proposição}[section]
+\newtheorem{corolario}{Corolário}[section]
+
+\theoremstyle{definition}
+\newtheorem{definicao}{Definição}[section]
+\newtheorem{observacao}{Observação}[section]
+\newtheorem{exemplo}{Exemplo}[section]
+
+\newenvironment{solucao}
+{\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
+
+\title{\textsc{Operações Binárias e Aplicaćões}\\ \textsl{um resumo}}
+\author{Guilherme Philippi}
+\begin{document}
+	\maketitle
+	
+	Apresenta-se nesse texto um compilado de definições e resultados envolvendo os conceitos de operações binárias e algumas de suas aplica. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, maierAlgebra}, principalmente de \cite{johnAlgebra}.
+
+\section{Operações binárias}
+
+\begin{definicao}[Operação binária]
+	Uma \emph{operação binária} sobre um conjunto \(S\) é uma função \(*: S\times S \longrightarrow S\).
+\end{definicao}
+
+\begin{observacao}[Notação de operação]
+	Usaremos a notação \(*(a,b) = a*b\), para simplificar a escrita de
+	propriedades. Também, quando não houver ambiguidade, suprimiremos o simbolo da operação, fazendo $a*b = ab$.
+\end{observacao}
+
+
+\begin{definicao}
+	Para $a,b,c \; \in S$, uma operação binária $*$ é dita
+	
+	\begin{itemize}
+		\item \emph{Associativa}, se $(a*b)*c = a*(b*c)$;
+		\item \emph{Comutativa}, se \(a*b = b*a\).
+	\end{itemize}
+\end{definicao}
+
+\begin{proposicao}
+	Seja uma operação associativa dada sobre o conjunto
+	\(S\). Há uma única forma de definir, para todo inteiro \(n\), um
+	produto de \(n\) elementos \(a_1,\dots,a_n \in S\) (diremos
+	\([a_1\dotsb a_n]\)) com as seguintes propriedades:
+	
+	\begin{enumerate}
+		\def\labelenumi{\arabic{enumi}.}
+		\item
+		o produto \([a_1]\) de um elemento é o próprio elemento;
+		\item
+		o produto \([a_1a_2]\) de dois elementos é dado pela operação binária;
+		\item
+		para todo inteiro \(1\leq i\leq n\),
+		\([a_1\dotsb a_n] = [a_1\dotsb a_i][a_{i+1}\dotsb a_n]\).
+	\end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+	A demonstração dessa proposição é feita por indução em \(n\).
+\end{proof}
+
+\begin{definicao}
+	Dizemos que \(e\in S\) é \emph{identidade} para uma operação binária se \(ea = ae = a\) para todo \(a\in S\).
+\end{definicao}
+
+\begin{proposicao}
+	O elemento identidade é único.
+\end{proposicao}
+\begin{proof}
+	Se \(e,e'\) são identidades, já que \(e\) é identidade, então \(ee' = e'\) e, como $e'$ é uma identidade, \(ee' = e\). Logo \(e = e'\), isto é, a identidade é única.
+\end{proof}
+
+\begin{observacao}
+	Usaremos $\vec{1}$ para representar a identidade multiplicativa e $\vec{0}$ para denotar a aditiva.
+\end{observacao}
+
+\begin{definicao}[Elemento inverso]
+	Seja uma operação binária que possua uma identidade. Um elemento \(a\in S\) é chamado \emph{invertível} se há um outro elemento \(b\in S\) tal que \(ab = ba = 1\). Desde que \(b\) exista, ela é única e a denotaremos por \(a^{-1}\) e a chamaremos
+	\emph{inversa de $a$}.
+\end{definicao}
+
+
+\begin{proposicao}
+	Se \(a,b\in S\) possuem inversa, então a composição \((ab)^{-1} = b^{-1}a^{-1}\).
+\end{proposicao}
+
+\begin{observacao}[Potências]
+	Usaremos as seguintes notações:
+	\begin{itemize}
+		\item \(a^n = a^{n-1}a\) é a composição de \(a\dotsb a\) \(n\) vezes;
+		\item \(a^{-n}\) é a inversa de \(a^n\);
+		\item \(a^0 = \vec{1}\).
+	\end{itemize}
+	
+	Com isso, tem-se que \(a^{r+s} = a^ra^s\) e \((a^r)^s = a^{rs}\). (Isso
+	não induz uma notação de fração \(\frac{b}{a}\) a menos que seja uma operação
+	comutativa, visto que \(ba^{-1}\) pode ser diferente de \(a^{-1}b\)).
+	Para falar de uma operação aditiva, usaremos \(-a\) no lugar de
+	\(a^{-1}\) e \(na\) no lugar de \(a^n\).
+\end{observacao}
+
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+
+\bibliographystyle{unsrt}
+\bibliography{../../references}
+
+\end{document}
