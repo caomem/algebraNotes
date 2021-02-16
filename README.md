@@ -24,6 +24,7 @@
 20. [ ] definir relação inversa
 21. [ ] Realocar a seção "restrição de um homomorfismo", além de expandir com exemplos.  Talvez ficará legal junto com o Teorema de Cayley (seção atual de permutações)
 22. [ ] Decomponível e indecomponível - trocar redutível
+23. [ ] Merge dos resumos no texto completo
 
 ## doubts
 
