@@ -1,3 +1,4 @@
+% !TeX spellcheck = pt_BR
  \documentclass[a4paper,12pt]{report}
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage[brazil]{babel}
@@ -914,7 +915,7 @@ um grupo \(G\).
 \section{Estrutura de grupos abelianos finitamente gerados}
 
 \begin{teorema}[Teorema fundamental dos grupos abelianos finitamente gerados] \label{teo:abelianfinitelygenerately}
-	Todo grupo abeliano finitamente gerado $G$ é isomorfo a um produto de grupos cíclicos na forma $$\mathbb{Z}_{(p_1)^{r_1}}\times\mathbb{Z}_{(p_2)^{r_2}}\times\dots\times\mathbb{Z}_{(p_n)^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\times\dots\times\mathbb{Z} $$ onde os $p_i$ são primos, não necessariamente distintos, e os $r_i$ são inteiros positivos. O produto é único, exceto por possíveis rearranjos dos fatores; isso é, o número (chamado \emph{número Betti de $G$}) de fatores $\mathbb{Z}$ é único e as potências de primos $(p_i)^{r_i}$ são únicas.
+	Todo grupo abeliano finitamente gerado $G$ é isomorfo a um produto de grupos cíclicos na forma $$\mathbb{Z}_{(p_1)^{r_1}}\times\mathbb{Z}_{(p_2)^{r_2}}\times\dots\times\mathbb{Z}_{(p_n)^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\times\dots\times\mathbb{Z} $$ onde os $p_i$ são primos, não necessariamente distintos, os $r_i$ são inteiros positivos e o conjunto $\mathbb{Z}_n = \{0,1,\dots,n-1\}$. O produto é único, exceto por possíveis rearranjos dos fatores; isso é, o número (chamado \emph{número Betti de $G$}) de fatores $\mathbb{Z}$ é único e as potências de primos $(p_i)^{r_i}$ são únicas.
 \end{teorema}
 
 \begin{exemplo}
@@ -934,12 +935,12 @@ um grupo \(G\).
 	\end{solucao}
 \end{exemplo}
 
-\begin{definicao}[Grupo redutível e irredutível]
-	Um grupo é dito \emph{redutível} se ele é isomorfo a um produto direto de dois subgrupos não triviais. Do contrário, é dito \emph{irredutível}.
+\begin{definicao}[Grupo decomponível e indecomponível]
+	Um grupo é dito \emph{decomponível} se ele é isomorfo a um produto direto de dois subgrupos não triviais. Do contrário, é dito \emph{indecomponível}.
 \end{definicao}
 
 \begin{proposicao}
-	Os grupos abelianos finitos irredutíveis são exatamente os grupos cíclicos que possuem a ordem de uma potência prima.
+	Os grupos abelianos finitos indecomponível são exatamente os grupos cíclicos que possuem a ordem de uma potência prima.
 \end{proposicao}
 
 \begin{proposicao}
@@ -951,6 +952,13 @@ um grupo \(G\).
 \end{proposicao}
 
 \section{Grupos de Quociente}
+
+\begin{definicao}[Operação induzida por bijeção]
+	Seja um grupo $G$ e um conjunto $S$ com a mesma cardinalidade de $G$. Por conta disso, há uma correspondência injetiva $\leftrightarrow$ entre $S$ e $G$. Podemos definir uma \emph{operação binária sobre $S$ induzida pela relação com os elementos de $G$}, da forma
+	$$\text{se }x\leftrightarrow g_1,\ y\leftrightarrow g_2\ \text{e}\ z\leftrightarrow g_1g_2\ \text{então} \ xy = z,$$ onde $x,y,z\in S$ e $g_1g_2\in G$. Também, a direção $\rightarrow$ da correspondência biunívoca $s\leftrightarrow g$ define uma função bijetiva $\mho: S \longrightarrow G$, isto é
+	$$\text{se }\mho(x)\leftrightarrow g_1,\ \mho(y)\leftrightarrow g_2\ \text{e}\ \mho(z)\leftrightarrow g_1g_2\ \text{então} \ xy = z.$$
+	Assim, como $\mho(xy) =\mho(z) = g_1g_2 = \mho(x)\mho(y)$, a propriedade de homomorfismo é respeitada e $\mho$ representa um isomorfismo que mapeia o grupo $S$ no grupo $G$.
+\end{definicao}
 
 \begin{proposicao}
 	Seja \(N\) um subgrupo normal de um grupo \(G\).

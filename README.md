@@ -25,10 +25,12 @@
 21. [ ] Realocar a seção "restrição de um homomorfismo", além de expandir com exemplos.  Talvez ficará legal junto com o Teorema de Cayley (seção atual de permutações)
 22. [ ] Decomponível e indecomponível - trocar redutível
 23. [ ] Merge dos resumos no texto completo
+24. [ ] Colocar o teorema 0.22 do john no lugar daquela observaçao.
+25. [ ] Merge theo 13.15 jhon com def classe lateral em relacao ao nucleo.
 
 ## doubts
 
-1. [X] a lei de composição precisa ser fechada? se a,b in G então ab in G?  
+1. [X] a lei de composição precisa ser fechada? se a,b in G então ab in G?
 2. [X] standby: sobre o isomorfismo preservar as *propriedades* da estrutura algébrica, devo esperar aparecer essa proposição em algum lugar? Ainda não sei demonstrar isso, mas parece que seria o mesmo que dizer que a "lei de composição é equivalente", algo como uma operação isomórfica. (john pag 31)
 3. [X] Ajuda para unir a seção de restrição de homomorfismo para subgrupo e o lema do teorema de cayley.
 4. [X] grupo decomposable é redutível?
@@ -36,6 +38,7 @@
 6. [ ] como eu faço para mostrar que todo elemento inverso de um elemento do centro também pertence ao centro? (quero mostrar que o centro é subgrupo); tenta por absurdo
 7. [X] como uma permutação é bijetiva, preciso ficar especificando a quantidade de elementos de uma permutação sobre $S_n$? (como na def 1.8.5); é sinonimo;
 8. [X] Exemplo 13.8 do john.
-
+9. [ ] Por que existem aqueles resultados legais sobre grupos abelianos finitos (decomponivel e tal), por que tem que ser abeliano?
+10. [ ] prop 1.10.5. então se ela não for injetiva (nu $\phi \neq \{1\}$, cada elemento de $G$ estará associado obrigatoriamente com |nu $\phi$| elementos em $G'$?
 
 
