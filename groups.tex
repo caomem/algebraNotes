@@ -353,7 +353,7 @@ inversos.
 
 \begin{exemplo}[Conjugação]
 	 Seja \(b\in G\) um elemento fixo. Então, a
-	\emph{conjugação de \(G\) por \(b\)} é o mapeamento \(\varphi\) de \(G\)
+	\emph{conjugação de \(G\) por \(b\)} (também chamado \emph{automorfismo interno de $G$ por $g$}) é o mapeamento \(\varphi\) de \(G\)
 	para ele mesmo definido por
 	\[\varphi_b(x) = bxb^{-1}.\]
 	Esse é um automorfismo porque:
@@ -494,7 +494,7 @@ inversos.
 	\(\bar{a}, \bar{b} \in \bar{S}\).
 \end{observacao}
 
-\begin{definicao}
+\begin{definicao}[Equivalência induzida por aplicação]
 	Seja um mapeamento \(\varphi: S \longrightarrow T\).
 	Chama-se de \emph{relação de equivalência determinada por \(\varphi\)} a
 	relação dada por \(\varphi(a) = \varphi(b) \Rightarrow a \sim b\). Além
@@ -795,7 +795,7 @@ um grupo \(G\).
 	\(G\times G'\) é um grupo formado pelo produto das componentes dos
 	grupos \(G\) e \(G'\), isso é, pela regra
 	
-	\[ (a,a'), (b,b') \rightsquigarrow (ab,a'b'), \] onde \(a,b \in G\) e
+	\[ (a,a'), (b,b') \mapsto (ab,a'b'), \] onde \(a,b \in G\) e
 	\(a',b'\in G'\). O par \((1,1)\) é uma identidade e
 	\((a,a')^{-1} = (a^{-1},a'^{-1})\). A propriedade associativa é
 	preservada em \(G\times G'\) pois também é em \(G\) e \(G'\).
@@ -822,10 +822,10 @@ um grupo \(G\).
 	Seja
 	\(H\) um grupo qualquer. O homomorfismo
 	\(\Phi: H\longrightarrow G\times G'\) tem correspondência biunívoca com
-	o par \((\varphi, \varphi')\) de homomorfismos
+	o par $ \Phi(h) = (\varphi(h), \varphi'(h))$ de homomorfismos
 	\[\varphi:H\longrightarrow G, \quad \varphi': H\longrightarrow G'.\]
 	O núcleo de \(\Phi\) é a interseção
-	\((\text{nu }\phi)\cap(\text{ nu }\phi').\)	
+	\((\text{nu }\varphi)\cap(\text{ nu }\varphi').\)	
 \end{proposicao}
 
 \begin{observacao}
@@ -919,7 +919,7 @@ um grupo \(G\).
 \end{teorema}
 
 \begin{exemplo}
-	Queremos encontrar todos os grupos abelianos de ordem 360, \emph{a menos de isomorfismos}. Dizer \emph{a menos de isomorfismo} significa que qualquer grupo abeliano de ordem 360 deve ser estruturalmente idêntico --- isto é, isomorfo --- a um 
+	Queremos encontrar todos os grupos abelianos de ordem 360, \emph{a menos de isomorfismos}. Dizer \emph{a menos de isomorfismo} significa que qualquer grupo abeliano de ordem 360 deve ser estruturalmente idêntico --- isto é, isomorfo --- a algum presente no conjunto solução.
 	\begin{solucao}
 		Já qe nossos grupos são da ordem finita 360, não aparecerão $\mathbb{Z}$ no produto. Primeiro, vamos expressar 360 como um produto de potências de primos: $360 = 2^33^25$. Então, pelo Teorema~\ref{teo:abelianfinitelygenerately}, temos as seguintes possibilidades
 		\begin{enumerate}
@@ -951,62 +951,72 @@ um grupo \(G\).
 	Se $m$ é um \emph{quadrado inteiro livre}, isto é, $m$ não é divisível por nenhum quadrado de primo, então todo grupo abeliano de ordem $m$ é cíclico.
 \end{proposicao}
 
-\section{Grupos de Quociente}
+\section{Grupos Quociente}
 
-\begin{definicao}[Operação induzida por bijeção]
-	Seja um grupo $G$ e um conjunto $S$ com a mesma cardinalidade de $G$. Por conta disso, há uma correspondência injetiva $\leftrightarrow$ entre $S$ e $G$. Podemos definir uma \emph{operação binária sobre $S$ induzida pela relação com os elementos de $G$}, da forma
-	$$\text{se }x\leftrightarrow g_1,\ y\leftrightarrow g_2\ \text{e}\ z\leftrightarrow g_1g_2\ \text{então} \ xy = z,$$ onde $x,y,z\in S$ e $g_1g_2\in G$. Também, a direção $\rightarrow$ da correspondência biunívoca $s\leftrightarrow g$ define uma função bijetiva $\mho: S \longrightarrow G$, isto é
-	$$\text{se }\mho(x)\leftrightarrow g_1,\ \mho(y)\leftrightarrow g_2\ \text{e}\ \mho(z)\leftrightarrow g_1g_2\ \text{então} \ xy = z.$$
-	Assim, como $\mho(xy) =\mho(z) = g_1g_2 = \mho(x)\mho(y)$, a propriedade de homomorfismo é respeitada e $\mho$ representa um isomorfismo que mapeia o grupo $S$ no grupo $G$.
+\begin{definicao}[Produto de classes laterais] Sejam $N\trianglelefteq G$ e as classes laterais \(\bar a = aN\) e \(\bar b = bN\), para $a,b \in G$. Chamamos de \emph{produto das classes laterais \(\bar a\) e \(\bar b\)} a classe lateral \(\bar a \bar b = abN\), isto é, a classe lateral que contém \(ab\).	
 \end{definicao}
 
-\begin{proposicao}
-	Seja \(N\) um subgrupo normal de um grupo \(G\).
-	Então, o produto de duas classes laterais \(aN\), \(bN\) também é uma classe lateral
-	\[(aN) (bN) = abN.\]
-\end{proposicao}
 
-\begin{definicao}[Produto de coclases]
-	Sejam as classes laterais \(C_1, C_2\) e os elementos
-	\(a\in C_1\) e \(b\in C_2\), então \(C_1 = aN\) e \(C_2 = bN\). Chamamos
-	de \emph{produto das classes laterais \(C_1\) e \(C_2\)} a classe lateral
-	\(C_1C_2 = abN\), isto é, a classe lateral que contém \(ab\).	
-\end{definicao}
-
-\begin{observacao}[Notação para conjunto de classes laterais]
-	É conveniente denotar o \emph{conjunto de classes laterais de um subconjunto normal \(N\) de um grupo \(G\)} pela simbologia \[G/N = \text{conjunto de classes laterais de }N\text{ em }G.\] Também pode-se	usar a notação em barra \(G/N = \bar G\) e \(aN = \bar a\), tomando o
-	cuidado para diferenciar que \(\bar a\) denota a classe lateral que contém
-	\(a\).	
-\end{observacao}
-
-\begin{proposicao}
-	Seja o mapeamento \(\pi: G \longrightarrow \bar G = G/N\), da forma
-	\(a \rightsquigarrow \bar a = aN\), isto é, \(\bar G\) é um grupo e o
-	mapeamento \(\pi\) é um homomorfismo com núcleo \(N\). Então a ordem de
-	\(G/N\) é o índice \([G:N]\).	
-\end{proposicao}
-
-\begin{proposicao}
-	Todo subgrupo normal de um grupo \(G\) é o núcleo
-	de um homomorfismo.	
-\end{proposicao}
-
-\begin{proposicao}
+\begin{proposicao}\label{prop:grupoInduzidoPorOutro}
 	Sejam \(G\) um grupo e \(S\) um conjunto qualquer
 	com uma lei de composição. Seja também \(\varphi:G\longrightarrow S\) um
 	mapeamento sobrejetivo tal que \(\varphi(a)\varphi(b) = \varphi(ab)\)
 	para todo \(a\), \(b\in G\). Então \(S\) é um grupo.	
 \end{proposicao}
 
-\textbf{Proposição (Primeiro teorema do isomorfismo):} Sejam
-\(\varphi:G \longrightarrow G'\) um homomorfismo de grupo sobrejetivo e
-\(N\) o núcleo de \(\varphi\). Então \(G/N\) é isomórfico a \(G'\) pelo
-mapeamento \(\bar\varphi\) que transporta a classe lateral \(\bar a = aN\)
-para \(\varphi(a)\):
+\begin{definicao}[Operação induzida por bijeção]
+	Seja um grupo $G$ e um conjunto $S$ com a mesma cardinalidade de $G$. Por conta disso, há uma correspondência injetiva $\leftrightarrow$ entre $S$ e $G$. Podemos definir uma \emph{operação binária sobre $S$ induzida pela relação com os elementos de $G$}, da forma
+	$$\text{se }x\leftrightarrow g_1,\ y\leftrightarrow g_2\ \text{e}\ z\leftrightarrow g_1g_2\ \text{então} \ xy = z,$$ onde $x,y,z\in S$ e $g_1g_2\in G$. Também, a direção $\rightarrow$ da correspondência biunívoca $s\leftrightarrow g$ define uma função bijetiva $\mho: S \longrightarrow G$, isto é
+	$$\text{se }\mho(x) = g_1,\ \mho(y) = g_2\ \text{e}\ \mho(z)= g_1g_2\ \text{então} \ xy = z.$$
+	Assim, como $\mho(xy) =\mho(z) = g_1g_2 = \mho(x)\mho(y)$, a Proposição~\ref{prop:grupoInduzidoPorOutro} garante que $S$ é um grupo e, além disso, $\mho$ representa um isomorfismo que mapeia o grupo $S$ no grupo $G$.
+\end{definicao}
 
-\[\bar\varphi(\bar a) = \varphi(a).\]
+\begin{teorema}[Grupo quociente]
+	Seja $\phi: G \longrightarrow G'$ um homomorfismo de grupos com núcleo $H$. O conjunto de todas as classes laterais de $H$ formam o chamado \emph{grupo de quociente} $G/H$ (lê-se $G$ sobre $H$, não confundir com $G$ dividido por $H$), onde $(aH)(bH) = (ab)H$, para todo $a,b \in G$. Também, o mapa $\mho: G/H \longrightarrow \phi[G]$ definido por $\mho(aH) = \phi(a)$ é um isomorfismo. Tanto a multiplicação de classes laterais como $\mho$ estão bem definidos, isto é, independem das escolhas de $a$ e $b$.
+\end{teorema}
 
-Esse é o método fundamental para identificar grupos de quocientes.
+\begin{proposicao}
+	Seja $H$ um subgrupo de um grupo $G$. Então, a multiplicação da classe lateral a esquerda é bem definida pela equação
+	$$(aH)(bH) = (ab)H$$
+	se e somente se $H$ é um subgrupo normal de $G$.
+\end{proposicao}
+
+\begin{corolario}\label{cor:factorGroup}
+	Se $N\trianglelefteq G$, então as classes laterais de $N$ formam um grupo $G/N$ sobre a operação binária $(aN)(bN) = (ab)N$.
+\end{corolario}
+
+\begin{definicao}[Grupo quociente]
+	O grupo $G/H$ no corolário~\ref{cor:factorGroup} se chama \emph{grupo quociente} (ou, \emph{grupo fator}) de $G$ por $H$.
+\end{definicao}
+
+\begin{exemplo}
+	Como $\mathbb{Z}$ é um grupo abeliano, $n\mathbb{Z}$ é um subgrupo normal. O corolário~\ref{cor:factorGroup} permite a construção do grupo quociente $\mathbb{Z}/n\mathbb{Z}$ sem citar um homomorfismo.
+\end{exemplo}
+
+\begin{proposicao}[Homomorfismo induzido por grupo quociente]
+	Seja $H\trianglelefteq G$. Então $\gamma: G\longrightarrow G/H$ dado por $\gamma(x) = xH$ é um homomorfismo com núcleo $H$.
+\end{proposicao}
+
+\begin{corolario}
+	Todo subgrupo normal de um grupo \(G\) é o núcleo
+	de um homomorfismo.
+\end{corolario}
+
+\begin{teorema}[Teorema fundamental do homomorfismo]
+	Seja $\phi: G\longrightarrow G'$ um homomorfismo de grupo com núcleo $H$. Então $\phi[G]$ é um grupo e $\mu: G/H \longrightarrow \phi[G]$ dado por $\mu(gH) = \phi(g)$ é um isomorfismo. Se $\gamma: G\longrightarrow G/H$ é o homomorfismo dado por $\gamma(g) = gH$, então $\phi(g) = \mu\gamma(g)$ para cada $g\in G$.
+\end{teorema}
+
+
+
+%\textbf{Proposição (Primeiro teorema do isomorfismo):} Sejam
+%\(\varphi:G \longrightarrow G'\) um homomorfismo de grupo sobrejetivo e
+%\(N\) o núcleo de \(\varphi\). Então \(G/N\) é isomórfico a \(G'\) pelo
+%mapeamento \(\bar\varphi\) que transporta a classe lateral \(\bar a = aN\)
+%para \(\varphi(a)\):
+
+%\[\bar\varphi(\bar a) = \varphi(a).\]
+
+%Esse é o método fundamental para identificar grupos de quocientes.
 
 
 \phantomsection

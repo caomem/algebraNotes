@@ -27,6 +27,8 @@
 23. [ ] Merge dos resumos no texto completo
 24. [ ] Colocar o teorema 0.22 do john no lugar daquela observaçao.
 25. [ ] Merge theo 13.15 jhon com def classe lateral em relacao ao nucleo.
+26. [ ] Definir o elemento $a$ na definição de classes laterais.
+27. [ ] Exemplo 14.2 do jhon. 
 
 ## doubts
 
@@ -35,10 +37,12 @@
 3. [X] Ajuda para unir a seção de restrição de homomorfismo para subgrupo e o lema do teorema de cayley.
 4. [X] grupo decomposable é redutível?
 5. [X] definição 1.13.1, subgrupo apropriado? $S \subsetneq B$
-6. [ ] como eu faço para mostrar que todo elemento inverso de um elemento do centro também pertence ao centro? (quero mostrar que o centro é subgrupo); tenta por absurdo
+6. [X] como eu faço para mostrar que todo elemento inverso de um elemento do centro também pertence ao centro? (quero mostrar que o centro é subgrupo); tenta por absurdo
 7. [X] como uma permutação é bijetiva, preciso ficar especificando a quantidade de elementos de uma permutação sobre $S_n$? (como na def 1.8.5); é sinonimo;
 8. [X] Exemplo 13.8 do john.
 9. [ ] Por que existem aqueles resultados legais sobre grupos abelianos finitos (decomponivel e tal), por que tem que ser abeliano?
 10. [ ] prop 1.10.5. então se ela não for injetiva (nu $\phi \neq \{1\}$, cada elemento de $G$ estará associado obrigatoriamente com |nu $\phi$| elementos em $G'$?
-
+11. [ ] pag 136.    
+12. [ ] eu posso ver (aH)(bH) como um produto de grupos ou tenho que sempre entender que estou tirando um elemento de aH e bH?
+13. [ ] John faz uma análise de "bem definida" (pag 138), preciso falar sobre isso? Não achei necessário.
 
