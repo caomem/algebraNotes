@@ -43,14 +43,50 @@
 \newenvironment{solucao}
 {\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
 
-\title{\textsc{Operações Binárias}\\ \textsl{um resumo}}
+\title{\textsc{Homomorfismos de Anéis}\\ \textsl{um resumo}}
 \author{Guilherme Philippi}
 \begin{document}
 	\maketitle
 	
-	Apresenta-se nesse texto um compilado de definições e resultados envolvendo os principais conceitos de operações binárias. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, dominguesAlgebra}, principalmente de \cite{dominguesAlgebra}.
+	Esse texto pretende ser uma introdução aos conceitos fundamentais entorno de homomorfismos de anéis. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, dominguesAlgebra}, principalmente de \cite{dominguesAlgebra}.
 	
-	\section{Homomorfismo de anéis}
+	\section{Anéis}
+	
+	\begin{definicao}[Grupo]
+		Um \emph{grupo} $(G,*)$ é um conjunto \(G\) onde uma lei de
+		composição $*$ é dada sobre \(G\) tal que os seguintes axiomas são satisfeitos:
+		
+		\begin{enumerate}
+			\item \emph{(Associatividade).} Para todo $a,b,c \in G$, tem-se $$(a*b)*c = a*(b*c);$$
+			\item \emph{(Existência da identidade).} Existe um elemento $\vec{1}\in G$ tal que, para todo $a\in G$, $$\vec{1}*a = a*\vec{1} = a;$$
+			\item \emph{(Existência do inverso).} Para todo $a\in G$ existe um elemento $a'\in G$ tal que $$a*a' = a'*a = \vec{1}.$$
+		\end{enumerate}
+	\end{definicao}
+	
+	\begin{definicao}[Grupo abeliano]
+		Um \emph{grupo abeliano} é um grupo $G$ com uma \emph{lei de
+		composição comutativa}, isto é, $a*b = b*a$, para todo $a,b \in G$.
+	\end{definicao}
+	
+	\begin{definicao}[Anel]
+		Um \emph{anel} $(R, +, \cdot)$ é um conjunto $R$ acompanhado de duas operações binárias $+$ e $\cdot$ definidas sobre $R$ tais que os seguintes axiomas são satisfeitos:
+		\begin{enumerate}
+			\item $(R, +)$ é um grupo abeliano.
+			\item A operação $\cdot$ é associativa.
+			\item Para todo $a,b,c\in R$, valem a \emph{lei da distributividade à esquerda} $$a\cdot(b+c) = (a\cdot b) + (a\cdot c)$$ e a \emph{lei de distributividade à direita} $$(a+b)\cdot c = (a\cdot c) + (b\cdot c).$$
+		\end{enumerate}
+	\end{definicao}
+	
+	\begin{observacao}[Notação]
+		É comum abusar da notação e chamar um grupo $(G,*)$ e o conjunto de	seus elementos $G$ pelo mesmo simbolo, omitindo a lei de composição na falta de ambiguidade. Da mesma forma, costuma-se denotar o anel $(R, +, \cdot)$ apenas por seu conjunto $R$.
+	\end{observacao}
+	
+	\section{Homomorfismos de anéis}
+	
+	\begin{definicao}[Homomorfismo de anéis]
+		Sejam dois anéis $(R, +, \cdot)$ e $(R', +', \cdot')$. Um mapa $\phi: R \longrightarrow R'$ é um \emph{homomorfismo} se a \emph{propriedade de homomorfismo} vale para ambas as operações, isso é, se, para todo $a,b\in R$,
+				$$\phi(a+b) = \phi(a) +' \phi(b) \text{ e } \phi(a\cdot b) = \phi(a) \cdot' \phi(b).$$
+	\end{definicao}
 	
 	
 	\phantomsection
