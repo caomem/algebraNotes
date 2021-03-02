@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{MnSymbol}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\usepackage{color}
+\definecolor{Blue}{rgb}{0,0,0.9}
+\definecolor{Red}{rgb}{0.9,0,0}
+\usepackage{esvect}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{blkarray}
+\newcommand\Mark[1]{\textsuperscript#1}
+\usepackage{pgfplots}
+\usepackage{amsfonts}
+\usepackage[english, ruled, linesnumbered]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{enumitem}
+
+\newcommand{\nucleoe}{\emph{\text{nu }}}
+\newcommand{\nucleo}{\text{nu }}
+\newcommand{\imageme}{\emph{\text{nu }}}
+\newcommand{\imagem}{\text{nu }}
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{proposicao}{Proposição}[section]
+\newtheorem{corolario}{Corolário}[section]
+
+\theoremstyle{definition}
+\newtheorem{definicao}{Definição}[section]
+\newtheorem{observacao}{Observação}[section]
+\newtheorem{exemplo}{Exemplo}[section]
+
+\newenvironment{solucao}
+{\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
+
+\title{\textsc{Operações Binárias}\\ \textsl{um resumo}}
+\author{Guilherme Philippi}
+\begin{document}
+	\maketitle
+	
+	Apresenta-se nesse texto um compilado de definições e resultados envolvendo os principais conceitos de operações binárias. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, dominguesAlgebra}, principalmente de \cite{dominguesAlgebra}.
+	
+	\section{Homomorfismo de anéis}
+	
+	
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+	
+	\bibliographystyle{unsrt}
+	\bibliography{../../references}
+	
+\end{document}
