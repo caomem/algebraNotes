@@ -29,6 +29,7 @@
 25. [ ] Merge theo 13.15 jhon com def classe lateral em relacao ao nucleo.
 26. [ ] Definir o elemento $a$ na definição de classes laterais.
 27. [ ] Exemplo 14.2 do jhon. 
+28. [ ] merge sec 3.15 do jhon.
 
 ## doubts
 
@@ -45,4 +46,5 @@
 11. [ ] pag 136.    
 12. [ ] eu posso ver (aH)(bH) como um produto de grupos ou tenho que sempre entender que estou tirando um elemento de aH e bH?
 13. [ ] John faz uma análise de "bem definida" (pag 138), preciso falar sobre isso? Não achei necessário.
+14. [ ] existe diferença na notação $<C,*,\cdot>$ e $(C,*,\cdot)$? Quero representar um anel.
 
