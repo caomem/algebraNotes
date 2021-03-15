@@ -50,7 +50,7 @@
 	
 	Esse texto pretende ser uma introdução aos conceitos fundamentais entorno de homomorfismos de anéis. Tudo que aqui se apresenta fora extraído de \cite{johnAlgebra, michalAlgebra, dominguesAlgebra}, principalmente de \cite{dominguesAlgebra}.
 	
-	\section{Anéis}
+	\section{Grupos}
 	
 	\begin{definicao}[Grupo]
 		Um \emph{grupo} $(G,*)$ é um conjunto \(G\) onde uma lei de
@@ -62,31 +62,108 @@
 			\item \emph{(Existência do inverso).} Para todo $a\in G$ existe um elemento $a'\in G$ tal que $$a*a' = a'*a = \vec{1}.$$
 		\end{enumerate}
 	\end{definicao}
+
+	\begin{observacao}[Notação]
+		É comum abusar da notação e chamar um grupo $(G,*)$ e o conjunto de	seus elementos $G$ pelo mesmo simbolo, omitindo a lei de composição, na falta de ambiguidade. Também, quando não houver ambiguidade, suprimiremos o simbolo da lei, fazendo $a*b = ab$.
+	\end{observacao}
 	
 	\begin{definicao}[Grupo abeliano]
 		Um \emph{grupo abeliano} é um grupo $G$ com uma \emph{lei de
-		composição comutativa}, isto é, $a*b = b*a$, para todo $a,b \in G$.
+		composição comutativa}, isto é, $ab = ba$, para todo $a,b \in G$.
 	\end{definicao}
+
+	\begin{proposicao}[Lei do cancelamento]
+		Seja \(a,b,c\) elementos de um grupo \(G\). Se \(ab = ac\), então \(b = c\).
+	\end{proposicao} 
+
+	\section{Anéis}
 	
 	\begin{definicao}[Anel]
 		Um \emph{anel} $(R, +, \cdot)$ é um conjunto $R$ acompanhado de duas operações binárias $+$ e $\cdot$ definidas sobre $R$ tais que os seguintes axiomas são satisfeitos:
 		\begin{enumerate}
 			\item $(R, +)$ é um grupo abeliano.
 			\item A operação $\cdot$ é associativa.
-			\item Para todo $a,b,c\in R$, valem a \emph{lei da distributividade à esquerda} $$a\cdot(b+c) = (a\cdot b) + (a\cdot c)$$ e a \emph{lei de distributividade à direita} $$(a+b)\cdot c = (a\cdot c) + (b\cdot c).$$
+			\item Para todo $a,b,c\in R$ vale a \emph{lei da distributividade à esquerda} e a \emph{lei de distributividade à direita}, respectivamente, $$a\cdot(b+c) = (a\cdot b) + (a\cdot c)\quad \text{e} \quad (a+b)\cdot c = (a\cdot c) + (b\cdot c).$$
 		\end{enumerate}
 	\end{definicao}
 	
-	\begin{observacao}[Notação]
-		É comum abusar da notação e chamar um grupo $(G,*)$ e o conjunto de	seus elementos $G$ pelo mesmo simbolo, omitindo a lei de composição na falta de ambiguidade. Da mesma forma, costuma-se denotar o anel $(R, +, \cdot)$ apenas por seu conjunto $R$.
-	\end{observacao}
+	\begin{exemplo}
+		Todo subconjunto dos números complexos que é fechado para a adição e multiplicação usual dos complexos é um anel. Por exemplo, $(\mathbb{Z}, +, \cdot)$, $(\mathbb{Q}, +, \cdot)$, $(\mathbb{R}, +, \cdot)$ e $(\mathbb{C}, +, \cdot)$ são todos anéis.
+	\end{exemplo}
 	
+	\begin{observacao}[Notação]
+		 Da mesma forma que com os grupos, costuma-se denotar o anel $(R, +, \cdot)$ apenas por seu conjunto $R$. Também, para um anel $(R, +, \cdot)$, chama-se sua primeira operação $+$ de \emph{adição do anel} e sua segunda operação $\cdot$ de \emph{multiplicação do anel}. 
+	\end{observacao}
+
+	\begin{proposicao}
+		Se $R$ é um anel com identidade aditiva $\vec 0$, então, $\forall a \in R$, $$\vec 0 \cdot a = a \cdot \vec 0 = \vec 0.$$
+	\end{proposicao}
+	\begin{proof}
+		Como $(R, +)$ é um grupo abeliano, tem-se que $$a\vec 0 + a\vec 0 = a(\vec 0 + \vec 0) = a\vec 0 = \vec 0 + a\vec 0.$$ E, pela lei de cancelamento do grupo, $$a\vec0 + a\vec 0 = \vec 0 + a\vec 0 \ \implies \ a\vec 0 = \vec 0.$$
+		De forma semelhante, $$\vec 0a + \vec 0a = (\vec 0 + \vec 0)a = \vec 0a = \vec 0 + \vec 0a \ \implies \ \vec 0a = \vec 0.$$ Daí, segue que $a\vec 0 = \vec 0a = \vec 0$. 
+	\end{proof}
+
+	\begin{proposicao}
+		Se $R$ é um anel, então, para todo $a,b\in R$ vale
+		\begin{enumerate}
+			\item $a(-b) = (-a)b = -(ab)$ e
+			\item $(-a)(-b) = ab.$
+		\end{enumerate}
+	\end{proposicao}
+
 	\section{Homomorfismos de anéis}
 	
 	\begin{definicao}[Homomorfismo de anéis]
 		Sejam dois anéis $(R, +, \cdot)$ e $(R', +', \cdot')$. Um mapa $\phi: R \longrightarrow R'$ é um \emph{homomorfismo} se a \emph{propriedade de homomorfismo} vale para ambas as operações, isso é, se, para todo $a,b\in R$,
-				$$\phi(a+b) = \phi(a) +' \phi(b) \text{ e } \phi(a\cdot b) = \phi(a) \cdot' \phi(b).$$
+				$$\phi(a+b) = \phi(a) +' \phi(b) \quad \text{e} \quad \phi(a\cdot b) = \phi(a) \cdot' \phi(b).$$
 	\end{definicao}
+	
+	\begin{exemplo}[Homomorfismo trivial]
+		Sejam os anéis $R$, $R'$ e o elemento neutro $\vec 0$ da adição do anel $R'$. A aplicação $\phi: R\longrightarrow R'$ definida por $\phi(a) = \vec 0$, para todo $a\in R$, é um homomorfismo de anéis porque $$\phi(a + b) = \vec 0 = \vec 0 \ +' \vec 0 = f(a) +' f(b) \quad \text{e} \quad f(a\cdot b) = \vec 0 = \vec 0 \ \cdot' \vec 0 = f(a)\ \cdot' f(b).$$
+		A essa aplicação dá-se o nome \emph{homomorfismo trivial de anéis}.
+	\end{exemplo}
+	
+	\begin{definicao}[Homomorfismo injetivo e sobrejetivo]
+		Chama-se de \emph{homomorfismo injetivo} e \emph{homomorfismo sobrejetivo} um homomorfismo de anéis definido, respectivamente, por uma função injetiva ou uma função sobrejetiva.
+	\end{definicao}
+
+	\begin{exemplo}
+		Seja o homomorfismo de anéis $\phi: \mathbb{Z} \longrightarrow \mathbb{Z}\times \mathbb{Z}$ tal que $\phi(n) = (n,0)$, para todo $n\in\mathbb{Z}$. Perceba que, para cada $(n,0)\in \mathbb{Z}\times \mathbb{Z}$ tem-se um único $n\in \mathbb{Z}$ tal que $\phi(n) = (n,0)$, daí, $\phi$ é injetiva e esse é um homomorfismo injetivo. Também, seja $\mu:\mathbb{Z}\times\mathbb{Z} \longrightarrow \mathbb{Z}$ o homomorfismo tal que $\mu(n,m) = n$ para todo $(n,m)\in \mathbb{Z}\times \mathbb{Z}$. É fácil perceber que para todo $z\in \mathbb{Z}$, existirá $(z,0)\in \mathbb{Z}\times \mathbb{Z}$, donde $\mu$ é um homomorfismo sobrejetivo.
+	\end{exemplo}
+	
+	\begin{proposicao}
+		Se $\phi: R \longrightarrow R'$ é um homomorfismo de anéis, então, para todo $a,b\in A$,
+		\begin{itemize}
+			\item $\phi(0_R) = 0_{R'}$,
+			\item $\phi(-a) = -\phi(a)$ e
+			\item $\phi(a-b) = \phi(a) - \phi(b)$.
+		\end{itemize} 	
+	\end{proposicao}
+	\begin{proof}
+		Como $\phi(a) = \phi(a+0_R) = \phi(a)+\phi(0_R)$, pela propriedade de homomorfismo, então, $$\phi(a) = \phi(a)+\phi(0_R) \implies -\phi(a)+\phi(a) = -\phi(a)+\phi(a)+\phi(0_R),$$ isto é, $0_{R'} = \phi(0_R)$.
+	\\
+	
+		\noindent Daí segue que, $$0_{R'} = \phi(0_R) = \phi(a - a) = \phi(a) + \phi(-a),$$
+		e como $0_{R'} = \phi(a) + \phi(-a)$, $$\phi(-a) = -\phi(a).$$
+		\noindent Fica evidente que $$\phi(a-b) = \phi(a) + \phi(-b) = \phi(a) - \phi(b).$$
+	\end{proof}
+	
+	\begin{proposicao}
+		Seja $\phi:R \longleftarrow	R'$ um homomorfismo de anéis onde $1_R \in R$ é identidade do produto de $R$. Então
+		\begin{itemize}
+			\item $R'$ possui identidade multiplicativa $1_{R'}$ e $\phi(1_R) = 1_{R'}$;
+			\item se $a\in R$ possui inversa multiplicativa $a^{-1}$, então $\phi(a)^{-1} = \phi(a^{-1})$.
+		\end{itemize}	
+	\end{proposicao}
+
+	\begin{definicao}[subanel]
+		
+	\end{definicao}
+	
+	
+	\begin{proposicao}
+		Se $\phi: R \longrightarrow R'$ é um homomorfismo de anéis e $S\leq R$
+	\end{proposicao}
 	
 	
 	\phantomsection
