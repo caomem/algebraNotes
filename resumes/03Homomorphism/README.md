@@ -4,7 +4,7 @@ Uma leitura e resumo sobre exemplos de homomorfismos de anéis.
 2. [X] Definir Homomorfismos de Anéis.
 3. [X] Definir Homomorfismo Injetivo.
 4. [X] Definir Homomorfismo Sobrejetivo.
-5. [ ] Definir Núcleo de Homomorfismo.
+5. [X] Definir Núcleo de Homomorfismo.
 6. [ ] Definir Imagem de Homomorfismo.
 7. [ ] Um exemplo escolhido do referido material ou de outro para cada definição.
 8. [ ] Enunciado das Proposições demonstradas no material.

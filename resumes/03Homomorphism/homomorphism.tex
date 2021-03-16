@@ -156,14 +156,66 @@
 		\end{itemize}	
 	\end{proposicao}
 
-	\begin{definicao}[subanel]
-		
+	\begin{definicao}[Imagem de homomorfismo de anéis]
+		A \emph{imagem} de um homomorfismo de anéis
+		\(\phi: R\longrightarrow R'\) é o subconjunto de \(R'\)	\[\text{im}\ \phi = \{x\in R' \ |\ x = \phi(a), \text{ para algum } a\in R\} = \phi(R).\]
 	\end{definicao}
-	
+
+	\begin{definicao}[subanel]
+		Um subconjunto $S$ de um anel $R$ é um subanel de $R$ (escreve-se $S\leq R$) se, e somente se, valem os seguintes axiomas:
+		\begin{enumerate}
+			\item \emph{(Existência do elemento nulo).} $0 \in S$;
+			\item \emph{(Subtração fechada).} $a-b \in S$, para todo $a,b\in S$;
+			\item \emph{(Produto fechado).} $ab\in S$, para todo $a,b\in S$.
+		\end{enumerate}
+	\end{definicao}
+
+	\begin{proposicao}
+		Seja $(S,+, \cdot)$ um subanel de $(R,+, \cdot)$. Então $(S,+, \cdot)$ é um anel.	
+	\end{proposicao}
+
+	\begin{proposicao}
+		Seja um homomorfismo de anéis $\phi: R \longrightarrow R'$, então a imagem $\phi(R) \leq R'$ e, além disso, se $S\leq R$ então $\phi(S) \leq R'$.
+	\end{proposicao}
+
+	\begin{proof}
+		Como $S$ é um subanel de $R$, então $0_R\in S$ e $\phi(0_R) = 0_{R'}$ implica que $0_{R'} \in \phi(S)$. Além disso, sejam $a,b\in \phi(S)$, então existem $s_1,s_2 \in S$ tais que $\phi(s_1) = a$, $\phi(s_2) = b$ e, como $S$ é anel, $s_1 - s_2 \in S$ e segue que $\phi(s_1 - s_2) \in \phi(S)$. Como $\phi(s_1 - s_2) = \phi(s_1) - \phi(s_2) = a - b$, $a-b\in \phi(S)$. De forma semelhante para o produto, $a,b \in \phi(S) \implies s_1s_2 \in S \implies ab \in \phi(S)$.
+	\end{proof}
 	
 	\begin{proposicao}
-		Se $\phi: R \longrightarrow R'$ é um homomorfismo de anéis e $S\leq R$
+		Sejam $\phi: R \longrightarrow T$ e $\mu: T\longrightarrow R'$ homomorfismos de anéis. Então, $\mu\circ\phi: R\longrightarrow R'$ também é um homomorfismo de anéis.	
 	\end{proposicao}
+	\begin{proof}
+		Sejam $a,b \in R$. Como $\phi$ é homomorfismo, segue que $$\phi(a+b) = \phi(a) + \phi(b) \text{ e } \phi(ab) = \phi(a)\phi(b).$$
+		Portanto, aplicando $\mu$,
+		$$\mu\circ\phi(a+b) = \mu(\phi(a) + \phi(b)) \text{ e } \mu\circ\phi(ab) = \mu(\phi(a)\phi(b)),$$
+		Mas como $\mu$ também respeita a propriedade de homomorfismo, segue que
+		$$\mu(\phi(a) + \phi(b)) = \mu(\phi(a)) + \mu(\phi(b)) = \mu\circ\phi(a) + \mu\circ\phi(b)\text{ e}$$
+		$$\mu(\phi(a)\phi(b)) = \mu(\phi(a))\mu(\phi(b)) = \mu\circ\phi(a)\mu\circ\phi(b).$$
+	\end{proof}
+	
+	\begin{definicao}[Núcleo]
+		O \emph{núcleo} do homomorfismo de anéis $\phi: R \longrightarrow R'$ é o subconjunto de $R$ formado pelos elementos que são mapeados pelo elemento nulo em
+		$R'$: $$\text{nu} \ \phi = \{a \in R \ | \ \phi(a) = 0\}.$$
+	\end{definicao}
+	
+	\begin{exemplo}
+		Seja $\phi: \mathbb{Z}\times \mathbb{Z} \longrightarrow \mathbb{Z}$ definida por $\phi(a,b) = a$. Então $\phi$ é um homomorfismo de anéis e
+		$$\text{nu }\phi = \{(a,b) \in \mathbb{Z}\times \mathbb{Z} \ | \ a = 0\}.$$
+	\end{exemplo}
+	
+	\begin{proposicao}
+		Seja um homomorfismo $\phi:R\longrightarrow R'$ com núcleo $\text{\emph{nu} }\phi$ e seja $0_R$ o elemento nulo de $R$. Então $0_R \in \text{\emph{nu} }\phi$.
+	\end{proposicao}
+	
+	\begin{proposicao}
+		Seja $\phi: R \longrightarrow R'$ um homomorfismo de anéis. Então 
+		\begin{itemize}
+			\item $\text{nu } \phi\; \leq R$;
+			\item $\phi$ é injetor se, e somente se, $\text{nu }\phi = \{0_R\}$.
+		\end{itemize}
+	\end{proposicao}
+	
 	
 	
 	\phantomsection
