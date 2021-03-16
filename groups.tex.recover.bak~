@@ -1021,51 +1021,6 @@ um grupo \(G\).
 
 \section{Anéis}
 
-\begin{definicao}[Anel]
-	Um \emph{anel} $(R, +, \cdot)$ é um conjunto $R$ acompanhado de duas operações binárias $+$ e $\cdot$ definidas sobre $R$ tais que os seguintes axiomas são satisfeitos:
-	\begin{enumerate}
-		\item $(R, +)$ é um grupo abeliano.
-		\item A operação $\cdot$ é associativa.
-		\item Para todo $a,b,c\in R$ vale a \emph{lei da distributividade à esquerda} e a \emph{lei de distributividade à direita}, respectivamente, $$a\cdot(b+c) = (a\cdot b) + (a\cdot c)\quad \text{e} \quad (a+b)\cdot c = (a\cdot c) + (b\cdot c).$$
-	\end{enumerate}
-\end{definicao}
-
-\begin{exemplo}
-	Todo subconjunto dos números complexos que é fechado para a adição e multiplicação usual dos complexos é um anel. Por exemplo, $(\mathbb{Z}, +, \cdot)$, $(\mathbb{Q}, +, \cdot)$, $(\mathbb{R}, +, \cdot)$ e $(\mathbb{C}, +, \cdot)$ são todos anéis.
-	Outro exemplo interessante é de um anel contendo apenas o elemento $0$. Chamamos esse de \emph{anel trivial}.
-\end{exemplo}
-
-\begin{observacao}[Notação]
-	Da mesma forma que com os grupos, costuma-se denotar o anel $(R, +, \cdot)$ apenas por seu conjunto $R$. Também, para um anel $(R, +, \cdot)$, chama-se sua primeira operação $+$ de \emph{adição do anel} e sua segunda operação $\cdot$ de \emph{multiplicação do anel}. O grupo $(R,+)$ é chamado \emph{grupo aditivo de $R$}.
-\end{observacao}
-
-\begin{proposicao}
-	Se $R$ é um anel com identidade aditiva $\vec 0$, então, $\forall a \in R$, $$\vec 0 \cdot a = a \cdot \vec 0 = \vec 0.$$
-\end{proposicao}
-\begin{proof}
-	Pelas propriedades do grupo $(R, +)$, $$a\vec 0 + a\vec 0 = a(\vec 0 + \vec 0) = a\vec 0 = \vec 0 + a\vec 0.$$ E, pela lei de cancelamento do grupo, $$a\vec0 + a\vec 0 = \vec 0 + a\vec 0 \ \implies \ a\vec 0 = \vec 0.$$
-	De forma semelhante, $$\vec 0a + \vec 0a = (\vec 0 + \vec 0)a = \vec 0a = \vec 0 + \vec 0a \ \implies \ \vec 0a = \vec 0.$$ Daí, segue que $a\vec 0 = \vec 0a = \vec 0$. 
-\end{proof}
-
-\begin{proposicao}
-	Se $R$ é um anel, então, para todo $a,b\in R$ vale
-	\begin{itemize}
-		\item $a(-b) = (-a)b = -(ab)$ e
-		\item $(-a)(-b) = ab.$
-	\end{itemize}
-\end{proposicao}
-
-\begin{definicao}[Anel associativo]
-	
-\end{definicao}
-
-\begin{definicao}[Anel comutativo]
-	
-\end{definicao}
-
-\begin{definicao}[Anel com identidade]
-	
-\end{definicao}
 
 
 \phantomsection
