@@ -43,7 +43,7 @@
 \newenvironment{solucao}
 {\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
 
-\title{Teoria de Grupos: notas de estudo}
+\title{Álgebra Abstrata: notas de estudo}
 \author{Guilherme Philippi}
 \begin{document}
 \maketitle
@@ -1066,6 +1066,207 @@ um grupo \(G\).
 \begin{definicao}[Anel com identidade]
 	
 \end{definicao}
+
+\begin{definicao}[subanel]
+	Um subconjunto $S$ de um anel $R$ é um subanel de $R$ (escreve-se $S\leq R$) se, e somente se, valem os seguintes axiomas:
+	\begin{enumerate}
+		\item \emph{(Existência do elemento nulo).} $0 \in S$;
+		\item \emph{(Subtração fechada).} $a-b \in S$, para todo $a,b\in S$;
+		\item \emph{(Produto fechado).} $ab\in S$, para todo $a,b\in S$.
+	\end{enumerate}
+\end{definicao}
+
+\begin{proposicao}
+	Seja $(S,+, \cdot)$ um subanel de $(R,+, \cdot)$. Então $(S,+, \cdot)$ é um anel.	
+\end{proposicao}
+
+\begin{definicao}[Divisor de zero]
+	pag 2 hazenwinkel;
+\end{definicao}
+
+\begin{definicao}[Domínio de integridade]
+	Um anel $R$ é chamado \emph{domínio de integridade} se $ab \neq 0$ para todo elemento não-nulo $a,b \in R$. Isto é, se $R$ não possuir divisores de zero.
+\end{definicao}
+
+\begin{definicao}[Unidade]
+	
+\end{definicao}
+
+\begin{proposicao}[Grupo multiplicativo]
+	O conjunto das unidades $R^*$ de um anel $R$ formam um grupo com respeito a multiplicação. Chamamos $(R^*,\cdot)$ de \emph{grupo multiplicativo}.
+\end{proposicao}
+
+\begin{definicao}[Elemento idempotente]
+	Um elemento $e$ de um anel $R$ é chamado \emph{idempotente} se $e^2 = e$. Além disso, dois elementos idempotentes $e,f$ são ditos \emph{ortogonais} se $ef = fe = 0$.
+\end{definicao}
+
+\begin{exemplo}
+	Seja um anel $R$ com identidade. Então $0,1 \in R$ são elementos idempotentes e ortogonais.
+\end{exemplo}
+
+\begin{definicao}[Anel de divisão]
+	Um \emph{anel de divisão} $D$ é um anel não trivial onde todos os elementos não-nulos de $D$ formam um grupo sobre a multiplicação. 
+\end{definicao}
+
+\begin{proposicao}
+	Um anel não trivial $D$ é anel de divisão se, e somente se, todo elemento não-nulo de $D$ é uma unidade.	
+\end{proposicao}
+
+\section{Homomorfismos de anéis}
+
+\begin{definicao}[Homomorfismo de anéis]
+	Sejam dois anéis $(R, +, \cdot)$ e $(R', +', \cdot')$. Um mapa $\phi: R \longrightarrow R'$ é um \emph{homomorfismo} se a \emph{propriedade de homomorfismo} vale para ambas as operações, isso é, se, para todo $a,b\in R$,
+	$$\phi(a+b) = \phi(a) +' \phi(b) \quad \text{e} \quad \phi(a\cdot b) = \phi(a) \cdot' \phi(b).$$
+\end{definicao}
+
+\begin{exemplo}[Homomorfismo trivial]
+	Sejam os anéis $R$, $R'$ e o elemento neutro $\vec 0$ da adição do anel $R'$. A aplicação $\phi: R\longrightarrow R'$ definida por $\phi(a) = \vec 0$, para todo $a\in R$, é um homomorfismo de anéis porque $$\phi(a + b) = \vec 0 = \vec 0 \ +' \vec 0 = f(a) +' f(b) \quad \text{e} \quad f(a\cdot b) = \vec 0 = \vec 0 \ \cdot' \vec 0 = f(a)\ \cdot' f(b).$$
+	A essa aplicação dá-se o nome \emph{homomorfismo trivial de anéis}.
+\end{exemplo}
+
+\begin{definicao}[Homomorfismo injetivo e sobrejetivo]
+	Chama-se de \emph{homomorfismo injetivo} e \emph{homomorfismo sobrejetivo} um homomorfismo de anéis definido, respectivamente, por uma função injetiva ou uma função sobrejetiva.
+\end{definicao}
+
+\begin{exemplo}
+	Seja o homomorfismo de anéis $\phi: \mathbb{Z} \longrightarrow \mathbb{Z}\times \mathbb{Z}$ tal que $\phi(n) = (n,0)$, para todo $n\in\mathbb{Z}$. Perceba que, para cada $(n,0)\in \mathbb{Z}\times \mathbb{Z}$ tem-se um único $n\in \mathbb{Z}$ tal que $\phi(n) = (n,0)$, daí, $\phi$ é injetiva e esse é um homomorfismo injetivo. Também, seja $\mu:\mathbb{Z}\times\mathbb{Z} \longrightarrow \mathbb{Z}$ o homomorfismo tal que $\mu(n,m) = n$ para todo $(n,m)\in \mathbb{Z}\times \mathbb{Z}$. É fácil perceber que para todo $z\in \mathbb{Z}$, existirá $(z,0)\in \mathbb{Z}\times \mathbb{Z}$, donde $\mu$ é um homomorfismo sobrejetivo.
+\end{exemplo}
+
+\begin{proposicao}
+	Se $\phi: R \longrightarrow R'$ é um homomorfismo de anéis, então, para todo $a,b\in A$,
+	\begin{itemize}
+		\item $\phi(0_R) = 0_{R'}$,
+		\item $\phi(-a) = -\phi(a)$ e
+		\item $\phi(a-b) = \phi(a) - \phi(b)$.
+	\end{itemize} 	
+\end{proposicao}
+\begin{proof}
+	Como $\phi(a) = \phi(a+0_R) = \phi(a)+\phi(0_R)$, pela propriedade de homomorfismo, então, $$\phi(a) = \phi(a)+\phi(0_R) \implies -\phi(a)+\phi(a) = -\phi(a)+\phi(a)+\phi(0_R),$$ isto é, $0_{R'} = \phi(0_R)$.
+	\\
+	
+	\noindent Daí segue que, $$0_{R'} = \phi(0_R) = \phi(a - a) = \phi(a) + \phi(-a),$$
+	e como $0_{R'} = \phi(a) + \phi(-a)$, $$\phi(-a) = -\phi(a).$$
+	\noindent Fica evidente que $$\phi(a-b) = \phi(a) + \phi(-b) = \phi(a) - \phi(b).$$
+\end{proof}
+
+\begin{proposicao}
+	Seja $\phi:R \longleftarrow	R'$ um homomorfismo de anéis onde $1_R \in R$ é identidade do produto de $R$. Então
+	\begin{itemize}
+		\item $R'$ possui identidade multiplicativa $1_{R'}$ e $\phi(1_R) = 1_{R'}$;
+		\item se $a\in R$ possui inversa multiplicativa $a^{-1}$, então $\phi(a)^{-1} = \phi(a^{-1})$.
+	\end{itemize}	
+\end{proposicao}
+
+\begin{definicao}[Imagem de homomorfismo de anéis]
+	A \emph{imagem} de um homomorfismo de anéis
+	\(\phi: R\longrightarrow R'\) é o subconjunto de \(R'\)	\[\text{im}\ \phi = \{x\in R' \ |\ x = \phi(a), \text{ para algum } a\in R\} = \phi(R).\]
+\end{definicao}
+
+\begin{proposicao}
+	Seja um homomorfismo de anéis $\phi: R \longrightarrow R'$, então a imagem $\phi(R) \leq R'$ e, além disso, se $S\leq R$ então $\phi(S) \leq R'$.
+\end{proposicao}
+
+\begin{proof}
+	Como $S$ é um subanel de $R$, então $0_R\in S$ e $\phi(0_R) = 0_{R'}$ implica que $0_{R'} \in \phi(S)$. Além disso, sejam $a,b\in \phi(S)$, então existem $s_1,s_2 \in S$ tais que $\phi(s_1) = a$, $\phi(s_2) = b$ e, como $S$ é anel, $s_1 - s_2 \in S$ e segue que $\phi(s_1 - s_2) \in \phi(S)$. Como $\phi(s_1 - s_2) = \phi(s_1) - \phi(s_2) = a - b$, $a-b\in \phi(S)$. De forma semelhante para o produto, $a,b \in \phi(S) \implies s_1s_2 \in S \implies ab \in \phi(S)$.
+\end{proof}
+
+\begin{proposicao}
+	Sejam $\phi: R \longrightarrow T$ e $\mu: T\longrightarrow R'$ homomorfismos de anéis. Então, $\mu\circ\phi: R\longrightarrow R'$ também é um homomorfismo de anéis.	
+\end{proposicao}
+\begin{proof}
+	Sejam $a,b \in R$. Como $\phi$ é homomorfismo, segue que $$\phi(a+b) = \phi(a) + \phi(b) \text{ e } \phi(ab) = \phi(a)\phi(b).$$
+	Portanto, aplicando $\mu$,
+	$$\mu\circ\phi(a+b) = \mu(\phi(a) + \phi(b)) \text{ e } \mu\circ\phi(ab) = \mu(\phi(a)\phi(b)),$$
+	Mas como $\mu$ também respeita a propriedade de homomorfismo, segue que
+	$$\mu(\phi(a) + \phi(b)) = \mu(\phi(a)) + \mu(\phi(b)) = \mu\circ\phi(a) + \mu\circ\phi(b)\text{ e}$$
+	$$\mu(\phi(a)\phi(b)) = \mu(\phi(a))\mu(\phi(b)) = \mu\circ\phi(a)\mu\circ\phi(b).$$
+\end{proof}
+
+\begin{definicao}[Núcleo]
+	O \emph{núcleo} do homomorfismo de anéis $\phi: R \longrightarrow R'$ é o subconjunto de $R$ formado pelos elementos que são mapeados pelo elemento nulo em
+	$R'$: $$\text{nu} \ \phi = \{a \in R \ | \ \phi(a) = 0\}.$$
+\end{definicao}
+
+\begin{exemplo}
+	Seja $\phi: \mathbb{Z}\times \mathbb{Z} \longrightarrow \mathbb{Z}$ definida por $\phi(a,b) = a$. Então $\phi$ é um homomorfismo de anéis e
+	$$\text{nu }\phi = \{(a,b) \in \mathbb{Z}\times \mathbb{Z} \ | \ a = 0\}.$$
+\end{exemplo}
+
+\begin{proposicao}
+	Seja um homomorfismo $\phi:R\longrightarrow R'$ com núcleo $\text{\emph{nu} }\phi$ e seja $0_R$ o elemento nulo de $R$. Então $0_R \in \text{\emph{nu} }\phi$.
+\end{proposicao}
+
+\begin{proposicao}
+	Seja $\phi: R \longrightarrow R'$ um homomorfismo de anéis. Então 
+	\begin{itemize}
+		\item $\text{nu } \phi\; \leq R$;
+		\item $\phi$ é injetor se, e somente se, $\text{nu }\phi = \{0_R\}$.
+	\end{itemize}
+\end{proposicao}
+
+\begin{definicao}[Isomorfismo de anéis]
+	 
+\end{definicao}
+
+
+\section{Corpos}
+
+\begin{definicao}[Corpo]
+	Um \emph{corpo} $(F, +, \cdot)$ é um anel de divisão comutativo.
+\end{definicao}
+
+\begin{proposicao}
+	Todo domínio de integridade finito é um corpo.
+\end{proposicao}
+
+\begin{definicao}[Subcorpo]
+	Seja um corpo $L$. Um corpo $k\leq L$ é dito \emph{subcorpo} de $L$ e $L$ é dito \emph{extensão} de $k$.
+\end{definicao}
+
+\begin{definicao}[Elemento algébrico e transcendente]
+	Um elemento $\alpha$ de um corpo de extensão $E$ de um corpo $F$ é dito \emph{algébrico sobre} $F$ se $f(\alpha) = 0$ para algum polinômio não-nulo $f(x) \in F[x]$. Se $\alpha$ não é algébrico sobre $F$, então $\alpha$ é \emph{transcendente sobre} $F$.
+\end{definicao}
+
+\begin{definicao}[Espaço vetorial]
+	Seja $F$ um corpo. Um \emph{espaço vetorial sobre} $F$ (ou um $F$-\emph{espaço vetorial}) consiste de um grupo abeliano $V$ sob adição junto com uma operação de multiplicação escalar de cada elemento de $V$ por cada elemento de $F$ pela esquerda, tal que para todo $a,b\in F$ e $\alpha,\beta\in V$, valem os seguintes axiomas:
+	\begin{enumerate}
+		\item $a\alpha\in V$;
+		\item $a(b\alpha) = (ab)\alpha$;
+		\item $(a+b)\alpha = (a\alpha)+(b\alpha)$;
+		\item $a(\alpha+\beta) = (a\alpha)+(a\beta)$;
+		\item $1\alpha = \alpha$.
+	\end{enumerate}
+	Os elementos de $V$ são chamados \emph{vetores} e os elementos de $F$ são chamados \emph{escalares}.
+\end{definicao}
+
+\begin{observacao}
+	Na falta de ambiguidades, iremos omitir referências a $F$ e apenas nos referenciaremos ao espaço vetorial.
+\end{observacao}
+
+\begin{definicao}[Extensão algébrica]
+	Um corpo de extensão $E$ de um corpo $F$ é uma \emph{extensão algébrica de $F$} se todo elemento em $E$ é algébrico sobre $F$.
+\end{definicao}
+
+\begin{definicao}[Extensão finita]
+	Se um corpo de extensão $E$ de um corpo $F$ é de dimensão finita $n$ como um espaço vetorial sobre $F$, então $E$ é uma \emph{extensão finita de grau $n$ sobre $F$}. Denotaremos por $[E:F]$ o grau $n$ de $E$ sobre $F$.
+\end{definicao}
+
+\begin{proposicao}
+	Se o grau de uma extensão $[E:F]$ é $n$, então para qualquer elemento $a\in E$, os elementos $1,\alpha,\dots,\alpha^n$ são linearmente dependentes sobre $F$ e, portanto, $\alpha$ é uma raiz de algum polinômio $f(x)\in F[x]$.
+\end{proposicao}
+
+\begin{proposicao}
+	Um corpo de extensão finito $E$ sobre um corpo $F$ é uma extensão algébrica de $F$.
+\end{proposicao}
+
+\begin{proposicao}
+	Se $E$ é um corpo de extensão finito de um corpo $F$ e $K$ é um corpo de extensão finito de $E$, então $K$ é um corpo de extensão finita de $F$ e $$[K:F] = [K:E][E:F].$$	
+\end{proposicao}
+
+\begin{definicao}[$k$-álgebra]
+	Uma \emph{álgebra sobre um corpo $k$} (ou, uma \emph{$k$-álgebra}) é um conjunto $A$ que é um anel e um espaço vetorial sobre $k$ de tal maneira que as estruturas d grupo aditivo são as mesmas e o axioma $$(\lambda a)b = a(\lambda b) = \lambda(ab)$$ é satisfeito para todo $\lambda\in k$ e $a,b \in A$.
+\end{definicao}
+
 
 
 \phantomsection

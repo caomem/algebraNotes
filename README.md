@@ -30,6 +30,7 @@
 26. [ ] Definir o elemento $a$ na definição de classes laterais.
 27. [ ] Exemplo 14.2 do jhon. 
 28. [ ] merge sec 3.15 do jhon.
+29. [ ] merge sec anéis com slides felipe (proposições).
 
 ## doubts
 
@@ -47,4 +48,4 @@
 12. [ ] eu posso ver (aH)(bH) como um produto de grupos ou tenho que sempre entender que estou tirando um elemento de aH e bH?
 13. [ ] John faz uma análise de "bem definida" (pag 138), preciso falar sobre isso? Não achei necessário.
 14. [ ] existe diferença na notação $<C,*,\cdot>$ e $(C,*,\cdot)$? Quero representar um anel.
-
+15. $L$ extensão de $k$ $\implies$ $L$ é um espaço vetorial sobre $k$?
