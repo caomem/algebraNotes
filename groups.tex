@@ -43,7 +43,7 @@
 \newenvironment{solucao}
 {\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
 
-\title{Álgebra Abstrata: notas de estudo}
+\title{Álgebra: notas de estudo}
 \author{Guilherme Philippi}
 \begin{document}
 \maketitle
@@ -1212,22 +1212,33 @@ um grupo \(G\).
 \section{Corpos}
 
 \begin{definicao}[Corpo]
-	Um \emph{corpo} $(F, +, \cdot)$ é um anel de divisão comutativo.
+	Um \emph{corpo} $(F,+,\cdot)$ é um anel onde $(F,\cdot)$ é um grupo abeliano.
 \end{definicao}
+
+\begin{proposicao}
+	Um corpo $(F, +, \cdot)$ é um anel de divisão comutativo.
+\end{proposicao}
 
 \begin{proposicao}
 	Todo domínio de integridade finito é um corpo.
 \end{proposicao}
 
 \begin{definicao}[Subcorpo]
-	Seja um corpo $L$. Um corpo $k\leq L$ é dito \emph{subcorpo} de $L$ e $L$ é dito \emph{extensão} de $k$.
+	Seja um corpo $F$. Um corpo $k\leq F$ é dito \emph{subcorpo} de $F$ e $F$ é dito \emph{extensão} de $k$.
 \end{definicao}
 
 \begin{definicao}[Elemento algébrico e transcendente]
 	Um elemento $\alpha$ de um corpo de extensão $E$ de um corpo $F$ é dito \emph{algébrico sobre} $F$ se $f(\alpha) = 0$ para algum polinômio não-nulo $f(x) \in F[x]$. Se $\alpha$ não é algébrico sobre $F$, então $\alpha$ é \emph{transcendente sobre} $F$.
 \end{definicao}
 
-\begin{definicao}[Espaço vetorial]
+
+\begin{definicao}[Extensão algébrica]
+	Um corpo de extensão $E$ de um corpo $F$ é uma \emph{extensão algébrica de $F$} se todo elemento em $E$ é algébrico sobre $F$.
+\end{definicao}
+
+\section{Espaço Vetorial}
+
+ \begin{definicao}[Espaço vetorial]
 	Seja $F$ um corpo. Um \emph{espaço vetorial sobre} $F$ (ou um $F$-\emph{espaço vetorial}) consiste de um grupo abeliano $V$ sob adição junto com uma operação de multiplicação escalar de cada elemento de $V$ por cada elemento de $F$ pela esquerda, tal que para todo $a,b\in F$ e $\alpha,\beta\in V$, valem os seguintes axiomas:
 	\begin{enumerate}
 		\item $a\alpha\in V$;
@@ -1242,10 +1253,6 @@ um grupo \(G\).
 \begin{observacao}
 	Na falta de ambiguidades, iremos omitir referências a $F$ e apenas nos referenciaremos ao espaço vetorial.
 \end{observacao}
-
-\begin{definicao}[Extensão algébrica]
-	Um corpo de extensão $E$ de um corpo $F$ é uma \emph{extensão algébrica de $F$} se todo elemento em $E$ é algébrico sobre $F$.
-\end{definicao}
 
 \begin{definicao}[Extensão finita]
 	Se um corpo de extensão $E$ de um corpo $F$ é de dimensão finita $n$ como um espaço vetorial sobre $F$, então $E$ é uma \emph{extensão finita de grau $n$ sobre $F$}. Denotaremos por $[E:F]$ o grau $n$ de $E$ sobre $F$.
@@ -1263,9 +1270,13 @@ um grupo \(G\).
 	Se $E$ é um corpo de extensão finito de um corpo $F$ e $K$ é um corpo de extensão finito de $E$, então $K$ é um corpo de extensão finita de $F$ e $$[K:F] = [K:E][E:F].$$	
 \end{proposicao}
 
+\section{Álgebra}
+
 \begin{definicao}[$k$-álgebra]
 	Uma \emph{álgebra sobre um corpo $k$} (ou, uma \emph{$k$-álgebra}) é um conjunto $A$ que é um anel e um espaço vetorial sobre $k$ de tal maneira que as estruturas d grupo aditivo são as mesmas e o axioma $$(\lambda a)b = a(\lambda b) = \lambda(ab)$$ é satisfeito para todo $\lambda\in k$ e $a,b \in A$.
 \end{definicao}
+
+\chapter{Álgebras de Clifford}
 
 
 

@@ -31,6 +31,7 @@
 27. [ ] Exemplo 14.2 do jhon. 
 28. [ ] merge sec 3.15 do jhon.
 29. [ ] merge sec anéis com slides felipe (proposições).
+30. [ ] Definir vetores e outros elementos básicos de espaços vetoriais além de principais resultados.
 
 ## doubts
 
