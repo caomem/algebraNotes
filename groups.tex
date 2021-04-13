@@ -1273,13 +1273,44 @@ um grupo \(G\).
 \section{Álgebra}
 
 \begin{definicao}[$k$-álgebra]
-	Uma \emph{álgebra sobre um corpo $k$} (ou, uma \emph{$k$-álgebra}) é um conjunto $A$ que é um anel e um espaço vetorial sobre $k$ de tal maneira que as estruturas d grupo aditivo são as mesmas e o axioma $$(\lambda a)b = a(\lambda b) = \lambda(ab)$$ é satisfeito para todo $\lambda\in k$ e $a,b \in A$.
+	Uma \emph{álgebra sobre um corpo $k$} (ou, uma \emph{$k$-álgebra}) é um conjunto $A$ que é um anel e um espaço vetorial sobre $k$ de tal maneira que as estruturas do grupo aditivo são as mesmas e o axioma $$(\lambda a)b = a(\lambda b) = \lambda(ab)$$ é satisfeito para todo $\lambda\in k$ e $a,b \in A$.
 \end{definicao}
 
 \chapter{Álgebras de Clifford}
 
+\section{O produto de Clifford}
+
+Temos o objetivo de definir uma operação de produto de vetores que se comporte de forma parecida com o produto de um corpo, isto é, que respeite, $\forall a,b,c \in \mathbb{R}$, os seguintes axiomas
+\begin{enumerate}
+	\item \emph{(Comutatividade).} $ab = ba;$
+	\item \emph{(Associatividade).} $a(bc)=(ab)c;$
+	\item \emph{(Distributividade).} $a(b+c)=ab+ac;$
+	\item \emph{(Preservação da norma).} $|\,ab\,| = |\,a\,||\,b\,|.$
+\end{enumerate}
+
+Os números complexos satisfazem isso. Porém, como isso não é possível para dimensões maiores \cite{lounestoClifford}, teremos de abrir mão de alguma propriedade. Abriremos mão da comutatividade.
+
+\begin{definicao}[Bivetores]
+	Sejam dois versores ortogonais $\mathbf{e_1}$ e $\mathbf{e_2}$. Chamaremos de \emph{bivetor} um novo tipo de elemento unitário, representado pelo produto $$\mathbf{e_1e_2} = \mathbf{e_{12}}$$ onde $$\mathbf{e_1}^2 = \mathbf{e_2}^2 = 1 \quad \text{e} \quad \mathbf{e_1e_2} = -\mathbf{e_2e_1}.$$
+\end{definicao}
+
+Pode-se interpretar geometricamente $\mathbf{e_{12}}$ como a área plana orientada do quadrado de lados $\mathbf{e_1}$ e $\mathbf{e_2}$.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.4\linewidth]{figures/bivector.pdf}
+	\end{center}
+	\caption{Representação geométrica de um bivetor $\mathbf{e_{12}}$.}
+\end{figure}
+
+\begin{definicao}[Produto de Clifford]
+	Sejam dois versores ortogonais $\mathbf{e_1}$ e $\mathbf{e_2}$ no $\mathbb{R}^2$. Para dois vetores $\mathbf{a}$ = $a_1\mathbf{e_1} + a_2\mathbf{e_2}$ e $\mathbf b = b_1\mathbf{e_1} + b_2\mathbf{e_2}$, o \emph{produto de Clifford} $\mathbf{ab}$ é definido como $$\mathbf{ab} = a_1b_1 + a_2b_2 + (a_1b_2-a_2b_1)\mathbf{e_{12}},$$
+	isto é, a soma de um escalar com um bivetor.
+\end{definicao}
 
 
+
+Perceba que pode-se separar as duas partes do produto de Clifford como $$\mathbf{a\cdot b} + \mathbf{a \wedge b} \ = \ a_1b_1 + a_2b_2 + (a_1b_2 - a_2b_1)\mathbf{e_{12}}.$$
 \phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
 
