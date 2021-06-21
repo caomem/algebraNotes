@@ -32,6 +32,9 @@
 28. [ ] merge sec 3.15 do jhon.
 29. [ ] merge sec anéis com slides felipe (proposições).
 30. [ ] Definir vetores e outros elementos básicos de espaços vetoriais além de principais resultados. (lounesto chapter 1.1-1.7)
+31. [ ] rever simbologia Z/nZ com Z_n
+32. [ ] colocar subseção sobre elementos primos
+33. [ ] exemplificar toda definição
 
 ## doubts
 
