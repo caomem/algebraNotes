@@ -195,7 +195,7 @@
 	Seja \(a,b,c\) elementos de um grupo \(G\). Se \(ab = ac\), então \(b = c\).
 \end{proposicao} 
 
-\section{Subgrupos}
+\subsection{Subgrupos}
 
 \begin{definicao}[Subgrupo]
 	Um subconjunto \(H\) de um grupo \(G\) é chamado de \emph{subgrupo} de \(G\) (e escreve-se $H \leq G$) se possuir as seguintes propriedades:
@@ -279,7 +279,7 @@ inversos.
 	\[\mathbf{i}^4 = 1, \quad \mathbf{i}^2 = \mathbf{j}^2, \quad \mathbf{j}\mathbf{i} = \mathbf{i}^3\mathbf{j}.\]
 \end{exemplo}
 
-\section{Homomorfismos}
+\subsection{Homomorfismos}
 
 \begin{definicao}[Homomorfismo de grupo]
 	Sejam \((G,*)\) e \((G',\cdot)\) dois grupos. Um \emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal que
@@ -328,7 +328,7 @@ inversos.
 	O núcleo de um homomorfismo $\varphi: G \longrightarrow G'$ é um subgrupo de $G$.
 \end{proposicao}
 
-\section{Isomorfismos}
+\subsection{Isomorfismos}
 
 \begin{definicao}[Isomorfismo de grupos]
 	Dois grupos \((G,*)\) e \((G',\cdot)\) são ditos \emph{isomorfos} se possuírem um homomorfismo bijetivo entre si, isto é, há um mapeamento \emph{bijetivo} $\varphi: G \longrightarrow G'$ (chamado \emph{relação de isomorfismo}) que respeita a propriedade de homomorfismo:
@@ -398,7 +398,7 @@ inversos.
 	O centro de todo grupo é um subgrupo normal do grupo.
 \end{proposicao}
 
-\section{Grupos de Permutação}
+\subsection{Grupos de Permutação}
 
 \begin{definicao}[Permutação de um conjunto]
 		Uma permutação de um conjunto $A$ é uma função bijetiva $\varphi: A \longrightarrow A$ do conjunto para ele mesmo.
@@ -437,7 +437,7 @@ inversos.
 	Todo grupo é isomorfo a um grupo de permutações.
 \end{teorema}
 
-\section{Relações de Equivalência e Partições}
+\subsection{Relações de Equivalência e Partições}
 
 \begin{definicao}[Partições]
 	Seja \(S\) um conjunto. Uma \emph{particão} \(P\) de
@@ -559,7 +559,7 @@ inversos.
 	motivos, injetiva e sobrejetiva. Então é um isomorfismo.
 \end{observacao}
 
-\section{Orbitas, ciclos e grupos alternados}
+\subsection{Orbitas, ciclos e grupos alternados}
 
 \begin{definicao}[Órbita]\label{def:orbit}
 	Seja $\sigma$ uma permutação de um conjunto $A$. Chamamos de \emph{órbitas de $\sigma$} a classe de equivalência em $A$ determinada pela relação de equivalência $\sim$:
@@ -646,7 +646,7 @@ inversos.
 \end{observacao}
 
 
-\section{Classe lateral}
+\subsection{Classe lateral}
 
 Definimos classe lateral somente em relação ao núcleo de um homomorfismo mas,
 na verdade, pode-se definir uma classe lateral para qualquer subgrupo \(H\) de
@@ -736,7 +736,7 @@ um grupo \(G\).
 	\end{itemize}	
 \end{proposicao}
 
-\section{Restrição de um homomorfismo para um subgrupo}
+\subsection{Restrição de um homomorfismo para um subgrupo}
 
 \begin{observacao}
 	O objetivo dessa seção é apresentar ferramentas para analisar um subgrupo \(H\)
@@ -788,7 +788,7 @@ um grupo \(G\).
 	\end{itemize}
 \end{proposicao}
 
-\section{Produto de Grupos}
+\subsection{Produto de Grupos}
 
 \begin{definicao}[Produto de grupos]
 	Seja \(G,G'\) dois grupos. O \emph{produto}
@@ -868,7 +868,7 @@ um grupo \(G\).
 	\end{itemize}
 \end{proposicao}
 
-\section{Aritmética Modular}
+\subsection{Aritmética Modular}
 
 \begin{definicao}[Congruente modulo $n$]
 	Seja \(n\in\mathbb{N}\). Dizemos que dois inteiros
@@ -912,7 +912,7 @@ um grupo \(G\).
 \end{exemplo}
 
 
-\section{Estrutura de grupos abelianos finitamente gerados}
+\subsection{Estrutura de grupos abelianos finitamente gerados}
 
 \begin{teorema}[Teorema fundamental dos grupos abelianos finitamente gerados] \label{teo:abelianfinitelygenerately}
 	Todo grupo abeliano finitamente gerado $G$ é isomorfo a um produto de grupos cíclicos na forma $$\mathbb{Z}_{(p_1)^{r_1}}\times\mathbb{Z}_{(p_2)^{r_2}}\times\dots\times\mathbb{Z}_{(p_n)^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\times\dots\times\mathbb{Z} $$ onde os $p_i$ são primos, não necessariamente distintos, os $r_i$ são inteiros positivos e o conjunto $\mathbb{Z}_n = \{0,1,\dots,n-1\}$. O produto é único, exceto por possíveis rearranjos dos fatores; isso é, o número (chamado \emph{número Betti de $G$}) de fatores $\mathbb{Z}$ é único e as potências de primos $(p_i)^{r_i}$ são únicas.
@@ -951,7 +951,7 @@ um grupo \(G\).
 	Se $m$ é um \emph{quadrado inteiro livre}, isto é, $m$ não é divisível por nenhum quadrado de primo, então todo grupo abeliano de ordem $m$ é cíclico.
 \end{proposicao}
 
-\section{Grupos Quociente}
+\subsection{Grupos Quociente}
 
 \begin{definicao}[Produto de classes laterais] Sejam $N\trianglelefteq G$ e as classes laterais \(\bar a = aN\) e \(\bar b = bN\), para $a,b \in G$. Chamamos de \emph{produto das classes laterais \(\bar a\) e \(\bar b\)} a classe lateral \(\bar a \bar b = abN\), isto é, a classe lateral que contém \(ab\).	
 \end{definicao}
@@ -1112,7 +1112,7 @@ um grupo \(G\).
 	Um anel não trivial $D$ é anel de divisão se, e somente se, todo elemento não-nulo de $D$ é uma unidade.	
 \end{proposicao}
 
-\section{Homomorfismos de anéis}
+\subsection{Homomorfismos de anéis}
 
 \begin{definicao}[Homomorfismo de anéis]
 	Sejam dois anéis $(R, +, \cdot)$ e $(R', +', \cdot')$. Um mapa $\phi: R \longrightarrow R'$ é um \emph{homomorfismo} se a \emph{propriedade de homomorfismo} vale para ambas as operações, isso é, se, para todo $a,b\in R$,
@@ -1212,25 +1212,33 @@ um grupo \(G\).
 \section{Corpos}
 
 \begin{definicao}[Corpo]
-	Um \emph{corpo} $(F,+,\cdot)$ é um anel onde $(F,\cdot)$ é um grupo abeliano.
+	Um \emph{corpo} $(F,+,\cdot)$ é um anel onde $(F\setminus\{0\},\cdot)$ é um grupo abeliano.
 \end{definicao}
+
+\begin{exemplo}
+	$\mathbb{Q}, \mathbb{R}$ e $\mathbb{C}$ são exemplos clássicos de corpos sobre suas respectivas adições e multiplicações usuais.
+\end{exemplo}
 
 \begin{proposicao}
 	Um corpo $(F, +, \cdot)$ é um anel de divisão comutativo.
 \end{proposicao}
+
+\begin{exemplo}
+	Evidentemente $\mathbb{Z}$ não é corpo, visto que suas únicas unidades são $1$ e $-1$. 
+	No entanto, $\mathbb{Z}_2 = \{\bar 0,\bar 1\}$ é o menor corpo possível (a menos de isomorfismos).
+\end{exemplo}
 
 \begin{proposicao}
 	Todo domínio de integridade finito é um corpo.
 \end{proposicao}
 
 \begin{definicao}[Subcorpo]
-	Seja um corpo $F$. Um corpo $k\leq F$ é dito \emph{subcorpo} de $F$ e $F$ é dito \emph{extensão} de $k$.
+	Seja um corpo $F$. Um corpo $K\leq F$ é dito \emph{subcorpo} de $F$ e $F$ é dito \emph{extensão} de $K$.
 \end{definicao}
 
 \begin{definicao}[Elemento algébrico e transcendente]
-	Um elemento $\alpha$ de um corpo de extensão $E$ de um corpo $F$ é dito \emph{algébrico sobre} $F$ se $f(\alpha) = 0$ para algum polinômio não-nulo $f(x) \in F[x]$. Se $\alpha$ não é algébrico sobre $F$, então $\alpha$ é \emph{transcendente sobre} $F$.
+	Sejam um corpo $K$ e sua extensão $F$. Um elemento $\alpha$ de $F$ é dito \emph{algébrico sobre} $K$ se existe algum polinômio não-nulo $f(x) \in K[x]$ tal que $f(\alpha) = 0$. Se $\alpha\in F$ não é algébrico sobre $K$, então $\alpha$ é \emph{transcendente sobre} $K$.
 \end{definicao}
-
 
 \begin{definicao}[Extensão algébrica]
 	Um corpo de extensão $E$ de um corpo $F$ é uma \emph{extensão algébrica de $F$} se todo elemento em $E$ é algébrico sobre $F$.
@@ -1276,7 +1284,9 @@ um grupo \(G\).
 	Uma \emph{álgebra sobre um corpo $k$} (ou, uma \emph{$k$-álgebra}) é um conjunto $A$ que é um anel e um espaço vetorial sobre $k$ de tal maneira que as estruturas do grupo aditivo são as mesmas e o axioma $$(\lambda a)b = a(\lambda b) = \lambda(ab)$$ é satisfeito para todo $\lambda\in k$ e $a,b \in A$.
 \end{definicao}
 
-\chapter{Álgebras de Clifford}
+\chapter{Álgebra Geométrica}
+
+Neste capitulo iremos introduzir o estudo da Álgebra Geométrica --- nome definido por William Kingdon Clifford (1845-1879), o que eventualmente fez com que essa área seja também chamada de Álgebra de Clifford.
 
 \section{O produto de Clifford}
 
