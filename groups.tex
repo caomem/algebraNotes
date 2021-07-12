@@ -23,6 +23,8 @@
 \usepackage{amsfonts}
 \usepackage[english, ruled, linesnumbered]{algorithm2e}
 \usepackage{algorithmic}
+\usepackage{multirow}
+\usepackage{siunitx}
 
 \newcommand{\nucleoe}{\emph{\text{nu }}}
 \newcommand{\nucleo}{\text{nu }}
@@ -49,7 +51,7 @@
 \maketitle
 \tableofcontents
 
-\chapter{Álgebra Abstrata}
+\chapter{Elementos de Álgebra Abstrata}
 % Enunciar as principais referências desse capítulo
 
 \section{Relações entre conjuntos}
@@ -83,7 +85,7 @@
 		Uma função $\varphi: X \longrightarrow Y$ é \emph{injetiva} se $\varphi(x_1) = \varphi(x_2) \iff x_1 = x_2$. Também, $\varphi$ é dita \emph{sobrejetiva} se o alcance de $\varphi$ é $Y$. Se uma função é injetiva e sobrejetiva, então dizemos que a função é \emph{bijetiva}.
 \end{definicao}
 
-\section{Lei de composição}
+\section{Leis de composição}
 
 \begin{definicao}[Lei de composição]
 	Uma \emph{lei de composição} sobre um conjunto \(S\) é uma função (ou, uma operação binária) \(*: S\times S \longrightarrow S\).
@@ -195,7 +197,7 @@
 	Seja \(a,b,c\) elementos de um grupo \(G\). Se \(ab = ac\), então \(b = c\).
 \end{proposicao} 
 
-\subsection{Subgrupos}
+%\subsection{Subgrupos}
 
 \begin{definicao}[Subgrupo]
 	Um subconjunto \(H\) de um grupo \(G\) é chamado de \emph{subgrupo} de \(G\) (e escreve-se $H \leq G$) se possuir as seguintes propriedades:
@@ -279,7 +281,7 @@ inversos.
 	\[\mathbf{i}^4 = 1, \quad \mathbf{i}^2 = \mathbf{j}^2, \quad \mathbf{j}\mathbf{i} = \mathbf{i}^3\mathbf{j}.\]
 \end{exemplo}
 
-\subsection{Homomorfismos}
+\subsection{Homomorfismos e isomorfismos}
 
 \begin{definicao}[Homomorfismo de grupo]
 	Sejam \((G,*)\) e \((G',\cdot)\) dois grupos. Um \emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal que
@@ -327,8 +329,6 @@ inversos.
 \begin{proposicao}
 	O núcleo de um homomorfismo $\varphi: G \longrightarrow G'$ é um subgrupo de $G$.
 \end{proposicao}
-
-\subsection{Isomorfismos}
 
 \begin{definicao}[Isomorfismo de grupos]
 	Dois grupos \((G,*)\) e \((G',\cdot)\) são ditos \emph{isomorfos} se possuírem um homomorfismo bijetivo entre si, isto é, há um mapeamento \emph{bijetivo} $\varphi: G \longrightarrow G'$ (chamado \emph{relação de isomorfismo}) que respeita a propriedade de homomorfismo:
@@ -634,7 +634,7 @@ inversos.
 \end{proposicao}
 
 \begin{proposicao}
-	Seja o grupo simétrico $S_n$ com $n\geq 2$. Então, a coleção de todas as permutações impares de $\{1,2,\dots,n\}$ forma um subgrupo de $S_n$ de ordem $\frac{n!}{2}$.	
+	Seja o grupo simétrico $S_n$ com $n\geq 2$. Então, a coleção de todas as permutações impares de $\{1,\dots,n\}$ forma um subgrupo de $S_n$ de ordem $\dfrac{n!}{2}$.	
 \end{proposicao}
 
 \begin{definicao}[Grupo alternado]
@@ -646,7 +646,7 @@ inversos.
 \end{observacao}
 
 
-\subsection{Classe lateral}
+\subsection{Classes laterais}
 
 Definimos classe lateral somente em relação ao núcleo de um homomorfismo mas,
 na verdade, pode-se definir uma classe lateral para qualquer subgrupo \(H\) de
@@ -1019,7 +1019,7 @@ um grupo \(G\).
 %Esse é o método fundamental para identificar grupos de quocientes.
 
 
-\section{Anéis}
+\section{Anéis e Corpos}
 
 \begin{definicao}[Anel]
 	Um \emph{anel} $(R, +, \cdot)$ é um conjunto $R$ acompanhado de duas operações binárias $+$ e $\cdot$ definidas sobre $R$ tais que os seguintes axiomas são satisfeitos:
@@ -1208,28 +1208,24 @@ um grupo \(G\).
 	 
 \end{definicao}
 
-
-\section{Corpos}
+\subsection{Corpos}
 
 \begin{definicao}[Corpo]
-	Um \emph{corpo} $(F,+,\cdot)$ é um anel onde $(F\setminus\{0\},\cdot)$ é um grupo abeliano.
+	Um \textit{corpo} $(F, +, \cdot)$ é um anel de divisão comutativo.
 \end{definicao}
 
 \begin{exemplo}
 	$\mathbb{Q}, \mathbb{R}$ e $\mathbb{C}$ são exemplos clássicos de corpos sobre suas respectivas adições e multiplicações usuais.
-\end{exemplo}
-
-\begin{proposicao}
-	Um corpo $(F, +, \cdot)$ é um anel de divisão comutativo.
-\end{proposicao}
-
-\begin{exemplo}
-	Evidentemente $\mathbb{Z}$ não é corpo, visto que suas únicas unidades são $1$ e $-1$. 
+	Note que $\mathbb{Z}$ não é corpo, visto que suas únicas unidades são $1$ e $-1$. 
 	No entanto, $\mathbb{Z}_2 = \{\bar 0,\bar 1\}$ é o menor corpo possível (a menos de isomorfismos).
 \end{exemplo}
 
 \begin{proposicao}
 	Todo domínio de integridade finito é um corpo.
+\end{proposicao} %dem: mostrar que existe isomorfismo com um Zp
+
+\begin{proposicao}
+	Em um corpo $(F,+,\cdot)$, $(F\setminus\{0\},\cdot)$ é um grupo abeliano.
 \end{proposicao}
 
 \begin{definicao}[Subcorpo]
@@ -1244,23 +1240,91 @@ um grupo \(G\).
 	Um corpo de extensão $E$ de um corpo $F$ é uma \emph{extensão algébrica de $F$} se todo elemento em $E$ é algébrico sobre $F$.
 \end{definicao}
 
-\section{Espaço Vetorial}
+\section{Módulos, Espaços Vetoriais e Álgebras}
 
- \begin{definicao}[Espaço vetorial]
-	Seja $F$ um corpo. Um \emph{espaço vetorial sobre} $F$ (ou um $F$-\emph{espaço vetorial}) consiste de um grupo abeliano $V$ sob adição junto com uma operação de multiplicação escalar de cada elemento de $V$ por cada elemento de $F$ pela esquerda, tal que para todo $a,b\in F$ e $\alpha,\beta\in V$, valem os seguintes axiomas:
+\begin{definicao}[Módulo] Seja $(R,+,\cdot)$ um anel.
+	Um grupo abeliano $(M,\oplus)$ é chamado de \emph{módulo sobre um anel $R$} (ou, simplesmente $R$-módulo) se existir uma aplicação
+	$$
+	\begin{tabular}{rcl}
+	$R\times M$ & $\longrightarrow$ & $M$\\
+	$(r,m)$ & $\mapsto$ & $rm$
+	\end{tabular},
+	$$
+	chamada \emph{multiplicação por escalar}, tal que para todo $r,r'\in R$ e $m, m'\in M$ valham
 	\begin{enumerate}
-		\item $a\alpha\in V$;
-		\item $a(b\alpha) = (ab)\alpha$;
-		\item $(a+b)\alpha = (a\alpha)+(b\alpha)$;
-		\item $a(\alpha+\beta) = (a\alpha)+(a\beta)$;
-		\item $1\alpha = \alpha$.
+		\item $0_Rm = 0_M$;
+		\item se $R$ tem identidade $1$, então $1m = m$;
+		\item $(r+r')m = (rm)\oplus(r'm)$;
+		\item $r(m\oplus m') = (rm)\oplus(rm')$;
+		\item $(r\cdot r')m = r(r'm)$.
 	\end{enumerate}
-	Os elementos de $V$ são chamados \emph{vetores} e os elementos de $F$ são chamados \emph{escalares}.
 \end{definicao}
 
-\begin{observacao}
-	Na falta de ambiguidades, iremos omitir referências a $F$ e apenas nos referenciaremos ao espaço vetorial.
+\begin{observacao}[Notação]
+	Na falta de ambiguidades, costuma-se usar $0$ para se referir tanto a identidade aditiva $0_R$ de $R$ quanto a $0_M$ de $M$. De forma semelhante, usa-se o simbolo de adição $+$ tanto para $\oplus$ de $M$ quanto $+$ de $R$. Por fim, chamaremos os elementos de $M$ de escalares.
 \end{observacao}
+
+\begin{exemplo}[$\mathbb{Z}$-módulo]
+	Seja o anel $(\mathbb{Z}, +, \cdot)$. Podemos fazer qualquer grupo abeliano $(A,+)$ virar um $\mathbb{Z}$-módulo através do seguinte produto escalar: para $n\in \mathbb{Z}$ e $a\in A$,
+	$$
+	\begin{tabular}{rll}
+			$na=$&
+			$\left\{
+			\begin{tabular}{l}
+				$a + a + \cdots + a \quad (n\text{ vezes}),$\\
+				$0$,\\
+				$-a -a -\cdots -a \quad (-n\text{ vezes}),$
+			\end{tabular}\right.$&
+			\begin{tabular}{l}
+				se $n>0$\\
+				se $n=0$\\
+				se $n<0$\\
+			\end{tabular}
+	\end{tabular}
+	.$$
+\end{exemplo}
+
+\begin{proposicao}
+	Seja $M$ um grupo. $M$ é um $\mathbb{Z}$-módulo se, e somente se, $M$ é um grupo abeliano.
+\end{proposicao}
+
+\begin{definicao}[Submódulo]
+	Sejam $R$ um anel e $M$ um $R$-módulo. Um \emph{$R$-submódulo} de $M$ é um subgrupo $N$ de $M$ que é fechado sob a ação dos elementos do anel, i.e., para todo $r\in R$ e $n\in N$, $rn\in N$.
+\end{definicao}
+
+\begin{proposicao}[Critério de submódulo]
+	Sejam $R$ um anel e $M$ um $R$-módulo. Um subconjunto $N$ de $M$ é um submódulo de $M$ se, e somente se,
+	\begin{enumerate}
+		\item $N \neq \emptyset$;
+		\item para todo $r\in R$ e $x,y\in N$, $x+ry\in N$.
+	\end{enumerate}
+\end{proposicao}
+
+%\subsection{Espaços Vetoriais}
+ \begin{definicao}[Espaço vetorial]
+	Seja o grupo abeliano $E$ um $K$-módulo. Se $K$ é um corpo, dizemos que $E$ é um \emph{espaço vetorial sobre o corpo $K$}.
+	
+	%Seja $F$ um corpo. Um \emph{espaço vetorial sobre} $F$ (ou um $F$-\emph{espaço vetorial}) consiste de um grupo abeliano $V$ sob adição junto com uma operação de multiplicação escalar de cada elemento de $V$ por cada elemento de $F$ pela esquerda, tal que para todo $a,b\in F$ e $\alpha,\beta\in V$, valem os seguintes axiomas:
+	%\begin{enumerate}
+	%	\item $a\alpha\in V$;
+	%	\item $a(b\alpha) = (ab)\alpha$;
+	%	\item $(a+b)\alpha = (a\alpha)+(b\alpha)$;
+	%	\item $a(\alpha+\beta) = (a\alpha)+(a\beta)$;
+	%	\item $1\alpha = \alpha$.
+	%\end{enumerate}
+	%Os elementos de $V$ são chamados \emph{vetores} e os elementos de $F$ são chamados \emph{escalares}.
+\end{definicao}
+
+\begin{exemplo}[Espaço afim]
+	Sejam $K$ um corpo e $n\in \mathbb{Z}^+$ um inteiro positivo. Seja o conjunto $$K^n = \{(a_1, a_2, \dots, a_n)\ | \ a_i \in K, \text{ para todo } 1\leq i \leq n\}.$$ Tornamos $K^n$ em um espaço vetorial ao definirmos sua adição e uma multiplicação escalar componente a componente, como segue:
+	$$
+	\begin{tabular}{rcl}
+		$(a_1, a_2, \dots, a_n) + (b_1, b_2,\dots, b_n)$& $=$& $(a_1+b_1, a_2+b_2, \dots, a_n + b_n)$\\
+		$\alpha(a_1,\dots,a_n)$ & $=$&  $(\alpha a_1, \dots, \alpha a_n),\qquad \alpha\in K$.	
+	\end{tabular}
+	$$
+	Chamamos $K^n$ de \emph{$n$-espaço afim sobre $K$}. Por exemplo, chamamos o $n$-espaço afim $\mathbb{R}^n$ sobre $\mathbb{R}$ de \emph{$n$-espaço Euclidiano}, que é um espaço vetorial sobre $K$.
+\end{exemplo}
 
 \begin{definicao}[Extensão finita]
 	Se um corpo de extensão $E$ de um corpo $F$ é de dimensão finita $n$ como um espaço vetorial sobre $F$, então $E$ é uma \emph{extensão finita de grau $n$ sobre $F$}. Denotaremos por $[E:F]$ o grau $n$ de $E$ sobre $F$.
@@ -1278,7 +1342,7 @@ um grupo \(G\).
 	Se $E$ é um corpo de extensão finito de um corpo $F$ e $K$ é um corpo de extensão finito de $E$, então $K$ é um corpo de extensão finita de $F$ e $$[K:F] = [K:E][E:F].$$	
 \end{proposicao}
 
-\section{Álgebra}
+%\subsection{Álgebras}
 
 \begin{definicao}[$k$-álgebra]
 	Uma \emph{álgebra sobre um corpo $k$} (ou, uma \emph{$k$-álgebra}) é um conjunto $A$ que é um anel e um espaço vetorial sobre $k$ de tal maneira que as estruturas do grupo aditivo são as mesmas e o axioma $$(\lambda a)b = a(\lambda b) = \lambda(ab)$$ é satisfeito para todo $\lambda\in k$ e $a,b \in A$.

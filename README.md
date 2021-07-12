@@ -54,3 +54,4 @@
 14. [ ] existe diferença na notação $<C,*,\cdot>$ e $(C,*,\cdot)$? Quero representar um anel.
 15. [ ] $L$ extensão de $k$ $\implies$ $L$ é um espaço vetorial sobre $k$?
 16. [ ] se o espaço vetorial tem as duas operações, o que seria o produto interno? Uma quarta?
+17. [ ] pag 339 do abstract algebra (david s dummit). O que o autor quer dizer com "$\mathbb{Z}$-submódulos são o mesmo que os subgrupos"? Há um <==> ai?
