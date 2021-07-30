@@ -55,3 +55,6 @@
 15. [ ] $L$ extensão de $k$ $\implies$ $L$ é um espaço vetorial sobre $k$?
 16. [ ] se o espaço vetorial tem as duas operações, o que seria o produto interno? Uma quarta?
 17. [ ] pag 339 do abstract algebra (david s dummit). O que o autor quer dizer com "$\mathbb{Z}$-submódulos são o mesmo que os subgrupos"? Há um <==> ai?
+18. [ ] Por que todo anel A com identidade é uma Z-álgebra?
+19. [ ] tensor product of module and tensor algebra
+20. [ ] posso usar a proposição 2.1 do lundholm para definir uma algebra geométrica?

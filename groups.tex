@@ -45,16 +45,35 @@
 \newenvironment{solucao}
 {\renewcommand\qedsymbol{$\triangle$}\begin{proof}[Solução]}{\end{proof}}
 
+\makeatletter
+\renewcommand{\@chapapp}{}% Not necessary...
+\newenvironment{chapquote}[2][2em]
+{\setlength{\@tempdima}{#1}%
+	\def\chapquote@author{#2}%
+	\parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+	\itshape}
+{\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+
+\newcommand{\norm}[1]{\left| #1 \right|}
+
 \title{Álgebra: notas de estudo}
 \author{Guilherme Philippi}
 \begin{document}
 \maketitle
 \tableofcontents
 
-\chapter{Elementos de Álgebra Abstrata}
+\chapter{Introdução}
+
+\newpage
+
+\chapter{Preliminares}
+
+\section{Elementos de Álgebra Abstrata}
 % Enunciar as principais referências desse capítulo
 
-\section{Relações entre conjuntos}
+\subsection{Relações entre conjuntos}
 
 \begin{definicao}[Produto cartesiano]
 	Sejam $A$ e $B$ conjuntos. O conjunto $$A\times B = \{(a,b) \ | \ a\in A \text{ e } b\in B\}$$
@@ -85,7 +104,7 @@
 		Uma função $\varphi: X \longrightarrow Y$ é \emph{injetiva} se $\varphi(x_1) = \varphi(x_2) \iff x_1 = x_2$. Também, $\varphi$ é dita \emph{sobrejetiva} se o alcance de $\varphi$ é $Y$. Se uma função é injetiva e sobrejetiva, então dizemos que a função é \emph{bijetiva}.
 \end{definicao}
 
-\section{Leis de composição}
+\subsection{Leis de composição}
 
 \begin{definicao}[Lei de composição]
 	Uma \emph{lei de composição} sobre um conjunto \(S\) é uma função (ou, uma operação binária) \(*: S\times S \longrightarrow S\).
@@ -169,7 +188,7 @@
 	\(a^{-1}\) e \(na\) no lugar de \(a^n\).
 \end{observacao}
 
-\section{Grupos}
+\subsection{Grupos}
 
 \begin{definicao}[Grupo]
 	
@@ -197,7 +216,7 @@
 	Seja \(a,b,c\) elementos de um grupo \(G\). Se \(ab = ac\), então \(b = c\).
 \end{proposicao} 
 
-%\subsection{Subgrupos}
+\subsubsection{Subgrupos}
 
 \begin{definicao}[Subgrupo]
 	Um subconjunto \(H\) de um grupo \(G\) é chamado de \emph{subgrupo} de \(G\) (e escreve-se $H \leq G$) se possuir as seguintes propriedades:
@@ -281,7 +300,7 @@ inversos.
 	\[\mathbf{i}^4 = 1, \quad \mathbf{i}^2 = \mathbf{j}^2, \quad \mathbf{j}\mathbf{i} = \mathbf{i}^3\mathbf{j}.\]
 \end{exemplo}
 
-\subsection{Homomorfismos e isomorfismos}
+\subsubsection{Homomorfismos e isomorfismos}
 
 \begin{definicao}[Homomorfismo de grupo]
 	Sejam \((G,*)\) e \((G',\cdot)\) dois grupos. Um \emph{homomorfismo} \(\varphi: G\longrightarrow G'\) é um mapeamento tal que
@@ -398,7 +417,7 @@ inversos.
 	O centro de todo grupo é um subgrupo normal do grupo.
 \end{proposicao}
 
-\subsection{Grupos de Permutação}
+\subsubsection{Grupos de Permutação}
 
 \begin{definicao}[Permutação de um conjunto]
 		Uma permutação de um conjunto $A$ é uma função bijetiva $\varphi: A \longrightarrow A$ do conjunto para ele mesmo.
@@ -437,7 +456,7 @@ inversos.
 	Todo grupo é isomorfo a um grupo de permutações.
 \end{teorema}
 
-\subsection{Relações de Equivalência e Partições}
+\subsubsection{Relações de Equivalência e Partições}
 
 \begin{definicao}[Partições]
 	Seja \(S\) um conjunto. Uma \emph{particão} \(P\) de
@@ -559,7 +578,7 @@ inversos.
 	motivos, injetiva e sobrejetiva. Então é um isomorfismo.
 \end{observacao}
 
-\subsection{Orbitas, ciclos e grupos alternados}
+\subsubsection{Orbitas, ciclos e grupos alternados}
 
 \begin{definicao}[Órbita]\label{def:orbit}
 	Seja $\sigma$ uma permutação de um conjunto $A$. Chamamos de \emph{órbitas de $\sigma$} a classe de equivalência em $A$ determinada pela relação de equivalência $\sim$:
@@ -646,7 +665,7 @@ inversos.
 \end{observacao}
 
 
-\subsection{Classes laterais}
+\subsubsection{Classes laterais}
 
 Definimos classe lateral somente em relação ao núcleo de um homomorfismo mas,
 na verdade, pode-se definir uma classe lateral para qualquer subgrupo \(H\) de
@@ -736,7 +755,7 @@ um grupo \(G\).
 	\end{itemize}	
 \end{proposicao}
 
-\subsection{Restrição de um homomorfismo para um subgrupo}
+\subsubsection{Restrição de um homomorfismo para um subgrupo}
 
 \begin{observacao}
 	O objetivo dessa seção é apresentar ferramentas para analisar um subgrupo \(H\)
@@ -788,7 +807,7 @@ um grupo \(G\).
 	\end{itemize}
 \end{proposicao}
 
-\subsection{Produto de Grupos}
+\subsubsection{Produto de Grupos}
 
 \begin{definicao}[Produto de grupos]
 	Seja \(G,G'\) dois grupos. O \emph{produto}
@@ -868,7 +887,7 @@ um grupo \(G\).
 	\end{itemize}
 \end{proposicao}
 
-\subsection{Aritmética Modular}
+\subsubsection{Aritmética Modular}
 
 \begin{definicao}[Congruente modulo $n$]
 	Seja \(n\in\mathbb{N}\). Dizemos que dois inteiros
@@ -912,7 +931,7 @@ um grupo \(G\).
 \end{exemplo}
 
 
-\subsection{Estrutura de grupos abelianos finitamente gerados}
+\subsubsection{Estrutura de grupos abelianos finitamente gerados}
 
 \begin{teorema}[Teorema fundamental dos grupos abelianos finitamente gerados] \label{teo:abelianfinitelygenerately}
 	Todo grupo abeliano finitamente gerado $G$ é isomorfo a um produto de grupos cíclicos na forma $$\mathbb{Z}_{(p_1)^{r_1}}\times\mathbb{Z}_{(p_2)^{r_2}}\times\dots\times\mathbb{Z}_{(p_n)^{r_n}}\times\mathbb{Z}\times\mathbb{Z}\times\dots\times\mathbb{Z} $$ onde os $p_i$ são primos, não necessariamente distintos, os $r_i$ são inteiros positivos e o conjunto $\mathbb{Z}_n = \{0,1,\dots,n-1\}$. O produto é único, exceto por possíveis rearranjos dos fatores; isso é, o número (chamado \emph{número Betti de $G$}) de fatores $\mathbb{Z}$ é único e as potências de primos $(p_i)^{r_i}$ são únicas.
@@ -951,7 +970,7 @@ um grupo \(G\).
 	Se $m$ é um \emph{quadrado inteiro livre}, isto é, $m$ não é divisível por nenhum quadrado de primo, então todo grupo abeliano de ordem $m$ é cíclico.
 \end{proposicao}
 
-\subsection{Grupos Quociente}
+\subsubsection{Grupos Quociente}
 
 \begin{definicao}[Produto de classes laterais] Sejam $N\trianglelefteq G$ e as classes laterais \(\bar a = aN\) e \(\bar b = bN\), para $a,b \in G$. Chamamos de \emph{produto das classes laterais \(\bar a\) e \(\bar b\)} a classe lateral \(\bar a \bar b = abN\), isto é, a classe lateral que contém \(ab\).	
 \end{definicao}
@@ -1019,7 +1038,7 @@ um grupo \(G\).
 %Esse é o método fundamental para identificar grupos de quocientes.
 
 
-\section{Anéis e Corpos}
+\subsection{Anéis e Corpos}
 
 \begin{definicao}[Anel]
 	Um \emph{anel} $(R, +, \cdot)$ é um conjunto $R$ acompanhado de duas operações binárias $+$ e $\cdot$ definidas sobre $R$ tais que os seguintes axiomas são satisfeitos:
@@ -1112,7 +1131,7 @@ um grupo \(G\).
 	Um anel não trivial $D$ é anel de divisão se, e somente se, todo elemento não-nulo de $D$ é uma unidade.	
 \end{proposicao}
 
-\subsection{Homomorfismos de anéis}
+\subsubsection{Homomorfismos de anéis}
 
 \begin{definicao}[Homomorfismo de anéis]
 	Sejam dois anéis $(R, +, \cdot)$ e $(R', +', \cdot')$. Um mapa $\phi: R \longrightarrow R'$ é um \emph{homomorfismo} se a \emph{propriedade de homomorfismo} vale para ambas as operações, isso é, se, para todo $a,b\in R$,
@@ -1208,7 +1227,7 @@ um grupo \(G\).
 	 
 \end{definicao}
 
-\subsection{Corpos}
+\subsubsection{Corpos}
 
 \begin{definicao}[Corpo]
 	Um \textit{corpo} $(F, +, \cdot)$ é um anel de divisão comutativo.
@@ -1240,7 +1259,7 @@ um grupo \(G\).
 	Um corpo de extensão $E$ de um corpo $F$ é uma \emph{extensão algébrica de $F$} se todo elemento em $E$ é algébrico sobre $F$.
 \end{definicao}
 
-\section{Módulos, Espaços Vetoriais e Álgebras}
+\subsection{Módulos, Espaços Vetoriais e Álgebras}
 
 \begin{definicao}[Módulo] Seja $(R,+,\cdot)$ um anel.
 	Um grupo abeliano $(M,\oplus)$ é chamado de \emph{módulo sobre um anel $R$} (ou, simplesmente $R$-módulo) se existir uma aplicação
@@ -1261,7 +1280,7 @@ um grupo \(G\).
 \end{definicao}
 
 \begin{observacao}[Notação]
-	Na falta de ambiguidades, costuma-se usar $0$ para se referir tanto a identidade aditiva $0_R$ de $R$ quanto a $0_M$ de $M$. De forma semelhante, usa-se o simbolo de adição $+$ tanto para $\oplus$ de $M$ quanto $+$ de $R$. Por fim, chamaremos os elementos de $M$ de escalares.
+	Na falta de ambiguidades, costuma-se usar $0$ para se referir tanto a identidade aditiva $0_R$ de $R$ quanto a $0_M$ de $M$. De forma semelhante, usa-se o simbolo de adição $+$ tanto para $\oplus$ de $M$ quanto $+$ de $R$.
 \end{observacao}
 
 \begin{exemplo}[$\mathbb{Z}$-módulo]
@@ -1300,9 +1319,35 @@ um grupo \(G\).
 	\end{enumerate}
 \end{proposicao}
 
-%\subsection{Espaços Vetoriais}
+\begin{definicao}[Produto direto]
+	Seja $M_1,\dots,M_k$ uma coleção de $R$-módulos. A coleção de $k$-tuplas $(m_1,m_2,\dots,m_k)$, onde $m_i\in M_i$, com adição e ação de $R$ definidos componente a componente, é chamado de \emph{produto direto de $M_1,\dots,M_k$} e é denotado por $M_1\times\cdots\times M_k$.
+\end{definicao}
+
+\begin{definicao}[Módulo livre, base e grau]
+	Um $R$-módulo $L$ é dito \emph{livre} no subconjunto $A$ de $L$ se, para todo elemento não-nulo $x\in L$, existirem únicos elementos não-nulos $r_1,r_2,\dots,r_n\in R$ e únicos $a_1,a_2,\dots,a_n\in A$ tais que $$x = r_1a_1 + r_2a_2 + \cdots + r_na_n, \text{ para algum $n \in \mathbb{Z}^+$}.$$ Nesse caso, dizemos que $A$ é uma \emph{base} ou \emph{conjunto de geradores livres} para $L$. Se $R$ é um anel comutativo, a cardinalidade de $A$ é chamada de \emph{grau} de $L$.
+\end{definicao}
+
+\subsubsection{Álgebras}
+
+\begin{definicao}[$R$-álgebra]
+	Seja $R$ um anel comutativo com identidade. Uma \emph{$R$-álgebra} é um anel $A$ com identidade onde existe um homomorfismo $f:R\longrightarrow A$ levando $1_R$ para $1_A$, tal que o subanel $f(R) \leq A$ está contido no centro de $A$.
+\end{definicao}
+
+\begin{exemplo}
+	Todo anel $A$ com identidade é uma $\mathbb{Z}$-álgebra. 
+\end{exemplo}
+
+\begin{proposicao}
+	Se o anel $(A,+,\cdot)$ é uma $R$-álgebra pelo homomorfismo $f:R\longrightarrow A$, então A tem um $R$-módulo através da multiplicação por escalar induzida por $f$, i.e., $r\cdot a = a\cdot r = f(r)a$, onde $r\in R$ e $a\in A$.
+\end{proposicao}
+
+\begin{proposicao}
+	Sejam $R$ um anel comutativo com identidade e $(A, +, \cdot)$ um anel com identidade. Então, $A$ é uma $R$-álgebra se e somente se $A$ é um $R$-módulo satisfazendo $$r\cdot (ab) = (r\cdot a)b = a(r\cdot b)$$ para todo $r\in R$ e $a,b \in A$.
+\end{proposicao}
+
+\subsubsection{Espaços Vetoriais}
  \begin{definicao}[Espaço vetorial]
-	Seja o grupo abeliano $E$ um $K$-módulo. Se $K$ é um corpo, dizemos que $E$ é um \emph{espaço vetorial sobre o corpo $K$}.
+	Seja o grupo abeliano $E$ um $K$-módulo. Se $K$ é um corpo, dizemos que $E$ é um \emph{espaço vetorial sobre o corpo $K$}. Também, passamos a nos referenciar aos elementos de $K$ por \emph{escalares} e aos de $E$ por \emph{vetores}.
 	
 	%Seja $F$ um corpo. Um \emph{espaço vetorial sobre} $F$ (ou um $F$-\emph{espaço vetorial}) consiste de um grupo abeliano $V$ sob adição junto com uma operação de multiplicação escalar de cada elemento de $V$ por cada elemento de $F$ pela esquerda, tal que para todo $a,b\in F$ e $\alpha,\beta\in V$, valem os seguintes axiomas:
 	%\begin{enumerate}
@@ -1315,7 +1360,7 @@ um grupo \(G\).
 	%Os elementos de $V$ são chamados \emph{vetores} e os elementos de $F$ são chamados \emph{escalares}.
 \end{definicao}
 
-\begin{exemplo}[Espaço afim]
+\begin{exemplo}[$n$-espaço afim sobre um corpo]
 	Sejam $K$ um corpo e $n\in \mathbb{Z}^+$ um inteiro positivo. Seja o conjunto $$K^n = \{(a_1, a_2, \dots, a_n)\ | \ a_i \in K, \text{ para todo } 1\leq i \leq n\}.$$ Tornamos $K^n$ em um espaço vetorial ao definirmos sua adição e uma multiplicação escalar componente a componente, como segue:
 	$$
 	\begin{tabular}{rcl}
@@ -1325,6 +1370,23 @@ um grupo \(G\).
 	$$
 	Chamamos $K^n$ de \emph{$n$-espaço afim sobre $K$}. Por exemplo, chamamos o $n$-espaço afim $\mathbb{R}^n$ sobre $\mathbb{R}$ de \emph{$n$-espaço Euclidiano}, que é um espaço vetorial sobre $K$.
 \end{exemplo}
+
+\begin{definicao}[Subespaço]
+	Um submódulo de um espaço vetorial é chamado de \emph{subespaço}.
+\end{definicao}
+
+\begin{definicao}[Independência linear]
+	Seja $V$ um espaço vetorial sobre $K$.
+	Um subconjunto $S$ de $V$ é chamado de conjunto de \emph{vetores linearmente independentes} se uma equação $$\alpha_1v_1+\alpha_2v_2 + \cdots + \alpha_nv_n = 0$$ com $\alpha_i \in K$ e $v_i\in S$, para todo $1\leq i \leq n$, implicar que $$\alpha_1 = \alpha_2 =\cdots = \alpha_n = 0.$$ Um conjunto ordenado de vetores linearmente independentes que geram $V$ formam uma \textit{base} do espaço vetorial $V$.
+\end{definicao}
+
+\begin{proposicao}
+	Qualquer espaço vetorial sobre $K$ finitamente gerado é um $K$-módulo livre.
+\end{proposicao}
+
+\begin{definicao}[Dimensão]
+	Seja $E$ um espaço vetorial. Se $E$ é um $K$-módulo livre em um subconjunto $A\subset E$, então o grau de $E$ é chamado de \emph{dimensão de $E$}. Senão, diz-se que $E$ tem dimensão infinita.
+\end{definicao}
 
 \begin{definicao}[Extensão finita]
 	Se um corpo de extensão $E$ de um corpo $F$ é de dimensão finita $n$ como um espaço vetorial sobre $F$, então $E$ é uma \emph{extensão finita de grau $n$ sobre $F$}. Denotaremos por $[E:F]$ o grau $n$ de $E$ sobre $F$.
@@ -1342,17 +1404,189 @@ um grupo \(G\).
 	Se $E$ é um corpo de extensão finito de um corpo $F$ e $K$ é um corpo de extensão finito de $E$, então $K$ é um corpo de extensão finita de $F$ e $$[K:F] = [K:E][E:F].$$	
 \end{proposicao}
 
-%\subsection{Álgebras}
+\section{Álgebra Geométrica}
 
-\begin{definicao}[$k$-álgebra]
-	Uma \emph{álgebra sobre um corpo $k$} (ou, uma \emph{$k$-álgebra}) é um conjunto $A$ que é um anel e um espaço vetorial sobre $k$ de tal maneira que as estruturas do grupo aditivo são as mesmas e o axioma $$(\lambda a)b = a(\lambda b) = \lambda(ab)$$ é satisfeito para todo $\lambda\in k$ e $a,b \in A$.
+Neste capitulo iremos introduzir o estudo da \textit{Álgebra Geométrica} --- nome definido por William Kingdon Clifford (1845-1879), o que eventualmente fez com que essa área também fosse chamada de Álgebra de Clifford \cite{sommerGeometric}. Para isso, começaremos com alguns conceitos da \textit{Teoria da Expansão} (ou, em alemão, \textit{Ausdehnungslehre} \cite{grassmannLineale}), introduzidos por Hermann Günther Grassmann (1809-1877), precursor do que hoje entendemos como a Álgebra Linear. 
+\\
+
+
+\begin{chapquote}{Clifford, \textit{Applications of Grassmann's Extensive Algebra} \cite{cliffordApplicationsGrassmannAlgebras}}
+	``Until recently I was unacquainted with the Ausdehnungsleh, and knew only so much of it as is contained in the author's geometrical papers (...). I may, perhaps, therefore be permitted to express miy profound admiration of that extraordinary work, and my conviction that its principles will exercise a vast influence upon the future of mathematical science.''
+\end{chapquote}
+
+\subsection{O Produto Externo de Grassmann}
+
+No que se segue, entende-se que o leitor já esteja familiarizado com os conceitos básicos de álgebra linear tratados em um curso regular de graduação, no entanto, vamos retomar algumas ideias. 
+Tanto em física quanto em suas aplicações na engenharia o uso de espaços vetoriais é recorrente: separa-se as grandezas em classes de escalares e vetoriais, onde a primeira sempre trata de elementos de um corpo, representando magnitudes (massa, temperatura, distância), e a segunda de elementos do próprio espaço vetorial, que não só carregam a informação de magnitude (comprimento) como de direção e sentido. São exemplos de grandezas vetoriais o deslocamento, a força e a velocidade.
+
+\hspace{-0.7cm}
+\begin{minipage}{0.72\linewidth}
+	\setlength\parindent{24pt} Pode-se interpretar geometricamente um vetor $\mathbf a$ como um segmento ordenado $(0,A)$ (como na Figura~\ref{fig:vector}), contendo um comprimento $\norm{\mathbf a}$ (do próprio segmento $OA$), uma direção (dada pela reta que passa pelos pontos $O$ e $A$) e um sentido (de $O$ para $A$). Vale ressaltar que o vetor $0$ não possui direção ou sentido especificados. 
+\end{minipage}
+\begin{minipage}{0.3\linewidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.6\linewidth]{figures/vector.pdf}
+		\end{center}
+		\caption{Vetor\label{fig:vector} \cite{lounestoClifford}.}
+	\end{figure}
+\end{minipage}
+
+Assim, um vetor $\mathbf a$ e seu oposto $-\mathbf a$ tem o mesmo comprimento e direção, mas possuem sentidos opostos. Também, dois vetores são iguais se, e somente se, possuem a mesma magnitude, direção e sentido. Isso é, para $\mathbf{a}$ e $\mathbf{b}$ vetores,
+$$\mathbf a = \mathbf b \iff \norm{\mathbf{a}} = \norm{\mathbf{b}} \text{ e } \mathbf{a}\upuparrows\mathbf{b}.$$
+Aqui introduz-se a notação de mesma direção e sentido como $\upuparrows$, absorvida de \cite{lounestoClifford}, donde retirou-se vários dos resultados aqui mostrados. Escreveremos $\updownarrows$ quando a magnitude e direção forem iguais, mas o sentido oposto.
+
+Quando se trata da operação do espaço vetorial (a adição) também temos uma interpretação geométrica. Dados dois vetores $\mathbf a$ e $\mathbf b$, desenha-se um paralelogramo com lados formados por estes vetores (conforme Figura~\ref{fig:paralelogram}) e a diagonal deste paralelogramo será a soma de $\mathbf a$ com $\mathbf b$. Perceba que a interpretação respeita a comutatividade.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.22\linewidth]{figures/paralelogram.pdf}
+	\end{center}
+	\caption{Interpretação geométrica da soma de vetores \cite{lounestoClifford}.}
+	\label{fig:paralelogram}
+\end{figure}
+
+Podemos tecer uma interpretação geométrica da multiplicação por escalar associada a um espaço vetorial. Se $\lambda\in K$ é um escalar de um espaço vetorial $E$ sobre $K$, então o vetor $\mathbf a$ pode ser ``esticado'' por um escalar $\lambda$ (se $\lambda>1$) ou ``comprimido'' (se $0<\lambda<1$). Também, se $\lambda<0$, então $\lambda \mathbf a$ terá sentido contrário ao de $\mathbf a$. Isso é fácil de compreender visto a associatividade do produto por escalar $(-\lambda)\mathbf a = \lambda(-\mathbf a).$
+
+
+\begin{minipage}{0.3\linewidth}
+	Assim, temos que $$\lambda \mathbf a \upuparrows \mathbf a, \text{ se } \lambda > 0,$$ $$\lambda \mathbf a \updownarrows \mathbf a, \text{ se } \lambda < 0.$$
+\end{minipage}
+\begin{minipage}{0.7\linewidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{figures/scalarProduct.pdf}
+		\end{center}
+		\caption{Produto por escalar.}
+		\label{fig:scalarProduct}
+	\end{figure}
+\end{minipage}
+\\
+
+Por fim, também temos uma interpretação para um produto entre dois vetores, que chamamos de produto escalar. Essa operação associa dois elementos $\mathbf a, \mathbf b$ no espaço vetorial $E$ sobre $K$ com um elemento do corpo $K$ que é proporcional ao produto dos módulos de $\mathbf a$ e $\mathbf b$ e o cosseno do ângulo $\varphi$ entre estes dois vetores. Ou seja, $$\mathbf a \cdot \mathbf b = \norm{\mathbf a}\norm{\mathbf b}\cos \varphi,\quad \text{ com } 0\leq\varphi\leq 180^\circ.$$
+Dessa forma, se o ângulo entre os vetores é 90$^\circ$ (i.e., são perpendiculares), $\mathbf a \cdot \mathbf b = 0$.\\
+
+Com isso. estamos familiarizados com as noções de soma entre vetores (consequentemente com subtração), soma (subtração) e multiplicação (divisão) entre escalares, com a de multiplicação de um vetor por um escalar (resultando em vetor) e com a noção de multiplicação entre vetores (resultando em escalar). É intuitivo se perguntar se é possível multiplicar dois vetores e obter um vetor. De fato, esse vê-se um produto do tipo em álgebra linear, chamado de produto vetorial, mas ele é apenas definido sobre o $\mathbb{R}^3$. Agora iremos introduzir um novo produto entre vetores, chamado \textit{produto exterior}, mas primeiro precisaremos conhecer o que ele resultará.
+
+\subsubsection{Bivetores}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{figures/2blade.pdf}
+	\end{center}
+	\caption{Áreas de superfícies planas $A$ e $A'$ nos respectivos planos $P$ e $P'$ \cite{lundholm2009clifford}.}
+	\label{fig:2blade}
+\end{figure}
+
+Seja $A$ uma área de superfície plana em um plano $P$, dotada de um ``sentido'' (representado por uma flecha de rotação como na Figura~\ref{fig:2blade}). Se $A'$ representa outra área de superfície plana em outro plano $P'$, também dotada de um sentido, então pode-se definir a seguinte relação de equivalência: $A$ é equivalente a $A'$ se, e somente se, $P$ e $P'$ são paralelos, as áreas de $A$ e $A'$ são iguais e se os seus sentidos (de rotação) são o mesmo depois de transladar $A'$ em $A$ (ou seja, $P'$ para $P$). As classes de equivalência formadas por essas áreas orientadas de superfície plana são chamadas de \textit{$2$-vetor} (ou, um \textit{bivetor}).
+
+Perceba que o bivetor $A$ (de qualquer formato) pode ser representado por um paralelogramo de lados $\mathbf a$ e $\mathbf b$ tais que a área orientada de superfície plana assim formada seja equivalente a $A$ (vide Figura~\ref{fig:2bladePlano}). A esse quadrilátero chamamos de \textit{produto exterior de $\mathbf a$ com $\mathbf b$} e escrevemos $\mathbf a \wedge \mathbf b$. Se a área de $A$ é zero, então escrevemos $A = 0$. Assim, $\mathbf a \wedge \mathbf a = 0$. Também, por $-A$ expressamos a classe de equivalência de todas as áreas orientadas de superfície plana com a mesma área e no mesmo plano que $A$, mas com um sentido de rotação contrário ao de $A$. Perceba que $-(\mathbf a \wedge \mathbf b) = \mathbf b \wedge \mathbf a$. Um \textit{bivetor unidade} é um bivetor $A$ com $\norm{A} = 1$.
+
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.75\linewidth]{figures/2bladePlano.pdf}
+		\end{center}
+		\caption{Um bivetor representado por um produto exterior $a\wedge b$ e $\mathbf b \wedge \mathbf a$ \cite{lundholm2009clifford}.}
+		\label{fig:2bladePlano}
+	\end{figure}
+
+\subsubsection{Adição de bivetores}
+
+A interpretação geométrica da adição de bivetores pode ser facilmente vista se existir um vetor comum entre os bivetores e, por sorte, em três dimensões sempre existe ao menos uma reta que intercepta dois planos quaisquer. Dessa forma, sejam $A = \mathbf a \wedge \mathbf c$ e $B = \mathbf b \wedge \mathbf c$ dois bivetores, então o bivetor $A + B$ é definido por $$A+B = \mathbf a \wedge \mathbf c + \mathbf b \wedge \mathbf c = (\mathbf a+ \mathbf b) \wedge \mathbf c.$$ 
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.32\linewidth]{figures/2bladeSoma.pdf}
+	\end{center}
+	\caption{Interpretação geométrica da soma $A+B = (\mathbf a+\mathbf b)\wedge c$ \cite{lundholm2009clifford}.}
+	\label{fig:2bladeSoma}
+\end{figure}
+
+Perceba que, como a soma de vetores é comutativa, $A+B = B+A$ e, portanto, o conjunto de bivetores sobre a adição forma um grupo abeliano. Bivetores também podem ser operados com escalares, donde eles se tornam um espaço vetorial. Descrevemos esse espaço por $\bigwedge^2\mathbb{R}^3$. Uma base para esse espaço vetorial pode ser construída usando a base $\{\mathbf e_1,\mathbf e_2,\mathbf e_3\}$ do espaço vetorial $\mathbb{R}^3$. As áreas orientadas de superfície plana obtidas através dos produtos exteriores $\mathbf e_1 \wedge \mathbf e_2, \mathbf e_1 \wedge \mathbf e_3, \mathbf e_2 \wedge \mathbf e_3$, entre os elementos da base de $\mathbb{R}^3$, formam uma base para o espaço vetorial $\bigwedge^2\mathbb{R}^3$.
+
+\begin{minipage}{0.35\linewidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{figures/bivectorsBase.pdf}
+		\end{center}
+		\caption{Base do $\bigwedge^2\mathbb{R}^3$ \cite{lounestoClifford}.}
+		\label{fig:bivectorsBase}
+	\end{figure}
+\end{minipage}
+\begin{minipage}{0.6\linewidth}
+	\setlength\parindent{24pt} Assim, um bivetor arbitrário $B$ é uma combinação linear dos elementos da base: $$B = B_{1,2}\mathbf e_1\wedge \mathbf e_2 + B_{1,3}\mathbf e_1\wedge \mathbf e_3 + B_{2,3}\mathbf e_2\wedge \mathbf e_3,$$ e pode-se definir a norma (ou área) de $B$ como $$\norm{B} = \sqrt{B_{1,2}^2 + B_{1,3}^2 + B_{2,3}^2}.$$
+\end{minipage}
+
+\subsubsection{Trivetores}
+O produto exterior $\mathbf a \wedge\mathbf b\wedge\mathbf c$ de três vetores $\mathbf a = a_1\mathbf e_1+a_2\mathbf e_2+a_3\mathbf e_3$, $\mathbf b = b_1\mathbf e_1+b_2\mathbf e_2+b_3\mathbf e_3$ e $\mathbf c = c_1\mathbf e_1+c_2\mathbf e_2+c_3\mathbf e_3$ representa o volume orientado do paralelepípedo com lados $\mathbf a$, $\mathbf b$ e $\mathbf c$: $$\mathbf a\wedge\mathbf b\wedge\mathbf c = \begin{tabular}{|c c c|}
+	$a_1$&$a_2$&$a_3$\\
+	$b_1$&$b_2$&$b_3$\\
+	$c_1$&$c_2$&$c_3$
+\end{tabular}
+\ \mathbf e_1\wedge\mathbf e_2\wedge\mathbf e_3.
+$$
+Esse é um elemento do espaço vetorial unidimensional de trivetores (ou, 3-vetores) $\bigwedge^3\mathbb{R}^3$, com bases $\mathbf e_1\wedge\mathbf e_2\wedge\mathbf e_3$. O produto exterior é associativo, isso é, $$(\mathbf a\wedge \mathbf b)\wedge \mathbf c = \mathbf a\wedge (\mathbf b\wedge \mathbf c),$$ e antissimétrica: $$\mathbf a \wedge \mathbf b \wedge \mathbf c = \mathbf b \wedge \mathbf c \wedge \mathbf a = \mathbf c \wedge \mathbf a \wedge \mathbf b = -\mathbf c \wedge \mathbf b \wedge \mathbf a = - \mathbf a \wedge \mathbf c \wedge \mathbf b = -\mathbf b \wedge \mathbf a \wedge \mathbf c, \quad \forall a,b,c\in \mathbb{R}^3$$
+
+O produto exterior dos elementos da base $\mathbf e_1,\mathbf e_2,\mathbf e_3$ do $\mathbb{R}^3$ é o volume orientado unitário $\mathbf e_1 \wedge\mathbf e_2 \wedge\mathbf e_3 \in \bigwedge^3\mathbb{R}^3$. O volume (ou norma) $\norm{\mathbf V}$ de um trivetor $\mathbf V = V\mathbf e_1\wedge\mathbf e_2\wedge\mathbf e_3$ é $\norm{V}$, isso é, $\norm{V\mathbf e_1\wedge\mathbf e_2\wedge\mathbf e_3} = V$ para $V\geq 0$ e $\norm{V\mathbf e_1\wedge\mathbf e_2\wedge\mathbf e_3} = -V$ para $V<0$.
+\\
+
+E agora podemos traçar uma relação entre aquele produto vetorial estudado em álgebra linear e o produto exterior de Grassmann. Sejam $\mathbf a = a_1\mathbf e_1+a_2\mathbf e_2 + a_3\mathbf e_3$ e $\mathbf b = b_1\mathbf e_1 + b_2\mathbf e_2 + b_3\mathbf e_3$ vetores. O bivetor $$\mathbf a \wedge\mathbf b = (a_2b_3 - a_3b_2)\mathbf e_2\wedge\mathbf e_3 + (a_3b_1 - a_1b_3)\mathbf e_3 \wedge\mathbf e_1 + (a_1b_2 - a_2b_1)\mathbf e_1\wedge\mathbf e_2$$ pode ser expresso como um ``determinante'' $$\mathbf a \wedge \mathbf b = 
+\begin{tabular}{| c c c |}
+	$\mathbf e_2 \wedge \mathbf e_3$& $\mathbf e_3 \wedge \mathbf e_1$& $\mathbf e_1 \wedge \mathbf e_2$\\
+	$a_1$ &$a_2 $&$a_3 $\\
+	$b_1 $&$b_2$ &$b_3 $
+\end{tabular}.$$ E relembrando, define-se o \textit{produto vetorial de $\mathbf a$ por $\mathbf b$} como $$\mathbf a\times \mathbf b = (a_2b_3 - a_3b_2)\mathbf e_1 + (a_3b_1 - a_1b_3)\mathbf e_2+ (a_1b_2 - a_2b_1)\mathbf e_3,$$ que, por sua vez, pode ser representado pelo ``determinante'' $$\mathbf a \times \mathbf b = 
+\begin{tabular}{| c c c |}
+$\mathbf e_1$& $\mathbf e_2$& $\mathbf e_3$\\
+$a_1$ &$a_2 $&$a_3 $\\
+$b_1 $&$b_2$ &$b_3 $
+\end{tabular}.$$
+
+A interpretação geométrica de $\mathbf a\times \mathbf b$ é um vetor perpendicular ao plano de $\mathbf a\wedge\mathbf b$ e com norma igual ao volume do paralelepípedo formado por $\mathbf a$ e $\mathbf b$, isso é, $$\norm{\mathbf a\times\mathbf b} = \norm{\mathbf a \wedge \mathbf b} = \norm{\mathbf a}\norm{\mathbf b}\sin\varphi,$$ onde $0\leq\varphi\leq180^\circ$ é o ângulo entre $\mathbf a$ e $\mathbf b$.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.35\linewidth]{figures/produtoVetorial.pdf}
+	\end{center}
+	\caption{Interpretação geométrica de $\mathbf a \times \mathbf b$ \cite{lounestoClifford}.}
+	\label{fig:produtoVetorial}
+\end{figure}
+
+\subsection{Álgebra Geométrica $\mathcal G(V,q)$}
+A definição convencional de álgebra geométrica é sobre o contexto de espaços vetoriais monidos de produto interno, ou mais genericamente, uma \textit{forma quadrática}. No que se segue, considera-se um espaço vetorial $V$ de dimensão arbitrária sobre um corpo $K$.
+
+\begin{definicao}[Forma quadrática]
+Uma \textit{forma quadrática} $q$ sobre um espaço vetorial $V$ é um mapa $q: V\longrightarrow K$ tal que	
+\begin{enumerate}
+	\item $q(\alpha v) = \alpha^2q(v)$, para todo $\alpha\in K$ e $v\in V$; 
+	\item o mapeamento $(v,w) \mapsto q(v+w) -q(v)-q(w)$ é linear em ambos $v$ e $w$.
+\end{enumerate}
+A forma bilinear correspondente $\beta_q(v,w):= \dfrac 1 2 (q(v+w)-q(v)-q(w))$ é chamada de \textit{polarização de q}.
 \end{definicao}
 
-\chapter{Álgebra Geométrica}
+Seja $$\mathcal{T}(V) := \bigoplus^\infty_{k=0}\bigoplus\, ^kV$$ descrevendo a álgebra tensorial sobre $V$, cujos elementos são somas finitas de tensores de grau arbitrário finito sobre $V$. Considere o ideal bilateral gerado por todos os elementos da forma $v\oplus v-q(v)$ de vetores $v$,
+$$\mathcal{I}_q(V) := \{\sum_k A_k\oplus(v\oplus v-q(v))\oplus B_k \quad | \quad v\in V, \ A_k,B_k \in \mathcal{T}(V)\}.$$
+Vamos definir a álgebra geométrica sobre $V$ através do quociente de $\mathcal{T}(V)$ por este ideal, de modo que, na álgebra resultante, a raiz de um vetor $v$ será igual ao escalar $q(v)$, como segue.
 
-Neste capitulo iremos introduzir o estudo da Álgebra Geométrica --- nome definido por William Kingdon Clifford (1845-1879), o que eventualmente fez com que essa área seja também chamada de Álgebra de Clifford.
+\begin{definicao}[Álgebra geométrica]
+	A \textit{álgebra geométrica} $\mathcal{G}(V,q)$ sobre o espaço vetorial $V$ com forma quadrática $q$ é definido por $$\mathcal{G}(V,q) := \mathcal{T}(V)/\mathcal{I}_q(V).$$
+\end{definicao}
 
-\section{O produto de Clifford}
+\begin{observacao}[Notação]
+	Quando for claro o contexto que estivermos trabalhando com o espaço vetorial $V$ ou a forma quadrática $q$, iremos suprimi-los da notação, ficando apenas com $\mathcal{G}(V)$ ou simplesmente $\mathcal{G}$.
+\end{observacao}
+
+O produto em $\mathcal{G}$ é chamado de \textit{produto geométrico} ou \textit{produto de Clifford}, é herdado do produto tensorial em $\mathcal{T}(V)$ e iremos descrevê-lo por $$\mathcal{G}\times \mathcal{G}\rightarrow\mathcal{G},\quad \quad \quad\quad \quad \quad\quad \quad\quad \quad\ \ $$$$(A,B)\mapsto AB:= [A\oplus B] = A\oplus
+ B+\mathcal{I}_q.$$
+ 
+Perceba que esse produto é bilinear e associativo. Além disso, $$v^2 = [v\oplus v] = [v\oplus v-q(v)1] + q(v)1_\mathcal{G} = q(v)$$ e $$q(v+w) = (v+w)^2 = v^2 + vw + wv + w^2 = q(v) + vw + wv + q(w),$$
+de modo que, juntos com a definição de $\beta_q$, encontra-se as seguintes identidades sobre $\mathcal{G}$ para todo $v,w \in V$: $$v^2 = q(v)\quad \text{ e } \quad vw+wv = 2\beta_q(v,w).$$
+
+\begin{proposicao}[Universalidade]
+	
+\end{proposicao} 
+ 
+\subsection{O produto de Clifford}
 
 Temos o objetivo de definir uma operação de produto de vetores que se comporte de forma parecida com o produto de um corpo, isto é, que respeite, $\forall a,b,c \in \mathbb{R}$, os seguintes axiomas
 \begin{enumerate}
@@ -1364,19 +1598,6 @@ Temos o objetivo de definir uma operação de produto de vetores que se comporte
 
 Os números complexos satisfazem isso. Porém, como isso não é possível para dimensões maiores \cite{lounestoClifford}, teremos de abrir mão de alguma propriedade. Abriremos mão da comutatividade.
 
-\begin{definicao}[Bivetores]
-	Sejam dois versores ortogonais $\mathbf{e_1}$ e $\mathbf{e_2}$. Chamaremos de \emph{bivetor} um novo tipo de elemento unitário, representado pelo produto $$\mathbf{e_1e_2} = \mathbf{e_{12}}$$ onde $$\mathbf{e_1}^2 = \mathbf{e_2}^2 = 1 \quad \text{e} \quad \mathbf{e_1e_2} = -\mathbf{e_2e_1}.$$
-\end{definicao}
-
-Pode-se interpretar geometricamente $\mathbf{e_{12}}$ como a área plana orientada do quadrado de lados $\mathbf{e_1}$ e $\mathbf{e_2}$.
-
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.4\linewidth]{figures/bivector.pdf}
-	\end{center}
-	\caption{Representação geométrica de um bivetor $\mathbf{e_{12}}$.}
-\end{figure}
-
 \begin{definicao}[Produto de Clifford]
 	Sejam dois versores ortogonais $\mathbf{e_1}$ e $\mathbf{e_2}$ no $\mathbb{R}^2$. Para dois vetores $\mathbf{a}$ = $a_1\mathbf{e_1} + a_2\mathbf{e_2}$ e $\mathbf b = b_1\mathbf{e_1} + b_2\mathbf{e_2}$, o \emph{produto de Clifford} $\mathbf{ab}$ é definido como $$\mathbf{ab} = a_1b_1 + a_2b_2 + (a_1b_2-a_2b_1)\mathbf{e_{12}},$$
 	isto é, a soma de um escalar com um bivetor.
@@ -1385,6 +1606,195 @@ Pode-se interpretar geometricamente $\mathbf{e_{12}}$ como a área plana orienta
 
 
 Perceba que pode-se separar as duas partes do produto de Clifford como $$\mathbf{a\cdot b} + \mathbf{a \wedge b} \ = \ a_1b_1 + a_2b_2 + (a_1b_2 - a_2b_1)\mathbf{e_{12}}.$$
+
+\subsection{Álgebra dos Quatérnios}
+William Rowan Hamilton fora uma criança extremamente precoce. De origem irlandesa, viveu entre 1805 e 1865, onde, aos três anos de idade lia perfeitamente inglês. Devido a morte antecipada de seus pais teve como orientador um tio linguista e aos cinco anos sabia latim e hebraico. Até os dez anos já era familiarizado com italiano, francês, árabe, sânscrito, persa, caldeu e algumas outras línguas orientais. Ainda criança, Hamilton demonstrou grande interesse pela matemática, influenciado por autores como Newton e Laplace, caminhava a passos largos para o mundo da física e astronomia. Sem dúvidas estava florescendo um dos grandes nomes da ciência do século XIX. \cite{BoyerMathHistory,AlgebraAbstrata2BienalSBM}
+
+Porém, nos atentando as suas contribuições à matemática, tudo começou quando Hamilton percebeu que uma notação utilizada na teoria dos números complexos não era a mais adequada. Ele percebeu que a expressão $a + bi$ não era realmente uma soma, isto é, não é como somar dois números reais que pertencem a mesma dimensão, o que dá sentido a soma. Ele afirma que o sinal ‘$+$’ é um equívoco, um acidente histórico, e que as duas partes não podem ser naturalmente somadas. A partir deste pensamento construiu e publicou em 1833 a teoria de números complexos formalmente como conhecemos hoje, definindo a soma e produto em pares ordenados, ou seja:
+\begin{equation*}
+	(a,b) + (c,d) = (a + b, c + d)
+\end{equation*}
+\begin{equation*}
+	(a, b)(c, d) = (ac-bd, ad + bc)
+\end{equation*}
+
+Claramente Hamilton só pode perceber isso devido sua inclinação física, afinal, físicos adoram se perguntar sobre as dimensões do que se está somando. Graças também a esta inclinação Hamilton logo percebeu como esta nova abordagem permitiria uma visão dos números complexos como entidades orientadas no plano e, maravilhado com as possibilidades de sua descoberta, não demorou muito para que se perguntasse como seria esta relação se fosse expandida para o espaço tridimensional. Infelizmente as respostas não foram fáceis e por dez anos trabalhou arduamente tentando desenvolver ternas (três representantes do espaço) que pudessem ser multiplicadas, tendo em vista que a soma e a subtração se davam trivialmente. A demonstração de que Hamilton nunca conseguiria sua terna encontra-se em \cite{QuaterniosJucineide}. 
+
+Tais questões manteriam-se obscuras se não fosse pelo histórico dia de 16 de outubro de 1843, onde Hamilton, andando ao lado de sua esposa na ponte Brougham sobre o Royal Canal para presidir uma reunião do Conselho da Real Sociedade da Irlanda, dividia-se entre conversas ocasionais e no pensar sobre seu trabalho e tão logo teve um \textit{insight}: Percebeu que seus problemas sumiriam se utilizasse quádruplas em vez de ternas e ignorasse a comutatividade para a multiplicação. Percebeu que para quádruplas $a + bi + cj + dk$ teria $i^2 = j^2 = k^2 = ijk = -1$. Desta fórmula fundamental tira-se a solução do problema da multiplicação que Hamilton encontrara, a origem da Regra de Fleming (vulgarmente conhecida como “regra da mão direita”) e, entre outras coisas surpreendentes, uma nova álgebra que iria contra os princípios matemáticos da época: \textit{A Álgebra dos Quatérnios}.
+
+\textbf{Definição: }Seja $B_{\mathbb{R}^3}=\{i,j,k\}$ a base canônica de $\mathbb{R}^3$. Um \textit{quatérnio} é definido como um elemento da forma 
+\begin{equation}
+	q=q_0+\mathbf{q_v},
+\end{equation} 
+onde $q_0 \in \mathbb{R}$ é um escalar e $\mathbf{qv}=q_1\mathbf{i}+q_2\mathbf{j}+q_3\mathbf{k}$ é um vetor de $\mathbb{R}^3$.
+\\
+
+Ou seja, todo elemento $q$ da forma $q = q_0 + q_1\textbf{i} + q_2\textbf{j} + q_3\textbf{k}$ é um quatérnio e a medida que variamos os valores dos coeficientes reais $q_0, q_1, q_2$ e $q_3$ independentemente uns dos outros na reta real percorremos todos os quatérnios possíveis, nos levando a criação do \textit{Conjunto dos Quatérnios}, definido por $\mathbb{H}$. Perceba então que há uma relação biunívoca entre $\mathbb{H}$ e $\mathbb{R}^4$, uma vez que um quatérnio pode ser escrito como a quádrupla $q = (q_0, q_1, q_2, q_3) \in \mathbb{R}^4$. \cite{fidalgotese}
+\\
+
+\textbf{Definição:} Seja $B_\mathbb{H} = \{1, \mathbf{i}, \mathbf{j}, \mathbf{k}\}$ definida como a \textit{base canônica de $\mathbb{H}$} tal que $\mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1$.
+\\
+
+Pode-se tratar agora de operações aritméticas no Conjunto dos Quatérnios:
+\phantomsection
+\addcontentsline{toc}{subsubsection}{Operações sobre $\mathbb{H}$}
+\begin{itemize}
+	\item \textbf{Adição:} dados dois quatérnios $p=p_0+\mathbf{p_v}$ e $q=q_0+\mathbf{q_v}$ em $\mathbb{H}$, define-se a adição de $p$ a $q$ como  
+	\begin{equation}
+		p+q=(p_0+q_0)+(\mathbf{p_v}+\mathbf{q_v})
+	\end{equation}
+	Temos uma proposição que mostra que esta adição está bem-definida no conjunto de quatérnios. 
+	\\ \newline \textbf{Proposição:} \textit{O conjunto $\mathbb{H}$ é fechado para adição}.
+	\\ \newline \textit{Demonstração.} O que queremos mostrar é que a soma de dois quatérnios é, por sua vez, um novo quatérnio. De fato: considerando $r=p+q$, podemos escrever o elemento $r$ como
+	\begin{equation}
+		r=r_0+\mathbf{r_v}
+	\end{equation}
+	onde sua parte escalar é dada por $r_0=p_0+q_0$ e sua parte vetorial é dada por $\mathbf{r_v=p_v+q_v}. \hfill\blacksquare$
+	\\ \newline Dados $p,q,r \in \mathbb{H}$ arbitrários, temos as seguintes propriedades para a adição de quatérnios.
+	\begin{enumerate}
+		\item \textbf{Associatividade:} $(p+q)+r=p+(q+r)$.
+		\\ \newline \textit{Demonstração.} Seja $p=p_0+\mathbf{p_v}, q=q_0+\mathbf{q_v}, r=r_0+\mathbf{r_v}$,\,\,tal que $p,q,r \in \mathbb{H}$. Partindo de $(p+q)+r$ \,\,temos:
+		\\ \newline $(p+q)+r=[(p_0+\mathbf{p_v})+(q_0+\mathbf{p_v})]+(r_0+\mathbf{r_v})=[(p_0+q_0)+(\mathbf{p_v}+\mathbf{q_v})]+(r_0+\mathbf{r_v})=[(p_0+q_0+r_0)+(\mathbf{p_v}+\mathbf{q_v}+\mathbf{r_v})]=[(p_0+q_0+r_0)+(\mathbf{p_v}+\mathbf{q_v}+\mathbf{r_v})]=\{[p_0+(q_0+r_0)]+[\mathbf{p_v}+(\mathbf{q_v}+\mathbf{r_v})]\}=(p_0+\mathbf{p_v})+[(q_0+r_0)+(\mathbf{q_v}+\mathbf{r_v})]=(p_0+\mathbf{p_v})+[(q_0+\mathbf{q_v})+(r_0+\mathbf{r_v})]=p+(q+r). \hfill\blacksquare$
+		\\ \item \textbf{Comutatividade:} $p+q=q+p$
+		\\ \newline \textit{Demonstração.} Seja $p=p_0+\mathbf{p_v}, q=q_0+\mathbf{q_v}$,\,\,tal que $p,q \in \mathbb{H}$. Partindo de $p+q$, temos:
+		\\ \newline $p+q=(p_0+\mathbf{p_v})+(q_0+\mathbf{q_v})=(p_0+q_0)+(\mathbf{p_v}+\mathbf{q_v})=(q_0+p_0)+(\mathbf{q_v}+\mathbf{p_v})=q+p.\hfill\blacksquare$
+		\\ \item \textbf{Existência de Elemento Neutro:} Existe um elemento neutro, a saber, $0_{\mathbb{H}}=0+\mathbf{0_v} \in \mathbb{H}$, de modo que,
+		\begin{equation}
+			p+0_{\mathbb{H}}=0+p=p
+		\end{equation}
+		\\ \textit{Demonstração.}  Seja $p=p_0+\mathbf{p_v} \textrm{ e } 0_{\mathbb{H}}=0+\mathbf{0_v}$,\,\,tal que $p,0_{\mathbb{H}} \in \mathbb{H}$. Partindo de $p+0_{\mathbb{H}}$, temos:
+		\\ \newline $p+0_{\mathbb{H}}=(p_0+\mathbf{p_v})+(0+\mathbf{0_v})=(p_0+0)+(\mathbf{p_v}+\mathbf{0_v})=(0+p_0)+(\mathbf{0_v}+\mathbf{p_v})=p_0+\mathbf{p_v}=p.\hfill\blacksquare$
+		\\ \item \textbf{Existência de Elemento Oposto:} Existe um elemento oposto para cada $p=p_0+\mathbf{p_v} \in \mathbb{H}$, dado por $-p=-p_0-\mathbf{p_v}$, de modo que sua soma com $p$ resulte no elemento neutro da adição do item anterior, ou seja,
+		\begin{equation}
+			p+(-p)=(-p)+p=0_{\mathbb{H}}
+		\end{equation}
+		\\ \textit{Demonstração.} De fato, se partirmos de $p+(-p)$, temos:
+		\\ \newline $p+(-p)= (p_0+\mathbf{p_v})+(-p_0-\mathbf{p_v})=[p_0+(-p_0)]+[\mathbf{p_v}+(\mathbf{-p_v})]=(p_0-p_0)+(\mathbf{p_v}-\mathbf{p_v})=0+\mathbf{0_v}=0_{\mathbb{H}}.\hfill\blacksquare$
+	\end{enumerate}
+	Como a adição de quatérnios satisfaz estas propriedades, temos o seguinte resultado.
+	\\ \newline \textbf{Proposição: } ($\mathbb{H},+$) é um \textit{grupo abeliano}.
+	\\
+	
+	\item \textbf{Multiplicação por Escalar:} Dado um quatérnio $q=q_0+\mathbf{q_v} \in \mathbb{H}$ e uma constante escalar real $\alpha \in \mathbb{R}$, define-se a multiplicação de $q$ pelo escalar $\alpha$ da forma
+	\begin{equation}
+		\alpha q=(\alpha q_0)+(\alpha \mathbf{q_v})
+	\end{equation}
+	A próxima proposição mostra que esta operação, unindo itens de espaços distintos, está bem definida no conjunto dos quatérnios.
+	\\ \newline \textbf{Proposição:} O \textit{conjunto $\mathbb{H}$ é fechado para a multiplicação de escalares reais.}
+	\\ \textit{Demonstração.} Queremos demonstrar que a multiplicação de um escalar por um quatérnio tem por resultado um novo quatérnio. Com efeito: podemos considerar tal multiplicação como o elemento 
+	\begin{equation*}
+		r=r_0+\mathbf{r_v}
+	\end{equation*}
+	onde sua parte escalar é dada por $r_0=\alpha q_0 \in \mathbb{R}$ e sua parte vetorial é dada por $\mathbf{r_v}=\alpha \mathbf{q_v} \in \mathbb{R}^3.\hfill\blacksquare$
+	\\ \newline A multiplicação por escalar também tem uma série de propriedades. Dados os números reais $\alpha,\beta$ e os quatérnios $p$ e $q$, temos:
+	\begin{enumerate}
+		\item \textbf{Associatividade:} $(\alpha \beta)q=\alpha(\beta q)$ 
+		\\ \newline \textit{Demonstração.} De fato, seja $\alpha, \beta \in \mathbb{R}$ e $q=q_00+\mathbf{q_v} \in \mathbb{H}$, partindo de $(\alpha \beta)q$ temos:
+		\\ \newline $(\alpha \beta)q=(\alpha \beta)(q_0+\mathbf{q_v})=\alpha \beta q_0+\alpha \beta \mathbf{q_v}=\alpha(\beta q_0+\beta \mathbf{q_v})=\alpha(\beta q).\hfill\blacksquare$
+		\\ \item \textbf{Multiplicação pela Unidade:} $1q=q$
+		\\ \newline \textit{Demonstração.} Queremos provar que $1q=q$. Para isto, tome $\alpha \in \mathbb{R}$, com $\alpha = 1$. Partindo de $1q=1(q_0+\mathbf{q_v})=(1q_0+1\mathbf{q_v})=q_0+\mathbf{q_v}=q$. Logo, $1q=q.\hfill\blacksquare$
+		\\ \item \textbf{Distributividade em relação à soma:} estas duas propriedades unem a adição e a multiplicação por escalar e são dadas por
+		\begin{equation*}
+			(\alpha+\beta)q=\alpha q + \beta q
+		\end{equation*}e \begin{equation*}
+			\alpha(p+q)=\alpha p + \alpha q	
+		\end{equation*}
+		\\ \textit{Demonstração.} Seja $\alpha,\beta \in \mathbb{R}$ e $p,q \in \mathbb{H}$. Partindo de $(\alpha + \beta)q=((\alpha + \beta)q_0 + (\alpha + \beta)\mathbf{q_v})$. Deste modo, é fácil ver que $((\alpha + \beta)q_0 + (\alpha + \beta)\mathbf{q_v})=\alpha(q_0+\mathbf{q_v})+\beta(q_0+\mathbf{q_v})=\alpha q+\beta q$. Analogamente, se olharmos para $\alpha q+\beta q$. Agora, partindo de $\alpha(p+q)=\alpha p+\alpha q$. Aplicando as devidas distributividades, temos que $\alpha p+\alpha q=(\alpha p_0+\alpha\mathbf{p_v})+(\alpha q_0+\alpha\mathbf{q_v})=\alpha p+\alpha q$. Analogamente para $\alpha p+\alpha q$. Portanto, a distributividade é válida. \hfill$\blacksquare$ 
+	\end{enumerate}
+\end{itemize}
+
+Sabendo do isomorfismo já citado entre $\mathbb{H}$ e $\mathbb{R}^4$ e percebendo que as operações descritas preservam as mesmas operações entre os dois conjuntos, nota-se que existe uma relação de isomorfismo entre $\mathbb{H}$ e $\mathbb{R}^4$. Isso se deve ao fato de que o calculo vetorial como conhecemos hoje é mera simplificação das ideias de Hamilton sobre quatérnios, simplificação feita por Josiah Willard Gibbs (1839 – 1903) em um conjunto de notas para seus estudantes de física-matemática intitulado Elements of Vector Analysis \cite{AlgebraAbstrata2BienalSBM}.
+
+\textbf{Proposição:} O espaço vetorial dos quatérnios $\mathbb{H}$ é isomorfo ao espaço vetorial Euclidiano de dimensão 4, i.e. $\mathbb{H} \simeq \mathbb{R}^4$.
+\\
+
+Assim como os complexos, os quatérnios também tem conjugado. E esses são definidos da seguinte forma:
+
+\textbf{Definição:} Seja $q = q_0 + \mathbf{q_v} \in \mathbb{H}$, define-se seu \textit{conjugado} como $q^* = q_0 - \mathbf{q_v}$.
+\\
+
+\phantomsection
+\addcontentsline{toc}{subsubsection}{Produto algébrico dos quatérnios}
+Tendo as definições já estabelecidas, pode-se construir a terceira operação dos quatérnios, baseando-se em \cite{QuaterniosAndRotationsKuipers}, justamente a que causou dez anos de trabalho para Hamilton e que torna sua álgebra um tanto não trivial, o \textit{produto algébrico dos quatérnios}:
+
+Suponha dois elementos pertencentes a $\mathbb{H}/0$, $p = p_0 + \mathbf{p_v}$ e $q = q_0 + \mathbf{q_v}$ e escritos em $B_{\mathbb{H}}$. Sabe-se que podemos escrever $\mathbf{p_v} = p_1\mathbf{i} + p_2\mathbf{j} + p_3\mathbf{k}$ e $\mathbf{q_v} = q_1\mathbf{i} + q_2\mathbf{j} + q_3\mathbf{k}$. Se multiplicarmos os dois elementos termo a termo, como na propriedade distributiva, teremos:
+\begin{equation}
+	\begin{aligned}
+		pq = (p_0+\mathbf{i}p_1+\mathbf{j}p_2+\mathbf{k}p_3)(q_0+\mathbf{i}q_1+\mathbf{j}q_2+\mathbf{k}q_3) \\ = (p_0q_0+p_0+\mathbf{i}p_0q_1+p_1q_0)+\mathbf{j}(p_0q_2+p_2q_0) \\ +\mathbf{k}(p_0q_3+p_3q_0)+\mathbf{i}^2p_1q_1+\mathbf{j}^2p_2q_2+\mathbf{k}^2p_3q_3+\mathbf{ij}p_1q_2+\mathbf{ji}p_2q_1 \\ +\mathbf{ik}p_1q_3+\mathbf{ki}p_3q_1+\mathbf{jk}p_2q_3+\mathbf{kj}p_3q_2
+	\end{aligned}		   	       
+\end{equation}
+Mas podemos utilizar de algumas definições para simplificar a equação acima. Os produtos dos versores a seguir foram definidos por Hamilton por construção a partir de seus três planos retangulares intersectados utilizando de rotações \cite{QuaterniosHamilton}.
+\begin{equation*}
+	\mathbf{ij} = \mathbf{k} = \mathbf{-ji}
+\end{equation*}
+\begin{equation*}
+	\mathbf{jk} = \mathbf{i} = \mathbf{-kj}
+\end{equation*}
+\begin{equation*}
+	\mathbf{ki} = \mathbf{j} = \mathbf{-ik}
+\end{equation*}
+Note que esses são os produtos que fazem com que esta álgebra seja não comutativa no produto. Também são graças a esses produtos que poderemos agrupar os termos comuns em 1. Logo, usando os produtos definidos acima e a fórmula fundamental $\mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1$ temos:
+\begin{equation}
+	\begin{aligned}
+		pq = (p_0q_0-p_1q_1+p_2q_2+p_3q_3)+p_0(\mathbf{i}q_1+\mathbf{j}q_2+\mathbf{k}q_3+q_0(\mathbf{i}p_1+\mathbf{j}p_2+\mathbf{k}p_3) \\ +\mathbf{i}(p_2q_3-p_3q_2)+\mathbf{j}(p_3q_1-p_1q_3)+\mathbf{k}(p_1q_2-p_2q_1).
+	\end{aligned}
+\end{equation}
+Veja que conseguimos um produto interno no $\mathbb{R}^3$, uma vez que $<\mathbf{pv}, \mathbf{qv}> = p_1q_1 + p_2q_2 + p_3q_3$, então, por uma questão de estética, para deixar está operação menor:
+\begin{equation}
+	\begin{aligned}
+		pq = p_0q_0-<\mathbf{pv,qv}>+p_0\mathbf{q_v}+q_0\mathbf{p_v}+\mathbf{i}(p_2p_3-p_3p_2)+\mathbf{j}(p_3q_1-p_1q_3)\\+\mathbf{k}(p_1q_2-p_2q_1)
+	\end{aligned}
+\end{equation}
+Mais uma vez podemos simplificar esta equação, porém agora utilizando do produto vetorial no $\mathbb{R}^3$. Sabendo que $\mathbf{p_v} \times \mathbf{q_v} = \mathbf{i}(p_2q_3 - p_3q_2) + \mathbf{j}(p_3q_1 - p_1q_3) + \mathbf{k}(p_1q_2 - p_2q_1)$. Assim, chegamos ao produto algébrico de quatérnios, dado por:
+\begin{equation*}
+	pq=p_0q_0-<\mathbf{p_v,q_v}>+p_0\mathbf{q_v}+q_0\mathbf{p_v}+\mathbf{p_v}\times\mathbf{q_v}
+\end{equation*}
+
+Agora, formalmente.
+
+\textbf{Definição} (Produto Algébrico de Quatérnios). Dados dois quatérnios não nulos $p,q \in \mathbb{H}/0$, o produto algébrico entre $p$ e $q$ é dado por 
+\begin{equation}
+	pq=p_0q_0-<\mathbf{p_v,q_v}>+p_0\mathbf{q_v}+q_0\mathbf{p_v}+\mathbf{p_v}\times\mathbf{q_v}
+\end{equation}
+Considerando $p=p_0+\mathbf{p_v}$ e $q=q_0+\mathbf{q_v}$.
+
+\textbf{Proposição:} O conjunto dos quatérnios é fechado pelo produto algébrico de quatérnios.
+\\ \newline \textit{Demonstração.} De fato. Considerando a equação (11), temos que o quatérnio produto algébrico $r=pq$ pode ser escrito como 
+\begin{equation}
+	r=r_0+\mathbf{r_v},
+\end{equation}
+onde $r_0=(p_0q_0-<\mathbf{p_v,q_v}>)$ e $\mathbf{r_v}=(p_0\mathbf{q_v}+q_0\mathbf{p_v}+\mathbf{p_v}\times\mathbf{q_v})$. Portanto, $r \in \mathbb{H} \hfill\blacksquare$
+\\ 
+
+\textbf{Proposição:} O produto algébrico de quatérnios é associativo. Ou seja, dados $p,q,r \in \mathbb{H}$, temos que 
+\begin{equation}
+	(pq)r=p(qr)
+\end{equation}
+\\ \textbf{Proposição:} O produto algébrico de quatérnios é distributivo em relação à adição, ou seja, $p,q,r \in \mathbb{H}$
+\begin{equation}
+	p(q+r)=pq+pr \,\,\,\,\,\,\,\,e\,\,\,\,\,\,\,\, (p+q)r=pr+qr
+\end{equation}
+\\
+
+Temos então o conjunto dos quatérnios monido das operações de adição, multiplicação por escalar e do produto de quatérnios, o que forma uma álgebra associativa, denominada \textit{Álgebra dos Quatérnios}. Construída tal álgebra, pode-se definir algumas propriedades interessantes.
+\\
+
+\textbf{Proposição:} Seja $1_\mathbb{H} = 1 + \mathbf{0_v} \in \mathbb{H}$ o elemento da álgebra dos quatérnios definido como identidade do produto de quatérnios. Isto é, para todo $q = q_0 + \mathbf{q_v} \in \mathbb{H}$, $q1_\mathbb{H} = q$.
+\\
+
+Como já definiu-se produto de quatérnios e conjugado, pode-se definir a norma de um quatérnio, seu tamanho:
+
+\textbf{Definição:} Dado $q \in \mathbb{H}$, sua \textit{norma} é dada por $N(q) = \sqrt[]{q^*q}$. 
+
+Duas propriedades para normas de quatérnios seguem. 
+\\
+
+\textbf{Proposição:} Dado $p \in \mathbb{H}$, a norma do conjugado de $p$ é igual a sua própria norma, ou seja, $N(p^*) = N(p)$.
+\\
+
+\textbf{Proposição:} Sejam $p, q \in \mathbb{H}$, a norma do produto $pq$ é igual ao produto das normas de $p$ e $q$, isto é, $N(pq) = N(p)N(q)$.
+\\
+
 \phantomsection
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
 
