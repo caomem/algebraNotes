@@ -1,0 +1,3 @@
+[submodule "secGD"]
+	path = secGD
+	url = https://github.com/caomem/secGD
