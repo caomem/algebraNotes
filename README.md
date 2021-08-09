@@ -53,8 +53,9 @@
 13. [ ] John faz uma análise de "bem definida" (pag 138), preciso falar sobre isso? Não achei necessário.
 14. [ ] existe diferença na notação $<C,*,\cdot>$ e $(C,*,\cdot)$? Quero representar um anel.
 15. [ ] $L$ extensão de $k$ $\implies$ $L$ é um espaço vetorial sobre $k$?
-16. [ ] se o espaço vetorial tem as duas operações, o que seria o produto interno? Uma quarta?
-17. [ ] pag 339 do abstract algebra (david s dummit). O que o autor quer dizer com "$\mathbb{Z}$-submódulos são o mesmo que os subgrupos"? Há um <==> ai?
+16. [X] se o espaço vetorial tem as duas operações, o que seria o produto interno? Uma quarta?
+17. [X] pag 339 do abstract algebra (david s dummit). O que o autor quer dizer com "$\mathbb{Z}$-submódulos são o mesmo que os subgrupos"? Há um <==> ai?
 18. [ ] Por que todo anel A com identidade é uma Z-álgebra?
-19. [ ] tensor product of module and tensor algebra
+19. [X] tensor product of module and tensor algebra
 20. [ ] posso usar a proposição 2.1 do lundholm para definir uma algebra geométrica?
+21. [ ] lundholm define a base do /\²R³ como e_3/\e_1 e o lounesto através do oposto. Posso definir a base que eu quiser? Isso é, prefiro e_3e_1 já que, pela regra da mão direita, seria na direção positiva de e_2.
