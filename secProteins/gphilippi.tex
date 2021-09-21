@@ -128,7 +128,7 @@ Já foi possível perceber a grande variedade de diferentes configurações poss
 
 Este é um repositório online e público onde estão guardadas todas os dados de proteínas e ácidos nucleicos já catalogados, em especial dados de suas estruturas 3D (posições x, y e z de cada um dos átomos que a constituem). Auxiliando tanto pesquisadores, quanto professores e estudantes, essa base de dados é um grande esforço em conjunto de físicos, biólogos, bioquímicos e vários outros profissionais de diversas áreas do conhecimento de todo o mundo.
 
-\subsection*{Arquivo PDB}
+\subsection*{Arquivo PDB\label{sec:pdb}}
 Quando se quer estudar uma proteína no repositório PDB, base fazer o \textit{download} do arquivo PDB da molécula (extensão ``.ent''). Esse é um arquivo de estruturas tridimensionais de macromoléculas biológicas determinadas experimentalmente, que descrevem as coordenadas espaciais de cada átomo cuja posição foi determinada (muitas das estruturas catalogadas não estão completas); também existem dados adicionais sobre informações de como as estruturas foram determinadas, os dados práticos dos experimentos, a precisão associada aos dados e tudo mais que quem estiver criando o documento achar necessário para aquela macromolécula.
 
 Tecnicamente, o arquivo PDB trata-se de uma representação estruturada dos dados moleculares e experimentais da proteína. Ele é separado por seções, onde cada seção pode possuir subseções. São elas: 
@@ -204,7 +204,6 @@ A entrada ATOM tem como objetivo descrever detalhes de cada átomo específico d
 	\label{table:atom}
 \end{table}
 
-\vspace{-0.4cm}
 Segue exemplo de um conjunto de entradas do tipo ATOM na Figura ~\ref{fig:atom}.
 \begin{figure}[H]
 	\begin{center}
@@ -215,7 +214,7 @@ Segue exemplo de um conjunto de entradas do tipo ATOM na Figura ~\ref{fig:atom}.
 \end{figure}
 \vspace{-0.3cm}
 
-Com esse conjunto de dados, pode-se, por exemplo, esboçar uma representação gráfica de uma molécula. Existem muitos softwares compatíveis com os arquivos PDB para este fim, por exemplo, o autor deste documento implementou uma visualização de uma projeção da molécula 3D no plano z = 0, como pode-se averiguar na Figura~\ref{fig:molproj}.
+Com esse conjunto de dados, pode-se, por exemplo, esboçar uma representação gráfica de uma molécula. Existem muitos softwares compatíveis com os arquivos PDB para este fim, por exemplo, o autor deste documento implementou uma visualização\footnote{Disponível em https://github.com/caomem/PDBReader} de uma projeção da molécula 3D no plano z = 0, como pode-se averiguar na Figura~\ref{fig:molproj}.
 
 \begin{figure}[H]
 	\begin{center}
@@ -225,7 +224,7 @@ Com esse conjunto de dados, pode-se, por exemplo, esboçar uma representação g
 	\label{fig:molproj}
 \end{figure}
 
-\chapter{Vinte Aminoácidos Naturais} 
+\chapter{Vinte Aminoácidos Naturais\label{ap:amino}} 
 
 É comum dividirmos os aminoácidos proteicos em cinco classes, como segue.
 \subsubsection*{Grupos R apolares, alifáticos}

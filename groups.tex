@@ -6,7 +6,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
-\usepackage{MnSymbol}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathabx}
 \usepackage{wasysym}
 \usepackage{hyperref}
 \usepackage{color}
@@ -20,11 +22,16 @@
 \usepackage{blkarray}
 \newcommand\Mark[1]{\textsuperscript#1}
 \usepackage{pgfplots}
-\usepackage{amsfonts}
 \usepackage[english, ruled, linesnumbered]{algorithm2e}
 \usepackage{algorithmic}
 \usepackage{multirow}
 \usepackage{siunitx}
+\usepackage{pdflscape}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{xltabular}
+\usepackage{blindtext}
+\usepackage{rccol}
 
 \newcommand{\nucleoe}{\emph{\text{nu }}}
 \newcommand{\nucleo}{\text{nu }}
@@ -116,19 +123,19 @@
 		
 	\end{titlepage}
 	
-	\newpage
-	\pagenumbering{gobble}
-	\vspace*{\fill}
-	\begin{flushright}
-		Dedicatória.
-	\end{flushright}
+	%\newpage
+	%\pagenumbering{gobble}
+	%\vspace*{\fill}
+	%\begin{flushright}
+	%	
+	%\end{flushright}
 	
 	\newpage
 	\pagenumbering{roman}
 	
 	\chapter*{Agradecimentos}
 	
-	Somos muito gratos ao CNPq, tanto pelo incentivo financeiro da bolsa PIBIC quanto por tanto proporcionar as condições para a pesquisa em nosso país. Agradecimentos especiais também à UFSC, por dar as condições de infraestrutura para que este projeto pudesse acontecer. Este agradecimento busca estender-se à todos os profissionais destas duas instituições.
+	Somos gratos ao CNPq, tanto pelo incentivo financeiro da bolsa PIBIC quanto por tanto proporcionar as condições para a pesquisa em nosso país. Agradecimentos especiais também à UFSC, por dar as condições de infraestrutura para que este projeto pudesse acontecer. Este agradecimento busca estender-se à todos os profissionais destas duas instituições.
 	
 	\newpage
 	%\vspace{-1cm}
@@ -140,9 +147,10 @@
 		\textbf{Abstract}
 	\end{center}
 	
-	The classical modeling of the Discretizable Molecular Distance Geometry Problem is done using matrices as linear transformations and has a set of rotations at its core. This work studies the computational benefits of applying quaternion algebra to represent these rotations in place of matrices. Some computer simulations are performed. 
+	\noindent The classical modeling of the Discretizable Molecular Distance Geometry Problem involves a series of rotations and translations that are represented through matrices in homogeneous space. This work studies the use of quaternary algebra to represent these linear transformations instead of matrices. Starting from the basic concepts of abstract algebra, we introduce the algebra of quaternions and the geometry of distances. Finally, some computer simulations give practical meaning to the study.
+	\\
 	
-	\textbf{Keywords:} Distance Geometry, Quaternion Algebra, Molecular Geometry.
+	\noindent\textbf{Keywords:} Distance Geometry, Geometric Algebra, Molecular Geometry.
 	
 	
 	\vspace{2cm}	
@@ -151,20 +159,34 @@
 		\textbf{Resumo}
 	\end{center}
 	
-	A modelagem clássica do Problema de Geometria de Distâncias Moleculares Discretizável é feita utilizando matrizes como transformações lineares e possui um conjunto de rotações em seu núcleo. Este trabalho faz um estudo sobre os benefícios computacionais de aplicar a álgebra de quatérnios para representar estas rotações no lugar das matrizes. Algumas simulações computacionais são realizadas.
+	\noindent A modelagem clássica do Problema de Geometria de Distâncias Moleculares Discretizável envolve uma série de rotações e translações que são representadas através de matrizes no espaço homogêneo. Este trabalho faz um estudo sobre a utilização da álgebra de quatérnios para representar estas transformações lineares no lugar das matrizes. Partindo dos conceitos básicos de álgebra abstrata, introduz-se a Álgebra de Quatérnios e a Geometria de Distâncias. Por fim, algumas simulações computacionais dão sentido prático ao estudo.
+	\\
 	
-	\textbf{Palavras-chave:} Geometria de Distâncias, Álgebra de Quatérnios, Geometria molecular.
-	
+	\noindent\textbf{Palavras-chave:} Geometria de Distâncias, Álgebra Geométrica, Geometria Molecular.
 	
 	\newpage
 	\chapter{Introdução}\pagenumbering{arabic}
 	
+	É de grande interessa prático o estudo da geometria molecular, pois existe uma forte relação com a forma geométrica de uma molécula orgânica e sua função em organismos vivos \cite{libertiEDG}. Nesse texto, procura-se definir uma forma de calcular a geometria de uma molécula através de dados de distância entre átomos próximos, o que é caracterizado como um dos problemas centrais de uma área da matemática chamada \textit{Geometria de Distâncias} \cite{carlileGDandAplications}.
+	
+	Na verdade, este problema clássico pode ser entendido como uma mudança de sistema de coordenadas. Deseja-se, a partir de dados de distâncias e ângulos (semelhante ao sistema de coordenadas esféricas), representar um conjunto de pontos no sistema de coordenadas cartesiano. Por sorte, como começado por Thompson \cite{thompsonBi} e Philipps \textit{et.al.} \cite{phillips1995molecular}, já foi desenvolvido um algorítimo que utiliza de várias rotações e translações para resolver este problema \cite{carlile:DMDGP,carlile:BP}.
+	
+	William Kingdom Clifford (1845 - 1879) introduziu o que ele mesmo chamou de \textit{Álgebra Geométrica}, que generaliza a Álgebra Exterior de Hermann Günther Grassmann (1809-1877) \cite{dorst2010geometric}. Esta álgebra nos é muito interessante por possibilitar a operação com subespaços e, dessa forma, operar entidades geométricas que não tem a mesma natureza. Esta álgebra também generaliza a Álgebra dos Quatérnios, desenvolvida por William Rowan Hamilton (1805-1865), que é muito utilizada na física e engenharia por ser uma álgebra não comutativa que representa de maneira eficiente rotações no espaço euclidiano tridimensional.
+	Assim, o principal objetivo deste trabalho é tentar aplicar a álgebra de quatérnios na conformação molecular, substituindo as rotações e translações classicamente descritas utilizando matrizes no espaço homogêneo \cite{fidalgoAGACSE}.
+	
+	Para fazer isso, organizou-se este texto como segue: primeiro introduz-se a Álgebra Geométrica e a Geometria de Distâncias, partindo de conceitos de Álgebra Abstrata, no capítulo \ref{sec:preliminares}. Depois, no capítulo \ref{sec:materiais}, parte-se para uma descrição do algorítimo de conformação molecular reescrito para utilizar da álgebra de quatérnios. Conclui-se o trabalho com a seção \ref{sec:resultados}, onde valida-se a teoria apresentada com simulações computacionais, bem como a introdução de alguns softwares desenvolvidos. Todas as bibliografias utilizadas aparecem na seção de referências e foram devidamente citadas no corpo do texto.
+	
+	Além disso, no fim do documento existem três apêndices que servem de introdução para alguns dos temas aqui abordados, mas que entendeu-se como complementares, além de um último apêndice contendo uma tabela com alguns dos resultados computacionais.
+	
 	\newpage
 	
-	\chapter{Preliminares}
+	\chapter{Preliminares\label{sec:preliminares}}
+	Neste capítulo faremos uma introdução às principais áreas de pesquisa deste projeto. Entende-se que a leitura é sequencial e linear, mas se já houver familiaridade com os tópicos abordados aqui pode-se entender estas seções como consulta. Despendeu-se certo esforço para deixar o texto auto-contido, necessitando apenas de um curso básico de Álgebra Linear para a seção \ref{sec:GD}.
 	
-	\section{Elementos de Álgebra Abstrata}
-	% Enunciar as principais referências desse capítulo
+	
+	\section{Elementos de Álgebra Abstrata\label{sec:algebra}}
+	
+	Esta seção pretende uma introdução construtiva dos principais tópicos de Álgebra Abstrata relacionados com este trabalho. Trata-se de uma seção um tanto massante, recheada de definições, proposições e alguns exemplos ou demonstrações para manter o texto agradável. Tudo que se apresenta aqui fora extraído principalmente de \cite{fraleigh2003first,michalAlgebra,dummit1991abstract,van1949modern}.
 	
 	\subsection{Relações entre Conjuntos e Operações}
 	
@@ -1167,17 +1189,17 @@
 		\end{itemize}
 	\end{proposicao}
 	
-	\begin{definicao}[Anel associativo]
-		
-	\end{definicao}
-	
-	\begin{definicao}[Anel comutativo]
-		
-	\end{definicao}
-	
-	\begin{definicao}[Anel com identidade]
-		
-	\end{definicao}
+	%\begin{definicao}[Anel associativo]
+	%	
+	%\end{definicao}
+	%
+	%\begin{definicao}[Anel comutativo]
+	%	
+	%\end{definicao}
+	%
+	%\begin{definicao}[Anel com identidade]
+	%	
+	%\end{definicao}
 	
 	\begin{definicao}[subanel]
 		Um subconjunto $S$ de um anel $R$ é um subanel de $R$ (escreve-se $S\leq R$) se, e somente se, valem os seguintes axiomas:
@@ -1192,17 +1214,17 @@
 		Seja $(S,+, \cdot)$ um subanel de $(R,+, \cdot)$. Então $(S,+, \cdot)$ é um anel.	
 	\end{proposicao}
 	
-	\begin{definicao}[Divisor de zero]
-		pag 2 hazenwinkel;
-	\end{definicao}
+	%\begin{definicao}[Divisor de zero]
+	%	pag 2 hazenwinkel;
+	%\end{definicao}
 	
 	\begin{definicao}[Domínio de integridade]
 		Um anel $R$ é chamado \emph{domínio de integridade} se $ab \neq 0$ para todo elemento não-nulo $a,b \in R$. Isto é, se $R$ não possuir divisores de zero.
 	\end{definicao}
 	
-	\begin{definicao}[Unidade]
-		
-	\end{definicao}
+	%\begin{definicao}[Unidade]
+	%	
+	%\end{definicao}
 	
 	\begin{proposicao}[Grupo multiplicativo]
 		O conjunto das unidades $R^*$ de um anel $R$ formam um grupo com respeito a multiplicação. Chamamos $(R^*,\cdot)$ de \emph{grupo multiplicativo}.
@@ -1316,9 +1338,9 @@
 		\end{itemize}
 	\end{proposicao}
 	
-	\begin{definicao}[Isomorfismo de anéis]
-		 
-	\end{definicao}
+	%\begin{definicao}[Isomorfismo de anéis]
+	%	 
+	%\end{definicao}
 	
 	\subsubsection{Corpos}
 	
@@ -1592,7 +1614,7 @@
 	\end{corolario}	
 	
 	\newpage
-	\section{Álgebra Geométrica}
+	\section{Álgebra Geométrica \label{sec:AG}}
 	
 	Neste capitulo iremos introduzir o estudo da \textit{Álgebra Geométrica} --- nome definido por William Kingdon Clifford (1845-1879), o que eventualmente fez com que essa área também fosse chamada de Álgebra de Clifford \cite{sommerGeometric}. Para isso, começaremos com alguns conceitos da \textit{Teoria da Expansão} (ou, em alemão, \textit{Ausdehnungslehre} \cite{grassmannLineale}), introduzidos por Hermann Günther Grassmann (1809-1877), precursor do que hoje entendemos como a Álgebra Linear. 
 	\\
@@ -1776,7 +1798,7 @@
 	$$\mathbf a\wedge\mathbf b\in \bigwedge^{i+j}\mathbb{R}^3\text{ para } \mathbf a\in \bigwedge^i\mathbb{R}^3, \mathbf b\in \bigwedge^j\mathbb{R}^3.$$	
 	
 	\subsection{Álgebra Geométrica $\mathcal C \ell_3$}
-	A álgebra exterior $\bigwedge\mathbb{R}^3$ contém uma cópia do $\mathbb{R}^3$, o que permite a aplicações de diversos cálculos para a geometria do $\mathbb{R}^3$ \cite{lounestoClifford}. Porém, um inconveniente que aparece quando se trabalha com $\bigwedge\mathbb{R}^3$ é que essa álgebra não preserva a norma, isso é, $\norm{\mathbf a\wedge\mathbf b}\leq \norm{\mathbf a}\norm{\mathbf b}$. Encontrar um novo produto entre vetores de forma que se preservasse a igualdade $\norm{\text{``}\mathbf a\mathbf b\text{''}} = \norm{\mathbf a}\norm{\mathbf b}$ possibilitaria, por exemplo, a representação de rotações como operações nesta álgebra. 
+	A álgebra exterior $\bigwedge\mathbb{R}^3$ contém uma cópia do $\mathbb{R}^3$, o que permite a aplicações de diversos cálculos para a geometria do $\mathbb{R}^3$. Porém, um inconveniente que aparece quando se trabalha com $\bigwedge\mathbb{R}^3$ é que o produto nessa álgebra não preserva a norma, isso é, $\norm{\mathbf a\wedge\mathbf b} = \norm{\mathbf a}\norm{\mathbf b}\sin\varphi \leq \norm{\mathbf a}\norm{\mathbf b}$. Encontrar um novo produto entre vetores de forma que se preservasse a igualdade $\norm{\text{``}\mathbf a\mathbf b\text{''}} = \norm{\mathbf a}\norm{\mathbf b}$ possibilitaria, por exemplo, a representação de rotações como operações nesta álgebra \cite{lounestoClifford}. 
 	
 	\subsubsection{O produto de Clifford}
 	
@@ -1784,8 +1806,10 @@
 	
 	Estamos unindo um produto comutativo com um anticomutativo. Por conta disso, temos que $$\mathbf b\mathbf a = \mathbf a\cdot \mathbf b - \mathbf a\wedge\mathbf b,$$
 	o que implica que $\mathbf a\cdot \mathbf b = \dfrac 1 2 (\mathbf a\mathbf b + \mathbf b\mathbf a)$ e $\mathbf a\wedge \mathbf b = \dfrac 1 2 (\mathbf a\mathbf b - \mathbf b\mathbf a)$.
+	\\
 	
 	Como o produto interno e o exterior zeram quando os vetores são, respectivamente, perpendiculares e paralelos, segue que dois vetores $\mathbf a$ e $\mathbf b$ são paralelos se seu produto comuta, isso é, $\mathbf a \mathbf b = \mathbf b \mathbf a$ e são perpendiculares quando seu produto anticomuta, isso é, $\mathbf a\mathbf b = -\mathbf b\mathbf a$.
+	\\
 	
 	Pode-se calcular o produto $\mathbf a\mathbf b\mathbf b\mathbf a$ para obter que $\mathbf a^2\mathbf b^2 = (\mathbf a\cdot \mathbf b)^2 - (\mathbf a\wedge \mathbf b)^2$ e usar que $(\mathbf a\wedge\mathbf b)^2 = -\norm{\mathbf a\wedge\mathbf b}^2$ para obter a identidade
 	$$\mathbf a^2\mathbf b^2 = (\mathbf a\cdot\mathbf b)^2 + \norm{\mathbf a\wedge\mathbf b}^2$$
@@ -1797,7 +1821,7 @@
 	$$\mathbf e_i\mathbf e_j = -\mathbf e_j\mathbf e_i, \text{ para } i\neq j\quad\text{ e }\quad \mathbf e_i\mathbf e_i = 1,$$
 	que dizem respeito respectivamente a ortogonalidade entre diferentes elementos da base e ao paralelismo entre dois vetores iguais. Clifford inventou essas novas regras partindo da álgebra exterior em 1882, buscando uma álgebra associativa que mantivesse $\mathbf e_i\mathbf e_j = \mathbf e_i\wedge\mathbf e_j$ e, inicialmente, em 1878, propôs um produto que levava $\mathbf e_i\mathbf e_i = -1$.
 	
-	Pode-se associar a base do espaço vetorial de $\mathcal C \ell_3$ com a base de $\bigwedge\mathbb{R}^3$, pois da mesma forma que em $\bigwedge\mathbb{R}^3$, construímos a Álgebra Geométrica $\mathcal C \ell_3$ como as somas diretas $$\mathcal C \ell_3 = \mathbb{R} \oplus \mathbb{R}^3\oplus \bigwedge^2\mathbb{R}^3 \oplus \bigwedge^3\mathbb{R}^3.$$
+	Pode-se associar a base do espaço vetorial de $\mathcal C \ell_3$ com a base de $\bigwedge\mathbb{R}^3$ pois, da mesma forma que em $\bigwedge\mathbb{R}^3$, construímos a Álgebra Geométrica $\mathcal C \ell_3$ como as somas diretas $$\mathcal C \ell_3 = \mathbb{R} \oplus \mathbb{R}^3\oplus \bigwedge^2\mathbb{R}^3 \oplus \bigwedge^3\mathbb{R}^3.$$
 	
 	Essa separação em bases induz uma estrutura de multivetor na Álgebra Geométrica $\mathcal C \ell_3$. Essa estrutura de multivetor é única, isso é, um elemento arbitrário $u\in \mathcal C \ell_3$ pode ser decomposto unicamente como uma soma de $k$-vetores, as $k$-vetores partes $\langle u\rangle_k$ de $u$, escritas $$u=\langle u\rangle_0 +\langle u\rangle_1 +\langle u\rangle_2 + \langle u\rangle_3, \text{ onde } \langle u\rangle_k \in \bigwedge^k\mathbb{R}^3.$$
 	 
@@ -1834,7 +1858,7 @@
 	\end{enumerate}
 	Para ambas as álgebras, a parte par também é uma subálgebra. A subálgebra par $(\bigwedge\mathbb{R}^3)^+ = \mathbb{R} \oplus \bigwedge^2\mathbb{R}^3$ de $\bigwedge\mathbb{R}^3$ é comutativa, porém, a subálgebra $\mathcal C \ell_3^+ = \mathbb{R} \oplus \bigwedge^2\mathbb{R}^3$ de $\mathcal C \ell_3$ não é.
 	
-	Na verdade, a subálgebra $\mathcal C \ell_3^+$ nos interessa bastante. Os elementos gerados por $1 \in \mathbb{R}$ e pelos bivetores $\mathbf e_1\mathbf e_2$, $\mathbf e_3\mathbf e_1$ e $\mathbf e_2\mathbf e_3 \in \bigwedge^2\mathbb{R}^3$ são chamados pares, porque são produtos de um número par de vetores (lembrando 0 é par). Esses elementos pares são escritos como $$w+x\mathbf e_2\mathbf e_3 + y \mathbf e_3\mathbf e_1+z\mathbf e_1\mathbf e_2$$ e formam um subespaço real $$\mathbb{R}\oplus\bigwedge^2\mathbb{R}^3 = \{w+x\mathbf e_2\mathbf e_3 + y \mathbf e_3\mathbf e_1+z\mathbf e_1\mathbf e_2 \ | \ w,x,y,z \in \mathbb{R} \}$$
+	Na verdade, a subálgebra $\mathcal C \ell_3^+$ nos interessa bastante. Os elementos gerados por $1 \in \mathbb{R}$ e pelos bivetores $\mathbf e_1\mathbf e_2$, $\mathbf e_3\mathbf e_1$ e $\mathbf e_2\mathbf e_3 \in \bigwedge^2\mathbb{R}^3$ são chamados pares, porque são produtos de um número par de vetores (lembrando que 0 é par). Esses elementos pares são escritos como $$w+x\mathbf e_2\mathbf e_3 + y \mathbf e_3\mathbf e_1+z\mathbf e_1\mathbf e_2$$ e formam um subespaço real $$\mathbb{R}\oplus\bigwedge^2\mathbb{R}^3 = \{w+x\mathbf e_2\mathbf e_3 + y \mathbf e_3\mathbf e_1+z\mathbf e_1\mathbf e_2 \ | \ w,x,y,z \in \mathbb{R} \}$$
 	que é fechado sobre a multiplicação e, portanto, o subespaço $\mathbb{R}\oplus \bigwedge^2\mathbb{R}^3$ é de fato uma subálgebra. Na verdade, essa subálgebra é isomorfa ao anel de divisão dos quatérnios $\mathbb{H}$ (que abordaremos melhor na próxima seção) através da correspondência
 	$$ \mathbf e_2\mathbf e_3 \rightarrow i,\quad \mathbf e_1\mathbf e_2 \rightarrow j, \quad \mathbf e_3\mathbf e_1 \rightarrow k.$$
 	
@@ -1883,13 +1907,13 @@
 		($\mathbb{H},+$) é um grupo abeliano.
 		\begin{proof}
 			Dados $p,q,r \in \mathbb{H}$, temos que
-			$(p+q)+r=[(p_0+\mathbf{p_v})+(q_0+\mathbf{p_v})]+(r_0+\mathbf{r_v})=[(p_0+q_0)+(\mathbf{p_v}+\mathbf{q_v})]+(r_0+\mathbf{r_v})=[(p_0+q_0+r_0)+(\mathbf{p_v}+\mathbf{q_v}+\mathbf{r_v})]=[(p_0+q_0+r_0)+(\mathbf{p_v}+\mathbf{q_v}+\mathbf{r_v})]=\{[p_0+(q_0+r_0)]+[\mathbf{p_v}+(\mathbf{q_v}+\mathbf{r_v})]\}=(p_0+\mathbf{p_v})+[(q_0+r_0)+(\mathbf{q_v}+\mathbf{r_v})]=(p_0+\mathbf{p_v})+[(q_0+\mathbf{q_v})+(r_0+\mathbf{r_v})]=p+(q+r)$, donde é associativa.
+			$$(p+q)+r=[(p_0+\mathbf{p_v})+(q_0+\mathbf{p_v})]+(r_0+\mathbf{r_v})=$$$$[(p_0+q_0)+(\mathbf{p_v}+\mathbf{q_v})]+(r_0+\mathbf{r_v})=$$$$[(p_0+q_0+r_0)+(\mathbf{p_v}+\mathbf{q_v}+\mathbf{r_v})]=$$$$\{[p_0+(q_0+r_0)]+[\mathbf{p_v}+(\mathbf{q_v}+\mathbf{r_v})]\}=$$$$(p_0+\mathbf{p_v})+[(q_0+r_0)+(\mathbf{q_v}+\mathbf{r_v})]=$$$$(p_0+\mathbf{p_v})+[(q_0+\mathbf{q_v})+(r_0+\mathbf{r_v})]=p+(q+r),$$ donde é associativa.
 			
-			Também temos que $p+q=(p_0+\mathbf{p_v})+(q_0+\mathbf{q_v})=(p_0+q_0)+(\mathbf{p_v}+\mathbf{q_v})=(q_0+p_0)+(\mathbf{q_v}+\mathbf{p_v})=q+p$, isso é, é comutativa.
+			\noindent Também temos que $$p+q=(p_0+\mathbf{p_v})+(q_0+\mathbf{q_v})=(p_0+q_0)+(\mathbf{p_v}+\mathbf{q_v})=(q_0+p_0)+(\mathbf{q_v}+\mathbf{p_v})=q+p,$$ isso é, é comutativa.
 			
-			Seja $0_{\mathbb{H}}=0+\mathbf{0_v}$. Como $p+0_{\mathbb{H}}=(p_0+\mathbf{p_v})+(0+\mathbf{0_v})=(p_0+0)+(\mathbf{p_v}+\mathbf{0_v})=(0+p_0)+(\mathbf{0_v}+\mathbf{p_v})=p_0+\mathbf{p_v}=p$, então existe um elemento neutro, a saber, $0_{\mathbb{H}}$.
+			\noindent Seja $0_{\mathbb{H}}=0+\mathbf{0_v}$. Como $$p+0_{\mathbb{H}}=(p_0+\mathbf{p_v})+(0+\mathbf{0_v})=(p_0+0)+(\mathbf{p_v}+\mathbf{0_v})=$$$$(0+p_0)+(\mathbf{0_v}+\mathbf{p_v})=p_0+\mathbf{p_v},$$ então existe um elemento neutro, a saber, $0_{\mathbb{H}}$.
 			
-			Também existe elemento oposto, afinal, $p+(-p)= (p_0+\mathbf{p_v})+(-p_0-\mathbf{p_v})=[p_0+(-p_0)]+[\mathbf{p_v}+(\mathbf{-p_v})]=(p_0-p_0)+(\mathbf{p_v}-\mathbf{p_v})=0+\mathbf{0_v}=0_{\mathbb{H}}$.
+			\noindent Também existe elemento oposto, afinal, $$p+(-p)= (p_0+\mathbf{p_v})+(-p_0-\mathbf{p_v})=[p_0+(-p_0)]+[\mathbf{p_v}+(\mathbf{-p_v})]=$$$$(p_0-p_0)+(\mathbf{p_v}-\mathbf{p_v})=0+\mathbf{0_v}=0_{\mathbb{H}}.$$
 		\end{proof}
 	\end{proposicao}
 	
@@ -1912,11 +1936,11 @@
 	\begin{proposicao}
 		$\mathbb{H}$ é um espaço vetorial sobre o corpo $\mathbb{R}$.
 		\begin{proof}
-			Dados os números reais $\alpha,\beta$ e os quatérnios $p$ e $q$, temos que $(\alpha \beta)q=(\alpha \beta)(q_0+\mathbf{q_v})=\alpha \beta q_0+\alpha \beta \mathbf{q_v}=\alpha(\beta q_0+\beta \mathbf{q_v})=\alpha(\beta q)$, então é associativa.
+			Dados os números reais $\alpha,\beta$ e os quatérnios $p$ e $q$, temos que $$(\alpha \beta)q=(\alpha \beta)(q_0+\mathbf{q_v})=\alpha \beta q_0+\alpha \beta \mathbf{q_v}=\alpha(\beta q_0+\beta \mathbf{q_v})=\alpha(\beta q),$$ então é associativa.
 			
-			Também, como $1q=1(q_0+\mathbf{q_v})=(1q_0+1\mathbf{q_v})=q_0+\mathbf{q_v}=q$, então $1q=q$.
+			\noindent Também, como $$1q=1(q_0+\mathbf{q_v})=(1q_0+1\mathbf{q_v})=q_0+\mathbf{q_v}=q,$$ então $1q=q$.
 			
-			A operação também é distributiva em relação à soma, pois por $(\alpha + \beta)q=((\alpha + \beta)q_0 + (\alpha + \beta)\mathbf{q_v})$, $((\alpha + \beta)q_0 + (\alpha + \beta)\mathbf{q_v})=\alpha(q_0+\mathbf{q_v})+\beta(q_0+\mathbf{q_v})=\alpha q+\beta q$. Analogamente para $\alpha q+\beta q$. Agora, por $\alpha(p+q)=\alpha p+\alpha q$. Aplicando as devidas distributividades, temos que $\alpha p+\alpha q=(\alpha p_0+\alpha\mathbf{p_v})+(\alpha q_0+\alpha\mathbf{q_v})=\alpha p+\alpha q$. Analogamente para $\alpha p+\alpha q$.
+			\noindent A operação também é distributiva em relação à soma, pois $$((\alpha + \beta)q_0 + (\alpha + \beta)\mathbf{q_v})=\alpha(q_0+\mathbf{q_v})+\beta(q_0+\mathbf{q_v})=\alpha q+\beta q.$$ O análogo para $\alpha q+\beta q$ vale. Além disso, aplicando as devidas distributividades, temos que $\alpha p+\alpha q=(\alpha p_0+\alpha\mathbf{p_v})+(\alpha q_0+\alpha\mathbf{q_v})=\alpha p+\alpha q$. Mostra-se de forma análoga que $\alpha p+\alpha q$.
 		\end{proof}
 	\end{proposicao}
 	
@@ -1927,7 +1951,6 @@
 	Na verdade, historicamente esse isomorfismo vem de que o calculo vetorial como conhecemos hoje, onde define-se $\mathbb{R}^4$, é mera simplificação das ideias de Hamilton sobre quatérnios. Simplificação feita por Josiah Willard Gibbs (1839 – 1903) em um conjunto de notas para seus estudantes de física-matemática intitulado Elements of Vector Analysis \cite{AlgebraAbstrata2BienalSBM}.
 	\\
 	
-	Assim como os complexos, os quatérnios também tem conjugado. 
 	\begin{definicao}[Quatérnio conjugado]
 		Seja $q = q_0 + \mathbf{q_v} \in \mathbb{H}$, define-se seu \textit{conjugado} como $q^* = q_0 - \mathbf{q_v}$.
 	\end{definicao}
@@ -1967,7 +1990,7 @@
 	
 	E, por fim, perceba que o produto vetorial $\mathbf{p_v} \times \mathbf{q_v} = \mathbf{i}(p_2q_3 - p_3q_2) + \mathbf{j}(p_3q_1 - p_1q_3) + \mathbf{k}(p_1q_2 - p_2q_1)$ aparece no nosso produto, donde podemos reescrevê-lo como
 	\begin{equation*}
-		pq=p_0q_0-<\mathbf{p_v,q_v}>+p_0\mathbf{q_v}+q_0\mathbf{p_v}+\mathbf{p_v}\times\mathbf{q_v}.
+		pq=p_0q_0\,-<\mathbf{p_v,q_v}>+p_0\mathbf{q_v}+q_0\mathbf{p_v}+\mathbf{p_v}\times\mathbf{q_v}.
 	\end{equation*}
 	
 	\begin{proposicao}
@@ -2039,8 +2062,8 @@
 	
 	\subsubsection{Rotação com quatérnios}
 	
-	\begin{teorema}
-		Seja $p_{\mathbf x}\in \mathbb{H}_0$ um quatérnio associado a um vetor $\mathbf x\in\mathbb{R}^3$ dado. Então, o quatérnio unitário $q = \cos(\frac{1}{2}\theta) + \sin(\frac 1 2 \theta)\mathbf v$ induz uma rotação $\theta$ de $\mathbf x$ sobre o eixo $\langle \mathbf v\rangle$, determinando $\mathbf x'\in \mathbb{R}^3$, pelo mapa
+	\begin{teorema}\label{teo:rotacaoQuaternios}
+		Seja $p_{\mathbf x}\in \mathbb{H}_0$ um quatérnio associado a um dado vetor $\mathbf x\in\mathbb{R}^3$. Então, o quatérnio unitário $q = \cos(\frac{1}{2}\theta) + \sin(\frac 1 2 \theta)\mathbf v$ induz uma rotação $\theta$ de $\mathbf x$ sobre o eixo $\langle \mathbf v\rangle$, determinando $\mathbf x'\in \mathbb{R}^3$, pelo mapa
 		$$
 		\begin{tabular}{rccl}
 			$R_q$:&$\mathbb{H}_0$ & $\longrightarrow$ & $\mathbb{H}_0$\\
@@ -2061,22 +2084,443 @@
 	\include{secGD/gphilippi.tex}
 	
 	\newpage
-	\chapter{Materiais e Métodos}
-	\section{BP com Quatérnios}
+	\chapter{Materiais e Métodos\label{sec:materiais}}
 	
-	\chapter{Resultados e Discussão}
-	\section{Contando Operações}
+	No capítulo anterior introduzimos a Álgebra dos Quatérnios e a abordagem clássica do algorítimo Branch-and-Prune que soluciona o problema de geometria de distâncias moleculares discretizável utilizando matrizes. Neste capítulo, central para este trabalho, redefine-se este algorítimo trocando seu núcleo matricial por elementos da álgebra de quatérnios.
+	
+	\section{BP com Quatérnios}\label{sec:bpQ}
+	
+	Seja $G = (V,E,d)$ o grafo ponderado associado ao DMDGP. Usaremos as mesmas definições de distâncias, ângulos planos e ângulos de torção apresentados na seção~\ref{sec:bp}. Esta seção foi fortemente baseada nos trabalhos de Fidalgo \cite{agacse?} e Thompson \cite{thompsonBi}.
+	
+	\subsubsection*{Inicialização}
+	
+	Vamos remontar as matrizes $B_1$, $B_2$ e $B_3$ apresentadas na seção~\ref{sec:bp} em termos de quatérnios. Lembrando, como a matriz 
+	$$B_1\: =\:
+	\begin{bmatrix}
+		1 & 0 & 0 & 0\\ 
+		0 & 1 & 0 & 0\\ 
+		0 & 0 & 1 & 0\\ 
+		0 & 0 & 0 & 1
+	\end{bmatrix},$$
+	então ela é a identidade. Isso é, para representá-la nos quatérnios como $q_1 \in \mathbb{H}$, basta tomarmos o elemento neutro do produto $1_\mathbb{H} = 1 + \mathbf 0 \in \mathbb{H}$. Assim, nossa realização $\mathbf x_1$ do primeiro vértice, antes calculado como $$
+	\begin{bmatrix}
+		x_{1,1}\\ 
+		x_{1,2}\\ 
+		x_{1,3}\\ 
+		1
+	\end{bmatrix}
+	= B_{1}\begin{bmatrix}
+		0\\ 
+		0\\ 
+		0\\ 
+		1
+	\end{bmatrix} = 
+	\begin{bmatrix}
+	0\\ 
+	0\\ 
+	0\\ 
+	1
+	\end{bmatrix} \implies \mathbf x_1 = (0,0,0),
+	$$
+	
+	agora é dado pelo conjugado $$\mathbf x_1 = q_1\mathbf 0q_1^* = 1_\mathbb{H}(0,0,0,0)1_\mathbb{H} = (0,0,0,0) \implies \mathbf x_1 = (0,0,0).$$
+	
+	Relembrando a matriz	
+	$$B_2\: =\:
+	\begin{bmatrix}
+		-1 & 0 & 0 & -d_{1,2}\\
+		0 & 1 & 0 & 0\\ 
+		0 & 0 & -1 & 0\\ 
+		0 & 0 & 0 & 1
+	\end{bmatrix},$$
+	podemos tentar enxergar quais operações ela compõe. Perceba que se multiplicarmos a matriz de rotação 
+	$$R_{\mathbf j}(-\pi) =
+	\begin{bmatrix}
+		\cos(-\pi)&0 & -\sin(-\pi)& 0\\
+		0 & 1 & 0& 0\\
+		\sin(-\pi) & 0&\cos(-\pi)& 0\\
+		0 & 0& 0& 1
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		-1&0 & 0& 0\\
+		0 & 1 & 0& 0\\
+		0 & 0&-1& 0\\
+		0 & 0& 0& 1
+	\end{bmatrix},
+	$$
+	que descreve a rotação de $-\pi$ ao redor do eixo $\mathbf j$, pela matriz de translação
+	$$	
+	T_{\mathbf i}(d_{1,2}) =
+	\begin{bmatrix}
+		1&0 & 0& d_{1,2}\\
+		0 & 1 & 0& 0\\
+		0 & 0&1& 0\\
+		0 & 0& 0& 1
+	\end{bmatrix}
+	$$
+	do espaço homogêneo que descreve a translação de $d_{1,2}$ sobre o eixo $\mathbf i$, teremos a matriz
+	$$
+	R_{\mathbf j}(-\pi)T_{\mathbf i}(d_{1,2}) = 
+	\begin{bmatrix}
+		-1&0 & 0& 0\\
+		0 & 1 & 0& 0\\
+		0 & 0&-1& 0\\
+		0 & 0& 0& 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		1&0 & 0& d_{1,2}\\
+		0 & 1 & 0& 0\\
+		0 & 0&1& 0\\
+		0 & 0& 0& 1
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		-1 & 0 & 0 & -d_{1,2}\\
+		0 & 1 & 0 & 0\\ 
+		0 & 0 & -1 & 0\\ 
+		0 & 0 & 0 & 1
+	\end{bmatrix} = B_2.
+	$$
+	Isso é, as operações que compõem a $B_2$ tratam-se de uma rotação de $-\pi$ ao redor de $\mathbf j$ e uma translação de $d_{1,2}$ sobre $\mathbf i$. Portanto, para representarmos essas operações em um quatérnio, basta compormos as mesmas operações em $\mathbb{H}$.
+	\\
+	
+	Segue do teorema~\ref{teo:rotacaoQuaternios} que o quatérnio unitário $$q_{\mathbf j} = \cos(\frac{-\pi}{2}) + \sin(\frac{-\pi} 2 )\mathbf j =  -\mathbf j$$ induz uma rotação ${-\pi}$ de $\mathbf x$ sobre o eixo $\langle \mathbf j\rangle$ ao tomarmos $q_{\mathbf j}\mathbf xq_{\mathbf j}^{-1}$. Mas como, para um quatérnio de rotação genérico 
+	\begin{equation}
+		q_{\mathbf v}^{-1} = 
+		\cos \left(- \textstyle\frac{1}{2} \theta \right) + 
+		\sin \left(- \textstyle\frac{1}{2} \theta \right)\mathbf v =
+		\cos \left( \textstyle\frac{1}{2} \theta \right) - 
+		\sin \left( \textstyle\frac{1}{2} \theta \right)\mathbf v = 
+		q_{\mathbf v}^{*},
+		\label{eq:quaternion_otherangle}
+	\end{equation}
+	então o conjugado de $\mathbf x$ por $q_{\mathbf j}$ define a rotação ${-\pi}$ de $\mathbf x$ sobre o eixo $\mathbf j$.
+	Isso é, $$q_{\mathbf j}\mathbf x q_{\mathbf j}^* = (-\mathbf j)\mathbf x\mathbf j.$$
+	Também, para realizar a translação nos quatérnios basta somar o deslocamento desejado. Isso é, o equivalente de $T_{\mathbf i}(d_{1,2})$ em $\mathbb{H}$ é, dado vetor $\mathbf x = x_1\mathbf i + x_2 \mathbf j + x_3 \mathbf k$, efetuar a soma $$\mathbf x + q_{t_{\mathbf i}} = x_1\mathbf i + x_2 \mathbf j + x_3 \mathbf k + d_{1,2}\mathbf i = (x_1+d_{1,2})\mathbf i + x_2 \mathbf j + x_3 \mathbf k$$
+	
+	Portanto, temos que o quatérnio equivalente a $B_2$ em $\mathbb{H}$ é dado pela composição 
+	$$(-\mathbf j)(\mathbf x+d_{1,2}\mathbf i)(-\mathbf j)^*.$$
+	Assim, como 
+	$$
+	\begin{bmatrix}
+		x_{2,1}\\ 
+		x_{2,2}\\ 
+		x_{2,3}\\ 
+		1
+	\end{bmatrix}
+	= B_{1}B_2\begin{bmatrix}
+		0\\ 
+		0\\ 
+		0\\ 
+		1
+	\end{bmatrix} = 
+	\begin{bmatrix}
+		-d_{1,2}\\ 
+		0\\ 
+		0\\ 
+		1
+	\end{bmatrix} \implies \mathbf x_2 = (-d_{1,2},0,0),
+	$$
+	sua realização equivalente em $\mathbb{H}$ seria
+	$$q_1(-\mathbf j)(\mathbf 0+d_{1,2}\mathbf i)(-\mathbf j)^*q_1^* = (-\mathbf j)(\mathbf (0+d_{1,2})\mathbf i + 0 \mathbf j + 0 \mathbf k)(-\mathbf j)^* = d_{1,2}(-\mathbf j)\mathbf i\mathbf j = $$$$ d_{1,2}(-\mathbf j)\mathbf k= d_{1,2}(-\mathbf i) = -d_{1,2}\mathbf i \implies \mathbf x_2 = (-d_{1,2}, 0, 0).$$
+	Perceba que, se chamarmos $q_2 = -\mathbf j$, podemos reescrever o quatérnio acima como $$\mathbf x_2 = q_1(q_2(\mathbf 0 + d_{1,2}\mathbf i)q_2^* + \mathbf 0)q_1^* \ =\  q_1q_2(\mathbf 0 + d_{1,2})\mathbf iq_1^*q_2^* + q_1\mathbf 0q_1^*,$$ e se chamarmos $\mathbf t_2 = 0+d_{1,2}\mathbf i$ e $\mathbf 0 = \mathbf t_1$ para identificar as transações envolvendo, respectivamente, a $B_1$ e a $B_2$, temos $$\mathbf x_2 = q_1q_2\mathbf t_2q_2^*q_1^* + q_1\mathbf t_1q_1^* \ = \ (q_1q_2)\mathbf t_2 (q_1q_2)^* + \mathbf x_1.$$
+	\\
+	
+	De forma semelhante, podemos analisar 
+	$$
+	B_3\:=\:
+	\begin{bmatrix}
+		-\cos\theta_{1,3} & -\mbox{sen}\theta_{1,3} & 0 & -d_{2,3}\cos\theta_{1,3}\\ 
+		\mbox{sen}\theta_{1,3} & -\cos\theta_{1,3} & 0 & d_{2,3}\mbox{sen}\theta_{1,3}\\ 
+		0 & 0 & 1 & 0\\ 
+		0 & 0 & 0 & 1
+	\end{bmatrix}
+	$$
+	e perceber que esta se trata da composição 
+	$$B_3 =
+	\begin{bmatrix}
+		\cos(\pi-\theta_{1,3}) & -\sin(\pi-\theta_{1,3}) & 0 &0\\ 
+		\sin(\pi-\theta_{1,3}) & \cos(\pi-\theta_{1,3})  & 0 &0\\ 
+		0       &          0       & 1&0\\
+		0 & 0& 0& 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		1&0 & 0& d_{2,3}\\
+		0 & 1 & 0& 0\\
+		0 & 0&1& 0\\
+		0 & 0& 0& 1
+	\end{bmatrix}
+	,$$ isso é,
+	 $$B_3 = R_{\mathbf k}(\pi-\theta_{1,3})T_{\mathbf i}(d_{2,3}).$$
+	
+	Dessa forma, podemos definir $q_3$ de forma similar como fizemos com $q_2$, usando as operações que compõem $B_3$. Para isso, note que conjugar $\mathbf x$ por
+	$$q_3 = \cos(\frac {\pi - \theta} 2) + \sin(\frac {\pi - \theta} 2)\mathbf k = \sin(\frac \theta 2) + \cos(\frac \theta 2)\mathbf k$$ resulta na rotação $\frac \theta 2$ de $\mathbf x$ ao redor do eixo $\mathbf k$. Portanto, pode-se calcular $\mathbf x_3$ da forma
+	$$
+	\mathbf x_3 = q_1(q_2(q_3(\mathbf 0+\mathbf t_3)q_3^*+\mathbf t_2)q_2^* + \mathbf 0)q_1^* = (q_1q_2q_3)\mathbf t_3(q_1q_2q_3)^* + \mathbf x_2
+	$$
+	Assim, como $q_1q_2q_3 = 1_{\mathbb{H}}(-\mathbf j)(\sin(\frac \theta 2) + \cos(\frac \theta 2)\mathbf k) = -\sin(\frac \theta 2)\mathbf j - \cos(\frac \theta 2)\mathbf i,$ então podemos calcular $\mathbf x_3 = (-\sin(\frac \theta 2)\mathbf j - \cos(\frac \theta 2)\mathbf i)(d_{2,3}\mathbf i) (-\sin(\frac \theta 2)\mathbf j - \cos(\frac \theta 2)\mathbf i)^* + \mathbf x_2$ por 
+	$$\mathbf x_3 =  (\sin(\frac \theta 2)d_{2,3}\mathbf k + \cos(\frac \theta 2)d_{2,3})(\sin(\frac \theta 2)\mathbf j + \cos(\frac \theta 2)\mathbf i) + \mathbf x_2 = $$
+	$$-\sin^2(\frac \theta 2)d_{2,3}\mathbf i + \cos^2(\frac \theta 2)d_{2,3}\mathbf i +\cos(\frac \theta 2)\sin(\frac \theta 2)d_{2,3}\mathbf j + \sin(\frac \theta 2)\cos(\frac \theta 2)d_{2,3}\mathbf j + \mathbf x_2 = 
+	$$
+	$$
+	d_{2,3}\cos(\theta)\mathbf i + d_{2,3}\sin(\theta)\mathbf j + \mathbf x_2. \quad \mathbf x_2 = -d_{1,2}\mathbf i \implies \mathbf x_3 = (d_{2,3}\cos(\theta_{1,3})-d_{1,2})\mathbf i + d_{2,3}\sin(\theta_{1,3})\mathbf j
+	$$
+	
+	\subsubsection*{Branch}
+	
+	Para $i=4, ..., n$, a matriz
+	$$
+	B_i\:=\:
+	\begin{bmatrix}
+		-c_{\theta_{i}} & -s_{\theta_{i}} & 0 & -d_{i-1,i}c_{\theta_{i}}\\ 
+		s_{\theta_{i}}c_{\omega_{i}} & -c_{\theta_{i}}c_{\omega_{i}}
+		& -s_{\omega_{i}} & d_{i-1,i}s_{\theta_{i}}c_{\omega_{i}}\\ 
+		s_{\theta_{i}}s_{\omega_{i}} & -c_{\theta_{i}}s_{\omega_{i}} & c_{\omega_{i}} & d_{i-1,i}s_{\theta_{i}}s_{\omega_{i}}\\ 
+		0 & 0 & 0 & 1
+	\end{bmatrix},
+	$$
+	com $s_{\theta_{i}}=\mbox{sen} (\theta_{i-2, i}),\: c_{\theta_{i}}=\cos (\theta_{i-2, i}),\: s_{\omega_{i}}=\mbox{sen} (\omega_{i-3, i}),\: c_{\omega_{i}}=\cos (\omega_{i-3, i})$, pode ser decomposta em
+	$$B_i =
+	\begin{bmatrix}
+		1       &          0       & 0 & 0\\
+		0 &  c_{\omega_{i}} & -s_{\omega_{i}} & 0 \\ 
+		0 &s_{\omega_{i}} &  c_{\omega_{i}}  & 0 \\ 
+		0       &          0       & 0&1\\
+	\end{bmatrix}
+	\begin{bmatrix}
+		\cos(\pi-\theta_{i-2, i}) & -\sin(\pi-\theta_{i-2, i}) & 0 &0\\ 
+		\sin(\pi-\theta_{i-2, i}) & \cos(\pi-\theta_{i-2, i})  & 0 &0\\ 
+		0       &          0       & 1&0\\
+		0 & 0& 0& 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		1&0 & 0& d_{i-1,i}\\
+		0 & 1 & 0& 0\\
+		0 & 0&1& 0\\
+		0 & 0& 0& 1
+	\end{bmatrix}
+	,$$ isso é,
+	$$B_i = R_{\mathbf i}(\omega_{i-3, i})R_{\mathbf k}(\pi-\theta_{i-2, i})T_{\mathbf i}(d_{i-1,i}).$$
+	
+	Já sabemos descrever a rotação $R_{\mathbf k}(\pi-\theta_{i-2, i})$ utilizando quatérnios, devido sua semelhança com $q_3$. Chamaremos esse quatérnio de $$q_{i, \mathbf k} = \sin(\frac {\theta_{i-2, i}} 2) + \cos(\frac {\theta_{i-2, i}} 2)\mathbf k.$$
+	Pelo teorema~\ref{teo:rotacaoQuaternios}, a rotação descrita por $R_{\mathbf i}(\omega_{i-3, i})$ é feita em $\mathbb{H}$ pela conjugação por 
+	$$q_{i,\mathbf i} = \cos(\frac {\omega_{i-3, i}} 2) + \sin(\frac {\omega_{i-3, i}} 2) \mathbf i.$$
+	Então, a composição destas rotações com a translação $\mathbf t_i$ é calculada por
+	$$q_{i,\mathbf i}(q_{i,\mathbf k}(\mathbf 0 + \mathbf t_i)q_{i,\mathbf k}^*)q_{i,\mathbf i}^* \ = \ (q_{i,\mathbf i}q_{i,\mathbf k})\mathbf t_i(q_{i,\mathbf i}q_{i,\mathbf k})^*.$$
+	Chamando $q_i = q_{i,\mathbf i}q_{i,\mathbf k}$, $$q_i = 
+	\sin \left( \textstyle\frac{\theta_{i-2, i}}{2} \right)
+	\left(
+	\cos \left( \textstyle\frac{\omega_{i-3, i}}{2} \right) 
+	+ 
+	% \sin \left( \textstyle\frac{\theta_{i}}{2} \right) 
+	\sin \left( \textstyle\frac{\omega_{i-3, i}}{2} \right) \mathbf i
+	\right) 
+	- 
+	\cos \left( \textstyle\frac{\theta_{i-2, i}}{2} \right)
+	\left(
+	\sin \left( \textstyle\frac{\omega_{i-3, i}}{2} \right) \mathbf j
+	-
+	% \cos \left( \textstyle\frac{\theta_{i}}{2} \right) 
+	\cos \left( \textstyle\frac{\omega_{i-3, i}}{2} \right) \mathbf k
+	\right),$$ ficamos com $q_i(\mathbf t_i)q_i^*$.
+	\\
+	
+	Retomando o cálculo dos vértices iniciais 
+	$$
+	\begin{tabular}{rcl}
+		$\mathbf x_1 $& $= $ & $q_1(\mathbf \mathbf t_1)q_1^*$\\
+		$\mathbf x_2 $& $= $ & $(q_1q_2)\mathbf t_2 (q_1q_2)^* + \mathbf x_1$\\
+		$\mathbf x_3 $& $= $ & $(q_1q_2q_3)\mathbf t_3(q_1q_2q_3)^* + \mathbf x_2$	
+	\end{tabular},
+	$$
+	perceba que subentende-se uma forma recursiva da realização de cada vértice. De fato, a realização de $\mathbf x_i$, para $i\geq 4$, é dada por
+	$$\mathbf x_i = q_1(q_2(q_3(\cdots q_i(\mathbf t_i)q_i^*\cdots+\mathbf t_3)q_3^*+ \mathbf t_2)q_2^*+ \mathbf t_1)q_1^* \ = \ (q_1q_2\dots q_i)\mathbf t_i(q_1q_2\dots q_i)^* + \mathbf x_{i-1}.$$
+	
+	Com isso, pode-se calcular as duas realizações possíveis para um vértice $i\geq 4$, como no modelo matricial. Perceba que deduzimos o vértice que carrega $\omega_{i-3, i}$ positivo e, para calcular seu simétrico, basta tomar $-\omega_{i-3, i}$. Porém, como mostrado na equação~\ref{eq:quaternion_otherangle}, isso é equivalente ao calculo utilizando $q_i^*$ no lugar de $q_i$, \textit{i.e.},
+	
+	$$
+	\begin{tabular}{rll}
+		$\mathbf x_i^1 =$&  $(q_1q_2\dots q_i^*)\mathbf t_i(q_1q_2\dots q_i^*)^*$& $+ \mathbf x_{i-1}$\\
+		$\mathbf x_i^0 =$& $(q_1q_2\dots q_i)\mathbf t_i(q_1q_2\dots q_i)^*$& $+ \mathbf x_{i-1}$
+	\end{tabular}.
+	$$	
+	
+	\chapter{Resultados e Discussão\label{sec:resultados}}
+	Este capítulo apresenta uma validação prática do estudo na forma de simulações computacionais, além dos softwares desenvolvidos para auxiliar nesse processo. É co-autor deste capítulo o professor, doutor, Emerson Vitor Castelani.
+	
+	\section{Ambiente desenvolvido}
+	
+	Implementou-se o algorítimo BP em linguagem Julia \cite{bezanson2017julia}, que está disponível através de um pacote público chamado \texttt{MolecularConformation.jl}\footnote{Encontrado no repositório online https://github.com/evcastelani/MolecularConformation.jl}. O principal diferencial deste pacote em relação às outras implementações do BP disponíveis online (como o caso do MD-Jeep\cite{mucherino:BP}) é que ele foi estruturado para ser modular, isso é, pode-se escolher \textit{solvers} (função responsável pelo calculo da realização) com diferentes estratégias para a conformação de instâncias DMDGP. Em particular, implementou-se os chamados \texttt{classicBP} e \texttt{quaternionBP} que, respectivamente, tratam-se das versões matriciais e quaterniônicas do BP apresentadas nas seções~\ref{sec:bp} e ~\ref{sec:bpQ} deste texto.
+	\\
+	
+	Outro benefício da estratégia de módulos do software foi a possibilidade de implementar uma fase de pré-processamento das instâncias proteicas onde pode-se, por exemplo, discretizá-las seguindo uma ordem DMDGP.
+	
 	\section{Pré-processamento Molecular}
-	\section{Resultados Computacionais}
+	
+	Com o objetivo de facilitar a criação de um grafo DMDGP e gerar entradas para as simulações, implementou-se em {C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\footnotesize\bf \#}} \texttt{.NET} um software de pré-processamento chamado \texttt{HCProt}\footnote{Encontrado em https://github.com/caomem/HCProtCLI/} que ordena (ou mostra que não é possível ordenar) proteínas reais retiradas do repositório PDB\footnote{Acessível em http://www.wwpdb.org/} (definidas pelo formato PDB \cite{bernstein1977protein}, apêndice~\ref{sec:pdb}) utilizando a ordenação HC (descrita na seção~\ref{sec:hc}). Dessa forma, automatizou-se o processo de transformar parte das proteínas do repositório PDB em grafos DMDGP, exceto pelas cadeias laterais (ignoradas pela ordem HC). Baseando-se em outros trabalhos, como \cite{douglasSideChainOrder}, pode-se implementar a automação da discretização das cadeias laterais no software \texttt{HCProt}.
+	
+	Uma observação importante é que percebeu-se uma limitação na definição da ordem HC que impossibilitou a utilização de moléculas contendo o aminoácido Prolina, pois esse é o único aminoácido natural onde a cadeia lateral se conecta ciclicamente de volta a cadeia principal (veja o apêndice~\ref{ap:amino}), fazendo com que falte o átomo $H^i$ \cite{bioquimicaLehninger}. Contudo, pode-se selecionar e reordenar com extrema facilidade cerca de seiscentas instâncias reais, as quais compuseram a base de testes deste trabalho e podem ser encontradas no repositório do software.
+
+	Similar com o que foi feito para as instâncias reais, também processou-se com o \texttt{HCProt} algumas instâncias artificias, geradas pelo script em Julia \texttt{PDBFileCreator}\footnote{Encontrado em https://github.com/caomem/PDBFileCreator}, que também fora implementado para gerar instâncias Lavor aleatórias \cite{carlile:instancesMDGP}. Estas são moléculas artificiais definidas sobre distâncias e ângulos típicos da geometria molecular.
+	
+	
+	% \section{Contando Operações}
+	% Um processador é capaz de realizar diferentes operações aritméticas (descritas por seu conjunto de instruções) em sua Unidade de Aritmética e Lógica (ALU) e cada uma destas leva um tempo diferente para ser computada \cite{zillerMicroprocessadores}. Chamamos o tempo decorrido em cada operação de latência (que é medido em clocks) e, no caso dos processadores com conjunto de instruções reduzido (RISC), por mais que algumas operações possam ser realizadas mais rapidamente que o esperado, o processador sempre aguarda uma mesma quantidade de clocks pré-determinada para cada tipo de operação (de modo que esta quantidade seja maior que o pior caso, suprimindo a possibilidade de erros de sincronização). Porém, como os processadores comumente usados nos computadores pessoais possuem um conjunto de instruções complexo (chamados CISC), não se sabe de ante-mão quanto tempo uma operação irá demorar (por conta da complexidade das suas instruções). 
+	% 
+	% Para estimar o tempo de cada operação em processadores CISC, pode-se realizar uma séries de testes no processador a fim de medir a latência média das suas instruções, como feito em \cite{intructionsTableFog}. Assim, pode-se afirmar que algumas operações demoram, na média, mais que outras. Podemos usar como unidade de medida para os clocks das operações a latência da classe de operações simples (como a adição, subtração, valor absoluto, comparação entre números e atribuição); isso é, define-se a latência destas operações como 1 e mede-se as demais em relação a estas. Assim, no geral, sabe-se que $$1< c_m<c_d<c_{\sqrt{}},$$ onde $c_m$ é a latência das operações de multiplicação, $c_d$ as de divisão e $c_{\sqrt{}}$ as de radiciação \cite{intructionsTableFog}.
+	% 
+	% A fim de comparar o esforço computacional do algorítimo BP com abordagem matricial e com a abordagem de quatérnios, contou-se a quantidade de operações realizadas em cada iteração das simulações computacionais do problema. Para isso, por exemplo, em ambas as abordagens precisa-se calcular os valores de cosseno e seno dos ângulo planos e diedrais, através das funções
+	% 
+	% \begin{equation*}
+	% 	%
+	% 	\cos(\theta_{i-2,i}) 
+	% 	= 
+	% 	\dfrac{d^{2}_{i-2,i-1} + d^{2}_{i-i,i} - d^{2}_{i-2,i}}{2d_{i-2,i-1}d_{i-1,i}},
+	% 	%
+	% 	\hspace{0.5cm} \mbox{  } \hspace{0.5cm}
+	% 	%
+	% 	\sin(\theta_{i-2,i}) = \sqrt{1 - \cos^{2}(\theta_{i-2,i})},
+	% 	%.
+	% \end{equation*} 
+	% \begin{equation*}
+	% 	%
+	% 	\cos( \omega_{i-3,i} ) = 
+	% 	\dfrac{ 2d^{2}_{i-2,i-1} 
+	% 		\left( d^{2}_{i-3,i-2} + d^{2}_{i-2,i} - d^{2}_{i-3,i} \right) - (\tilde{d}_{i-3,i-1})(\tilde{d}_{i-2,i}) }
+	% 	{ \sqrt{\left( 4d^{2}_{i-3,i-2}d^{2}_{i-2,i-1} - \tilde{d}^{2}_{i-3,i-1}\right) 
+	% 			\left( 4d^{2}_{i-2,i-1}d^{2}_{i-1,i} - \tilde{d}^{2}_{i-2,i} \right)} },
+	% 	%
+	% \end{equation*}
+	% com $\tilde{d}_{i-3,i-1} = d^{2}_{i-3,i-2} + d^{2}_{i-2,i-1} - d^{2}_{i-3,i-1}$, $\tilde{d}_{i-2,i} = d^{2}_{i-2,i-1} + d^{2}_{i-i,i} - d^{2}_{i-2,i}$, e, por fim, $$\sin(\omega_{i-3,i}) = \sqrt{1 - \cos^{2}(\omega_{i-3,i})}.$$
+	% Assim, o respectivo custo destas funções é dado por 
+	% $$
+	% 	c_{\cos(\theta_{i-2,i})} = 2 + 5c_{m} + 1c_{d} + 0c_{\sqrt{}}, \quad
+	% c_{\cos(\omega_{i-3,i})} = 9 + 19c_{m} + 4c_{d} + 1c_{\sqrt{}},
+	% $$
+	% $$
+	% c_{\sin(\theta_{i-2,i})} = 1 + 1c_{m} + 0c_{d} + 1c_{\sqrt{}}\quad \text{ e } \quad
+	% c_{\sin(\omega_{i-3,i})} = 1 + 1c_{m} + 0c_{d} + 1c_{\sqrt{}}.
+	% $$
+	% 
+	% De forma semelhante, todas as outras operações envolvendo a realização dos vértices implementadas no software \texttt{MolecularConformation.jl} foram contadas a medida que apareciam nas iterações do BP. 
+	% \\
+	
+	\section{Simulações Computacionais}
+	
+	Com isso pode-se enunciar, a seguir, os resultados computacionais obtidos em um processador Intel Core(R), CPU i5-8600K com seis núcleos de \texttt{4.2Ghz} e um \texttt{SSD} com \texttt{512GB} rodando Manjaro-XFCE 64 bits, sobre o kernel 5.10.49-1-MANJARO.
+
+	% A tabela~\ref{tab:opResultsc} mostra a quantidade de operações associadas as duas primeiras moléculas da bateria de testes. A contagem foi separada em quantidade de operações de nós (usadas para realização de vértices), a quantidade usadas nos caminhos virtuais (definidas pelos vértices repetidos da ordenação HC) e pelas operações de diferença (associadas aos testes de factibilidade no estágio de prunning, igual para ambos os métodos).
+	% 
+	% \begin{scriptsize}
+	% 	\begin{xltabular}{\textwidth}{r|rcccSc}
+	% 		\caption{Resultados Operacionais}\label{tab:opResultsc}\\
+	% 		\toprule
+	% 		\multicolumn{1}{c}{Problema} & Método & \multicolumn{1}{c}{\makecell[cc]{Operações de\\nós}} & \multicolumn{1}{c}{\makecell[cc]{Operações de\\caminho virtual}} & \multicolumn{1}{c}{\makecell[cc]{Operaçòes de \\diferença}} & \multicolumn{1}{c}{\makecell[cc]{No. Operações\\ Ganhas}} & \multicolumn{1}{c}{\makecell[cc]{Branchs \\ Prunes}}  \\
+	% 		\midrule
+	% 		\endfirsthead
+	% 		\caption{Resultados Operacionais - continuação}\\
+	% 		\toprule
+	% 		\multicolumn{1}{c}{Problema} & Método & \multicolumn{1}{c}{\makecell[cc]{Operações de\\nós}} & \multicolumn{1}{c}{\makecell[cc]{Operações de\\caminho virtual}} & \multicolumn{1}{c}{\makecell[cc]{Operaçòes de \\diferença}} & \multicolumn{1}{c}{\makecell[cc]{No. Operações\\ Ganhas}} & \multicolumn{1}{c}{\makecell[cc]{Branchs \\ Prunes}}  \\
+	% 		\midrule
+	% 		\endhead
+	% 		pdb1ba5 & Classic & 83480 & 41875 & 5212 & & 735 \\
+	% 		& & 141083 & 71478 & 3382 & & 637 \\
+	% 		& & 8276 & 4595 & 0 & & \\
+	% 		& & 4966 & 2757 & 0 & & \\
+	% 		& Quaternion & 72313 & 38858 & 5212 & 15.44 & \\
+	% 		& & 106219 & 48441 & 3382 & 32.82 & \\
+	% 		& & 3310 & 1838 & 0 & 150.03 & \\
+	% 		& & 8275 & 4595 & 0 & -39.99 & \\ \cline{2-7}\addlinespace
+	% 		pdb1d1n & Classic & 130125 & 67954 & 8136 & & 1180 \\
+	% 		& & 221108 & 115731 & 5214 & & 831 \\
+	% 		& & 13276 & 7370 & 0 & & \\
+	% 		& & 7966 & 4422 & 0 & & \\
+	% 		& Quaternion & 112771 & 62720 & 8136 & 15.39 & \\
+	% 		& & 165959 & 78222 & 5214 & 33.23 & \\
+	% 		& & 5310 & 2948 & 0 & 150.02 & \\
+	% 		& & 13275 & 7370 & 0 & -39.99 & \\ \cline{2-7}\addlinespace
+	% 	\end{xltabular}
+	% \end{scriptsize}
+	% 
+	% Uma tabela completa com todas as moléculas da bateria de testes pode ser encontrada no apêndice~\ref{ap:tabelas}. O ganho percentual na quantidade de operações utilizando quatérnios no lugar de matrizes foi aproximadamente igual para todas as moléculas, como pode-se perceber na quarta coluna da tabela~\ref{tab:opResultsc}. São aproximadamente $$15.5\% \text{ a menos de somas}, 33\% \text{ a menos de produtos}, $$$$150\% \text{ a menos de divisões e } 40\%\text{ a mais de raízes}.$$ 
+	% 
+	% Isso é, tivemos ganhos significativos nas três primeiras classes de operações, porém, ganhamos $40\%$ a mais de raízes. O impacto dessas diferenças no tempo para realizar essas moléculas foi mínimo, da ordem de $1\%$, como pode-se observar na tabela~\ref{table:improvreal}.
+	
+	% \begin{table}[H]
+	% 	\centering
+	% 	{\footnotesize
+	% 		\begin{tabular}{||r|rS[table-format=1.3e+2]S[table-format=1.3e+2]S[table-format=1.4e+1]S[table-format=1.3]||}
+	% 			\hline
+	% 			\multicolumn{1}{||c|}{Problem} & Method & \multicolumn{1}{c}{LDE} & \multicolumn{1}{c}{RMSD} & \multicolumn{1}{c}{Time} & \multicolumn{1}{r||}{Improv}\\
+	% 			\hline
+	% 			pdb1ba5 & Classic & 1.668e-20 &  & 1.4413e-01 & \\
+	% 			& Quaternion & 4.257e-21 & 1.825e-10 & 1.4349e-01 & 0.446\\ \cline{2-6} 
+	% 			pdb1d1n & Classic & 4.268e-11 &  & 4.4043e-01 & \\
+	% 			& Quaternion & 4.268e-11 & 1.120e-11 & 4.3901e-01 & 0.324\\ \cline{2-6} %\addlinespace
+	% 			pdb1dp3 & Classic & 2.048e-10 &  & 2.9882e-01 & \\
+	% 			& Quaternion & 2.048e-10 & 8.279e-11 & 2.9610e-01 & 0.917\\ \cline{2-6} %\addlinespace
+	% 			pdb1du1 & Classic & 1.486e-21 &  & 2.0292e-02 & \\
+	% 			& Quaternion & 2.921e-21 & 1.186e-12 & 2.0271e-02 & 0.104\\ \cline{2-6} %\addlinespace
+	% 			pdb1fcl & Classic & 1.650e-10 &  & 4.4086e-01 & \\
+	% 			& Quaternion & 1.650e-10 & 2.553e-12 & 4.3771e-01 & 0.720\\ \cline{2-6} %\addlinespace
+	% 			pdb1fd6 & Classic & 7.499e-20 &  & 3.0047e-01 & \\
+	% 			& Quaternion & 3.248e-20 & 1.400e-11 & 2.9859e-01 & 0.631\\ \cline{2-6} %\addlinespace
+	% 			pdb1i2u & Classic & 3.527e-21 &  & 9.7327e-02 & \\
+	% 			& Quaternion & 4.779e-22 & 9.106e-12 & 9.6471e-02 & 0.887\\ \cline{2-6} %\addlinespace
+	% 			pdb1i2v & Classic & 7.063e-22 &  & 1.1454e-01 & \\
+	% 			& Quaternion & 3.179e-22 & 9.566e-13 & 1.1369e-01 & 0.748\\ \cline{2-6} %\addlinespace
+	% 			pdb1jlz & Classic & 1.660e-21 &  & 3.0144e-02 & \\
+	% 			& Quaternion & 3.852e-22 & 8.656e-12 & 2.9886e-02 & 0.862\\ \cline{2-6} %\addlinespace
+	% 			pdb1k0v & Classic & 1.606e-22 &  & 2.3926e-01 & \\
+	% 			& Quaternion & 8.541e-23 & 3.099e-13 & 2.3946e-01 & -0.081\\ %\cline{2-6} %\addlinespace
+	% 			\hline
+	% 	\end{tabular}}
+	% 	\caption{Comparison between \texttt{QuaternionBP} and \texttt{ClassicBP} in real instances.}\label{table:improvreal}	\end{table}
+	% 
+	% Utilizou-se as instâncias artificiais para 
+	
+	Para a apresentação de resultados foram selecionadas da base de testes as moléculas que tiveram sua realização calculada em menos de 3 segundos. Este filtro foi necessário pois, mesmo que se calculasse apenas a primeira realização da molécula, algumas instâncias necessitaram de tempos computacionais inviáveis (dada a complexidade de pior caso do algorítimo). Assim, pode-se realizar 184 instâncias da base de testes. Nenhum erro ocorreu durante os testes, o que colabora com a análise positiva de robustez do método.
+	
+	Na tabela~\ref{tab:genResultstext} apresenta-se o resultado obtido das dez primeiras instâncias realizadas. Uma tabela completa, com as 184 instâncias reais, pode ser encontrada no apêndice~\ref{ap:tabelas}. Como métrica para a qualidade das soluções encontradas, calculou-se as medidas Mean Distance Error (MDE) e Root  Mean  Square  Deviation (RMSD). Como a pior MDE encontrada fora da ordem de $10^{-9}$, garante-se que as soluções foram precisas. Também, como o pior RMSD calculado também foi da ordem de $10^{-9}$, garantimos boa similaridade das soluções encontradas com as posições originais definidas nos arquivos PDB.
+	
+	\begin{xltabular}{\textwidth}{||rS[table-format=1.3e+2]S[table-format=1.4e+2]S[table-format=1.4e+2]||}
+		\caption{Resultados gerais} \label{tab:genResultstext}\\
+		\toprule
+		\multicolumn{1}{||c}{Problema} & \multicolumn{1}{c}{LDE} & \multicolumn{1}{c}{RMSD} & \multicolumn{1}{c||}{Tempo} \\
+		\midrule
+		\endfirsthead
+		\caption{Resultados gerais - continuação}\\
+		\toprule
+		\multicolumn{1}{||c}{Problema} & \multicolumn{1}{c}{LDE} & \multicolumn{1}{c}{RMSD} & \multicolumn{1}{c||}{Tempo} \\
+		\midrule
+		\endhead
+		pdb1ba5 & 4.257e-21 & 1.8249e-10 & 1.5480e-01 \\
+		pdb1d1n & 4.268e-11 & 1.1200e-11 & 4.3957e-01 \\
+		pdb1dp3 & 2.048e-10 & 8.2794e-11 & 3.4111e-01 \\
+		pdb1du1 & 2.921e-21 & 1.1862e-12 & 2.2095e-02 \\
+		pdb1fcl & 1.650e-10 & 2.5527e-12 & 5.0979e-01 \\
+		pdb1fd6 & 3.248e-20 & 1.4000e-11 & 2.9719e-01 \\
+		pdb1i2u & 4.779e-22 & 9.1058e-12 & 9.5673e-02 \\
+		pdb1i2v & 3.179e-22 & 9.5660e-13 & 1.3251e-01 \\
+		pdb1jlz & 3.852e-22 & 8.6556e-12 & 2.9969e-02 \\
+		pdb1k0v & 8.541e-23 & 3.0991e-13 & 2.3770e-01 \\ \hline
+	\end{xltabular}
 	
 	\section{Publicações Relacionadas}
-	O Relatório Final e Parcial (quando necessário) deve relacionar, quando for o caso, as eventuais participações do bolsista nos principais congressos da área e publicações com o orientador em periódicos indexados e/ou com corpo editorial. Deve relacionar os títulos/autores e nome dos periódicos com referência bibliográfica completa.
-
-	este trabalho é um desdobramento de uma pesquisa em andamento do prof f f e cita os atigos publicados em congresso e diz que é coautor de um artigo submetido em revista tal
+	Este trabalho é um desdobramento de uma pesquisa em andamento do professor Felipe Fidalgo, que teve como publicação original sua participação na 7$^{\text{th}}$ Conference on Applied Geometric Algebra in Computer Science and Engineering \cite{fidalgoAGACSE}. Durante esta iniciação científica pode-se participar como co-autor de artigo submetido a Computational Optimization and Applications, no qual aborda-se maiores detalhes sobre a comparação entre o método quaterniônico e a abordagem clássica do algorítimo Branch-and-Prune. Por questões de sigilo legal, não pode-se desenvolver neste relatório os resultados pertinentes presentes no artigo submetido. Em momento oportuno, o pré-print deste trabalho estará disponível online.
+	
+	Também houveram oportunidades durante o desenvolvimento deste projeto de pesquisa de participar de congressos da área. Fomos convidados a apresentar os softwares desenvolvidos, bem como resultados preliminares da pesquisa, no minissimpósio de Geometria de Distâncias e Álgebra Geométrica do XL Congresso de Matemática Aplicada e Computacional, ao lado de grandes nomes da Geometria de Distâncias e da Álgebra Geométrica no Brasil.
 	
 	\chapter{Considerações Finais}
 	
-	O Relatório Final e Parcial (quando for o caso) precisa conter, ainda, nas conclusões, uma avaliação do aluno em relação aos benefícios da IC no seu aprendizado e formação científica.
+	Neste momento é interessante recuperar os objetivos específicos do projeto de pesquisa a fim de averiguar se tudo fora concluído conforme planejado. Como o objetivo principal do projeto era estudar a Álgebra Geométrica dos Quatérnios e sua aplicação em Geometria de Distâncias, objetivando sua utilização na solução do DMDGP, neste ponto fica claro que cumpriu-se este objetivo. O estudo da Álgebra Geométrica e da Geometria de distâncias são feitos, respectivamente, nas seções \ref{sec:AG} e \ref{sec:GD}. Também apresenta-se uma reformulação do BP usando quatérnios na seção \ref{sec:bpQ}.
+	
+	Sobre os objetivos específicos, pode-se concluir sua imensa maioria. Porém, dada a complexidade do que se trabalhou, não atingiu-se o objetivo de descrever a álgebra tensorial neste documento. Percebeu-se a necessidade de se trabalhar mais o domínio da Álgebra Geométrica e, para este fim, planejou-se um próximo projeto de pesquisa do ciclo 2021-2022 que terá como enfoque esta álgebra e suas implicações.
+	
+	Como projetos futuros, pretende-se estudar a Álgebra Conforme e suas aplicações no problema de geometria de distância com dados intervalares, inspirado no apresentado em \cite{michaelOrthogonality}. Também deseja-se estudar as relações de simetria existentes nas soluções do DMDGP e verificar como o uso de quatérnios impacta no cálculo de novas realizações a partir de uma utilizando destas simetrias \cite{fidalgotese,carlileGDandAplications}.
+	\\
+	
+	Aqui também é importante observar o grande impacto que este projeto tem na formação acadêmica do aluno envolvido. Além de aproximar o graduando da pós graduação, induziu-o ao contato com grupos de pesquisa que demonstram terreno fértil para publicações da área. O contato com os pesquisadores, mesmo que por meio virtual dada as atuais restrições sanitárias, instigam a continuar na carreira acadêmica e pleitear cadeiras para lecionar no ensino superior.
 	
 	\phantomsection
 	\addcontentsline{toc}{chapter}{Referências Bibliográficas}
@@ -2091,6 +2535,14 @@
 	\input{secGrafos/gphilippi.tex}	
 	
 	\input{secProteins/gphilippi.tex}
+	
+	\chapter{Tabelas de Simulações Computacionais\label{ap:tabelas}}
+	No que se segue, há duas extensas tabelas com os resultados computacionais gerais e de operações das simulações de cada proteína no banco de testes (identificada pelo seu código PDB na primeira coluna).
+	
+	\begin{footnotesize}
+		\input{table_general.tex}
+		\newpage
+	\end{footnotesize}
 	
 	%\fi
 \end{document}
